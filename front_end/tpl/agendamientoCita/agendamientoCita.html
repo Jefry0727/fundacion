@@ -1,0 +1,2957 @@
+<title> Agenda Citas</title>
+<!-- START PAGE COVER --> 
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">
+                Home
+            </a>
+        </li>
+        <li>
+            <a class="active" href="#">
+                Agendamiento de cita
+            </a>
+        </li>
+        <button class="btn btn-info pull-right" ng-click="reloadAgendamiento()" data-toggle="tooltip" data-placement="top" title="Actualizar!"><fa class="fa fa-refresh"></fa></button>
+        
+    </ul>
+
+    
+    <!-- END BREADCRUMB -->
+    <!-- <h2 class = "text-center"> <strong>{{mensaje}}</strong> </h2>
+-->
+
+
+
+
+</div>
+
+<form role="form" autocomplete="off" name="orderDetailForm"  novalidate id= 'formid'>
+
+
+    <div class="container-fluid container-fixed-lg">
+
+        <div class="row">
+
+           <div style="float:left">
+
+               <img ng-src="{{image_source}}"  ng-click="triggerClickUploadPhoto()"  width="150px;" height="150px;" style="border: 1px solid #ced0d2; cursor: pointer;" ng-show="image_source != undefined ">
+
+
+               <div 
+               style="background-color: #ced0d2; width: 150px; height: 150px; cursor: pointer;" 
+               ng-click="triggerClickUploadPhoto()" 
+               ng-hide="image_source != undefined "
+               >
+               <img src="assets/img/photo.png" width="80px" style="margin-left: 32px; margin-top: 30px; opacity: 0.3;" />
+
+           </div>  
+
+
+           <input 
+           style="display: none;" 
+           id="uploadPhotoPatient" 
+           type="file" 
+           file-model="photoPeople" 
+           name="file"
+           accept=".gif,.jpg,.jpeg,.png"
+           onchange="angular.element(this).scope().setFile(this)"
+           />
+
+
+       </div>       
+
+       <div style="float:right" class="col-md-10">
+
+
+           <!--       <h3>
+                Buscar Paciente
+            </h3> -->
+            <p class="text-danger">
+                {{error}}
+            </p>
+            <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.identification.$invalid && !orderDetailForm.identification.$pristine }">
+                <label for="">
+                    <strong>
+                        Ingrese numero de identificación
+                    </strong>
+                </label>
+                <input
+                style="font-size: 20px"
+                class="form-control" 
+                ng-blur="searchPatients()"
+                ng-model="searchPeople.identification" 
+                placeholder="Numero de Identificación" 
+                type="text" 
+                ui-jq="popover" 
+                data-container="body" 
+                data-placement="top" 
+                data-content="La identificación es requerida" 
+                data-trigger="manual" 
+                validate-attached-form-element 
+                ng-keypress = "enterPressed($event)"
+                required />
+
+            </div>
+
+            <button type="button" ng-click="sendPeopleId()" class="btn btn-info">
+                Nueva huella de persona 
+            </button>
+            
+            <button type="button" ng-click="showIndetityCard()" class="btn btn-info">
+                Lector de Documento de Identificación
+            </button>
+
+            
+        </div>
+        
+
+    </div>
+    <div class="row">
+        <!-- START PANEL -->
+
+
+        <div class="row">
+            <div class="col-md-6 ">
+                <h3>
+                    Información Paciente 
+
+                </h3> 
+
+                <div class="form-group-attached">
+                    <div class="row clearfix">
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.first_name.$invalid && !orderDetailForm.first_name.$pristine }">
+                                    <label>
+                                        Primer Nombre
+                                    </label>
+                                    <input class="form-control" name="first_name" ng-model="people.first_name" type='text'
+                                    ui-jq="popover" data-container="body" data-placement="top" data-trigger="manual" validate-attached-form-element required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        Segundo Nombre
+                                    </label>
+                                    <input class="form-control" name="middle_name" ng-model="people.middle_name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required " ng-class="{ 'has-error' : orderDetailForm.last_name.$invalid && !orderDetailForm.last_name.$pristine }">
+                                    <label>
+                                        Primer Apellido
+                                    </label>
+                                    <input class="form-control" name="last_name" ng-model="people.last_name" type="text" ui-jq="popover" data-container="body" data-placement="top" data-trigger="manual" validate-attached-form-element required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        Segundo Apellido
+                                    </label>
+                                    <input  type='text' class="form-control" name="last_name_two" ng-model="people.last_name_two" ui-jq="popover" data-container="body" data-placement="top"  data-trigger="manual" validate-attached-form-element>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.document_types_id.$invalid && !orderDetailForm.document_types_id.$pristine }">
+                                    <label>
+                                        Tipo Documento
+                                    </label>
+                                    <select class=" cs-select cs-skin-slide form-control" 
+                                    name="document_types_id" 
+                                    ng-change = "setSetSelectedTypeId()"
+                                    ng-model="selectedTypeId" 
+                                    ng-options="documentTypes.id as documentTypes.type for documentTypes in documentTypes" 
+                                    ui-jq="popover" data-container="body" 
+                                    data-placement="top" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element 
+                                    required>
+                                    <option value=""> -Seleccione un tipo de I.D- </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.gender.$invalid && !orderDetailForm.gender.$pristine }">
+                                <label>
+                                    Género
+                                </label>
+                                <select 
+                                class="cs-select cs-skin-slide form-control required" 
+                                ng-model="selectGender" 
+                                ng-change="changeSelectedGender()"
+                                ng-options="item as item.gender for item in gender track by item.id"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-trigger="manual" 
+                                validate-attached-form-element 
+                                required>
+                                <option value=""> -Seleccione un tipo de género- </option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.birthdate.$invalid && !orderDetailForm.birthdate.$pristine }">
+                            <label>
+                                Fecha Nacimiento:
+                            </label>
+                            <div 
+                            class="input-group date" 
+                            ui-jq="datepicker" 
+                            ui-options="{format:'yyyy-mm-dd'}">
+
+                            <input class="form-control" 
+                            name="birthdate" 
+                            id='birthdate' 
+                            ng-model="people.birthdate" 
+                            placeholder="yyyy-mm-dd" 
+                            required="" 
+                            type="text" 
+                            ng-change="calculateAgeChange(people.birthdate)" 
+                            ui-jq="popover" 
+                            data-container="body" 
+                            data-placement="top"  
+                            data-trigger="manual" 
+                            validate-attached-form-element 
+                            required />
+
+                            <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                <i class="fa fa-calendar">
+                                </i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-sm-4">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                            Edad
+                        </label>
+                        <input style="color: #000000;" class="form-control" name="birthdate" ng-model="order.calculated_age" id='edad' readonly="true"  type="text"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default required " ng-class="{ 'has-error' : orderDetailForm.last_name.$invalid && !orderDetailForm.last_name.$pristine }">
+                        <label>
+                            Teléfono:
+                        </label>
+
+
+                        <input class="form-control" placeholder="Telefono" name="phone" ng-model="people.phone" type="text" ui-jq="popover" data-container="body" data-placement="top" data-trigger="manual" validate-attached-form-element required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                            E-mail:
+                        </label>
+                        <input class="form-control" placeholder="Email" name="email" ng-model="people.email"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-sm-4">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.selectedDepatment.$invalid && !orderDetailForm.selectedDepatment.$pristine }">
+                        <label>
+                            Departamento :
+                        </label>
+                        <select class=" cs-select cs-skin-slide form-control" 
+                        ng-change="getMunicipalities()" 
+                        ng-model="selectedDepatment" 
+                        ng-options="item as item.name for item in Departments track by item.id" 
+                        ui-jq="popover" data-container="body" 
+                        data-placement="top"
+                        data-trigger="manual" 
+                        validate-attached-form-element 
+                        required>
+                        <option value=""> -- Departamento -- </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group-attached">
+                <div pg-form-group class="form-group form-group-default required">
+                    <label>
+                        Municipio :
+                    </label>
+                    <select class=" cs-select cs-skin-slide form-control" 
+                    ng-model="selectedMunicipalitie" 
+                    ng-options="item as item.municipality for item in Municipalities track by item.id" 
+                    ng-change="changeSelectedMunicipality()">
+                    <option value=""> -- Municipios --</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group-attached">
+            <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.zone_id.$invalid && !orderDetailForm.zone_id.$pristine }">
+                <label>
+                    Zona
+                </label>
+
+
+
+                <select 
+
+                class="cs-select cs-skin-slide form-control" 
+                ng-change="changeSelectedZone()"
+                ng-model="selectedZone" 
+                ng-options="Zones.id as Zones.zone for Zones in Zones" 
+                ui-jq="popover" 
+                data-container="body" 
+                data-placement="top" 
+                data-trigger="manual" 
+                validate-attached-form-element 
+                required>
+                <option value=""> -Seleccione una zona- </option>
+            </select>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row clearfix">
+    <div class="col-sm-12">
+       <div class="form-group-attached">
+        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.address.$invalid && !orderDetailForm.address.$pristine }">
+            <label>
+                Dirección:
+            </label>
+            <input class="form-control" placeholder="Dirección" name="address" ng-model="people.address" ui-jq="popover" data-container="body" data-placement="top" data-trigger="manual" validate-attached-form-element required/>
+        </div>
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="form-group-attached">
+
+        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.regimes_id.$invalid && !orderDetailForm.regimes_id.$pristine }" >
+            <label>
+                Regimen
+            </label>
+            <select class="cs-select cs-skin-slide form-control" 
+            ng-model="selectedRegimes" 
+            ng-change = "setSelectedRegimes()"
+            ng-options="Regimes.id as Regimes.regime for Regimes in Regimes" 
+            ui-jq="popover" 
+            data-container="body" 
+            data-placement="top"  
+            data-trigger="manual" 
+            validate-attached-form-element 
+            required>
+            <option value=""> -Seleccione un regimen- </option>
+        </select>
+    </div>
+</div>
+</div>
+<div class="col-sm-4">
+    <div class="form-group-attached">
+        <div pg-orm-group class="form-group form-group-default">
+            <label>
+                EPS
+            </label>
+            <select class="cs-select cs-skin-slide form-control" 
+            ng-model="selectedEps" 
+            ng-change = "changeSelectedEps()"
+            ng-options="getAllEps.id as getAllEps.name for getAllEps in getAllEps"
+            ui-jq="popover" 
+            data-container="body" 
+            data-placement="top"  
+            data-trigger="manual" 
+            validate-attached-form-element 
+            required>
+            <option value=""> -Seleccione una EPS- </option>
+        </select>
+    </div>
+</div>
+
+</div>
+
+<div class="col-sm-4">
+    <div class="form-group-attached">
+        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.ofiliationType.$invalid && !orderDetailForm.ofiliationType.$pristine }">
+
+
+
+           <label>
+            Tipo de afiliaci&oacute;n
+        </label>
+        <select class="cs-select cs-skin-slide form-control"
+        ng-options="typeAfiliation.code as typeAfiliation.name for typeAfiliation in typeAfiliation" 
+        class="form-control" 
+        ng-model="patient.affiliation_type" 
+        ng-init="patient.affiliation_type=0" 
+        required=""
+        name="ofiliationType"
+        >
+        <option value=""> -Seleccione la Afiliación- </option>
+    </select>
+
+
+</div>        
+</div>
+</div>
+
+</div>
+
+
+<div class="row clearfix">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label>
+                Diagn&oacute;stico
+            </label>
+
+            <input name="id"  type='text' ng-model="showDiagnostic.id" class="form-control hidden"  placeholder="Ingrese el id"  />
+
+            <input name="id"  type='text' ng-model="showDiagnostic.description" class="form-control hidden"  placeholder="Ingrese el id"  />
+
+            <!--  <input name="search"  type='text' ng-model="searchSpecialist.names" class="form-control" ng-blur="searchSpecialist()" placeholder="Ingrese el nombre" required/> -->
+            <!--   <textarea 
+            class="form-control" 
+            name="diagnostic" 
+            ng-model="patient.permanent_diagnostic" 
+            ui-jq="popover" 
+            data-container="body" 
+            data-placement="top" 
+            validate-attached-form-elementb 
+            required>
+        </textarea> -->
+
+        <angucomplete-alt 
+
+        descriptionfield="name" 
+        input-class="form-control form-control-small"  
+        match-class="highlight"
+        minlength="1" 
+        pause="400"
+        placeholder="Diagnostico Permanente" 
+        remote-url="{{urlSearchServicesDiagnostic}}" 
+        remote-url-data-field="servicesDiagnostic" 
+        selected-object="foundServiceDiagnostic" 
+        initial-value="permanent_diagnostic"
+        title-field="code,description" 
+        />
+
+
+
+
+    </div>
+</div>
+
+</div>
+
+<div class="row clearfix">
+
+
+    <div class="col-sm-12">
+
+        <!-- validacion de error de diagnostico permanente -->
+        <label class="text-danger" ng-show="cieTenCodeError == true">
+            Debe especificar un diagnostico permanente
+        </label>
+
+        <button  class="btn btn-info btn-block" data-toggle="tooltip"  ng-click="saveOnlyPatient()" type="submit">
+            <i class="fa fa-user"></i> Guardar
+        </button>
+
+
+        <!--<button 
+    class="btn btn-info btn-block" 
+    data-toggle="tooltip" 
+    ng-click="saveOnlyPatient()" 
+    title="GUARDAR" 
+    type="submit"
+    >
+        <i aria-hidden="true" class="btn-info"></i>Guardar
+    </button>-->
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+<div class="col-md-6">
+    <h3>
+        Información Orden
+        <span style="float: right;">{{order.order_consec}} </span>
+    </h3>
+    <div class="form-group-attached">
+        <div class="row clearfix">
+            <div class="col-sm-4">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.selectedSpecialization.$invalid && !orderDetailForm.selectedSpecialization.$pristine }">
+                        <label>
+                            Centro de Costos
+                        </label>
+  <!--                                   <select class="cs-select cs-skin-slide form-control" 
+                                    			ng-model="Specializations.id" 
+                                    			ng-options="Specialization.id as Specialization.type for Specialization in Specializations">
+                                            </select> -->
+                                            <!-- ng-disabled="disableCenter" -->
+
+                                            <select 
+
+                                            ng-change="setSelectedSpecialization()"
+                                            class="cs-select cs-skin-slide form-control" 
+                                            ng-model="selectedSpecialization"
+                                            ng-options="Specialization.id as Specialization.name for Specialization in Specializations"
+                                            ui-jq="popover" data-container="body" 
+                                            data-placement="top" 
+                                            data-trigger="manual" 
+                                            style ="color:#000000;"
+                                            validate-attached-form-element 
+                                            id="cost-center"
+                                            required>
+                                            <option value=""> -Seleccione un centro de costos- </option>
+                                        </select>
+                                    </div>        
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>
+                                            Fecha
+                                        </label>
+                                        <div class="input-group date" ui-options="{format:'yyyy-mm-dd'}">
+                                            <input style="color: #000000;" class="form-control" ng-model="orderDate" readonly="true"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="form-group-attached">
+
+                                    <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.selectedCenter.$invalid && !orderDetailForm.selectedCenter.$pristine }">
+
+                                        <label>Sede</label>
+
+                                        <select 
+                                        class="cs-select cs-skin-slide form-control" 
+                                        ng-change = "changeSelectedCenter()"
+                                        ng-model="selectedCenter"
+                                        ng-options="sede.id as sede.name for sede in centers"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element 
+                                        style="color: #000000;"
+                                        ng-disabled="orderHasBill"
+                                        required
+                                        >
+                                        <option value=""> -Seleccione una sede- </option>
+                                    </select>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.selectedClient.$invalid && !orderDetailForm.selectedClient.$pristine }">
+                                    <label>
+                                        Cliente 
+                                    </label>
+
+
+                                    <select 
+
+                                    class="cs-select cs-skin-slide form-control" 
+                                    ng-change="getRateByClient()" 
+                                    ng-model="selectedClient" 
+                                    ng-options="clients.id as clients.name for clients in clients"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element 
+                                    required
+                                    style="color: #000000;"
+                                    ng-disabled="orderHasBill"
+                                    >
+                                    <option value=""> -Seleccione un cliente- </option>
+                                    
+                                </select>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.selectedRate.$invalid && !orderDetailForm.selectedRate.$pristine }">
+                                <label>
+                                    Tarifa
+                                </label>
+
+                                
+
+                                <select class="cs-select cs-skin-slide form-control" 
+                                ng-change="changeSelectedRate()"
+                                ng-model="selectedRate"
+                                ng-options="rates.rate_id as rates.rate_name for rates in rates"
+                                ui-jq="popover" data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element 
+                                required
+                                style="color: #000000;"
+                                ng-disabled="orderHasBill"
+                                >
+                                <option value=""> -Seleccione una tarifa- </option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.selectedServiceType.$invalid && !orderDetailForm.selectedServiceType.$pristine }">
+                            <label>
+                                Tipo de Servicio
+                            </label>
+
+                            <select class="cs-select cs-skin-slide form-control" 
+                            ng-change="changeSelectedServiceType()"
+                            ng-model="selectedServiceType" 
+                            ng-options="serviceTypes.id as serviceTypes.type for serviceTypes in serviceTypes"
+                            ui-jq="popover" data-container="body" 
+                            data-placement="top"  
+                            data-trigger="manual"
+                            validate-attached-form-element 
+                            required>
+                            <option value=""> -Seleccione un servicio- </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>
+                        Nombre del Medico que remite
+                    </label>
+                    <!--  <input name="search"  type='text' ng-model="searchSpecialist.names" class="form-control" ng-blur="searchSpecialist()" placeholder="Ingrese el nombre" required/> -->
+                    <input name="id"  type='text' ng-model="showSpecialist.id" class="form-control hidden"  placeholder="Ingrese el id"  />
+
+                    <input name="name" type='text' ng-model="showSpecialist.name" class="form-control hidden"  placeholder="Ingrese el nombre"  />
+
+
+
+                    <angucomplete-alt 
+                    descriptionfield="name" 
+                    ng-blur="searchSpecialist()"
+                    id='specialists'
+                    input-class="form-control form-control-small"  
+                    match-class="highlight"
+                    minlength="1" 
+                    pause="400"
+                    initial-value="specialist"
+                    placeholder="Buscar medico" 
+                    remote-url="{{urlSearchServicesExtSpe}}" 
+                    remote-url-data-field="servicesExtSpe" 
+                    selected-object="foundServiceExtSpe" 
+                    title-field="name" 
+                    />
+                </div>
+
+            </div>
+
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>
+                        Finalidad del Procedimiento
+                    </label>
+                    
+                    <select  
+
+                    class="cs-select cs-skin-slide form-control"
+
+                    ng-model="order.consultation_endings_id"
+
+                    ng-options = "item.id as item.decription for item in consultationsEndings "
+
+                    ui-jq="popover" data-container="body" 
+
+                    validate-attached-form-element 
+
+                    required
+
+                    >
+
+                    <option value="">-- Seleccione una opción --</option>
+
+                </select>
+
+            </div>
+
+        </div>
+        <br>
+        <div class="col-sm-6">
+            <div class="form-group">
+             <p class="text-danger">
+               {{errorSpecialist}}
+           </p>
+       </div>
+   </div>
+</div>
+<div class="row clearfix">
+
+
+    <div class="col-sm-12">
+
+        <div pg-form-group class="form-group form-group-default " ng-class="{ 'has-error' : orderDetailForm.validator.$invalid && !orderDetailForm.validator.$pristine }">
+            <label>
+                Validador
+            </label>
+            <input class="form-control" 
+            name="validator" 
+            ng-model="order.validator" 
+            style="color: #000000;"
+            ng-disabled="orderHasBill" 
+            validate-attached-form-element />
+        </div>   
+    </div>    
+
+    <div class="col-sm-12">
+        <div class="form-group ">
+
+            <div pg-form-group class="form-group form-group-default " ng-class="{ 'has-error' : orderDetailForm.observations.$invalid && !orderDetailForm.observations.$pristine }">
+
+
+                <label>
+                    Observaciones
+                </label>
+
+                <textarea 
+                class="form-control" 
+                name="observations" 
+                ng-model="order.observations" 
+                ui-jq="popover" 
+                data-container="body" 
+                data-placement="top" 
+                validate-attached-form-element 
+                >
+            </textarea>
+
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-12">
+
+    <div class="form-group">
+
+
+        <div style="clear:both;">
+
+            <div ng-repeat="file in savedFiles">
+
+                <span style="float:left; margin-right: 15px;">
+                    <a href="{{file.url}}" target="_blank" style="margin-right: 10px;">
+
+                        <i class="fa fa-file-o" aria-hidden="true"></i> 
+                        {{file.name}}
+
+                    </a>
+
+                    <button class="btn btn-info btn-xs" ng-click="dropFile(file.id)">
+                        <i class="fa fa-trash"  aria-hidden="true"></i>    
+                    </button>
+
+                </span>
+            </div>
+
+        </div>
+
+        <div style="clear:both;" ng-show="myFiles.length > 0">
+            <label>
+                Archivos para Cargar: <strong>{{myFiles.length}}</strong>
+            </label>
+
+            <br/>
+            <span ng-repeat="myFile in myFiles">
+             - <b>{{myFile.name}}</b>                           
+         </span>
+
+     </div>
+
+
+
+     <div style="clear:both;">
+
+
+        <input style="display: none;" id="uploadFilesInput" type="file" files-model="myFiles" name="files" multiple="" />
+
+        <button ng-click="triggerClickUpload()" class="btn btn-info btn-block">
+            <i class="fa fa-cloud-upload" aria-hidden="true"></i> Adjuntar Documentos
+        </button>
+
+        <!-- <button ng-click="uploadFiles()">upload me</button> -->
+    </div> 
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+</form>
+<br>
+</div>
+
+
+
+<!-- ******************************************** OJO PONERLO EN EL ANGUCOMPLETE-ALT  || validateUser == 1*
+********************************************************************************************************
+*******************************************************************************************************
+-->
+
+
+<div class="row">
+
+    <h3>
+        Asignar servicio
+    </h3>
+
+    <!-- Autocompletar de servicios -->
+    <angucomplete-alt 
+
+    descriptionfield="name" 
+
+
+    disable-input="orderHasBill || selectedSpecialization == undefined || !selectedClient || !selectedRate"
+
+    id="services_finder" 
+
+    input-class="form-control 
+
+    form-control-small" 
+
+    minlength="1" 
+
+    pause="400" 
+
+    placeholder="Buscar servicios" 
+
+    remote-url="{{urlSearchServices}}" 
+
+    remote-url-data-field="services" 
+
+    selected-object="foundService" title-field="cup,name">
+
+</angucomplete-alt>
+</div>
+
+
+
+
+<div class="row">
+ <div class="form-group">
+
+ </div>
+
+ <div class="row">
+
+   <div class="col-md-12 accordionList ">
+
+      <label class="col-xs-1"> CODIGO</label>
+      <label class="col-xs-3"> NOMBRE</label>
+      
+      <label class="col-xs-1"> COSTO </label>
+      <label class="col-xs-1"> CONSULTORIO </label>
+      <label class="col-xs-2"> AGENDADO</label>
+      <label class="col-xs-1"> ESTADO</label>
+      <label class="col-xs-3"> OPCIONES</label>
+
+  </div>
+  <br>
+  <div class="panel-group form-group" id="accordion" role="tablist" aria-multiselectable="false" >
+    <div class="panel panel-default"   ng-repeat="service in services track by $index">
+
+      <div class="panel-heading" role="tab" id="headingOne">
+
+        <div class="panel-title">
+          <a class="collapsed" 
+          ng-class="{collapsed:!collapseThree}" 
+          ng-click="collapseThree=!collapseThree" 
+          aria-expanded="false"
+          aria-controls="collapseThree"> </a>
+
+          <span class="col-xs-1" > {{service.cup}}</span>
+          <span class="col-xs-3" > {{service.name}}</span>
+
+          <span class="col-xs-1" > {{service.cost | currency: '$' :0}} </span>
+          <span class="col-xs-1" > {{service.medicalOfficeName}} </span>
+          <span class="col-xs-2" style="color:#BD111A" > {{service.asigned_time}}</span>
+          <span class="col-xs-1" > {{service.asigned_state.state}}</span>
+          <div  class="col-xs-3 btn-group">
+
+             <!-- Firmar consentimiento -->
+             <button 
+             ng-class = "{'btn-info': service.signedConsent == undefined, 'btn-success': service.signedConsent != undefined}"
+             class="btn btn-info" 
+             data-toggle="tooltip" 
+             title="Firmar Consentimiento" 
+             ng-click="openSign(service)"
+             type="button"
+             data-tieneConsentimiento="{{service.studies_informed_consents}}"
+             ng-disabled="service.cost == 0"
+             >
+             <i aria-hidden="true" class="fa fa-pencil">
+             </i>
+         </button>
+
+
+
+         <!-- Agendar cita -->
+
+         <button 
+         class="btn btn-info" 
+         data-toggle="tooltip" 
+         ng-click="showModalAgenda(service)" 
+         title="Agendar Cita" type="button"
+         ng-disabled="service.cost == 0"
+         >
+         <i aria-hidden="true" class="fa fa-calendar">
+         </i>
+     </button>
+
+     <!-- confirmar cita -->
+     <button 
+     class="btn btn-info" 
+     data-toggle="tooltip" 
+     ng-click="showModalConfirm(service)" 
+     title="Confirmar" 
+
+     ng-disabled="service.asigned_state.id == undefined || service.asigned_state.id > 2 "
+
+     type="button">
+     <i aria-hidden="true" class="fa fa-check">
+     </i>
+ </button>
+
+ <!-- Adjuntar documento -->
+        <!-- <button 
+        class="btn btn-info" 
+        data-toggle="tooltip" 
+        title="Adjuntar Documento" 
+        type="button">
+        <i aria-hidden="true" class="fa fa-paperclip">
+        </i>
+    </button> -->
+    <!-- borrar servicio -->
+    
+    <button 
+    class="btn btn-info" 
+    data-toggle="tooltip" 
+    ng-click="dropService(service)" 
+    title="Eliminar" type="button"
+    ng-disabled="orderHasBill == true">
+    <i aria-hidden="true" class="fa fa-remove">
+    </i>
+</button>
+
+<!-- descargar instructivo -->
+<button 
+ng-disabled="service.instructives.length == 0"
+class="btn btn-info" 
+ng-click="downloadInstructive(service.instructives)"
+data-toggle="tooltip" 
+title="Instructivos" 
+type="button">
+<i aria-hidden="true" class="fa fa-info">
+</i>
+</button>
+
+<!-- IMPRIMIR STICKER -->
+<button class="btn btn-info" data-ng-hide="service.asigned_state.id != 3" ng-click="printSticker( service )"  >
+    <i aria-hidden="true" class="fa fa-sticky-note">
+    </i>
+</button>
+<!-- ./IMPRIMIR STICKER -->
+
+
+
+</div>
+
+
+</div>
+</div>
+
+
+<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseThree" ng-class="{in:collapseThree}">
+
+  <div class="list grupo">
+
+      <table class=" table ">
+          <thead>
+            <tr>
+              <th>CUP</th>   
+              <th>Producto </th>
+              <th>Valor </th>
+          </tr>
+      </thead>
+      <tbody>
+
+        <tr ng-repeat="product in service.products track by $index">
+
+          <td> {{product.cup}}</td>
+          <td> {{product.name}}</td> 
+          <td> {{product.value}} </td>
+
+      </tr>
+
+  </tbody>
+
+</table>
+
+</div>
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- end Table Studies --> 
+
+
+
+<br>
+<!-- Boton Simulacion guardar  -->
+
+<div class="row">
+
+    <div class="col-sm-6">
+        <button 
+        class="btn btn-info btn-block" 
+        ng-disabled="canDoBill"
+        data-toggle="tooltip" 
+        ng-click = "showInvoice()" 
+        title="Facturar" 
+        type="button" 
+        >
+        <i aria-hidden="true" class="btn-info"></i>Facturar
+    </button>    
+</div>
+
+<div class="col-sm-6">
+    <button 
+    class="btn btn-default form-control" 
+    data-toggle="tooltip" 
+    ng-click="doSaveOrder()" 
+    title="GUARDAR" 
+    type="submit"
+    >
+    <i aria-hidden="true" class="btn-info"></i>Guardar
+</button>    
+</div>
+
+<!-- showSaveOrder -->
+
+</div>
+
+<p style="width: 80%; display: none; margin-left: 10%;" class="text-danger text-center" id="error_message" >
+    {{error_message}} 
+    <br/>
+    verifique que los campos necesarios esten diligenciados.     
+</p>
+
+<br>
+
+<!-- Modal Save Order and Options-->
+<div class="modal fade slide-up disable-scroll save-Order-Options " id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg " >
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="pg-close fs-14"></i>
+                  </button> -->
+                  <h4> <i>{{userData.first_name}},</i> La orden ha sido guardada Correctamente  </h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+
+
+                    <div class="col-sm-6">
+                        <!-- Button first option goto Agedamiento cita -->
+                        <button class="btn btn-info btn-block" ng-click="resetGoToAngend()"><i class="fa fa-bookmark"></i>
+                            Nueva Orden
+                        </button>
+                        <!-- Button second option goto Agedamiento cita -->
+                    </div>
+
+                    <div class="col-sm-6">
+                        <!-- Button second option goto Agedamiento cita -->
+                        <button class="btn btn-info btn-block" ng-click="goToOrderList()"><i class="fa fa-list-alt"></i>
+                            Ordenes del dia
+                        </button>
+                        <!-- Button second option goto Agedamiento cita -->
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+<!-- End Modal Save Order and Options-->
+
+
+
+
+
+
+<!--Modal agenda-->
+<div aria-hidden="false" aria-labelledby="modalSlideUpLabel" data-backdrop="static" data-keyboard="false" class="modal fade slide-up disable-scroll agenda" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg " style="width:93%;">
+        <div class="modal-content-wrapper">
+            <div class="modal-content table-block">
+                <div class="modal-header clearfix text-left">
+                    <button aria-hidden="true" class="close" data-dismiss="modal" type="button">
+                        <i class="pg-close fs-14">
+                        </i>
+                    </button>
+
+                    <div class="col-md-3">
+
+                        <h5 style="margin-left: -15px;">
+                            Agendar Cita 
+                        </h5>
+                        
+                        
+
+                    </div>
+
+
+
+
+
+                    <div class="col-md-7">
+                        <div style="margin-top: 10px;"></div>
+                        <h5 style="display: inline; margin-left: -5px;">
+                            Agendada: 
+                        </h5>
+                        <strong>
+                            {{study.asigned_time}}
+                        </strong>
+
+                        <h5 style="display: inline; margin-left: 4.5em;">
+                            Cantidad de pacientes: 
+                        </h5>
+                        <strong>
+                            {{patientquantity}}
+                        </strong>
+
+
+
+                        <div class="calendar-container no-display"> 
+
+                            <!-- Botón de refrescar -->
+                            <button class="btn btn-info btn-refresh-date-day-agenda" style="float: right;" ng-click="refreshDateDayAgenda()" disabled="" >
+                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                            </button>
+
+                        </div>
+
+                        <div style="width: 100%; display: none">
+                            <label><b>Intervalos de : </b></label>
+                            <div class="radio radio-info">
+
+                                <input type="radio"  ng-model="slotDuration" value="00:05:00" name="slotDuration" id="5min" ng-change="changeInterval()">
+
+                                <label for="5min">5 minutos</label>
+
+                                <input type="radio"  ng-model="slotDuration" value="00:10:00" name="slotDuration" id="10min" ng-change="changeInterval()">
+
+                                <label for="10min">10 minutos</label>
+
+                                <input type="radio"  ng-model="slotDuration" value="00:15:00" name="slotDuration" id="15min" ng-change="changeInterval()">
+
+                                <label for="15min">15 minutos</label>
+
+                                <input type="radio"  ng-model="slotDuration" value="00:30:00" name="slotDuration" id="30min" ng-change="changeInterval()">
+
+                                <label for="30min">30 minutos</label>
+
+
+                                <input type="radio"  ng-model="slotDuration" value="01:00:00" name="slotDuration" id="60min" ng-change="changeInterval()">
+
+                                <label for="60min">1 Hora</label>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    
+                </div>
+                <div class="modal-body">
+
+                    <div class="row"> 
+
+
+                        <div class="col-md-3">
+
+                          <div class="col-md-12">
+
+
+                            <!-- Selección de consultorio -->
+                            <label>
+                              <b>Consultorio:</b>
+                          </label>
+
+
+                          <select class=" cs-select cs-skin-slide form-control" name="selMedicalOffice" ng-model="selectedMedicalOffice" ng-options="item as item.name for item in availableMedicalOffices track by item.id" ng-change="changeSelectedMedicalOffice()">
+                          </select>
+                          
+
+                      </div>
+
+                      <br/>
+                      <br/>
+
+                      <div class="col-md-12">
+
+                        <!-- data-date="12/03/2012" -->
+
+
+                        <label>
+                          <b>Seleccione una Fecha:</b>
+                      </label>
+
+                      <div id="dateAvailablePicker" ></div>
+
+                  </div>
+
+
+
+                  <div class="col-md-12">
+
+                    <label>
+                      <b>Hora de Asignación</b>
+                  </label>
+
+                  <div class="input-group bootstrap-timepicker">
+
+                    <input 
+                    class="form-control" 
+                    id="timepicker" 
+                    ng-model="timeIni" 
+                    placeholder="Hora de Inicio" 
+                    required 
+                    />
+                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                </div>
+            </div>
+
+            <!-- Agendar en el calendario -->
+            <div class="col-md-12">
+
+                <label>&nbsp;</label>
+                <br/>
+
+                <button id="add-appointment-btn" class="btn btn-info btn-block" ng-click="addAppointment()" ng-hide="appointmentInCalendar" ng-disabled = "timeIni == '' || selectedMedicalOffice == null || selectedMedicalOffice == '' || selectedMedicalOffice == undefined">
+                  <i class="fa fa-plus"></i> Agendar
+              </button>
+
+
+
+
+              <button class="btn btn-info btn-block" ng-click="removeAppointment()" ng-show="appointmentInCalendar">
+                  <i class="fa fa-remove"></i> Quitar
+              </button>
+
+
+
+          </div>
+
+
+
+      </div>     
+
+
+      <div class="col-md-7">
+
+        <!-- Agendar -->
+        <div class="col-md-12">
+
+            <div class="info-add-agenda">
+                Pasos para agendar cita
+            </div>
+
+            <br />
+            <br />
+
+            <div class="calendar-container no-display">    
+
+                <!-- calendario de eventos de citas del dia -->
+                <div 
+
+                ui-calendar="uiConfig.calendar" 
+
+                style="margin-top: -38px;" 
+
+                calendar="myCalendar" 
+
+                class="span8 calendar" 
+
+                ng-model="eventSources">
+
+            </div> 
+
+
+
+            <p class="text-danger">
+                {{message}} 
+            </p>
+            <div style="margin-top: 27px;"></div>
+
+            <button 
+
+            id="btn-save-appointment"
+            ng-disabled="selectedMedicalOffice == null || selectedMedicalOffice == '' || selectedMedicalOffice == undefined"
+            class="btn btn-info btn-block" 
+            ng-click="doSaveAppointment()"
+            required=""
+
+            >
+            <i class="fa fa-save"></i> Guardar
+
+        </button>
+
+    </div>
+    
+</div>
+
+</div>        
+
+
+<div class="col-md-2">
+
+    <label>
+        <b>Fecha en que solicitó la cita</b>
+    </label>
+
+    <article>
+        <p class="text-center date_expected" style="display: none;"><span class="text-danger">Este campo es necesario</span></p>
+        <input name="expected_date" type="date" class="form-control" ng-model="appointment.expected_date" required />
+
+    </article>
+
+
+
+
+
+
+    <label>
+        <b>Solicitado:</b>
+    </label>
+
+    <div class="radio radio-info">
+
+     <input type="radio" checked="checked" ng-model="appointment.type" value="1" name="appointmentFrom" id="presential">
+
+     <label for="presential">Presencial</label>
+
+
+     <input type="radio"  value="2"  ng-model="appointment.type" name="appointmentFrom" id="telephonic">
+
+     <label for="telephonic">Teléfonico</label>
+
+     <input type="radio"  value="3"  ng-model="appointment.type" name="appointmentFrom" id="mail">
+
+     <label for="mail">E-mail</label>
+ </div> 
+
+
+ <label>Observaciones:</label>
+
+
+ <input 
+ id="orderObservations"
+ type="text" 
+ value=""
+ class="form-control" 
+ name="appObservations" 
+ ng-model="appointment.observations" 
+ />
+
+ <br />
+
+
+</div>         
+
+
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<!--Modal Agenda -->
+
+
+
+
+
+
+<!-- Modal Confirm and Bill of Patiente -->
+
+
+</div> <!-- div que no se para que sera -->
+
+
+<div class="container-fluid container-fixed-lg">
+
+    <div class="modal fade fill-in bill-patient" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false" data-backdrop="static" data-keyboard="false">
+        <!-- style="width:80%;" -->
+        <div class="modal-dialog modal-lg" style="width:80%; height:80%">
+          <div class="modal-content-wrapper">
+              <div class="modal-content table-block">
+                <div class="modal-header clearfix text-left">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="pg-close fs-14"></i>
+                </button>
+                
+            </div>
+
+            <!-- style="max-height: 600px; overflow-y: auto;" -->
+            <div class="modal-body"  >
+
+
+
+                <div class="panel panel-default">
+
+                    <div class="panel-heading"><h3>Facturación</h3>  
+
+                        <button class="btn btn-info pull-right" ng-click="goBack()" data-toggle="tooltip" data-placement="top" title="Volver!"><fa class="fa fa-arrow-left"></fa></button> </div>
+
+
+                        <div class="panel-body">
+
+
+                         <!-- Demographic Date -->
+
+                         <div class="row">
+
+                            <div class="col-md-12">
+
+                                <div class="form-group-attached">
+
+                                    <div class="row clearfix">
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group-attached">
+
+                                                <div pg-form-group class="form-group form-group-default">
+                                                 <label >Nombre o Razón Social del Comprador</label>
+                                                 <input class="form-control" style=" color: #000000;" value="{{selectedClientObj.name}}" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                             </div>
+
+
+                                         </div> 
+                                     </div>
+
+                                 </div>
+
+                                 <div class="row clearfix">
+
+                                    <!-- Nit -->
+                                    <div class="col-sm-1">
+
+                                        <div class="form-group-attached">
+
+                                            <div pg-form-group class="form-group form-group-default">
+                                                <label>Num. Do</label>
+                                                <input class="form-control" style=" color: #000000;" name="name" value="{{people.identification}}" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                            </div>
+
+                                        </div> 
+                                    </div>
+
+                                    <!-- End Nit -->
+
+                                    <!-- full Name -->
+                                    <div class="col-sm-3">
+
+                                        <div class="form-group-attached">
+
+                                            <div pg-form-group class="form-group form-group-default">
+                                                <label>Nombre Completo</label>
+                                                <input class="form-control" style=" color: #000000;" value="{{people.first_name}} {{people.middle_name}} {{people.last_name}} {{people.last_name_two}}" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                            </div>
+
+                                        </div> 
+                                    </div>
+
+                                    <!-- End Full Name -->
+
+                                    <!-- Age -->
+
+                                    <div class="col-sm-1">
+
+                                        <div class="form-group-attached">
+
+                                            <div pg-form-group class="form-group form-group-default">
+                                             <label>Edad</label>
+                                             <input class="form-control" style=" color: #000000;" ng-model="order.calculated_age" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                         </div>
+
+                                     </div> 
+
+                                 </div>
+
+                                 <!-- End Age -->
+
+                                 <!-- Gender -->
+                                 <div class="col-sm-1">
+
+                                    <div class="form-group-attached">
+
+                                        <div pg-form-group class="form-group form-group-default">
+                                            <label>Sexo</label>
+                                            <span ng-show="people.gender == 1"><input class="form-control" style=" color: #000000;" value="Femenino" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/></span>
+                                            <span ng-show="people.gender == 0"><input class="form-control" style=" color: #000000;" value="Masculino" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/></span>
+                                        </div>
+
+                                    </div> 
+                                </div>
+
+                                <!-- End Gender -->
+
+                                <!-- Address -->
+
+                                <div class="col-sm-3">
+
+                                    <div class="form-group-attached">
+
+                                        <div pg-form-group class="form-group form-group-default">
+                                            <label>Dirección</label>
+                                            <input class="form-control" style=" color: #000000;" name="name" value="{{people.address}}" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                        </div>
+
+                                    </div> 
+                                </div> 
+
+                                <!-- End Address -->
+
+                                <!-- Phone -->
+
+                                <div class="col-sm-1">
+
+                                    <div class="form-group-attached">
+
+                                        <div pg-form-group class="form-group form-group-default">
+                                            <label>Teléfono</label>
+                                            <input class="form-control" style=" color: #000000;" name="name" value="{{people.phone}}" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                        </div>
+
+                                    </div> 
+                                </div> 
+
+                                <!-- End Phone -->
+
+                                <!-- City -->
+
+                                <div class="col-sm-1">
+
+                                    <div class="form-group-attached">
+
+                                        <div pg-form-group class="form-group form-group-default">
+                                            <label>Ciudad</label>
+                                            <input class="form-control" style=" color: #000000;" name="name" value="{{selectedMunicipalitie.municipality}}" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                        </div>
+
+                                    </div> 
+                                </div> 
+
+                                <!-- End City -->
+
+                                <!-- Admissions or RIP -->
+
+                                <div class="col-sm-1">
+
+                                    <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default">
+                                            <label>Adm o Rip</label>
+                                            <input class="form-control" style=" color: #000000;" value="{{order.validator}}" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                        </div>
+                                    </div> 
+                                </div> 
+
+                                <!-- End Admissions or RIP -->
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- End DemoGrafic Data -->
+
+                <br>
+                <br>
+
+                <!-- Tables -->
+
+                <div class="row">
+
+                 <div class="col-md-8">
+
+                     <div class="panel panel-default">
+
+                        <div class="panel-body">
+
+                           <table class="table">
+                               <thead>
+                                   <th> Item    </th>
+                                   <th> Ref     </th>
+                                   <th> Desc    </th>
+                                   <th> Cantidad</th>
+                                   <th> Valor   </th>
+                                   <th> Total   </th>
+                                   <th>Productos</th>
+                               </thead>
+                               <tbody>
+                                <tr ng-repeat="service in factServices track by $index" >
+
+                                    <td> {{service.index}} </td>
+                                    <td class="col-ms-4"> {{service.ref}} </td>   
+
+                                    <div >
+
+                                       <td>{{service.desc}}</td>
+
+
+                                   </div>
+
+
+                                   <td> 
+
+                                    <input class="form-control" 
+                                    ng-model ="service.cant"
+                                    value="{{service.cant}}"
+
+                                    style="color: #000000;" 
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    ng-disabled="orderHasBill"
+                                    ng-change="changeCant(service)"
+                                    data-ng-if="service.supplies == null "
+
+                                    >
+
+
+                                    <input class="form-control" 
+                                    ng-model ="service.cant"
+                                    value=""
+                                    style="color: #000000;" 
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    ng-disabled="orderHasBill "
+                                    ng-change="changeCant(service)"
+                                    data-ng-if="service.supplies != null "
+
+                                    >
+                                                    <!--  <input class="form-control" 
+                                                    ng-model ="service.cant"
+                                                    value="{{service.cant}}" 
+                                                    ui-jq="popover" 
+                                                    data-container="body" 
+                                                    data-placement="top" 
+                                                    pattern="/[1-9]{1,2}/" 
+                                                    ng-change="changeCant(service)"
+                                                    style="color: #000000"
+                                                    
+                                                         
+                                                    >  -->
+                                                </td>
+
+                                                <div >
+
+                                                    <td  > {{service.valor | currency: '$' :0}} </td>
+                                                    
+                                                </div>
+
+                                                <div >
+
+                                                    <td > {{service.cost | currency: '$':0}} </td>
+                                                    
+
+                                                </div>
+
+                                              <!--   <div ng-show="service.index > 1">
+
+                                                    <td data-ng-if="service.supplies != null"> {{value}} </td>
+                                                        
+                                                </div>
+
+                                                <div ng-show="service.index > 1">
+
+                                                    <td data-ng-if="service.supplies != null"> {{total}} </td>
+                                                        
+                                                </div> -->
+                                                
+
+                                                <td>
+                                                    <button 
+                                                    class="btn btn-info" 
+                                                    data-ng-if="service.supplies != null && !orderHasBill" 
+                                                    ng-click="showContrastMedia(service, products, service.index)"
+                                                    >
+                                                    Productos
+                                                </button>
+
+                                                <button 
+                                                class="btn btn-info" 
+                                                data-ng-if="service.anesthesia && !orderHasBill" 
+                                                ng-click="removeAnesthesia(service)"
+                                                >
+                                                Quitar
+                                            </button>
+                                        </td>
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table> 
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                           <table class="table">
+                            <thead>
+                               <th>Descuento</th>
+                               <th>Donaci&oacute;n</th>
+                               <th>Subtotal</th>
+
+                           </thead>
+                           <tbody>
+                               <tr>
+                                   <td>0</td>
+                                   <td>0</td>
+                                   <td><div>{{subTotal | currency: '$':0}}</div></td>
+                               </tr>
+                           </tbody>
+                       </table>
+
+                       <div>
+                        <button class="btn btn-info" ng-click="addAnesthesia()">
+                            AÑADIR SERVICIO DE ANESTESIÓLOGO
+                        </button>
+                    </div>
+                </div>
+            </div>       
+        </div>
+
+
+
+    </div>
+
+    <!-- End Tables -->
+    <br>
+
+
+    <!-- Calculations -->
+
+    <div class="row">
+
+        <div class="panel panel-default">
+
+
+            <div class="panel-heading"> <h5>Pagos, Abonos y Formas de Pago</h5></div>
+
+            <div class="panel-body">
+
+                <form name="typePaimentForm" role="form" novalidate ng-disabled="orderHasBill">
+
+                   <div class="form-group-attached">
+                    <div class="row clearfix">
+
+                        <!-- Copayment or Particular -->
+
+                        <div class="col-sm-2" >
+
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required">
+                                    <label>
+                                        Copago o particular 
+                                    </label>
+
+                                    <select 
+                                    ng-disabled="orderHasBill"
+
+                                    class="cs-select cs-skin-slide form-control"
+
+                                    ng-model="order.bill_types_id"
+
+                                    ng-options="billType.id as billType.name for billType in billTypes"
+
+                                    ui-jq="popover" data-container="body" 
+
+                                    data-placement="top"
+
+                                    data-content="Debe seleccionar una opción" 
+
+                                    data-trigger="manual"
+
+                                    validate-attached-form-element 
+
+                                    required
+
+                                    style ="color:#000000;"
+
+                                    
+
+                                    >
+
+                                    <option value="" ng-selected="selected">--seleccione--</option>
+
+                                </select>
+                            </div>
+                        </div> 
+                    </div> 
+
+
+                    <!-- End Copayment or Particular -->
+
+                    <!-- Form Payments -->
+
+                    <div class="col-sm-2">
+
+                        <div class="form-group-attached">
+
+
+                            <div pg-form-group class="form-group form-group-default required">
+                                <label>
+                                    Forma de Pago
+                                </label>
+                                <select 
+
+                                ng-disabled="orderHasBill"
+
+
+                                class="cs-select cs-skin-slide form-control"
+
+                                ng-model="payment.form_payments_id"
+
+                                ng-options="formType.id as formType.name for formType in formTypes " 
+
+                                ui-jq="popover"
+
+                                data-container="body"
+
+                                data-placement="top"
+
+                                data-content="" 
+
+                                data-trigger="manual"
+
+                                ng-change="changePaymentMethod()"
+
+                                validate-attached-form-element required>
+
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Form Payments -->
+
+
+                <!-- Debit and Credit Card -->
+
+
+                <div class="col-sm-2">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default required">
+                            <label>
+                                Nro. Tar. o Consig
+                            </label>
+                            <input 
+
+                            ng-model="payment.credit_card_number"
+                            class="form-control"
+                            style=" color: #000000;"
+                            ng-disabled="payment.form_payments_id == 1"
+                            name="typePay" 
+                            ui-jq="popover" 
+                            data-container="body" 
+                            data-placement="top" 
+                            data-content="Ingrese los valores" 
+                            data-trigger="manual" 
+
+                            validate-attached-form-element required/>
+                        </div>
+                    </div> 
+                </div>
+
+
+                <!-- End Debit and Credit Card -->
+
+                <!-- Cancel Total -->
+
+                <div class="col-sm-2">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default required">
+                            <label>
+                                Valor a Cancelar
+                            </label>
+                            <input 
+
+                            ng-model="cancelTotal"
+                            id="valorPay"
+
+                            class="form-control"  
+                            ng-disabled="typePayment || orderHasBill"
+
+                            ui-jq="popover" 
+                            data-container="body" 
+                            placeholder="$0.00" 
+                            data-placement="top" 
+                            data-content="" 
+                            data-trigger="manual" 
+                            style ="color:#000000;"
+                            validate-attached-form-element 
+
+                            required 
+                            />
+                        </div>
+                    </div> 
+                </div>
+                <!-- pattern="[0-9]+" -->
+
+                <!-- End Cancel Total -->
+
+
+                <!-- Form -->
+
+                <div class="col-sm-2">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default required">
+
+                            <label ng-show="payment.bill_types_id == 1">
+                                Valor por Copago 
+                            </label>
+
+                            <label ng-show="payment.bill_types_id == 2">
+                                Valor por factura
+                            </label>
+
+                            <input 
+                            ng-value="payment.debit | currency: '$':0"
+                            style=" color: #000000;"
+                            class="form-control"  
+                            ng-disabled="true" 
+                            ui-jq="popover" 
+                            data-container="body" 
+                            placeholder="$0.00" 
+                            data-placement="top" 
+                            data-content="" 
+                            data-trigger="manual" 
+                            validate-attached-form-element
+
+                            required
+                            />
+                        </div>
+                    </div> 
+                </div>
+
+                <!-- End Forms -->
+
+
+                <!-- Entity Net Balance -->
+
+                <div class="col-sm-2">
+
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default">
+                            <label>
+                                Saldo Neto Entidad
+                            </label>
+                            <input 
+                            class="form-control" 
+                            ng-value="order.total | currency: '$':0"
+                            readonly="true" 
+                            style ="color:#000000;"
+                            ui-jq="popover"
+                            data-container="body"
+                            data-placement="top" 
+                            data-content="" 
+                            data-trigger="manual" 
+                            validate-attached-form-element required/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Entity Net Balance -->
+
+                <!-- Total Donation -->
+
+                <div class="col-sm-3">
+                 <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label >Total Donación</label>
+                        <input
+                        ng-disabled="orderHasBill"
+                        class = "form-control"  
+                        ng-model = "tempDonation"
+                        ui-jq = "popover" 
+                        data-container = "body" 
+                        data-placement = "top" 
+                        data-content = "" 
+                        data-trigger = "manual" 
+                        validate-attached-form-element 
+                        style ="color:#000000;"
+
+                        required 
+                        />
+                    </div>
+                </div>
+            </div> 
+
+            <!-- End Total Donation -->
+
+            <!-- Total Descount -->
+
+            <div class="col-sm-3">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                            Total Descuento 
+                        </label>
+                        <input
+                        ng-disabled="orderHasBill"
+                        class = "form-control"  
+                        ng-model = "tempDiscount"
+                        ui-jq = "popover" 
+                        data-container = "body" 
+                        data-placement = "top" 
+                        data-content = "" 
+                        data-trigger = "manual" 
+                        validate-attached-form-element 
+
+                        style ="color:#000000;"
+                        required 
+                        />
+                    </div>
+                </div>
+            </div>
+
+            <!-- End Total Descount -->
+
+            <!-- Total Cancel -->
+
+            <div class="col-sm-3">
+             <div class="form-group-attached">
+                <div pg-form-group class="form-group form-group-default">
+                    <label>
+                        Total a Cancelar
+                    </label>
+                    <input 
+                    readonly="true"
+                    style=" color: #000000;"
+                    ng-value="cancelValue | currency: '$':0"
+                    class="form-control" 
+                    name="first_name" 
+                    ui-jq="popover" 
+                    data-container="body" 
+                    data-placement="top" 
+                    data-content="" 
+                    style="font-weight: bold; color: #000000;" 
+                    data-trigger="manual" 
+
+                    validate-attached-form-element 
+                    required
+                    />
+                </div>
+            </div>
+        </div>  
+
+        <!-- End Total Cancel -->
+
+
+        <!-- Balance Leftover -->
+
+        <div class="col-sm-3">
+            <div class="form-group-attached">
+                <div pg-form-group class="form-group form-group-default">
+                    <label>
+                        Saldo Restante
+                    </label>
+                    <input 
+                    readonly="true"
+                    style=" color: #000000;"
+                    class="form-control" 
+                    ng-value="payment.credit | currency: '$':0"  
+                    ui-jq="popover" 
+                    data-container="body" 
+                    data-placement="top" 
+                    data-content="" 
+                    data-trigger="manual" 
+                    validate-attached-form-element 
+                    required/>
+                </div>
+            </div> 
+        </div>
+
+
+        <!-- End Balance Leftover -->
+
+
+
+    </div>
+</div>    
+
+</form>
+
+<br>
+
+<!-- Buttons form print reports -->
+
+<div class="col-md-12">
+
+    <div class="col-sm-6" hidden="">
+        <button class="btn btn-info btn-block" ng-click="generateBill(true)" ng-disabled="orderHasBill">
+            <i class="fa fa-eye"></i>&nbsp;Ver Factura
+        </button>
+    </div>
+
+    <div class="col-sm-6">
+
+
+        <span ng-show="orderHasBill">
+
+            <button class="btn btn-success btn-block" ng-click="generateBill(false)">
+                <i class="fa fa-file-pdf-o"></i>&nbsp;Copia de Factura
+            </button>
+
+        </span>
+
+
+        <span ng-hide="orderHasBill">
+
+            <button class="btn btn-info btn-block"  ng-disabled="validatePorcentage == 1" ng-click="saveBill(people, order, factServices)" name="genera-factura">
+                <i class="fa fa-file-pdf-o"></i>&nbsp;Generar Factura
+            </button>
+
+        </span>
+
+    </div>
+
+
+</div>
+
+
+<!-- End Buttons -->
+
+</div>
+
+
+
+
+</div>
+
+<p ng-hide="orderHasBill == true" style="width: 80%; display: none; margin-left: 10%;" class="text-danger text-center" id="error_message_bills" >
+    {{error_message_bills}} 
+    <br/>
+    verifique que los campos necesarios esten diligenciados.     
+</p>
+
+<br>
+
+</div>
+
+<!-- End Calculations -->
+
+</div>
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+<!-- Fin Facturacion -->
+
+      <!--   <ul class="pager wizard">
+                <li class="next">
+                    <button class="btn btn-primary btn-cons btn-animated from-left fa fa-calendar" type="button">
+                        <span>Siguiente</span>
+                    </button>
+                </li>
+                <li class="next finish" style="display:none;">
+                    <button class="btn btn-primary btn-cons btn-animated from-left fa fa-calendar" type="button">
+                        <span>Final</span>
+                    </button>
+                </li>
+                <li class="previous first" style="display:none;">
+                    <button class="btn btn-white btn-cons btn-animated from-left fa fa-calendar" type="button">
+                        <span>Primero</span>
+                    </button>
+                </li>
+                <li class="previous">
+                    <button class="btn btn-white btn-cons " type="button">
+                        <span>Anterior</span>
+                    </button>
+                </li>
+            </ul> -->
+
+
+        </div>
+    </div>
+
+
+
+</div> 
+</div>      
+
+<!-- End Modal Confirm -->
+
+
+<!-- Modal Delete-->
+<div class="modal fade slide-up disable-scroll confirm" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-body">
+                   <div class="row">
+                       <h4> <i>{{userData.first_name}}</i>, Desea confirmar la siguiente cita? </h4>
+                   </div>
+                   <div class="row">
+
+                    <div class="col-sm-6 ">
+
+                        <button type="button" class="btn btn-info btn-block" ng-click="confirmAppointment()">Si
+                        </button>
+
+                    </div>
+
+                    <div class="col-sm-6 ">
+                        <button type="button" class="btn btn-info btn-block" ng-click="hideModalConfirm()">No
+                        </button>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+<!-- Modal Delete-->
+<div class="modal fade slide-up disable-scroll delete-confirmation" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h4><i>{{userData.first_name}}</i>, esta seguro de cancelar la cita? </h4>
+              <label>Documento: <b><i>{{people.identification}}</i></b></label>
+              <label>Paciente : <b><i>{{people.first_name}} {{people.last_name}}</i></b></label>
+              <br/>
+              <label>Servicio : <b><i>{{cancelAppointment.name}}</i></b></label>
+
+          </div>
+      </div>
+
+      <form role="form" name="detailsForm" autocomplete="off" novalidate>
+        <div class="row">
+          <div class="col-xs-12">
+
+
+
+            <div pg-form-group 
+            class="form-group form-group-default required" 
+            ng-class="{ 'has-error' : detailsForm.observations.$invalid && !detailsForm.observations.$pristine }" >
+
+            <label>
+               Observaciones
+           </label>
+
+           <textarea 
+           class="form-control" 
+           name="observations" 
+           ng-model="cancelResons.content" 
+           ui-jq="popover" 
+           data-container="body" 
+           data-placement="top" 
+           validate-attached-form-element 
+           required>
+       </textarea>
+   </div>
+   <br/>
+</div>
+</div>
+<div class="row">
+
+    <div class="col-xs-6">
+
+      <button type="button" class="btn btn-info btn-block " ng-click="cancelAppointments()" ng-disabled="detailsForm.$invalid" ><i class="fa fa-check"></i>&nbsp;Si</button>
+
+            <!--   <button type="button" class="btn btn-info btn-block" ng-click="addCancelReason()" >Si </button>
+        -->  
+    </div>
+
+    <div class="col-xs-6">
+       <button type="button" class="btn btn-info btn-block " ng-click="hideModalDropConfirmation()"><i class="fa fa-remove"></i>&nbsp;No
+       </button>
+
+   </div>
+
+
+</div>
+
+
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+<!-- Modal Sign-->
+<div class="modal fade slide-up disable-scroll open-sign" data-backdrop="static" data-keyboard="false"tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <br>
+                    <div class="container-fluid container-fixed-lg">
+                    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                    ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                -->
+                <!-- CONTENT GOES HERE-->
+                <div id="content" >
+
+                    <div id="signatureparent">
+
+                        <div id="signature"></div>
+
+                    </div>
+
+                </div>
+                <br>
+                        <!--     <div id="scrollgrabber"></div>
+                    -->
+                    <button type="button" class="btn btn-info" ng-click="resetSignature()">
+                        <i class="fa fa-eraser" aria-hidden="true"></i>Limpiar
+                    </button>
+
+                    <button type="button" class="btn btn-info" ng-click="saveSignature()">
+                        <i class="fa fa-save" aria-hidden="true"></i> Guardar Firma
+                    </button>        
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+<!-- Modal Read Identity Card -->
+
+<!-- slide-up disable-scroll -->
+<!-- Modal -->
+<div class="modal fade fill-in identity-card" data-backdrop="static" data-keyboard="false" style="" id="modalSlideUp" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog " style="width:70%;">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="pg-close fs-14"></i>
+                  </button>
+                  <h5><span class="semi-bold"><b>Lector de Documento de Identificación:</b></span></h5>
+              </div>
+              <div class="modal-body">                            
+
+
+                <div class="row">
+
+
+
+
+                    <div class="form-group-attached">
+
+                        <div class="row clearfix">
+
+                            <!-- Image -->
+
+                            <div class="col-md-3">
+
+                               <div class="form-group-attached">
+
+                                <div pg-form-group class="form-group form-group-default">
+
+                                    <img src="assets/img/Iconocedula-01.svg" style="width:223px; height:150px; " class="img-responsive" alt="">
+
+                                </div>
+                            </div>   
+
+                        </div> 
+
+
+                        <!-- End Image -->
+
+                        <!-- Identity Card -->
+                        <div class="col-md-9">
+
+                            <div class="form-group-attached">
+
+                               <div pg-form-group class="form-group form-group-default">
+
+                                <label>Número de Identificación:</label>
+
+                                <input
+                                id="focusIdentity"
+                                autofocus="autofocus"
+                                class="form-control" 
+                                ng-blur="searchPatients()"
+                                ng-model="searchPeople.identification" 
+                                placeholder="Numero de Identificación" 
+                                type="text" 
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="La identificación es requerida" 
+                                data-trigger="manual" 
+                                validate-attached-form-element 
+                                disable-input = "orderId"
+                                required />
+
+                            </div>
+
+                        </div>
+                    </div>        
+
+                    <!-- End Identity Card --> 
+
+                    <!-- Document Number -->
+
+                    <div class="col-md-3">
+
+                        <div class="form-group-attached">
+
+                            <div pg-form-group class="form-group form-group-default">
+
+                                <label>Primer Apellido:</label>
+                                <input 
+                                type="text"
+                                name="name"
+                                ng-model="setPeople.last_name"
+                                placeholder="Primer Apellido"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="" 
+                                data-trigger="manual" 
+                                validate-attached-form-element required/>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- End Number Document -->
+
+                    <!-- First Name -->
+
+                    <div class="col-md-3">
+
+                        <div class="form-group-attached">
+
+                            <div pg-form-group class="form-group form-group-default">
+
+                                <label>Segundo Apellido:</label>
+                                <input 
+                                type="text"
+                                name="name"
+                                ng-model="setPeople.last_name_two"
+                                placeholder="Segundo Apellido"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="" 
+                                data-trigger="manual" 
+                                validate-attached-form-element required/>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- End Firts Name -->
+
+                    <!-- Second Name -->
+
+
+                    <div class="col-md-3">
+
+                        <div class="form-group-attached">
+
+                            <div pg-form-group class="form-group form-group-default">
+
+                                <label>Primer Nombre:</label>
+                                <input 
+                                type="text"
+                                name="name"
+                                ng-model="setPeople.first_name"
+                                placeholder="Primer Nombre"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="" 
+                                data-trigger="manual" 
+                                validate-attached-form-element required/>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- End Seconf Name -->
+
+
+                    <!-- Last Name -->
+
+                    <div class="col-md-3">
+
+                        <div class="form-group-attached">
+
+                            <div pg-form-group class="form-group form-group-default">
+
+                                <label>Segundo Nombre:</label>
+                                <input 
+                                type="text"
+                                name="name"
+                                ng-model="setPeople.middle_name"
+                                placeholder="Segundo Nombre"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="" 
+                                data-trigger="manual" 
+                                validate-attached-form-element required/>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- End Last Name -->
+
+                    <!-- Second Last Name -->
+
+                    <div class="col-md-3">
+
+                        <div class="form-group-attached">
+
+                            <div pg-form-group class="form-group form-group-default">
+
+                                <label>Género:</label>
+                                <select 
+                                class="cs-select cs-skin-slide form-control required" 
+                                ng-model="setPeople.gender" 
+                                ng-options="item.id as item.gender for item in gender"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="Debe seleccionar un tipo de género" 
+                                data-trigger="manual" 
+                                validate-attached-form-element 
+                                required>
+                                <option value=""> -Seleccione un tipo de género- </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <!-- End Second Last Name -->
+
+                <!-- Birthday -->
+
+                <div class="col-md-3">
+
+                    <div class="form-group-attached">
+
+                        <div pg-form-group class="form-group form-group-default">
+
+                            <label>
+                                Fecha de Nacimiento:
+                            </label>
+                            <div 
+                            class="input-group date" 
+                            >
+
+                            <input class="form-control" 
+                            name="birthdate" 
+                            id='date'
+                            placeholder="yyyy-mm-dd"
+                            ng-model="setPeople.birthdate"
+                            ng-change="calculateAgeChange(setPeople.birthdate)"
+                            required="" 
+                            type="text" 
+                            ui-jq="popover" 
+                            data-container="body" 
+                            data-placement="top" 
+                            data-content="La fecha de ingreso es requerida" 
+                            data-trigger="manual" 
+                            validate-attached-form-element 
+                            required />
+
+                            <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                <i class="fa fa-calendar">
+                                </i>
+                            </span>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!-- End Birthday -->
+
+            <!-- Save and Hide Modal -->
+
+            <button class="btn btn-info btn-block"  ng-keypress = "enterPressed($event)" ng-click="getNewPeople(setPeople)"><i class="fa fa-check"></i> Aceptar</button>
+
+            <!-- End Save and Hide Modal -->
+
+
+        </div>
+
+    </div>
+
+
+
+</div>        
+
+</div>
+</div>
+</div>
+<!-- /.modal-content -->
+</div>
+</div>
+
+<!-- /.modal-dialog -->
+<!-- End Modal Read Ide
+
+ Modal save Patient-->
+ <div class="modal fade slide-up disable-scroll save-patient-success" data-backdrop="static" data-keyboard="false" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+              <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="pg-close fs-14"></i>
+                </button>
+                <h4> El paciente ha sido agregado correctamente </h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+
+
+<!-- Modal save Patient-->
+<div class="modal fade slide-up disable-scroll save-patient-fail" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content-wrapper">
+            <div class="modal-content"> 
+              <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="pg-close fs-14"></i>
+                </button>
+                <h4> El paciente <b class="text-danger">no</b> ha sido agregado correctamente </h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+<!-- Modal Productos para los medios de contrastes -->
+
+<!-- Modal -->
+<div class="modal fade fill-in contrastMedia" id="modalFillIn" tabindex="-1" role="dialog" aria-labelledby="modalFillInLabel" aria-hidden="true">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        <i class="pg-close"></i>
+    </button>
+    <div class="modal-dialog ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="text-left p-b-5"><span class="semi-bold"></span> Productos</h5>
+            </div>
+            <div class="modal-body">
+
+              <div class="row">
+
+                  <div class="form-group-attached">
+
+                    <div class="row clearfix">
+
+                       <div class="col-sm-9">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" >
+
+                                <label>
+                                    Productos
+                                </label>
+                                <select class=" cs-select cs-skin-slide form-control"
+                                ng-model="products" 
+                                ng-options="item as item.name for item in productsService track by item.id "
+                                ng-change="getSelectProducts(products, services)"
+                                validate-attached-form-element 
+                                required>
+                                <option value=""> -Seleccione el Producto Requerido- </option>
+                            </select>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default required" >
+
+                            <label>
+                             Cantidad
+                         </label>
+                         <input type="text"
+                         class="form-control"
+                         placeholder="cantidad"
+                         ng-model="cantidadProduct.value"
+                         ng-change="getSelectProducts(cantidad, services)" 
+                         id="product_quantity"
+                         >
+
+
+                     </div>
+                 </div>
+             </div>
+
+             <div class="col-md-12">
+
+                <button class="btn btn-info btn-block" ng-click="hideContrastMedia()"> Aceptar</button>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div> 
+
+</div>
+<div class="modal-footer">
+
+    <hr>
+
+</div>
+</div>
+<!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+
+
+<!-- End modal -->
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll not-authorized" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="pg-close fs-14"></i>
+                  </button>
+                  <h5 class="text-center"> <span class="semi-bold">Lo sentimos esta orden necesita autorización y aún no la tiene.</span></h5>
+              </div>
+              <div class="modal-body">
+                <button class="btn btn-info center-block " data-dismiss="modal" ng-click="hideNoResults()"> <i class="fa fa-check"></i> Aceptar</button>
+            </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+<!--<input type="text" ng-model= "prueba" value="{{ prueba = (54321 | currency: '$':0) }}">
+
+<input type="text" ng-model= "pruebad" value="{{pruebad =(prueba | number) }}">
+<div class="modal-body">
+                <button class="btn btn-info center-block " data-dismiss="modal" ng-click="pruebas()"> <i class="fa fa-check"></i> Aceptar</button>
+            </div>-->
+
+
+
+
+<div class="modal fade fill-in stateProgress" id="modalFillIn" tabindex="-1" role="dialog" aria-labelledby="modalFillInLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+<div class="modal-dialog ">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="text-left p-b-5"><span class="semi-bold"></span> </h5>
+        </div>
+        <div class="modal-body">
+    <p class="text-center hinted-text p-t-10 p-r-10"><b><h3>Estamos Generando la Factura</h3></b></p>
+        <img style="margin-left: 15% !important;" src="assets/img/gatolocoo_7.gif" alt="" width="70%" height="70%">
+            <!-- <div class="row">
+                <div class="col-md-9">
+                    <input type="text" placeholder="Your email address here" class="form-control input-lg" id="icon-filter" name="icon-filter">
+                </div>
+                <div class="col-md-3 text-center">
+                    <button type="button" class="btn btn-primary btn-lg btn-large fs-15">Sign up</button>
+                </div>
+            </div> -->
+            <p class="text-right hinted-text p-t-10 p-r-10"></p>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+
+
+
+
+
+

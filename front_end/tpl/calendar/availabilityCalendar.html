@@ -1,0 +1,342 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">agenda</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+   <div class="row">
+       
+       <div class="col-md-6">
+            <h3 class="page-title">AGENDA DISPONIBLE</h3>
+       </div>
+
+   <div class="col-md-6">
+       
+        <button class="btn btn-info pull-right" ng-click="goToAgendamientoCita()"> Asignar una Cita </button>
+
+   </div>
+
+   </div>
+   
+
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <div class="row">
+        
+        <form name="avaibilityCalendarForm" role="form" novalidate>
+          
+          <div class="form-group-attached">
+            
+            <div class="row clearfix">
+              
+               <!-- Date Input -->
+
+                            <div class="col-sm-2">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+
+                                        <label>
+                                            Fecha de Inical:
+                                        </label>
+                                        <div 
+                                        class="input-group date" 
+                                        ui-jq="datepicker" 
+                                        ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                        name="birthdate" 
+                                        id='date'
+                                        placeholder="yyyy-mm-dd"
+                                        ng-model="startDate" 
+                                        required="" 
+                                        type="text" 
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top"
+                                        ng-change="listAppoiments(startDate)"
+                                        data-content="La fecha de ingreso es requerida" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element 
+                                        required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End date input -->
+
+                         <!-- Date Input -->
+
+                            <div class="col-sm-2">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+
+                                        <label>
+                                            Fecha de Final:
+                                        </label>
+                                        <div 
+                                        class="input-group date" 
+                                        ui-jq="datepicker" 
+                                        ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                        name="birthdate" 
+                                        id='date'
+                                        placeholder="yyyy-mm-dd"
+                                        ng-model="dateEnd" 
+                                        required="" 
+                                        type="text" 
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top"
+                                        ng-change="listAppoiments(dateEnd)"
+                                        data-content="La fecha de ingreso es requerida" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element 
+                                        required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End date input -->
+
+                         <!-- Product -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" >
+
+                                    <label>
+                                        SEDE
+                                    </label>
+                                    <select class=" cs-select cs-skin-slide form-control" 
+                                    name="nameProduct" 
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Debe seleccionar"
+                                    data-trigger="manual" 
+                                    ng-model="center.id" 
+                                    ng-options="item.id as item.name for item in centers"
+                                    ng-change="medicalOffices(center)"
+                                    validate-attached-form-element 
+                                    required>
+                                    <option value=""> -Seleccione la sede- </option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Product -->
+
+                    <!-- Product -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" >
+
+                                    <label>
+                                        Consultorio
+                                    </label>
+                                    <select class=" cs-select cs-skin-slide form-control" 
+                                    name="nameProduct" 
+                                    ui-jq="popover"
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Debe seleccionar" 
+                                    data-trigger="manual"
+                                    ng-model="selectMedical"
+                                    ng-disabled="center.id == undefined" 
+                                    ng-options="medical as medical.name for medical in allMedicalOffices track by medical.id"
+                                    ng-change="listAppoiments(selectMedical)"
+                                    validate-attached-form-element 
+                                    required>
+                                    <option value=""> -Seleccione el consultorio- </option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Product -->
+
+            </div>
+
+          </div>
+
+        </form>
+
+    </div>
+      
+</div>
+
+<br>
+<div class="container-fluid container-fixed-lg">
+
+<div class="row">
+    
+    <div class="col-md-2">
+
+        <label><b>Total de Citas: {{totalAppoiments}}</b></label>
+
+    </div>
+
+    <div class="col-md-2"> 
+        <label>
+            <b>Citas Asignadas: {{appointmentsAssigned}}</b>
+        </label>
+    </div>
+    
+    <div class="col-md-2"> 
+        <label>
+            <b>Citas Reasignadas: {{appointmentsReAssigned}}</b>
+        </label>
+    </div>
+
+    <div class="col-md-2"> 
+        <label>
+            <b>Citas Confirmadas: {{appointmentsConfirmeds}}</b>
+        </label>
+    </div>
+    
+    <div class="col-md-2">
+        <label>
+            <b style="color: #cc0000;">Citas Canceladas: {{totalCancel}}</b>
+        </label>
+    </div>
+
+    <div class="col-md-2">
+        <label>
+            <b>Citas Atendidas: {{totalAttended}}</b>
+        </label>
+    </div>
+
+</div>
+
+
+
+</div>
+
+<div class="container-fluid container-fixed-lg">
+
+    <div class="row">
+    
+    <br>
+
+    <form >
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-search"></i></div>
+          <input type="text" class="form-control" placeholder="Buscar" ng-model="searchFish">
+        </div>      
+      </div>
+    </form>
+      
+      <table class="table">
+      
+          <thead>
+            
+              <th>Fecha/Hora</th>
+              <th>Orden </th>
+              <th>Identificacion </th>
+              <th>Paciente</th>
+              <th>Estudios</th>
+              <th>Estado</th>
+              <th>Ver Orden</th>
+            
+          </thead>
+
+          <tbody>
+
+          <tr ng-repeat="listAppoiments in listAppoimentsCalendar | filter:searchFish track by $index"
+             ng-class="{true:'null_calendar'}[listAppoiments.appointment_states_id > 3]">
+            
+                <td>
+                    <b><span style="color: rgb(68, 194, 243)" >{{listAppoiments.fecha}}</span></b></br> 
+                    <b><span style="color:rgb(15, 23, 188)">{{listAppoiments.date_time_end}}</span></b>
+                </td>
+                <td>
+                {{listAppoiments.order_consec}} 
+                </td>
+
+                <td>
+                    {{listAppoiments.identification}}
+                </td>
+                
+                <td>
+                    {{listAppoiments.first_name}} {{listAppoiments.middle_name}} {{listAppoiments.last_name}} {{listAppoiments.last_name_two}}
+                </td>
+                
+                <td>
+                    {{listAppoiments.cup}} - {{listAppoiments.nameStudy}}
+                </td>
+                                
+                <td>
+                    {{listAppoiments.state}}
+                </td>
+
+                 <span>
+                     
+                      <td ng-show="listAppoiments.appointment_states_id == 5 ">Atendida</td>
+
+                      <td ng-show="listAppoiments.appointment_states_id != 5 "><button 
+                      class="btn btn-info"
+                      ng-click="showOrder(listAppoiments.orderId)"
+                      >Ver Orden</button></td>
+
+                 </span>
+            
+          </tr>
+          
+          </tbody>
+
+    </table>
+
+    </div>
+
+
+</div> 
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll noResults" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5 class="text-center"> <span class="semi-bold">Lo sentimos {{myUser}}, no se encuentran resultados</span></h5>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-info center-block" ng-click="hideNoResults()"> <i class="fa fa-check"></i> Aceptar</button>
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->

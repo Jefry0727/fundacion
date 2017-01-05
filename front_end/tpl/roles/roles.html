@@ -1,0 +1,227 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Roles</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Roles</h3>
+
+    <!-- <button class="btn btn-info" ng-click="showModalAddRole()"><i class="fa fa-plus"></i> Nuevo</button> -->
+
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <table class="table">
+
+        <thead>
+            <th>Rol</th>
+            <th>Descripción</th>
+            <th></th>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="role in roles">
+                <td>{{role.name}}</td>
+                <td>{{role.description}}</td>
+                <td>
+                    <button class="btn btn-default" ng-click="showModalEditRole(role)" ><i class="fa fa-edit"></i> Editar</button>
+                    <button class="btn btn-default" ng-click="goToRolePermissions(role)"><i class="fa fa-lock"></i> Permisos</button>
+                    <!-- <button class="btn btn-default" ng-click="showModalDeleteRole(role)"><i class="fa fa-remove"></i> eliminar</button> -->
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<label>{{unique.false}}</label>
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll add-role" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Nuevo Rol</h5>
+            </div>
+            <div class="modal-body">
+               
+                        <form class="" role="form" name="rolesForm"  novalidate>
+
+                            <!-- name -->
+                            <div pg-form-group class="form-group form-group-default">
+                         
+                                <label>Nombre:</label>   
+                                <input name="name" ng-model="newRole.name" class="form-control"  placeholder="Nombre del nuevo rol" required/>
+
+                            </div>
+
+                            <!-- Validating rol name -->
+                            <div ng-show="rolesForm.name.$touched">
+
+                                <!-- required -->
+                                <p ng-show="rolesForm.name.$error.required" class="text-danger">
+                                    Debe asignar un nombre para el nuevo rol
+                                </p>  
+
+                                <!-- unique -->
+                                <p class="text-danger">
+                                   {{unique}}
+                                </p>  
+                            
+                            </div>          
+
+                            <!-- Description -->
+                            <div pg-form-group class="form-group form-group-default">
+                                 
+                                 <label>Descripción</label>
+
+                                 <textarea name="description" ng-model="newRole.description" class="form-control" placeholder="Descripcion del nuevo rol" required  >
+                                 </textarea> 
+
+                            </div>
+
+                            <!-- Validating description -->
+                            <div ng-show="rolesForm.description.$touched">
+
+                                <!-- required -->
+                                <p ng-show="rolesForm.description.$error.required" class="text-danger">
+                                    Debe asignar una descripcion para el nuevo rol
+                                </p>  
+                            
+                            </div>      
+
+                            <button type="button" class="btn btn-info btn-block"  ng-disabled="rolesForm.$invalid"  ng-click="addRole()">
+                                <i class="fa fa-save"></i> Guardar
+                            </button>
+
+                            
+                        </form>
+              
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+<!-- Modal Edit-->
+<div class="modal fade slide-up disable-scroll edit-role" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Nuevo Rol</h5>
+            </div>
+            <div class="modal-body">
+               
+                        <form class="" role="form" name="upadateRolesForm"  novalidate>
+
+                            <!-- name -->
+                            <div pg-form-group class="form-group form-group-default">
+                         
+                                <label>Nombre:</label>   
+                                <input name="name" ng-model="updateRole.name" class="form-control"  placeholder="Editar nuevo rol" required/>
+
+                            </div>
+
+                            <!-- Validating rol name -->
+                            <div ng-show="upadateRolesForm.name.$touched">
+
+                                <!-- required -->
+                                <p ng-show="upadateRolesForm.name.$error.required" class="text-danger">
+                                    Debe asignar un nombre para el nuevo rol
+                                </p>  
+
+                                <p class="text-danger">
+                                   {{unique}}
+                                </p>  
+                                
+                            </div>          
+
+                            <!-- Description -->
+                            <div pg-form-group class="form-group form-group-default">
+                                 
+                                 <label>Descripción</label>
+
+                                 <textarea name="description" ng-model="updateRole.description" class="form-control" placeholder="Editar Descripcion del nuevo rol" required  >
+                                 </textarea> 
+
+                            </div>
+
+                            <!-- Validating description -->
+                            <div ng-show="upadateRolesForm.description.$touched">
+
+                                <!-- required -->
+                                <p ng-show="upadateRolesForm.description.$error.required" class="text-danger">
+                                    Debe asignar una descripcion para el nuevo rol
+                                </p>  
+                            
+                            </div>      
+
+                            <button type="button" class="btn btn-info btn-block"  ng-disabled="upadateRolesForm.$invalid"  ng-click="editRole()">
+                                <i class="fa fa-save"></i> Editar
+                            </button>
+
+                        </form>
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+<!-- Modal Delete-->
+<div class="modal fade slide-up disable-scroll delete-role" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-body">
+                   <h5> ¿ Esta seguro que desea eliminar este Rol ?</h5>
+                    <button type="button" class="btn btn-info btn-block" ng-click="deleteRole()">Si
+                    </button>
+                    <button type="button" class="btn btn-info btn-block" ng-click="hideModalDeleteRole()">No
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

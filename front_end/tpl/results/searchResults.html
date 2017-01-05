@@ -1,0 +1,985 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Resultados</a>
+        </li>
+        <li><a class="active" href="#">Búsqueda de Resultados</a>
+        </li>
+    </ul>
+    <br>
+    <br>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> Resultados
+     </h3>
+
+</div>
+
+<div class="container-fluid container-fixed-lg ">
+
+   
+   <div class="row">
+     <div class="col-sm-4">
+       <div class="radio radio-success">
+
+       <!-- Documente Patient -->
+
+         <input type="radio"  name="radio1" id="radioPatient" ng-model="optionSelected" value="1" >
+         <label for="radioPatient"><strong>Documento del Paciente</strong></label>
+
+        <!-- End Document Patient-->
+        
+        <!-- Order Num -->
+
+        <br>
+         <input type="radio"   name="radio1" id="radioNum" ng-model="optionSelected" value ="2" >
+         <label for="radioNum"><strong>Número de Orden</strong></label>
+
+        <!-- End Order Num -->
+
+        <!-- Last Name and Name Patient -->
+
+        <br>
+         <input type="radio"   name="radio1" id="radioLastName" ng-model="optionSelected" value ="3" >
+         <label for="radioLastName"><strong>Apellidos y Nombre del Paciente</strong></label>
+
+        <!-- End Last Name and Name Patient -->
+
+        <!-- Client Results Pacakages -->
+ 
+         <br>
+         <input type="radio"   name="radio1" id="radioPackage" ng-model="optionSelected" value ="4" ng-show="false">
+         <label for="radioPackage" ng-show="false"><strong>Paquetes de Resultados por Cliente</strong></label>        
+
+        <!-- End Client Results Packages -->
+
+        <!-- Medic Results Packages -->
+
+        <br>
+         <input type="radio"   name="radio1" id="radioPackageMedic" ng-model="optionSelected" value ="5"  ng-show="false">
+         <label for="radioPackageMedic" ng-show="false"><strong>Paquete de Resultados por Médico</strong></label>
+
+        <!-- End Medic Results Packages -->
+
+        <!-- Date Results -->
+
+          <br>
+         <input type="radio"   name="radio1" id="radioDate" ng-model="optionSelected" value ="6" ng-show="false">
+         <label for="radioDate" ng-show="false"><strong>Resultados por Fecha</strong></label>
+
+        <!-- End Date Results -->
+
+        <!-- Send Email Client -->
+
+          <br>
+         <input type="radio"   name="radio1" id="radioEmailCLient" ng-model="optionSelected" value ="7" ng-show="false">
+         <label for="radioEmailCLient" ng-show="false"><strong>Envío por Correo de Resultados por Cliente</strong></label>
+
+        <!-- End Send Email Client -->
+
+        <!-- Send Email Medic -->
+
+         <br>
+         <input type="radio"   name="radio1" id="radioEmailMedic" ng-model="optionSelected" value ="8" ng-show="false">
+         <label for="radioEmailMedic" ng-show="false"><strong>Envío por Correo de Resultados por Médico</strong></label>
+
+        <!-- End Send Email Medic -->
+
+        <!-- Orders Without Result -->
+
+         <br>
+         <input type="radio"   name="radio1" id="radioNoResults" ng-model="optionSelected" value ="9" ng-show="false" >
+         <label for="radioNoResults" ng-show="false"><strong>Órdenes sin Resultados</strong></label>
+      
+        </div>
+     </div>
+    
+    
+
+    <div class="col-sm-8">
+
+    
+
+    <!-- Form Radio Patient -->
+    
+    <div class="row clearfix">
+      <form name="Patient" role="form" novalidate>
+          
+          <div class="form-group-attached">
+            <div ng-show="optionSelected == '1'" pg-form-group-default class="form-group form-group-default required" ng-class="{ 'has-error' : Patient.docPatient.$invalid && !Patient.docPatient.$pristine }">
+
+              <label>Consulta por el Número de Documento del Paciente sin puntos o espacios:</label>
+
+              <input 
+              name="docPatient"
+              placeholder="Documento del Paciente"
+              class="form-control"
+              ui-jq="popover" 
+              data-container="body" 
+              data-placement="top" 
+              data-trigger="manual"
+              ng-model="docPatient" 
+              validate-attached-form-element required/
+                >
+            </div>
+          </div>
+
+      </form>
+    </div>
+     <!-- End Form Radio Patient -->
+
+    <!-- Form Order Num  -->
+
+      <div class="row clearfix">
+      <form name="numOrderForm" role="form" novalidate>
+          
+          <div class="form-group-attached">
+            <div ng-show="optionSelected == '2'" pg-form-group-default class="form-group form-group-default required" ng-class="{ 'has-error' : numOrderForm.numOrder.$invalid && !numOrderForm.numOrder.$pristine }">
+
+              <label>Consulta por el Número de Orden:</label>
+
+              <input 
+              name="numOrder"
+              ng-model="orderCode"
+              placeholder="Ej. 20160801XXXX"
+              class="form-control"
+              ui-jq="popover" 
+              data-container="body" 
+              data-placement="top" 
+              data-content="El Número de la Orden es requerido" 
+              data-trigger="manual" 
+              validate-attached-form-element required/
+                >
+            </div>
+          </div>
+
+      </form>
+    </div>
+
+    <!-- End Form Order Num -->
+
+    <!-- Form Last Name and Name -->
+
+    <div class="row ">
+      <form name="lastNameForm">
+        <div>
+          <div ng-show="optionSelected == '3'" pg-form-group-default class="form-group form-group-default required" class="{ 'has-error' : lastNameForm.lastName.$invalid && !lastNameForm.lastName.$pristine }">
+          <label>Apellidos y Nombres del Paciente</label>
+
+        <!--    <input name="id"  type='text' ng-model="show.id" class="form-control hidde" hidden="true"  placeholder="Ingrese el id"  /> -->
+
+  <!--           <input name="id"  type='text' ng-model="show." class="form-control"  placeholder="Ingrese el id"  />
+   -->       <!--  <input 
+              name="lastName"
+              ng-model="peopleName"
+              placeholder="Apellidos y Nombre del Paciente"
+              class="form-control"
+              ui-jq="popover" 
+              data-container="body" 
+              data-placement="top" 
+              data-content="Los Apellidos y el Nombre del paciente son Requeridos 
+              data-trigger="manual" 
+              validate-attached-form-element required/>
+            
+          </div> -->
+      </div>
+      <div>
+         <angucomplete-alt 
+            ng-show="optionSelected == '3'"
+            descriptionfield="name" 
+            input-class="form-control form-control-small"  
+            match-class="highlight"
+            minlength="1" 
+            pause="400"
+            placeholder="Nombres y apellidos" 
+            remote-url="{{urlSearchServicesDiagnostic}}" 
+            remote-url-data-field="servicesDiagnostic" 
+            selected-object="foundServiceDiagnostic" 
+            title-field="first_name,middle_name,last_name,last_name_two" 
+            />
+
+</angucomplete-alt>
+</div>
+      </form>
+    </div>
+
+    <!-- End Form Last Name and Name -->
+
+    <!-- Form Client Result Package -->
+
+    <div class="row clearfix">
+     <form name="registerProductForm" role="form" novalidate>
+        <div class="row">
+           
+                <div class="form-group-attached">
+
+                        <!-- Row One -->
+
+                    <div ng-show="optionSelected == '4'" class="row clearfix">
+
+                        <!-- Date Start -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                    <label>
+                                        Fecha de Inicio:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="date"
+                                            ng-model="startDate"
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>   
+
+                        <!-- End Date Start -->
+
+                        <!-- Date End -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                    <label>
+                                        Fecha de Final:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="date"
+                                            ng-model="endDate"
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>   
+
+                        <!-- End Date Start -->
+
+                         <!-- Seccion -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required">
+
+                                    <label>Seleccione el Cliente de Consulta</label>
+
+                                 <select 
+
+                                    class="cs-select cs-skin-slide form-control" 
+                                    ng-model="selectedClient" 
+                                    ng-options="clients.id as clients.name for clients in clients"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Debe seleccionar un cliente" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element 
+                                    required 
+                                    >
+                                    <option value=""> -Seleccione un cliente- </option>
+                                    
+                                </select>
+                           
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Seccion -->
+    
+
+                       
+
+                    </div>
+
+                    <!-- End row One -->    
+         
+                </div>
+        </div>
+      </form>                
+    </div>
+
+    <!-- End Form Client Result Package -->
+
+    <!-- Form Medic Result Package -->
+
+    <div class="row clearfix">
+     <form name="registerProductForm" role="form" novalidate>
+        <div class="row">
+           
+                <div class="form-group-attached">
+
+                        <!-- Row One -->
+
+                    <div ng-show="optionSelected == '5'" class="row clearfix">
+
+                        <!-- Date Start -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                    <label>
+                                        Fecha de Inicio:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="date"
+                                            ng-model="startDate"
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>   
+
+                        <!-- End Date Start -->
+
+                        <!-- Date End -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                    <label>
+                                        Fecha de Final:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="date"
+                                            ng-model="endDate"
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>   
+
+                        <!-- End Date Start -->
+
+                         <!-- Seccion -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required">
+
+                                    <label>Seleccione el Médico de Consulta</label>
+
+                                   <select
+                                   class=" cs-select cs-skin-slide form-control"  
+                                   ng-options="" 
+                                   ui-jq="popover" 
+                                   data-container="body" 
+                                   data-placement="top" 
+                                   data-content="" 
+                                   data-trigger="manual" 
+                                   validate-attached-form-element required>
+                                   <option value=""> -- Seleccione la Sección -- </option>
+                                  </select>
+                           
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Seccion -->
+    
+
+                       
+
+                    </div>
+
+                    <!-- End row One -->    
+         
+                </div>
+        </div>
+      </form>                
+    </div>
+
+    <!-- End Form Medic Result Package -->
+
+    <!-- Date Result -->
+
+    <!-- End Date Result -->
+
+
+
+    </div>
+
+    <div class="row clearfix">
+     <form name="registerProductForm" role="form" novalidate>
+        <div class="row">
+           
+                <div class="form-group-attached">
+
+                        <!-- Row One -->
+
+                    <div ng-show="optionSelected == '6'" class="row clearfix">
+
+                        <!-- Date Start -->
+
+                        <div class="col-sm-6">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                    <label>
+                                        Fecha de Inicio:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="date"
+                                            ng-model="startDate"
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>   
+
+                        <!-- End Date Start -->
+
+                        <!-- Date End -->
+
+                        <div class="col-sm-6">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                    <label>
+                                        Fecha de Final:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="date"
+                                            ng-model="endDate"
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>   
+
+                        <!-- End Date Start -->
+                       
+
+                    </div>
+
+                    <!-- End row One --> 
+
+                     <!-- Form Client Result Email -->
+
+                      <div class="row clearfix">
+                       <form name="registerProductForm" role="form" novalidate>
+                          <div class="row">
+                             
+                                  <div class="form-group-attached">
+
+                                          <!-- Row One -->
+
+                                      <div ng-show="optionSelected == '7'" class="row clearfix">
+
+                                          <!-- Date Start -->
+
+                                          <div class="col-sm-4">
+                                              <div class="form-group-attached">
+                                                  <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                                      <label>
+                                                          Fecha de Inicio:
+                                                      </label>
+                                                      <div 
+                                                      class="input-group date" 
+                                                      ui-jq="datepicker" 
+                                                      ui-options="{format:'yyyy-mm-dd'}">
+
+                                                          <input class="form-control" 
+                                                              name="date"
+                                                              ng-model="startDate"
+                                                              id='date'
+                                                              placeholder="yyyy-mm-dd"
+                                                              required="" 
+                                                              type="text" 
+                                                              ui-jq="popover" 
+                                                              data-container="body" 
+                                                              data-placement="top" 
+                                                              data-content="La fecha de ingreso es requerida" 
+                                                              data-trigger="manual" 
+                                                              validate-attached-form-element 
+                                                              required />
+
+                                                          <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                                              <i class="fa fa-calendar">
+                                                              </i>
+                                                          </span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                           </div>   
+
+                                          <!-- End Date Start -->
+
+                                          <!-- Date End -->
+
+                                          <div class="col-sm-4">
+                                              <div class="form-group-attached">
+                                                  <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                                      <label>
+                                                          Fecha de Final:
+                                                      </label>
+                                                      <div 
+                                                      class="input-group date" 
+                                                      ui-jq="datepicker" 
+                                                      ui-options="{format:'yyyy-mm-dd'}">
+
+                                                          <input class="form-control" 
+                                                              name="date"
+                                                              ng-model="endDate"
+                                                              id='date'
+                                                              placeholder="yyyy-mm-dd"
+                                                              required="" 
+                                                              type="text" 
+                                                              ui-jq="popover" 
+                                                              data-container="body" 
+                                                              data-placement="top" 
+                                                              data-content="La fecha de ingreso es requerida" 
+                                                              data-trigger="manual" 
+                                                              validate-attached-form-element 
+                                                              required />
+
+                                                          <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                                              <i class="fa fa-calendar">
+                                                              </i>
+                                                          </span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                           </div>   
+
+                                          <!-- End Date Start -->
+
+                                           <!-- Seccion -->
+
+                                          <div class="col-sm-4">
+                                              <div class="form-group-attached">
+                                                  <div pg-form-group class="form-group form-group-default required">
+
+                                                      <label>Seleccione el Cliente de Consulta</label>
+
+                                                     <select
+                                                     class=" cs-select cs-skin-slide form-control"  
+                                                     ng-options="" 
+                                                     ui-jq="popover" 
+                                                     data-container="body" 
+                                                     data-placement="top" 
+                                                     data-content="" 
+                                                     data-trigger="manual" 
+                                                     validate-attached-form-element required>
+                                                     <option value=""> -- Seleccione el Cliente -- </option>
+                                                    </select>
+                                             
+                                                  </div>
+                                              </div>
+                                          </div>
+
+                                          <!-- End Seccion -->
+                      
+
+                                         
+
+                                      </div>
+
+                                      <!-- End row One -->    
+                           
+                                  </div>
+                          </div>
+                        </form>                
+                      </div>
+
+                      <!-- End Form Client Result Email -->
+
+                       <!-- Form Medic Result Package -->
+
+    <div class="row clearfix">
+     <form name="registerProductForm" role="form" novalidate>
+        <div class="row">
+           
+                <div class="form-group-attached">
+
+                        <!-- Row One -->
+
+                    <div ng-show="optionSelected == '8'" class="row clearfix">
+
+                        <!-- Date Start -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                    <label>
+                                        Fecha de Inicio:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="date"
+                                            ng-model="startDate"
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>   
+
+                        <!-- End Date Start -->
+
+                        <!-- Date End -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                    <label>
+                                        Fecha de Final:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="date"
+                                            ng-model="endDate"
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>   
+
+                        <!-- End Date Start -->
+
+                         <!-- Seccion -->
+
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required">
+
+                                    <label>Seleccione el Médico de Consulta</label>
+
+                                   <select
+                                   class=" cs-select cs-skin-slide form-control"  
+                                   ng-options="" 
+                                   ui-jq="popover" 
+                                   data-container="body" 
+                                   data-placement="top" 
+                                   data-content="" 
+                                   data-trigger="manual" 
+                                   validate-attached-form-element required>
+                                   <option value=""> -- Seleccione la Sección -- </option>
+                                  </select>
+                           
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Seccion -->
+    
+
+                       
+
+                    </div>
+
+                    <!-- End row One -->    
+         
+                </div>
+        </div>
+      </form>                
+    </div>
+
+    <!-- End Form Medic Result Package -->
+
+
+    <!-- Form Order No Result -->
+
+    <div class="row clearfix">
+     <form name="registerProductForm" role="form" novalidate>
+        <div class="row">
+           
+                <div class="form-group-attached">
+
+                        <!-- Row One -->
+
+                    <div ng-show="optionSelected == '9'" class="row clearfix">
+
+                        <!-- Date Start -->
+
+                        <div class="col-sm-6">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                    <label>
+                                        Fecha de Inicio:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="date"
+                                            ng-model="startDate"
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>   
+
+                        <!-- End Date Start -->
+
+                        <!-- Date End -->
+
+                        <div class="col-sm-6">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                    <label>
+                                        Fecha de Final:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="date"
+                                            ng-model="endDate"
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>   
+
+                        <!-- End Date Start -->
+
+                       
+
+                    </div>
+
+                    <!-- End row One -->    
+         
+                </div>
+        </div>
+      </form>                
+    </div>
+
+
+    <!-- End Order No Result -->
+
+   
+
+         
+                </div>
+        </div>
+      </form>                
+    </div>
+
+   </div>
+
+    <div class="row col-sm-12">
+      <p id="message_error" class="text-danger text-center"></p>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <button class="btn btn-info btn-block" ng-click="searchResult()"><i class="fa fa-cloud-download"></i> Descargar Resultados</button>
+      </div>
+    </div>
+ 
+
+</div>
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+    

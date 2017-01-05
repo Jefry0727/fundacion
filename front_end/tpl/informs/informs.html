@@ -1,0 +1,188 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Informe 4505</a>
+        </li>
+        <li><a class="active" href="#">Informe 4505</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> Informe de la 4505</h3>
+
+</div>
+
+ <div class="container-fluid container-fixed-lg" ng-app="app"  ng-show="true">
+    
+    <div class="row">
+        
+        <form name="ripsReport" role="form" novalidate>
+            
+            <div class="form-group-attached">
+                    
+                <div class="row clearfix">
+
+                <!-- Date Input -->
+
+                            <div class="col-sm-2">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                        <label>
+                                            Fecha Inicio:
+                                        </label>
+                                        <div 
+                                        class="input-group date" 
+                                        ui-jq="datepicker" 
+                                        ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                        name="birthdate" 
+                                        id='date'
+                                        placeholder="yyyy-mm-dd"
+                                        ng-model="ripsModel.dateStart" 
+                                        required="" 
+                                        type="text" 
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="La fecha de ingreso es requerida" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element 
+                                        required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End date input -->
+
+                        <!-- Date Input -->
+
+                            <div class="col-sm-2">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : inputProductForm.date && !orderDetailForm.date.$pristine }">
+
+                                        <label>
+                                            Fecha Fin:
+                                        </label>
+                                        <div 
+                                        class="input-group date" 
+                                        ui-jq="datepicker" 
+                                        ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                        name="birthdate" 
+                                        id='date'
+                                        placeholder="yyyy-mm-dd"
+                                        ng-model="ripsModel.dateEnd" 
+                                        required="" 
+                                        type="text" 
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="La fecha de ingreso es requerida" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element 
+                                        required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End date input -->
+
+                    <!-- Code product -->
+
+                 <!--    <div class="col-sm-3">
+                     <div class="form-group-attached">
+                         <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.code.$invalid && !orderDetailForm.code.$pristine }">
+
+                             <label>Número de Factura</label>
+
+                             <input type="text" 
+                             ng-model ="ripsModel.billNumber"
+                             name="code"
+                             placeholder="Código del producto"
+                             ng-model="ripsModel.dateEnd"
+                             class="form-control"
+                             ui-jq="popover" 
+                             data-container="body" 
+                             data-placement="top" 
+                             data-content="El código es requerido" 
+                             data-trigger="manual" 
+                             validate-attached-form-element required/>
+
+                         </div>
+                     </div>
+                 </div> -->
+
+                 <!-- End code produc -->
+
+                 <!-- Product -->
+
+                        <div class="col-sm-5">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" >
+
+                                    <label>
+                                        Cliente
+                                    </label>
+                                    <select class=" cs-select cs-skin-slide form-control" 
+                                    name="nameProduct" 
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Debe seleccionar" 
+                                    data-trigger="manual" 
+                                    ng-model="ripsModel.client" 
+                                    ng-options="item as item.name for item in listClients"
+                                    ng-change="chageProduct()"
+                                    validate-attached-form-element 
+                                    required>
+                                    <option value=""> -Seleccione el cliente- </option>
+                                </select>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Product -->
+
+                </div>
+            </div>        
+
+        </form>
+
+    </div>
+
+    <hr>
+
+ </div>
+
+   <br>
+
+<div class="container-fluid container-fixed-lg" ng-app="app"  ng-show="true">
+
+    <div class="row">
+        
+        <div class="col-sm-12 col-md-offset-5">
+            
+                <button class="btn btn-info" ng-click="getAllResolution()"><i class="fa fa-file-zip-o"></i> Descargar Reporte</button>
+            
+        </div>
+
+    </div>
+
+</div>

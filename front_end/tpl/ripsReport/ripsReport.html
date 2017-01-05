@@ -1,0 +1,31 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">RIPS</a>
+        </li>
+        <li><a class="active" href="#">Informe RIPS</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> RIPS</h3>
+
+</div>
+
+<!-- FORMULARIO DE DESCARGA DE RIPS -->
+<div class="w3-container w3-white w3-center" style="width:80%; margin:auto">
+    
+    <div class="w3-left-align">
+        <label  class="w3-text-upper w3-text-look w3-label w3-padding-medium">
+            número de cuenta de cobro
+        </label>
+    </div>
+
+    <input type="text" class="w3-input w3-white w3-border-0" ng-model="Rips.numCuentaCobro"  autofocus placeholder="Número de la cuenta de cobro" />
+
+    <button class="w3-btn w3-blue w3-round-small w3-text-upper w3-margin-bottom" ng-click="Rips.generateRips()" >
+        descargar rips
+    </button>
+
+</div>
+<!-- ./FORMULARIO DE DESCARGA DE RIPS -->

@@ -1,0 +1,81 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+  <ul class="breadcrumb">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li><a href="#">Lista de Ordenes</a>
+    </li>
+  </ul>
+  <!-- END BREADCRUMB -->
+  <h3 class="page-title">Informe Facturacion del dia</h3>
+
+</div>
+
+
+<!-- <div class="container" ng-app="sortApp" ng-controller="mainController"> -->
+<div class="w3-padding-medium" style="width: 80%; margin: auto">
+    <div class="w3-row-padding w3-white ">
+
+      <div class="w3-col l4 w3-border">
+        <label class="w3-label w3-text-look w3-text-upper">Fecha Inicial:</label>
+        <input type="text" ng-model="Bill.date_ini" class="w3-border-0 w3-input" name="date-ini" ng-change="Bill.getSalesByClient()" />
+      </div>
+
+      <div class="w3-col l4 w3-border">
+        <label class="w3-label w3-text-look w3-text-upper">Fecha final:</label>
+        <input type="text" ng-model="Bill.date_end" class="w3-border-0 w3-input" name="date-end" ng-change="Bill.getSalesByClient()" />
+      </div>
+
+      <div class="w3-col l4 w3-border">
+        <label class="w3-label w3-text-look w3-text-upper" >SEde:</label>
+        <select class="w3-input w3-border-0" ng-model="Bill.center" ng-options="sede.id as sede.name for sede in Bill.listaSedes" ng-change="Bill.getSalesByClient()">
+          <option value="" >--seleccione--</option>
+        </select>
+      </div>
+
+    </div>
+</div>
+
+<div>
+  <table class="w3-table" style="width: 80%; margin: auto" >
+    <thead>
+        <tr>
+          <td class="w3-text-upper w3-center w3-small">nit</td>
+          <td class="w3-text-upper w3-center w3-small">razón social</td>
+          <td class="w3-text-upper w3-center w3-small">debito</td>
+          <td class="w3-text-upper w3-center w3-small">credito</td>
+          <td class="w3-text-upper w3-center w3-small">descuento</td>
+          <td class="w3-text-upper w3-center w3-small">donacion</td>
+          <td class="w3-text-upper w3-center w3-small">Total Entidad </td>
+        </tr>
+    </thead>
+
+    <tr ng-repeat="fila in Bill.tabla" class="w3-white w3-border-top w3-border-botom" >
+      <td class="w3-small">{{ fila.Nit }}</td>
+      <td class="w3-small">{{ fila.Nombre_Razon_Social }}</td>
+      <td class="w3-right-align w3-small">{{ fila.debit | currency:'$': 0}}</td>
+      <td class="w3-right-align w3-small" >{{ fila.credit | currency:'$': 0}}</td>
+      <td class="w3-right-align w3-small">{{ fila.discount | currency:'$': 0}}</td>
+      <td class="w3-right-align w3-small">{{ fila.donations | currency:'$': 0}}</td>
+      <td class="w3-right-align w3-small"> {{ fila.total | currency:'$': 0}}</td>
+    </tr>
+
+    <tr class="w3-white">
+      
+      <td class="w3-text-black" colspan="2"><b>{{Bill.total}}</b></td>
+      <td class="w3-right-align w3-small"><b>{{ Bill.totalDebit | currency:'$': 0}}</b></td>
+      <td class="w3-right-align w3-small"><b>{{ Bill.totalCredit | currency:'$': 0}}</b></td>
+      <td class="w3-right-align w3-small"><b>{{ Bill.totalDiscount | currency:'$': 0}}</b></td>
+      <td class="w3-right-align w3-small" ><b>{{ Bill.totalDonations | currency:'$': 0}}</b></td>
+      <td class="w3-right-align w3-small" ><b>{{ Bill.totalGeneral | currency:'$': 0}}</b></td>
+    </tr>
+
+
+    
+  </table>
+
+  <table class="w3-table" >
+
+  </table>
+</div>

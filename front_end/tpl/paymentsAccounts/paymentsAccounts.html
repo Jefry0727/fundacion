@@ -1,0 +1,533 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Cobros</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> Cuentas de Cobro</h3>
+
+</div>
+
+ <div class="container-fluid container-fixed-lg" ng-app="app"  ng-show="true">
+    
+    <div class="row">
+        
+        <form name="paymentsAccountsForm" role="form" novalidate>
+            
+            <div class="form-group-attached">
+                    
+                <div class="row clearfix">
+
+                <!-- Date Input -->
+
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+
+                                        <label>
+                                            Fecha Inicio:
+                                        </label>
+                                        <div 
+                                        class="input-group date" 
+                                        ui-jq="datepicker" 
+                                        ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                        name="birthdate" 
+                                        id='date'
+                                        placeholder="yyyy-mm-dd"
+                                        ng-model="FacturaCuenta.dateStart" 
+                                        required="" 
+                                        type="text"
+                                        ng-change="getAllClients()" 
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="La fecha de ingreso es requerida" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element 
+                                        required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End date input -->
+
+                        <!-- Date Input -->
+
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+
+                                        <label>
+                                            Fecha Fin:
+                                        </label>
+                                        <div 
+                                        class="input-group date" 
+                                        ui-jq="datepicker" 
+                                        ui-options="{format:'yyyy-mm-dd'}">
+                                        <input class="form-control" 
+                                        name="birthdate" 
+                                        id='date'
+                                        placeholder="yyyy-mm-dd"
+                                        ng-model="FacturaCuenta.dateEnd" 
+                                        required="" 
+                                        type="text" 
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="La fecha de ingreso es requerida" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element 
+                                        required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <!-- End date input -->
+
+                        <!-- Sede -->
+
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" >
+
+                                    <label>
+                                        Sede
+                                    </label>
+                                    <select class=" cs-select cs-skin-slide form-control"
+                                    ng-model="selectCenter" 
+                                    ng-options="item.id as item.name for item in AllCenters"
+                                    validate-attached-form-element 
+                                    required>
+                                    <option value=""> -Seleccione la Sede- </option>
+                                    </select>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Sede -->
+
+
+                        <!-- Client -->
+
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" >
+
+                                    <label>
+                                        Cliente
+                                    </label>
+                                    <select class=" cs-select cs-skin-slide form-control" 
+                                    name="nameProduct"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Debe seleccionar" 
+                                    data-trigger="manual" 
+                                    ng-model="client"
+                                    ng-change="[getCodeClient(client), allRatesClients(client)]"
+                                    ng-options="client as client.name for client in clients track by client.id"
+                                    validate-attached-form-element 
+                                    required>
+                                    <option value=""> -Seleccione el cliente- </option>
+                                    </select>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- End Client -->
+
+                    <!-- Unic Code -->
+
+                    <div class="col-sm-1">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.code.$invalid && !orderDetailForm.code.$pristine }">
+
+                             <label>Código</label>
+
+                             <input type="text" 
+                             ng-model ="Cliente.ars_code"
+                             name="code"
+                             placeholder="Código del cliente"
+                             readonly="true"
+                             style="color: #000000;" 
+                             class="form-control"
+                             ui-jq="popover" 
+                             data-container="body" 
+                             data-placement="top" 
+                             data-content="El código es requerido" 
+                             data-trigger="manual" 
+                             validate-attached-form-element required/>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Unic Code -->
+
+                    <!-- Plan -->
+
+                    <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" >
+
+                                    <label>
+                                        Plan Tarifario
+                                    </label>
+                                    <select class=" cs-select cs-skin-slide form-control" 
+                                    name="nameProduct" 
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Debe seleccionar" 
+                                    data-trigger="manual" 
+                                    ng-model="rates" 
+                                    ng-options="ratesClient as ratesClient.rate.name for ratesClient in ratesClients track by ratesClient.id"
+                                    validate-attached-form-element 
+                                    required>
+                                    <option value=""> -Seleccione el Plan Tarifario- </option>
+                                    </select>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- End Plan -->
+
+                    <!-- Remision Number -->
+
+                    <div class="w3-white w3-col l2" style="min-height: 3.8em;">
+                        <label 
+                        class="w3-text-upper w3-text-grey"
+                        style="font-family: 'Montserrat'; font-size: 11px; font-weight: 600"
+                        >
+                        Filtro
+                        </label><br/>
+                        <select class="w3-border-0" ng-model="FacturaCuenta.filter" >
+                            <option value="" ng-selected="selected">--SELECCIONE--</option>
+                            <option class="w3-text-upper" value="1">TODAS</option>
+                            <option class="w3-text-upper" value="2">APTAS</option>
+                            <option class="w3-text-upper" value="3">SIN RESULTADOS</option>
+                            <option class="w3-text-upper" value="4">CON PRESTAMO DE PLACAS</option>
+                            <option class="w3-text-upper" value="5">CON COMPLEMENTARIOS</option>  
+                            <option class="w3-text-upper" value="6" >SIN NÚMERO DE AUTORIZACÓN</option>
+                        </select>
+                    </div>
+
+
+                    <!-- End Remison Number -->
+                </div>
+
+                
+            </div>      
+
+        </form>
+
+    </div>    
+
+ </div>
+
+<!--  <div class="container-fluid container-fixed-lg" ng-app="app"  ng-show="true">
+  </div> -->
+
+<!-- BOTON PARA CONSULTAR -->
+<div class="w3-container w3-margin-top w3-transparent w3-center w3-padding-medium">
+    <button class="w3-btn w3-blue w3-round-small w3-text-upper" data-ng-click="FacturaCuenta.getBills()"  >
+        consultar
+    </button>
+</div>
+<!-- ./BOTON PARA CONSULTAR -->
+
+<!-- MENSAJE DE ERROR -->
+<p id="error-messaje" class="w3-center w3-text-red" style="display: none">
+    Alguno de los campos necesarios para realizar la operación se encuentran <b>vacío</b>.
+</p>
+<!-- ./MENSSAJE DE ERROR -->
+
+
+<!-- CAMPO DE BUSQUEDA -->
+<div class="w3-container w3-white" style="width: 73%; margin: auto; ">
+    <label class="w3-text-upper w3-text-grey w3-text-look"  >filtrar: </label><br>
+    <input type="text" class="w3-input w3-border-0" ng-model="filter"/>
+</div>
+<!-- ./CAMPO DE BUSQUEDA -->
+
+
+ <div class="container-fluid container-fixed-lg" ng-app="app"  ng-show="true">
+
+    <div class="row">
+        
+        <div class="col-md-12">
+            
+            <table class="table">
+     
+                <thead>
+                    <th>Fecha</th>
+                    <th>Núm de orden</th>
+                    <th>N. Iden</th>
+                    <th>Paciente</th>
+                    <th>N. Factura</th>
+                    <th>C. Servicio</th>
+                    <th>Vr. servicio</th>
+                    <th>Copago</th>
+                    <th>Total</th>
+
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat=" item in resultado | filter: filter">
+
+                        <td>
+                            {{ item.created.substring(0,10)  }}
+                        </td>
+                        <td>
+                            {{ item._matchingData.Orders.order_consec }}
+                        </td>
+                        <td>
+                            {{ item._matchingData.People.identification }}
+                        </td>
+                        <td>
+                            {{ item._matchingData.People.first_name + ' ' + item._matchingData.People.middle_name + ' ' + item._matchingData.People.last_name }}
+                        </td>
+                        <td>
+                            {{ item.bill_number }}
+                        </td>
+                        <td>
+                           {{ item._matchingData.Studies.cup }} {{ item._matchingData.Studies.name.substring( 0, 27) + '...' }} 
+                        </td>
+
+                        <td>
+                            {{ item._matchingData.Payments.valor = item._matchingData.Payments.copayment + item._matchingData.Payments.credit}}
+                        </td>
+                        <td>
+                            {{ item._matchingData.Payments.copayment }}
+                        </td>
+                        <td>
+                            {{ item._matchingData.Payments.credit }}
+                        </td>
+                    </tr>
+                     
+                </tbody>
+
+             </table>
+
+
+        </div>
+
+    </div>
+
+    <!-- PAGINADOR -->
+    <div>
+         <ul class="w3-pagination">
+             <li>
+                <a href="" class="fa fa-chevron-left w3-large" aria-hidden="true" ng-click="FacturaCuenta.setPage('-')"></a>
+            </li>
+             <li>
+                <a href="" class="fa fa-chevron-right w3-large" aria-hidden="true" ng-click="FacturaCuenta.setPage('+')"></a>
+             </li>
+         </ul>
+
+         <div style="display: inline-block">
+            <button class="w3-btn w3-blue w3-text-upper w3-round-medium" ng-show="FacturaCuenta.filter == 2 || FacturaCuenta.filter == 4" ng-click="FacturaCuenta.generatePaymentAccount()" >
+                generar cuenta de cobro
+            </button>
+         </div>
+    </div>
+    <!-- ./PAGINADOR -->
+ 
+ </div>
+
+
+<!-- PREVIEW DE CUENTAS DE COBRO -->
+<button 
+    class="w3-transparent w3-border-0" 
+    onclick="document.querySelector('#payment-account').style.display='block'; document.querySelector('#show-payment-account').style.display='none'; document.querySelector('#hide-payment-account').style.display='block'" 
+    id="show-payment-account" 
+    ng-if="FacturaCuenta.filter == 2 || FacturaCuenta.filter == 4"
+>
+    <i class="fa fa-plus" aria-hidden="true"></i>
+</button>
+<button 
+    class="w3-transparent w3-border-0" 
+    onclick="document.querySelector('#payment-account').style.display='none'; document.querySelector('#hide-payment-account').style.display='none'; document.querySelector('#show-payment-account').style.display='block'"  
+    id="hide-payment-account" 
+    style="display: none" 
+    ng-if="FacturaCuenta.filter == 2 || FacturaCuenta.filter == 4"
+>
+    <i class="fa fa-minus" aria-hidden="true"></i>
+</button>
+<!-- ./PREVIEW DE CUENTAS DE COBRO-->
+
+
+<div id="payment-account" style="display:none" >
+    <div style="width: 74%; margin: auto; min-width: 68em;" class="w3-white w3-padding-medium" id="print-area">
+            <img src="" alt="" id="header-payment-account" style="width: 80%;margin-left: 10%;" >
+            </img>
+        <p class="w3-tiny w3-center">
+            CUENTA DE COBRO <span name="payment-account-consec" >______</span>
+            <br/>
+            RADICACION DE FACTURAS
+            <br/>
+            <br/>            
+            {{ client.social_reazon }}
+            <br/>
+            NIT:  {{ client.nit }}
+            <br/>
+            <br/>
+            DEBE A:
+            <br/>
+            <span class="w3-text-upper">
+                fundación alejandro londoño
+                <br/>
+                NIT: 800135582-7
+            </span>
+        </p>
+
+        <p class="w3-small">
+            Fecha: <span name="date-account" ></span><br/>
+            Valor: <span name="total-account"></span><br/>
+            Por concepto de: <span class="w3-text-upper">servicios de salud prestados a sus usuarios  de acuerdo  conla siguiente relacion de facturas.</span>
+        </p>
+
+        <table class="w3-table">
+                <thead class="w3-border-grey w3-border">
+                    <th class="w3-tiny">Fecha</th>
+                    <th class="w3-tiny">Núm de orden</th>
+                    <th class="w3-tiny">N. Iden</th>
+                    <th class="w3-tiny">Paciente</th>
+                    <th class="w3-tiny">N. Factura</th>
+                    <th class="w3-tiny">C. Servicio</th>
+                    <th class="w3-tiny">Vr. servicio</th>
+                    <th class="w3-tiny">Copago</th>
+                    <th class="w3-tiny">Total</th>
+                    <th class="w3-tiny hide-print">Facturar</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in FacturaCuenta.facturas" >
+                         <td class="w3-tiny">
+                            {{ item.created.substring(0,10)  }}
+                        </td>
+                        <td class="w3-tiny">
+                            {{ item._matchingData.Orders.order_consec }}
+                        </td>
+                        <td class="w3-tiny">
+                            {{ item._matchingData.People.identification }}
+                        </td>
+                        <td class="w3-tiny">
+                            {{ item._matchingData.People.first_name + ' ' +  item._matchingData.People.middle_name + ' ' + item._matchingData.People.last_name }}
+                        </td>
+                        <td class="w3-tiny">
+                            {{ item.bill_number }}
+                        </td>
+                        <td class="w3-tiny" >
+                           {{ item._matchingData.Studies.cup }} {{ item._matchingData.Studies.name }} 
+                        </td>
+
+                        <td class="w3-tiny">
+                            {{ item._matchingData.Payments.valor = item._matchingData.Payments.copayment + item._matchingData.Payments.credit}}
+                        </td>
+                        <td class="w3-tiny">
+                            {{ item._matchingData.Payments.copayment }}
+                        </td>
+                        <td class="w3-tiny">
+                            {{ item._matchingData.Payments.credit }}
+                        </td>
+                        <td class="hide-print">
+                            <input type="button" name="delete-bill"  value="quitar factura"  ng-click="FacturaCuenta.setItem($index)" ng-checked="true" class="w3-btn w3-text-upper w3-blue w3-round-small w3-tiny" >
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="w3-tiny"><b>Total</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="w3-tiny" name="total-values">$</td>
+                        <td  class="w3-tiny" name="total-copayment">$</td>
+                        <td class="w3-tiny " name="total-account" >$</td>
+                        <td class="hide-print"></td>
+                    </tr>
+
+                </tbody>
+        </table>
+
+        <div >
+            <p class="w3-tiny">
+                Se adjuntan facturas, soportes originales y reportes.<br/>
+                Nota Recordatoria: El no pago oportuno de estas facturas generan intereses de mora que seran liquidados a la tasa máxima legal permitida según lo autorizado por la ley.
+                <br/>
+                Observaciones:
+                <br/>
+                <br/>
+                Cordialmente,
+                <br/>
+                <br/>
+                -------------------------------------<br/>
+                Coordinación de facturación<br/>
+                <span name="people-name"></span>
+            </p>
+        </div>
+
+        <img src="" alt="" id="footer-payment-account" style="width: 80%;margin-left: 10%;">
+        </img>
+
+    </div>
+    <div class="w3-center">
+        <button class="w3-text-upper w3-btn w3-blue w3-round-small" ng-click="FacturaCuenta.printAndSaveAccount()">aceptar</button>
+    </div>
+</div>
+
+
+
+<!-- MODAL DE BORRADO DE FACTURA -->
+<div class="modal fade slide-up disable-scroll modal-delete-bill" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Retiro de facturas</h5>
+            </div>
+            <div class="modal-body">
+                ¿Desea retirar esta factura?
+                <div class="w3-center">
+                    <button class="w3-btn w3-blue w3-text-upper w3-round-small" ng-click="FacturaCuenta.deleteBill()">
+                        si
+                    </button>
+                    <button class="w3-btn w3-blue w3-text-upper w3-round-small" data-dismiss="modal">
+                        no
+                    </button>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- ./MODAL DE BORRADO DE FACTURA -->

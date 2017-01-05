@@ -1,0 +1,80 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Especialista Externo</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Especialista Externo</h3>
+    <div pg-form-group class="form-group form-group-default">
+        <label>Buscar:</label>
+        <input name="search"  type='text' ng-model="searchSpecialist.names" class="form-control" ng-blur="searchSpecialist()" placeholder="Ingrese el nombre" required/>
+    </div><br>
+
+    <form class="" role="form" name="SpecialistForm"  novalidate>
+        <input name="id"  type='text' ng-model="showSpecialist.id" class="form-control"  placeholder="Ingrese el id" required  />
+        <br>
+        <input name="name" type='text' ng-model="showSpecialist.name" class="form-control"  placeholder="Ingrese el nombre" required  />
+        <br>
+        {{searchSpecialist.name}}
+        <!-- <button class="btn btn-info" ng-click="showModalAddRole()"><i class="fa fa-plus"></i> Nuevo</button> -->
+        <button type="button" class="btn btn-info btn-block"  ng-disabled="SpecialistForm.$invalid"  ng-click="addSpecialist()">
+            <i class="fa fa-save"></i> Guardar
+        </button>                     
+    </form>
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <table class="table">
+
+        <thead>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th></th>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="externalSpecialist in externalSpecialists">
+                <td>{{externalSpecialist.id}}</td>
+                <td>{{externalSpecialist.name}}</td>
+                <td>
+                    <button class="btn btn-default" ng-click="showModalEditRole(externalSpecialist)" ><i class="fa fa-edit"></i> Editar</button>
+                    <button class="btn btn-default" ng-click="goToRolePermissions(externalSpecialist)"><i class="fa fa-lock"></i> Permisos</button>
+                    <!-- <button class="btn btn-default" ng-click="showModalDeleteRole(role)"><i class="fa fa-remove"></i> eliminar</button> -->
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+    <div 
+        paging
+        page="currentPageGetExternal" 
+        page-size="pageSizeGetExternal" 
+        total="total"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="getExternalSpecialist(page)"
+    >
+    </div> 
+    <br>
+    <angucomplete-alt 
+        descriptionfield="name" 
+        id="members" 
+        input-class="form-control form-control-small" 
+        minlength="1" 
+        pause="400" 
+        placeholder="Search Specialist" 
+        remote-url="{{urlSearchServicesExtSpe}}" 
+        remote-url-data-field="servicesExtSpe" 
+        selected-object="foundServiceExtSpe" 
+        title-field="name" />
+
+</div>

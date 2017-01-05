@@ -1,0 +1,538 @@
+<!-- START PAGE COVER -->
+  <div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Profesional de la Salud</a>
+        </li>
+    </ul>
+    <!--  <button class="btn btn-info" ng-click="showModalHealthProfessional()">Open show</button> -->
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">&ensp;{{healthP}}&ensp; </h3>
+      
+    </div>
+
+    
+  </div>
+
+       
+<!-- <div class="container" ng-app="sortApp" ng-controller="mainController"> -->
+<div class="container-fluid container-fixed-lg">
+
+    <div class="modal fade fill-in show-healthProfessional" 
+          id="modalFillIn" 
+          tabindex="-1" 
+          role="dialog" 
+          aria-labelledby="modalFillInLabel" 
+          aria-hidden="true"
+          data-backdrop="static"
+          data-keyboard="false"
+          >
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="text-left p-b-5">{{healthP}} <span class="semi-bold">Bienvenido</span>&ensp;</h5>
+                </div>
+                <div class="modal-body">
+                <form name="healtProfesionalForm" role="form" novalidate>                    
+                <div class="row">
+                        <div class="col-md-6">
+                           <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : healtProfesionalForm.selectedCenter.$invalid && !healtProfesionalForm.selectedCenter.$pristine }">
+                             <label>Sede</label>
+                              <select
+                               class=" cs-select cs-skin-slide form-control" 
+                               ng-change="getMedicalOffice(sede.id)" 
+                               ng-model="selectedCenter"  
+                               ng-options="sede.id as sede.name for sede in centers" 
+                               ui-jq="popover" 
+                               data-container="body" 
+                               data-placement="top" 
+                               data-content="Debe selecionar una sede" 
+                               data-trigger="manual" 
+                               validate-attached-form-element required>
+                               <option value=""> --Seleccione la Sede-- </option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            
+                             <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : healtProfesionalForm.selectedMedicalOffice.$invalid && !healtProfesionalForm.selectedMedicalOffice.$pristine }">
+                                <label>Consultorio</label>
+                                  <select
+                                   class=" cs-select cs-skin-slide form-control" 
+                                   ng-disabled = "selectedCenter == undefined"
+                                   ng-change="changeMedicalOffice()" 
+                                   ng-model="selectedMedicalOffice"
+                                   ng-options="item as item.name for item in MedicalOffice"
+                                   ui-jq="popover" 
+                                   data-container="body" 
+                                   data-placement="top" 
+                                   data-content="Debe seleccionar un consultorio" 
+                                   data-trigger="manual" 
+                                   validate-attached-form-element required>
+                                   <option value=""> --Selecciones el Consultorio-- </option>
+                                  </select>
+                                </div>
+
+                        </div>
+
+                        <div class="col-sm-12 ">
+                             <button class="btn btn-info btn-block" ng-click="hideModalHealthProfessional()" ng-disabled="healtProfesionalForm.$invalid"><i class="fa fa-check-circle"></i>&ensp;Aceptar</button>
+                        </div>
+                    </div>
+                  
+                    
+                    </form>
+
+                </div>
+             
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    <!-- /.modal-dialog -->
+     </div>
+</div>
+
+<!-- End Modal -->
+
+<!-- Modals templates -->
+
+
+<!-- End Modals Templates -->
+
+ <!-- Options Health Professional -->
+
+<div class="container-fluid container-fixed-lg">
+
+        <div class="col-sm-12"></div>
+         <form name="attentionForm" role="form" novalidate>
+
+            <div class="row">
+                
+              <div class="col-sm-8 col-sm-offset-2">         
+               <div class="panel">
+                 <div class="panel-body">
+                  <div class="form-group">
+                    <div class="row">
+                      <h5 >Pacientes del día: </h5>   
+                    </div>
+
+                    <div class="row">
+                     <div class="radio radio-info">
+                      
+                       <div class="col-md-4">
+                        <input type="radio" ng-model="selectedType" value="1" checked="checked"  name="radio1" id="radioAgenda">
+                        <label for="radioAgenda">Agendados</label>
+                      </div>
+
+
+                      <div class="col-md-4">
+                        <input type="radio" ng-model="selectedType" value="2" name="radio1" id="radioEspera">
+                        <label for="radioEspera">En Espera</label>
+                      </div>
+
+
+                      <div class="col-md-4">
+                        <input type="radio" ng-model="selectedType" value="3" name="radio1" id="radioAtendidos">
+                        <label for="radioAtendidos">Atendidos</label>
+                      </div>
+
+                    </div>
+                  
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+              <div style="position: fixed; top: 7em; right: 2em">
+                <button class="btn btn-info"  ng-click="showModalSelectMedicalOffice()">Seleccionar Consultorio</button>
+              </div>
+
+              <div class="col-sm-3"></div>  
+                  
+                  <div class="col-sm-12">
+                     <div class="form-group">
+                        <label>Busqueda por Paciente</label>
+                          <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                            <input type="text" class="form-control" placeholder="Buscar" ng-model="searchFish">
+                          </div>      
+                        </div>  
+
+               </div>
+  
+               <!-- contenedor de las tablas  -->
+                 <div class="col-sm-12">
+                      
+                      <!-- Citas asignadas -->
+
+                      <div ng-show="selectedType == 1"> 
+                        <table class="table">
+                          
+                          <thead>
+                            <tr>
+                              
+                              <th>  Identificacion </th>
+                              
+                              <th>  Nombre  </th>
+
+                              <th>  Estudio  </th>
+                              
+                              <th>  Hora Inicio </th>
+
+                            </tr>
+                          </thead>
+                          
+                          <tbody>
+
+                            <tr ng-repeat="attentionInfo in asignedAppointmentsInfo | orderBy:sortType:sortReverse | filter:searchFish" style="margin-top:5px">
+
+<!--                               <td>{{attentionInfo.order.order_consec}}</td> -->
+                             
+
+                              <td>  
+                                {{attentionInfo.patient.identification }}
+                              </td>
+                            
+                              <td>
+                                {{attentionInfo.patient.first_name}} {{attentionInfo.patient.middle_name}} {{attentionInfo.patient.last_name}} {{attentionInfo.patient.last_name_two}}
+                              </td>
+
+                              <!-- <td >   {{attentionInfo.appointmentDate.date_time_end}}  </td> -->
+
+                              <td>
+                                {{attentionInfo.study.name}}
+                              </td>
+
+                              <td >
+                                {{attentionInfo.appointmentDate.date_time_ini}} 
+                              </td>
+
+                            </tr>
+                          </tbody>
+                          
+                        </table>
+
+
+                        <div 
+                            paging
+                            page="currentAsignedAppointments" 
+                            page-size="pageSizeAsignedAppointments" 
+                            total="asignedAppointmentsTotal"
+                            adjacent="true"
+                            show-prev-next="true"
+                            paging-action="asignedAppointments(page)"
+                        >
+                        </div>
+                      </div>
+                      <!-- Fin citas asignadas -->
+
+
+
+
+
+                 <!-- Citas asignadas -->
+
+                      <div ng-show="selectedType == 2"> 
+                        <table class="table">
+      
+                          <thead>
+                            <tr>
+                              
+                              <th>  Identificacion </th>
+                              
+                              <th>  Nombre  </th>
+
+                              <th>  Estudio  </th>
+
+                              <th>  Hora Inicio </th>
+                             
+                              <th> Atender / Cancelar </th>
+
+                            </tr>
+                          </thead>
+                          
+                          <tbody>
+
+                            <tr ng-repeat="attentionInfo in appointmentForAttentionInfo | orderBy:sortType:sortReverse | filter:searchFish" style="margin-top:5px" >
+
+                        <!--       <td>{{attentionInfo.order.order_consec}}</td> -->
+                        
+
+                              <td title="{{ attentionInfo.all.observations != '' ? attentionInfo.observations : 'No tiene'}}" >
+
+                                {{attentionInfo.patient.identification }}
+                              </td>
+                            
+                              <td title="{{ attentionInfo.all.observations != '' ? attentionInfo.observations : 'No tiene'}}">
+                                {{attentionInfo.patient.first_name}} {{attentionInfo.patient.middle_name}} {{attentionInfo.patient.last_name}} {{attentionInfo.patient.last_name_two}}
+                              </td>
+               
+                              <td title="{{ attentionInfo.all.observations != '' ? attentionInfo.observations : 'No tiene'}}">
+                                {{attentionInfo.study.name}}
+                              </td>
+                               <td title="{{ attentionInfo.all.observations != '' ? attentionInfo.observations : 'No tiene'}}">
+                                {{attentionInfo.appointmentDate.date_time_ini}}
+                              </td>
+
+                              <td title="{{ attentionInfo.all.observations != '' ? attentionInfo.observations : 'No tiene'}}" >
+                                <button class="btn btn-info" ng-click="goToAttentionPatient(attentionInfo)">
+                                  <i class="fa fa-plus"></i>&nbsp;
+                                  Atender
+                                </button>
+                              
+                                <button class="btn btn-info"><i class="fa fa-remove"></i>&nbsp;Cancelar</button>
+                              </td>
+
+                              
+
+                            </tr>
+                          </tbody>
+                          
+                        </table>
+
+                        <div 
+                            paging
+                            page="currentappointmentForAttention" 
+                            page-size="pageSizeappointmentForAttention" 
+                            total="appointmentForAttentionTotal"
+                            adjacent="true"
+                            show-prev-next="true"
+                            paging-action="appointmentForAttention(page)"
+                        >
+                        </div>
+                      </div>
+                      <!-- Fin citas asignadas -->
+
+
+
+
+
+                 <!-- Citas asignadas -->
+
+                      <div ng-show="selectedType == 3"> 
+                        <table class="table">
+      
+                          <thead>
+                           <tr>     
+                              
+                              <th>  Identificacion </th>
+                              
+                              <th>  Nombre  </th>
+
+                              <th>  Estudio  </th>
+                              
+                              <th>  Hora Inicio </th>
+
+                              <th>  Hora Fin  </th>
+
+                              <th > Sticker </th>
+
+                              <th>  Prestamo de placas </th>
+
+                            </tr>
+                          </thead>
+                          
+                          <tbody>
+
+                            <tr ng-repeat="attentionInfo in attendedAppointmentsInfo | orderBy:sortType:sortReverse | filter:searchFish" style="margin-top:5px">
+
+                              <!-- <td>{{attentionInfo.order.order_consec}}</td> -->
+
+                              <td>{{attentionInfo.patient.identification }}</td>
+                            
+                              <td>{{attentionInfo.patient.first_name}} {{attentionInfo.patient.middle_name}} {{attentionInfo.patient.last_name}} {{attentionInfo.patient.last_name_two}}</td>
+
+
+                              <td>
+                                {{attentionInfo.study.name}}
+                              </td>
+                            
+                              <td >
+                                {{attentionInfo.attention.date_time_ini}}
+                              </td>
+
+                              <td >
+                                {{attentionInfo.attention.date_time_end}}
+                              </td>
+
+                              <td ng-hide="false">
+                                <button class="btn btn-info" ng-click="printSticker(attentionInfo)" >
+                                  <i aria-hidden="true" class="fa fa-sticky-note-o"></i>
+                                </button> 
+                              </td>
+
+                              <td>
+                                  <!-- Boton de prestamos de placas-->
+                                <button 
+                                ng-disabled = "attentionInfo.attention.lend_plates == 1"
+                                class="btn btn-info" data-toggle="modal" title="Prestamos de placas" type="button" ng-click="showModalLendPlate(attentionInfo.attention)" ng-if="selectedType == 3">
+                                  <i aria-hidden="true" class="fa fa-pencil-square-o">
+                                  </i>
+                                </button>
+
+                              </td>
+                          
+                            </tr>
+                          </tbody>
+                          
+                        </table>
+
+
+
+                        <div 
+                            paging
+                            page="currentattendedAppointments" 
+                            page-size="pageSizeattendedAppointments" 
+                            total="attendedAppointmentsTotal"
+                            adjacent="true"
+                            show-prev-next="true"
+                            paging-action="attendedAppointments(page)"
+                        >
+                        </div>
+                      </div>
+                      <!-- Fin citas asignadas -->
+
+
+
+
+
+
+
+
+
+
+                 </div>  
+
+                 <!-- Fin contenedor de las tablas  -->
+
+                </div> 
+            </div>
+        </form>
+       </div>         
+</div> 
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll add-confirmation" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-header clearfix text-left">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-14"></i>
+          </button>
+            <h5> <span class="semi-bold">Prestamo de Placas</span></h5>
+        </div>
+          <div class="modal-body">
+
+            <form name="confirmForm" role="form" novalidate>
+
+              <div class="row">
+
+                <div class="form-group-attached">
+
+                  <div class="row clearfix"> 
+
+                   <!-- Name -->
+
+                  <div class="col-md-4">
+                    <div class="form-attached">
+                      <div pg-form-group class="form-group form-group-default required">
+                        <label>Nombre</label>
+                        <input type="name" class="form-control ng-valid-required" ng-model="lend.delivered" required=""></input>
+                      </div>
+                    </div>
+                  </div>
+
+
+                   <!-- End Name -->
+
+                    <!-- Document -->
+
+                    <div class="col-md-4">
+                      <div class="form-attached">
+                        <div pg-form-group class="form-group form-group-default required">
+                          <label>Documento de identidad</label>
+                          <input type="text" class="form-control ng-valid-required" ng-model="lend.document" required=""></input>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- End Document -->
+
+                    <!-- Adress -->
+
+                    <div class="col-md-4">
+                      <div class="form-attached">
+                        <div pg-form-group class="form-group form-group-default required">
+                          <label>Dirección</label>
+                          <input type="text" class="form-control ng-valid-required" required="" ng-model="lend.direction" ></input>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- End Adress -->
+
+                    <!-- Phone -->
+
+                    <div class="col-sm-4">
+                      
+                      <div class="form-group-attched">
+                        <div pg-form-group class="form-group form-group-default required">
+
+                          <label>Teléfono</label>
+                          <input type="tel" class="form-control ng-valid-required" required="" ng-model="lend.phone"></input>
+                          
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- End Phone -->
+
+                    <!-- Obervation -->
+
+                    <div class="col-sm-8">
+                      
+                      <div class="form-group-attched">
+                        <div pg-form-group class="form-group form-group-default required">
+
+                      
+                        <label>Observación</label>
+                        <textarea type="tel" class="form-control ng-valid-required" required="" ng-model="lend.observations"></textarea>
+                          
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <!-- End Observation -->
+                  </div>
+              
+                    <!-- Button pla -->
+                    
+                    <div class="row clearfix">
+                      <div class="col-sm-6">
+
+                              <button class="btn btn-info btn-block" ng-click="updateLendPLate()" ng-disabled="confirmForm.$invalid" >ACEPTAR</button>
+                      </div> 
+                      <div class="col-sm-6">
+
+                              <button class="btn btn-info btn-block" ng-click="hideModalLendPlate()"  >Cancelar</button>
+                      </div>        
+                    </div>
+                    <!-- End Button pla -->
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+      </div>     
+               
+    </div>
+  </div>
+</div>

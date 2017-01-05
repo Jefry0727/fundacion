@@ -1,0 +1,576 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Resgistrat Productos Nuevos</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Resgistrat Productos Nuevos</h3>
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+             -->
+             <!-- CONTENT GOES HERE-->
+
+             <form name="registerProductForm" role="form" novalidate>
+                <div class="row">
+
+                    <div class="form-group-attached">
+
+
+                        <!-- Row One -->
+
+                        <div class="row clearfix">
+
+                            <!-- Date -->
+
+                            <div class="col-sm-2">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+
+                                        <label>
+                                            Fecha de ingreso:
+                                        </label>
+                                        {{date}}
+                                    </div>
+                                </div>
+                            </div>   
+
+                            <!-- End Date -->
+
+                            <!-- Cups -->
+
+                            <div class="col-sm-1">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : registerProductForm.cup.$invalid && !registerProductForm.cup.$pristine }">
+
+                                        <label>CUP</label>
+
+                                        <input type="textarea" 
+                                        name="cup"
+                                        ng-model="productM.cup"
+                                        placeholder="Cup"
+                                        class="form-control"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="El nombre del producto es requerido" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required/>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- End Cups -->
+
+                            <!-- Name Product -->
+
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : registerProductForm.name.$invalid && !registerProductForm.name.$pristine }">
+
+                                        <label>Nombre del Producto</label>
+
+                                        <input type="textarea" 
+                                        name="name"
+                                        ng-model="productM.name"
+                                        placeholder="Nombre del Producto"
+                                        class="form-control"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="El nombre del producto es requerido" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required/>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- End Name Product -->
+
+                            <!-- Seccion -->
+
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+
+                                        <label>Sección del producto</label>
+
+                                        <select
+                                        class=" cs-select cs-skin-slide form-control" 
+                                        ng-model="productM.section_id"  
+                                        ng-options="section.id as section.name for section in sections" 
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required>
+                                        <option value=""> -- Seleccione la Sección -- </option>
+                                    </select>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Seccion -->
+
+                        <!-- value -->
+
+                        <div class="col-sm-1">
+                            <div class="form-group-attached">
+                                <div pg-form-group-default class="form-group form-group-default required" ng-class="{ 'has-error' : registerProductForm.valor.$invalid && !registerProductForm.valor.$pristine }">
+
+                                    <label>Valor</label>
+
+                                    <input type="textarea" 
+                                    name="valor"
+                                    ng-model="productM.value"
+                                    placeholder="$0.00"
+                                    class="form-control"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="El valor del producto es requerido" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element required/>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Value -->
+
+                        <!-- State -->
+
+                        <div class="col-sm-2">
+
+                            <div class="form-group-attached">
+                                <div pg-form-group-default class="form-group form-group-default required">
+                                    <label>Estado</label>
+
+                                    <select
+                                    ng-model="productM.state"
+                                    class ="form-control"
+                                    ng-options ="state.code as state.name for state in state"
+                                    >
+                                    <option value=""> -Seleccione el Estado- </option>
+                                </select>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <!-- End State -->
+
+                    <!-- Product Brand -->
+
+
+
+                    <!-- End Product Brand -->
+
+
+
+
+
+
+                </div>
+
+                <!-- End row One -->
+
+                <!-- Row Two -->
+
+                <div class="row clearfix">
+
+
+
+                    <!-- Product brand -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required"  ng-class="{ 'has-error' : orderDetailForm.brandProduct.$invalid && !orderDetailForm.brandProduct.$pristine }">
+
+                                <label>Forma Farmaseutica</label>
+                                <select class=" cs-select cs-skin-slide form-control" 
+                                name="brandProduct" 
+                                ui-jq="popover" data-container="body" 
+                                data-placement="top" 
+                                data-content="Debe seleccionar" 
+                                data-trigger="manual" 
+                                validate-attached-form-element 
+                                ng-model="selectedFarmaseutic" 
+                                ng-options="item as item.name for item in farmaseuticForm track by item.id"
+                                required>
+                                <option value="">- Seleccione Forma Farmaseutica -</option>
+                            </select>   
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End product brand -->
+
+                <!-- active principle -->
+
+                <div class="col-sm-8">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default">
+
+                            <label>Principio Activo</label>
+
+                            <input type="textarea" 
+                            name="active"
+                            ng-model="productM.active_principle"
+                            placeholder="Nombre del Producto"
+                            class="form-control"
+                            ui-jq="popover" 
+                            data-container="body" 
+                            data-placement="top" 
+                            data-content="Ingrese Principio Activo del Medicamento" 
+                            data-trigger="manual" 
+                            validate-attached-form-element />
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End Name Product -->
+
+            </div>
+            <!-- End row -->
+
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                    <button class="btn btn-info btn-block" ng-click="addProducts()" ng-disabled = "registerProductForm.$invalid"><i class="fa fa-sign-in"></i> Registrar Entrada</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+</form>                
+</div>
+
+<div class="container-fluid container-fixed-lg">
+
+    <table class="table" ng-init="pageResultsNewProduct()">
+        <thead>
+
+           <th>Cups</th>
+           <th>Name</th>
+           <th>Sección</th>
+           <th>Editar</th>
+           <th>Estado</th>
+           
+           <tbody>
+            <tr ng-repeat ="product in products">
+
+                <td> {{product.cup}} </td> 
+                <td> {{product.name}} </td>
+                <td>
+                    <span ng-if="product.section_id == 1">
+                        <label>Medicamentos</label>
+                    </span>
+
+                    <span ng-if="product.section_id == 2">
+                        <label>Material para Imagenología</label>
+                    </span>
+
+                    <span ng-if="product.section_id == 3">
+                        <label>Material Médico Quirúrgico</label>
+                    </span>
+
+                </td> 
+                <td><button class="btn btn-info" ng-click="showEditProduct(product)"><i class="fa fa-edit"></i>Editar</button></td>
+                <td>
+                    <span ng-if="product.state == 1">
+                        <button class="btn btn-info" ng-click="stateAct(product)"><fa class="fa fa-check"></fa> Habilitado</button>
+                    </span>
+                    <span ng-if="product.state != 1"
+                    <button class="btn btn-primary" ng-click="stateAct(product)"><fa class="fa fa-times"></fa> Inhabilitado</button>
+                </span>
+            </td>
+        </tr>
+    </tbody>
+</thead>
+</table>
+
+<div 
+paging
+page="currentPageNewProduct" 
+page-size="pageSizeNewProduct" 
+total="total"
+adjacent="true"
+show-prev-next="true"
+paging-action="pageResultsNewProduct(page)"
+>
+</div> 
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll edit-product" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="pg-close fs-14"></i>
+                  </button>
+                  <h5>Editar <span class="semi-bold">Producto</span></h5>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+
+                    <form name="editProductForm" role="form" novalidate>
+
+                     <div class="form-group-attached">
+                        <div class="row clearfix">
+
+                            <!-- Edit Cup -->
+
+                            <div class="col-sm-4">
+                                <div class="form-group-attached">
+                                    <div pg-form-group-default class="form-group form-group-default required" ng-class="{ 'has-error' : editProductForm.editCup.$invalid && !editProductForm.editCup.$pristine }">
+                                        <label>Cup</label>
+                                        <input type="textarea" 
+                                        name="editCup"
+                                        ng-model="updateProduct.cup"
+                                        placeholder="Cup"
+                                        class="form-control"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="El nombre del producto es requerido" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required/>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- End Edit Cup -->
+
+                            <!-- Edit Product Name -->
+
+                            <div class="col-sm-8">
+                                <div class="form-group-attached">
+                                    <div pg-form-group-default class="form-group form-group-default required" ng-class="{ 'has-error' : editProductForm.productEdit.$invalid && !editProductForm.productEdit.$pristine }">
+                                        <label>Nombre</label>
+                                        
+                                        <input type="textarea" 
+                                        name="productEdit"
+                                        ng-model="updateProduct.name"
+                                        placeholder="Nombre del Producto"
+                                        class="form-control"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="El nombre del producto es requerido" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required/>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- End Edit Product Name -->
+
+                        </div>
+                        <!-- End Firts Row -->
+
+                        <!-- Row tow -->
+
+                        <div class="row clearfix">
+
+                            <!-- Edit Product Section -->
+
+                            <div class="col-sm-6">
+                                <div class="form-group-attached">
+                                    <div pg-form-group-default class="form-group form-group-default required">
+                                        <label>Sección del Producto</label>
+
+                                        <select
+                                        class=" cs-select cs-skin-slide form-control" 
+                                        ng-model="updateProduct.section_id"  
+                                        ng-options="section.id as section.name for section in sections" 
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required>
+                                        <option value=""> -- Seleccione la Sección -- </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Edit Product Section -->
+
+                        <!-- Edit Value -->
+
+                        <div class="col-sm-6">
+                            <div class="form-group-attached">
+                                <div pg-form-group-default class="form-group form-group-default required" ng-class="{ 'has-error' : editProductForm.editValor.$invalid && !editProductForm.editValor.$pristine }">
+                                    <label>Valor</label>
+                                    <input type="textarea" 
+                                    name="editValor"
+                                    ng-model="updateProduct.value"
+                                    placeholder="$0.00"
+                                    class="form-control"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="El valor del producto es requerido" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Edit Value -->
+
+                    </div>
+
+                    <!-- End Tow Row -->
+
+
+
+
+
+
+
+
+
+                    <!-- Three Row -->
+                    <div class="row clearfix">
+
+                        <!-- Edit State -->
+
+                        <div class="col-sm-6">
+                            <div class="form-group-attached">
+                                <div pg-form-group-default class="form-group form-group-default required">
+                                    <label>Estado</label>
+
+                                    <select
+                                    class=" cs-select cs-skin-slide form-control" 
+                                    ng-model="updateProduct.state"  
+                                    ng-options="state.code as state.name for state in state" 
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element required>
+                                    <option value=""> -- Seleccione un Estado -- </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Edit State -->
+
+                    <!-- Show Date -->
+
+                    <div class="col-sm-6">
+                        <div class="form-group-attached">
+                            <div pg-form-group-default class="form-group form-group-default">
+                                <label>Fecha de Actualización</label>
+
+                                {{date}}
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Show Date -->
+
+                </div>
+                <!-- End Three Row -->
+
+                <div class="row clearfix">
+
+                    <!-- Product brand -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required"  ng-class="{ 'has-error' : orderDetailForm.brandProduct.$invalid && !orderDetailForm.brandProduct.$pristine }">
+
+                                <label>Forma Farmaseutica</label>
+                                <select class=" cs-select cs-skin-slide form-control" 
+                                name="brandProduct" 
+                                ui-jq="popover" data-container="body" 
+                                data-placement="top" 
+                                data-content="Debe seleccionar" 
+                                data-trigger="manual" 
+                                validate-attached-form-element 
+                                ng-model="selectedFarmaseutic" 
+                                ng-options="item as item.name for item in farmaseuticForm track by item.id"
+                                required>
+                                <option value="">- Seleccione Forma Farmaseutica -</option>
+                            </select>   
+                        </div>
+                    </div>
+                </div>
+
+                <!-- End product brand -->
+
+                <!-- active principle -->
+
+                <div class="col-sm-8">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default">
+
+                            <label>Principio Activo</label>
+
+                            <input type="textarea" 
+                            name="active"
+                            ng-model="updateProduct.active_principle"
+                            placeholder="Nombre del Producto"
+                            class="form-control"
+                            ui-jq="popover" 
+                            data-container="body" 
+                            data-placement="top" 
+                            data-content="Ingrese Principio Activo del Medicamento" 
+                            data-trigger="manual" 
+                            validate-attached-form-element />
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- End Name Product -->
+            </div>
+        </div>
+
+        <button class="btn btn-info btn-block" ng-click="updateProducts()"><i class="fa fa-save"></i> Editar</button>
+
+    </form>
+
+</div>
+
+
+
+</div>
+</div>
+</div>
+<!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+

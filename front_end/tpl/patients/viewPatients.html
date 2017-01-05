@@ -1,0 +1,57 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Plain template</a>
+        </li>
+    </ul>
+
+    <button class="btn btn-info" ng-click="showPatients()"><i class="fa fa-plus"></i> Nuevo</button>
+    <br><br>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Lista De Pacientes</h3>
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+    <table class="table">
+
+        <thead>
+            <th>Nombre Completo</th>
+            <th>Identificación</th>
+            <th>Email</th>
+            <th>Teléfono</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="patients in patients">
+                <td>{{patients.person.first_name}} {{patients.person.last_name}}</td>
+                <td>{{patients.person.identification}}</td> 
+                <td>{{patients.person.email}}</td>   
+                <td>{{patients.person.phone}}</td> 
+                <td>
+                     <button class="btn btn-default" ng-click="viewEditPatient(patients)" ><i class="fa fa-edit"></i> Editar</button>
+                    <span ng-if="patients.user.activated == 0">
+                        <button class="btn btn-default" ng-click="activatedUser(patients)"><i class="fa fa-check-square-o"></i> Activar</button>
+                    </span>
+                    <span ng-if="patients.user.activated != 0">
+                        <button class="btn btn-default" ng-click="desactivatedUser(patients)"><i class="fa fa-remove"></i> Desactivar</button>
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+     <div 
+        paging
+        page="currentPageGetPatients" 
+        page-size="pageSizeGetPatients" 
+        total="total"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="getPatients(page)"
+    >
+    </div> 
+</div>

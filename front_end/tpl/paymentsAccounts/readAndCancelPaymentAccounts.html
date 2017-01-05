@@ -1,0 +1,120 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">búsqueda y cancelación de cuentas de cobro</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> búsqueda de cuentas de cobro</h3>
+
+</div>
+<!-- END HEADER -->
+
+<!-- formulario  de busqueda y cancelacion-->
+<div class="w3-container w3-white" style="width: 80%; margin: auto">
+    <div class="w3-left-align">
+        <label class="w3-text-look w3-label">
+            Nùmero de cuenta de cobro:
+        </label>
+    </div>
+
+    <input type="text" class="w3-input w3-border-0 " style="height:2.5em" ng-model="PaymentAccount.paymentAccountConsec">
+    
+    <div class="w3-padding-small w3-center w3-margin-bottom">
+        <button class="w3-btn w3-blue w3-text-upper w3-round-small" style="width:8.4em" ng-click="PaymentAccount.searchPaymentAccount()" >
+            consultar
+        </button>
+        
+        <button ng-click="PaymentAccount.cancelConfirmation()"class="w3-btn w3-blue w3-text-upper w3-round-small" style="width:8.4em">
+            anular
+        </button>
+    </div>
+</div>
+<!-- ./formulario  de busqueda y cancelacion-->
+
+<!-- MENSAJE DE QUE NO SE ENCONTRO RESULTADO -->
+<p class="w3-text-red w3-center w3-padding-xxlarge" name="no-resultado" style="display: none" >
+    No se encontraron resultados.
+</p>
+<!-- ./MENSAJE DE QUE NO SE ENCONTRO RESULTADO -->
+
+<div class="w3-container" style="width:80%; margin:auto;display:none" name="resultado-consulta" >
+    <table class="w3-table">
+        <thead class="w3-tranparent">
+            <th>Fecha</th>
+            <th>Núm de orden</th>
+            <th>N. Iden</th>
+            <th>Paciente</th>
+            <th>N. Factura</th>
+            <th>C. Servicio</th>
+            <th>Vr. servicio</th>
+            <th>Copago</th>
+            <th>Total</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat=" item in resultado | filter: filter" class="w3-white">
+
+                <td>
+                    {{ item.created.substring(0,10)  }}
+                </td>
+                <td>
+                    {{ item._matchingData.Orders.order_consec }}
+                </td>
+                <td>
+                    {{ item._matchingData.People.identification }}
+                </td>
+                <td>
+                    {{ item._matchingData.People.first_name + ' ' + item._matchingData.People.middle_name + ' ' + item._matchingData.People.last_name }}
+                </td>
+                <td>
+                    {{ item.bill_number }}
+                </td>
+                <td>
+                   {{ item._matchingData.Studies.cup }} {{ item._matchingData.Studies.name.substring( 0, 27) + '...' }} 
+                </td>
+                <td>
+                    {{ item._matchingData.Payments.valor = item._matchingData.Payments.copayment + item._matchingData.Payments.credit}}
+                </td>
+                <td>
+                    {{ item._matchingData.Payments.copayment }}
+                </td>
+                <td>
+                    {{ item._matchingData.Payments.credit }}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll anulation" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Anulación de facturas</h5>
+            </div>
+            <div class="modal-body">
+                ¿esta segura(o) de anular está cuenta de cobro?<br/>
+                {{ message_modal }}
+                <div class="w3-center w3-margin-top">
+                    <button class="w3-btn w3-blue w3-round-small w3-text-upper" ng-click="PaymentAccount.cancel()">
+                        si
+                    </button>
+                    <button class="w3-btn w3-blue w3-round-small w3-text-upper" data-dismiss="modal">
+                        no
+                    </button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- /.modal-dialog -->

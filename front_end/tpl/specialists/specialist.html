@@ -1,0 +1,357 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+        	<a class="active" href="#">Agregar Profesional De La Salud</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> Nuevo Profesional De La Salud</h3>
+
+</div>
+
+<div class='row'>
+
+	<div class="col-sm-12">
+		<form role="form" name="newProfessionalProfile" autocomplete="off" name="orderDetailForm"  novalidate id= 'formid'>
+
+        
+
+    <div class="container-fluid container-fixed-lg">
+   
+        <div class="row">
+    
+             <!--       <h3>
+                Buscar Paciente
+            </h3> -->
+            <p class="text-danger">
+               <!--  {{error}} -->
+            </p>
+            <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : newProfessionalProfile.nameP.$invalid && !newProfessionalProfile.nameP.$pristine }" >
+                <label for="">
+                    <strong>
+                        Ingrese numero de identificación
+                    </strong>
+                </label>
+                <input  autofocus="" 
+                name="nameP"
+                class="form-control" 
+                ng-blur="searchPatients()" 
+                ng-model="searchPeople.identification" 
+                placeholder="Numero de Identificación" 
+                type="text" 
+                ui-jq="popover" 
+                data-container="body" 
+                data-placement="top" 
+                data-content="La identificación es requerida" 
+                data-trigger="manual" 
+                validate-attached-form-element 
+
+                ng-keypress = "enterPressed($event)"
+                required />
+
+
+            </div>
+
+            
+        </div>
+        <div class="row">
+            <!-- START PANEL -->
+
+
+            <div class="row">
+               
+                    <h3>
+                        Información Profesional De La Salud 
+                    </h3>
+                    <div class="form-group-attached">
+                        <div class="row clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required" >
+                                        <label>
+                                            Primer Nombre
+                                        </label>
+                                        <input class="form-control" name="first_name" ng-model="people.first_name" type='text'
+                                        ui-jq="popover" data-container="body" data-placement="top" data-content="El primer apellido  es requerido" data-trigger="manual" validate-attached-form-element required placeholder ='Primer Nombre'/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>
+                                            Segundo Nombre
+                                        </label>
+                                        <input class="form-control" name="middle_name" placeholder ='Segundo Nombre' ng-model="people.middle_name"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required " >
+                                        <label>
+                                            Primer Apellido
+                                        </label>
+                                        <input class="form-control" name="last_name" ng-model="people.last_name" type="text" ui-jq="popover" data-container="body" data-placement="top" data-content="El primer apellido  es requerido" data-trigger="manual" validate-attached-form-element required placeholder ='Primer Apellido'/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>
+                                            Segundo Apellido
+                                        </label>
+                                        <input type='text' class="form-control" name="last_name_two" ng-model="people.last_name_two" ui-jq="popover" data-container="body" data-placement="top" data-content="El segundo apellido es requerido" data-trigger="manual" validate-attached-form-element placeholder ='Segundo Apellido'>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-4">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required" >
+                                        <label>
+                                            Tipo Documento
+                                        </label>
+                                        <select class=" cs-select cs-skin-slide form-control" 
+                                        name="document_types_id" 
+                                        ng-change = "setSelectedTypeId()"
+                                        ng-model="selectedTypeId" 
+                                        ng-options="documentTypes.id as documentTypes.type for documentTypes in documentTypes" 
+                                        ui-jq="popover" data-container="body" 
+                                        data-placement="top" 
+                                        data-content="Debe seleccionar un tipo de documento" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element 
+                                        required>
+                                        <option value=""> -Seleccione un tipo de I.D- </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" >
+                                    <label>
+                                        Genero
+                                    </label>
+                                    
+
+                                    <select 
+                                    class="cs-select cs-skin-slide form-control required" 
+                                    ng-model="selectGender" 
+                                    ng-change="changeSelectedGender()"
+                                    ng-options="item as item.name for item in gender track by item.code"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Debe seleccionar un tipo de genero" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element 
+                                    required>
+                                    <option value=""> -Seleccione un tipo de genero- </option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" >
+                                <label>
+                                    Fecha Nacimiento:
+                                </label>
+                                <div 
+                                class="input-group date" 
+                                ui-jq="datepicker" 
+                                ui-options="{format:'yyyy-mm-dd'}">
+
+                                <input class="form-control" 
+                                name="birthdate" 
+                                id='birthdate' 
+                                ng-model="people.birthdate" 
+                                placeholder="yyyy-mm-dd" 
+                                required="" 
+                                type="text" 
+                                ng-change="calculateAgeChange(people.birthdate)" 
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="La fecha de nacimiento es requerida" 
+                                data-trigger="manual" 
+                                validate-attached-form-element 
+                                required />
+
+                                <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                    <i class="fa fa-calendar">
+                                    </i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default required">
+                            <label>
+                                Edad
+                            </label>
+                            <input class="form-control" name="birthdate" ng-model="calculated_age" id='edad' readonly="true"  type="text" Placeholder="Edad"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default required">
+                            <label>
+                                Teléfono:
+                            </label>
+                            <input class="form-control" name="phone" ng-model="people.phone" type="text" ui-jq="popover" data-container="body" data-placement="top" data-content="El teléfono  es requerido" data-trigger="manual" validate-attached-form-element placeholder="Teléfono">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default required">
+                            <label>
+                                E-mail:
+                            </label>
+                            <input class="form-control" name="email" ng-model="people.email" placeholder="E-mail"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-4">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default required" >
+                            <label>
+                                Departamento:
+                            </label>
+                            <select class=" cs-select cs-skin-slide form-control" 
+                            ng-change="getMunicipalities()" 
+                            ng-model="selectedDepatment" 
+                            ng-options="item as item.name for item in Departments track by item.id" 
+                            ui-jq="popover" data-container="body" 
+                            data-placement="top"
+                            data-content="Debe seleccionar un departamento" 
+                            data-trigger="manual" 
+                            validate-attached-form-element 
+                            required>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default required">
+                        <label>
+                            Municipio :
+                        </label>
+                        <select class=" cs-select cs-skin-slide form-control" 
+                        ng-model="selectedMunicipalitie" 
+                        ng-options="item as item.municipality for item in Municipalities track by item.id" 
+                        ng-change="changeSelectedMunicipality()" required>
+                    </select>
+                </div>
+            </div>
+        </div>
+    
+    <div class="col-sm-4">
+     <div class="form-group-attached">
+        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : orderDetailForm.address.$invalid && !orderDetailForm.address.$pristine }">
+            <label>
+                Dirección:
+            </label>
+            <input class="form-control" name="address" ng-model="people.address" ui-jq="popover" data-container="body" data-placement="top" data-content="la dirección es requerida" data-trigger="manual" validate-attached-form-element required/>
+        </div>
+    </div>
+</div>
+    <div class="col-sm-4">
+            <div class="form-group-attached">
+                <div pg-form-group class="form-group form-group-default required" >
+                    <label>
+                        Tarjeta Profesional
+                    </label>
+                    <input class="form-control" name="email" ng-model="newSpecialist.professionar_card" placeholder="Tarjeta Profesional" required />
+            </div>
+        </div>
+    </div>
+     <div class="col-sm-4">
+            <div class="form-group-attached">
+                <div pg-form-group class="form-group form-group-default required" >
+                    <label>
+                        Especialidad
+                    </label>
+                    <input class="form-control" name="email" ng-model="newSpecialist.speciality" placeholder="Especialidad" required />
+            </div>
+        </div>
+    </div>
+
+
+
+          <!-- Firm File -->
+
+          <div class="col-sm-4">
+          
+            <div class="form-group-attached">
+              
+              <div class="form-group form-group-default ">
+
+              <!-- <label>Firma</label>   -->
+
+                <button 
+                    type="button" 
+                    class="btn btn-info btn-block" 
+                    ng-click="triggerClickUploadSign()" 
+                    style="margin-top: 2px; margin-bottom: 3px;"
+                >
+                <i class="fa fa-edit"></i>
+                Adjuntar Firma
+                </button>
+                
+                <input style="display:none;" type="file" id="signFileInput" file-model="myFile" name="file"/>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- End Firm File -->
+
+          <!-- Button Up Firm File -->
+
+         <!--  <div class="col-sm-2">
+
+           <button class="btn btn-info btn-block" style="height: 52px" ng-disabled="myFile == undefined" ng-click="uploadFile()">Subir Firma</button>
+            
+          </div> -->
+
+          <!-- End Button Up Firm File -->
+
+	</form>
+<div class="col-sm-2"></div>
+<div class="row clearfix">
+
+    <div class="col-sm-12">
+
+        <button type="button" class="btn btn-info btn-block" ng-click="addPeople()" type="submit">
+            <i class="fa fa-user-md"></i> Guardar Profesional Salud
+        </button>
+
+    </div>
+
+
+</div>
+</div>
+
+	

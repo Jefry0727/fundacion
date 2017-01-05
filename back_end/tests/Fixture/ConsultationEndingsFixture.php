@@ -1,0 +1,45 @@
+<?php
+namespace App\Test\Fixture;
+
+use Cake\TestSuite\Fixture\TestFixture;
+
+/**
+ * ConsultationEndingsFixture
+ *
+ */
+class ConsultationEndingsFixture extends TestFixture
+{
+
+    /**
+     * Fields
+     *
+     * @var array
+     */
+    // @codingStandardsIgnoreStart
+    public $fields = [
+        'id' => ['type' => 'integer', 'length' => 11, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
+        'code' => ['type' => 'string', 'length' => 2, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        'decription' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'comment' => '', 'precision' => null, 'fixed' => null],
+        '_constraints' => [
+            'primary' => ['type' => 'primary', 'columns' => ['id'], 'length' => []],
+        ],
+        '_options' => [
+            'engine' => 'InnoDB',
+            'collation' => 'utf8_general_ci'
+        ],
+    ];
+    // @codingStandardsIgnoreEnd
+
+    /**
+     * Records
+     *
+     * @var array
+     */
+    public $records = [
+        [
+            'id' => 1,
+            'code' => '',
+            'decription' => 'Lorem ipsum dolor sit amet'
+        ],
+    ];
+}

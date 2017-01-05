@@ -1,0 +1,263 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+        	<a class="active" href="#">Agregar Usuarios</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> Nuevo Usuario</h3>
+</div>
+
+<div class='row'>
+<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<form class="" role="form" name="peopleForm"  novalidate>
+
+			 <!-- firstName -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Primer Nombre:</label>   
+		        <input name="first_name" ng-model="newPeople.first_name" class="form-control"  placeholder="Primer nombre del nuevo paciente" required/>
+
+		    </div>
+
+		     <!-- Validating patient firstName -->
+                <div ng-show="peopleForm.first_name.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.first_name.$error.required" class="text-danger">
+                        Debe asignar un nombre para el nuevo usuario.
+                    </p>  
+
+                </div>   
+
+		    <!-- secondName -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Segundo Nombre:</label>   
+		        <input name="middle_name" ng-model="newPeople.middle_name" class="form-control"  placeholder="Segundo nombre del paciente" required/>
+
+		    </div>
+
+
+		    <!-- Validating patient firstName -->
+                <div ng-show="peopleForm.middle_name.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.middle_name.$error.required" class="text-danger">
+                        Debe asignar un segundo nombre para el nuevo usuario.
+                    </p>  
+
+                </div>   
+
+		    <!-- firstLastName -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Primer Apellido:</label>   
+		        <input name="last_name" ng-model="newPeople.last_name" class="form-control"  placeholder="Primer apellido del paciente" required/>
+
+		    </div>
+
+
+		    <!-- Validating patient firstName -->
+                <div ng-show="peopleForm.last_name.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.last_name.$error.required" class="text-danger">
+                        Debe asignar un primer apellido para el nuevo usuario.
+                    </p>  
+
+                </div>  
+
+		    <!-- secondLastName -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Segundo Apellido:</label>   
+		        <input name="last_name_two" ng-model="newPeople.last_name_two" class="form-control"  placeholder="Segundo apellido del paciente" required/>
+
+		    </div>
+
+		     <!-- Validating patient firstName -->
+                <div ng-show="peopleForm.last_name_two.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.last_name_two.$error.required" class="text-danger">
+                        Debe asignar un segundo apellido para el nuevo usuario.
+                    </p>  
+
+                </div>  
+
+		    <!-- documentType -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Tipo Documento:</label>   
+		        <br>
+			   	<select class="cs-select cs-skin-slide" ng-model="newPeople.document_types_id" name = 'document_types_id' ng-options="documentTypes.id as documentTypes.type for documentTypes in documentTypes">
+			    </select><br>
+
+		    </div>
+
+		     <!-- Validating patient firstName -->
+                <div ng-show="peopleForm.document_types_id.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.document_types_id.$error.required" class="text-danger">
+                        Debe asignar un tipo de documento para el nuevo usuario.
+                    </p>  
+
+                </div>  
+
+		    <!-- identification -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Identificación:</label>   
+		        <input name="identification" ng-model="newPeople.identification" type='number' class="form-control"  placeholder="Identificación del nuevo paciente" required/>
+
+		    </div>
+
+		    <!-- Validating patient identification -->
+                <div ng-show="peopleForm.identification.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.identification.$error.required" class="text-danger">
+                        Debe asignar un tipo de identificación para el nuevo usuario.
+                    </p> 
+
+
+                     <!-- unique -->
+						<p class="text-danger">
+						   {{uniqueIdentification}}
+						</p>  
+
+                </div> 
+
+		    <!-- birthday -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Fecha Nacimiento:</label>   
+		        <input name="birthdate" ng-model="newPeople.birthdate" type='date' class="form-control"  placeholder="Cumpleaños del paciente" required/>
+
+		    </div>
+
+		    <!-- Validating patient birthdate -->
+                <div ng-show="peopleForm.birthdate.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.birthdate.$error.required" class="text-danger">
+                        Debe asignar una fecha de nacimiento.
+                    </p>  
+
+                </div> 
+
+		    <!-- genre -->
+		    <div pg-form-group class="form-group form-group-default">
+		        <label>Genero:</label>   
+		        <select class="cs-select cs-skin-slide" ng-model="newPeople.gender" ng-options="gender.code as gender.name for gender in gender"></select>
+		    </div>
+
+		    <!-- address -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Dirección:</label>   
+		        <input name="address" ng-model="newPeople.address" class="form-control"  placeholder="Dirección del paciente" required/>
+
+		    </div>
+
+
+		    <!-- Validating patient address -->
+                <div ng-show="peopleForm.address.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.address.$error.required" class="text-danger">
+                        Debe asignar una dirección para el nuevo usuario.
+                    </p>  
+
+                </div> 
+
+
+		    <!-- phone -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Teléfono:</label>   
+		        <input name="phone" ng-model="newPeople.phone" class="form-control"  type='number' placeholder="Telefono del paciente" required/>
+
+		    </div>
+
+		      <!-- Validating patient phone -->
+                <div ng-show="peopleForm.phone.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.phone.$error.required" class="text-danger">
+                        Debe asignar un teléfono para el nuevo usuario.
+                    </p>  
+
+                </div> 
+
+		    <!-- email -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>E-mail:</label>   
+		        <input name="email" ng-model="newPeople.email" class="form-control"  placeholder="E-mail del paciente" required/>
+
+		    </div>
+
+		      <!-- Validating patient email -->
+                <div ng-show="peopleForm.email.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.email.$error.required" class="text-danger">
+                        Debe asignar un E-Mail para el nuevo usuario.
+                    </p> 
+
+                <!-- unique -->
+				<p class="text-danger">
+				   {{uniqueEmail}}
+				</p> 
+
+                </div> 
+ 			
+
+
+		    <!-- user -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Usuario:</label>   
+		        <input name="username" 		ng-model="newUser.username" class="form-control"  placeholder="Usuario del paciente" required/>
+		    </div>
+
+
+
+		    <!-- Validating patient user -->
+                <div ng-show="peopleForm.username.$touched">
+
+                    <!-- required -->
+                    <p ng-show="peopleForm.username.$error.required" class="text-danger">
+                        Debe asignar un nombre usuario.
+                    </p>  
+
+                </div> 
+
+		    <!-- role -->
+		    <div pg-form-group class="form-group form-group-default">
+		        <label>Roles:</label>   
+			    <select class="cs-select cs-skin-slide" ng-model="newUser.roles_id" name = 'roles_id' ng-options="role.id as role.name for role in roles">
+			    </select>
+			    <br>
+		    </div>
+    
+
+		    <button type="button" class="btn btn-info btn-block"  ng-disabled="peopleForm.$invalid"  ng-click="addPeoples()">
+		        <i class="fa fa-save"></i> Guardar
+		    </button>
+		    <br><br>
+		                            
+		</form>
+	</div>
+	<div class="col-sm-3"></div>
+</div>
+
+	

@@ -1,0 +1,386 @@
+<?php
+namespace App\Controller;
+
+use App\Controller\AppController;
+
+use Cake\Datasource\ConnectionManager;
+
+/**
+ * AttentionStudies Controller
+ *
+ * @property \App\Model\Table\AttentionStudiesTable $AttentionStudies
+ */
+class RipsController extends AppController
+{
+
+    private $dateIni;
+    private $dateEnd;
+    private $sede;
+    private $cliente;
+    private $plan;
+    private $numRemision;
+    private $billsId;
+    private $ordersId;
+
+    public function initialize()
+    {
+        parent::initialize();
+        $this->Auth->allow(['genTxt', 'downloadTxt']);
+    }
+
+
+    /**
+     * Funcion que genera un documento tipo txt para rips
+     * @param  string $name   Nombre del archivo
+     * @param  string $suffix sufijo del archivo
+     * @param  Array  $dataArray arreglo bidimensional con solo indices con la informacion a escribir 
+     * @return File   Archivo .txt de descarga automatico
+     */
+    public function genTxt($name = 'US',$suffix =''){
+
+        $this->autoRender = false;
+
+        $dataArray = $this->request->data;
+
+        /**
+         * Longitud del arreglo
+         * @var Int
+         */
+        $lenght = count($dataArray);
+
+        /**
+         * Ruta fisica del servidor
+         * @var String
+         */
+        $dir = $this->getPhysicalResourcesPath();
+
+        /**
+         * Ruta completa donde se guardaran los rips temporalmente
+         * @var String
+         */
+        $filePath = $dir.'rips/'.$name.$suffix.'.TXT';
+            
+        /**
+         * manejo de archivo
+         */
+        $handle = fopen($filePath, 'w') or die('Cannot open file:  '.$filePath);
+
+
+        /**
+         * Recorrido de datos
+         */
+        foreach ($dataArray as $row) {
+            
+            unset($row['id']);       
+            unset($row['fecha']);
+            unset($row['entidad']);
+            unset($row['state']);  
+            unset($row['orderConsectuiva']);      
+
+
+            /**
+             * Linea a escribir
+             * @var string
+             */
+            $line = '';
+
+            /**
+             * Recorrido de cara fila
+             */
+            foreach ($row as $data) {
+                
+                $line .= $data.',';    
+
+            }
+
+            /**
+             * eliminacion del ultimo caracter
+             * @var String
+             */
+            $line = substr ($line, 0, -1);
+            
+            /**
+             * Linea mas salto
+             * @var String
+             */
+            $line = $line.PHP_EOL;
+            /**
+             * Escritura en en 
+             */
+            fwrite($handle, $line);
+
+        }
+        
+        /**
+         * Cierre del archivo
+         */
+        fclose($handle);    
+
+
+        /**
+         * Descarga del archivo generado
+         */
+        $this->response->file($filePath, array('download' => true, 'name' => $name.$suffix.'.TXT'));
+
+    }
+
+    public function downloadTxt($name = "US"){
+        $this->autoRender = false;
+
+         $filePath = ROOT . DS . "webroot" .DS . "rips" . DS; 
+
+         //$name = "US";
+
+         $suffix ="Archivo";
+         
+         $this->response->file($filePath . "US" . ".TXT", array('download' => true, 'name' => $name.$suffix.'.TXT'));
+
+    }
+
+   /**
+     * Función que devuelve la ruta del servidor donde se suben los archivos
+     * @return String ruta
+     */
+    public function getPhysicalResourcesPath(){
+
+        return WWW_ROOT;           
+
+    }
+
+
+    /* Carlos Felipe Aguirre Taborda 2016-11-28 12:28:45
+       Establece las propiedades del objeto para ejecutar los filtros sobre las facturas
+    */
+    public function setRipProperties( $data = null ){
+        if( $data == null ){
+
+            $data = $this->request->data;
+
+        }
+
+        foreach( $data as $llave => $valor ){
+
+            $this->{$llave} = $valor;
+
+        }
+        switch( $data['filter'] ){
+
+            case '1':
+                $resultado = $this->getBillsByClient( $data['offset'] );
+                $this->set( compact( 'resultado' ) );
+                break;
+            case '2':
+                $resultado = $this->getBillsByClient( $data['offset'] );
+                $this->set( compact( 'resultado' ) );
+                break;
+
+
+
+        }
+        
+
+    
+    }
+
+
+
+    /*
+      Carlos Felipe Aguirre Taborda GATOLOCO STUDIOS S.A.S
+      Fecha: 2016-11-28 11:59:26
+      Tipo de retorno:  void
+      Descripción: Obtiene las facuras de ese cliente que esten dentro del rango de fechas
+    */
+    public function getBillsByClient( $page=1 ){
+        $this->loadModel( 'Bills' );
+
+        $dateEnd = $this->dateEnd;
+        $dateIni = $this->dateIni;
+        $cliente = $this->cliente;
+        $plan    = $this->plan;
+        $sede    = $this->sede;
+
+        $resultado  =  $this->Bills->find()
+                                    ->select([
+                                        'id',
+                                        'bill_number',
+                                        'created'    
+                                    ])
+                                    ->where([ 
+                                        'Bills.created >=' => $dateIni,
+                                        'Bills.created <=' => $dateEnd
+                                    ])
+<<<<<<< .merge_file_xCUNnv
+                                    ->matching( 'Payments', 
+                                        function( $q ){ 
+                                            return $q->select([
+                                                'debit',
+=======
+                                    ->matching( 'BillResolutions.BillTypes', function( $q ){ 
+                                        return $q->select([])->where(['BillTypes.id'=>1]);
+                                    } )
+                                    ->matching( 'Payments', 
+                                        function( $q ){ 
+                                            return $q->select([
+                                                'copayment',
+>>>>>>> .merge_file_kDzPuy
+                                                'credit',
+                                                'donation',
+                                                'discount'
+                                            ]);
+                                        } )
+                                    ->matching('Orders', 
+                                        function( $q ) use( $cliente, $plan, $sede ){
+                                            return $q->select(['id',
+                                                                'order_consec'
+                                            ])
+                                                     ->where([
+                                                         'clients_id' => $cliente,
+                                                         'rates_id'   => $plan,
+                                                         'centers_id' => $sede
+                                                     ]);
+                                         } )
+                                    ->matching('Orders.Patients.People', function($q){
+
+                                        return $q->select([
+                                            'identification',
+                                            'first_name',
+                                            'middle_name',
+                                            'last_name',
+                                            'last_name_two'
+                                        ]);
+                                    })
+                                    ->matching( 'Orders.Appointments.Studies', function( $q ){
+                                        return $q->select([ 'cup', 'name' ])->limit(1);
+                                     } )
+                                    ->limit(30)
+                                    ->page( $page );
+
+        if( $resultado ){
+            $resultado = $resultado->toArray();
+            return $resultado;
+        }
+        else{
+
+            if( $resultado->errors() ){
+                return $resultado->errors();
+            }
+            else{
+
+                return [];
+            }
+            
+
+        
+        }
+    }
+
+
+    /*
+      Carlos Felipe Aguirre Taborda GATOLOCO STUDIOS S.A.S
+      Fecha: 2016-11-30 10:17:13
+      Tipo de retorno: array
+      Descripción: Esta funcion retorna una lista con la información de las facturas
+        que son aptas para hacer las cuentas de cobro
+    */
+    public function getAptBills( $page ){
+        $dateEnd = $this->dateEnd;
+        $dateIni = $this->dateIni;
+        $cliente = $this->cliente;
+        $plan    = $this->plan;
+        $sede    = $this->sede;
+
+        $resultado =  $this->Bills->find();
+        $connection = ConnectionManager::get('default');
+<<<<<<< .merge_file_xCUNnv
+=======
+        $results = $connection->execute('
+            	SELECT 
+		            orders.id as orders_id,
+		            results.id as results_id,
+		            bills.id as bills_id,
+		            bills.bill_number,
+		            count(orders.id) as num_resultados,
+		            count(orders.id) as comparar,
+		            BILLSESTUDIOS.num_estudios 
+	            FROM bills 
+	            	LEFT JOIN 
+	            		orders_bills
+                        ON
+                        orders_bills.bills_id        = bills_id
+	            	LEFT JOIN
+	            		orders
+                        ON
+                        orders.id 			         = orders_bills.orders_id
+	            	LEFT JOIN
+	            		order_appointments
+                        ON
+                        order_appointments.orders_id = orders.id
+	            	LEFT JOIN
+	            		appointments
+                        ON
+                        appointments.id              = order_appointments.appointments_id
+	            	LEFT JOIN 
+	            		attentions
+                        ON
+	            		attentions.appointments_id   = appointments.id
+	            	LEFT JOIN
+	            		results
+                        ON
+                       results.attentions_id		 = attentions.id 
+	            	LEFT JOIN
+			        (
+			        	SELECT 
+			        		bills.id as bills_id,
+                            bills.bill_number,
+                            orders.id as orders_id,
+                            count( orders.id ) as num_estudios 
+			        	FROM bills
+			        	LEFT JOIN 
+			        		orders_bills
+                            ON
+                            bills.id = orders_bills.bills_id
+			        	LEFT JOIN
+			        		orders
+                            ON
+                            orders_bills.orders_id = orders.id
+			        	LEFT JOIN
+			        		order_appointments
+                            ON
+                            order_appointments.orders_id = orders.id
+			        	LEFT JOIN
+			        		appointments
+                            ON
+			        		order_appointments.appointments_id = appointments.id
+			        	LEFT JOIN
+			        		studies
+			        		ON
+                            appointments.studies_id        = studies.id
+
+			        	GROUP BY orders_id
+			        )
+                BILLSESTUDIOS 
+                ON
+                (
+			    	BILLSESTUDIOS.bills_id = bills.id
+                    AND
+                    BILLSESTUDIOS.orders_id = orders.id
+                )
+	            WHERE 
+	            		results.complement = 0 
+	            	AND  
+	            		BILLSESTUDIOS.num_estudios 
+	            GROUP BY 
+	            	orders_id
+	            HAVING 
+	            	num_resultados = num_estudios
+        ')->fetchAll('assoc');
+>>>>>>> .merge_file_kDzPuy
+
+
+
+    }
+
+
+
+}
+  

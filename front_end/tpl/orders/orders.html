@@ -1,0 +1,226 @@
+<!-- START PAGE COVER -->
+  <div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Ordenes</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Ordenes</h3>
+
+    <!-- <button class="btn btn-info" ng-click="showModalAddRole()"><i class="fa fa-plus"></i> Nuevo</button> -->
+    
+    <!--Row view service medical-->
+
+
+       <div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <div class="col-md-3">
+          <div class="panel">
+            <div class="panel-body">
+             <div class="row">
+               <div class="col-md-4">
+                  <img class="img-circle" src="assets/img/profiles/avatar.jpg" alt="Generic placeholder image" width="52" height="52">
+               </div>
+               <div class="col-md-8">
+                 <h2>My Lord</h2>
+               </div>
+               <div class="col-md-12">
+                 
+                 <div class="table-responsive">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th>Service</th>
+                        <th>Horario</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Cardiología</td>
+                        <td>8:AM</td>
+                      </tr>
+                      <tr> 
+                        <td>Cardiología</td>
+                        <td>8:AM</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+               </div>
+             </div>
+            </div>
+          </div>
+       </div>
+          
+       </div>   
+      </div><!-- /.row -->
+
+
+        
+         
+
+    <!--Row view service medical-->
+
+  </div>
+
+  <!-- Form new Order -->
+    <div class="container-fluid container-fixed-lg">
+        <div class='row'>
+            <div class="col-sm-3"></div>
+              <div class="col-sm-6">
+                
+                <form class="role" name="newOrderForm" novalidate>
+                  
+                 <!--  order number and validate -->
+                  <label>Número de la Orden</label>
+                  <div pg-form-group class="form-group form-group-default">
+                    
+                    <input name="numOrder" ng-model="newOrder.order_consec" class="form-control" placeholder="Ingrese el número de la orden" required/ >
+                  </div>
+                  
+                  <div ng-show="newOrderForm.numOrder.$touched">
+                    <p ng-show="newOrderForm.numOrder.$error.required" class="text-danger">Dede de indicar el número de la nueva orden</p>
+                  </div>
+                  
+                  <!-- order date created and validate-->
+
+                  <!-- <label>Fecha</label>
+                  <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+
+                      <input type="text" ng-model="newOrderForm.created" name="dateOrder" class="form-control" id='date' placeholder="Fecha" required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                  </div>
+            
+                  <div ng-show="newOrderForm.dateOrder.$touched">
+                    <p ng-show="newOrderForm.$error.required" class="text-danger">Debe de ingresar una fecha</p>
+                  </div> -->
+
+                  <br>
+
+                          <button class="btn btn-info center-block" ng-disabled="newOrderForm.$invalid" ng-click="saveNewOrder()"><i class="fa fa-plus"></i>&ensp;Agregar</button>
+                </form>
+
+              </div>
+            </div>
+        </div>          
+    </div>
+
+    <!--End Form new Order -->
+
+
+
+
+    <div class="container-fluid container-fixed-lg">
+        <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                     ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                      -->
+        <!-- CONTENT GOES HERE-->
+    <table class="table">
+      
+      <thead>
+        <th>Número de la Orden</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+        <th>Opciones</th>
+      </thead>
+
+      <tbody>
+        
+      <tr ng-repeat="orderConsec in orderConsecs">
+        <td>{{orderConsec.order_consec}}</td>
+        <td>{{orderConsec.order_states_id}}</td>
+        <td>{{orderConsec.created}}</td>
+        <td> <button class="btn" ng-click="showEditOrder(orderConsec)"><i class="fa fa-edit"></i>&ensp;Editar</button>
+        <button class="btn" ng-click="showDropOrder(orderConsec)"><i class="fa fa-remove"></i>&ensp;Eliminar</button></td>
+      </tr>
+
+      </tbody>
+    </table>
+
+
+    </div>
+
+ <!-- Modal Delete-->
+    <div class="modal fade slide-up disable-scroll remove-new-order" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+        <div class="modal-dialog ">
+            <div class="modal-content-wrapper">
+                <div class="modal-content">
+                    <div class="modal-body">
+                       <h5> ¿Está seguro que desea eliminar esta Orden?</h5>
+                        <button type="button" class="btn btn-info btn-block" ng-click="dropOrder()">Si
+                        </button>
+                        <button type="button" class="btn btn-info btn-block" ng-click="hideDropOrder()">No
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </div>
+    <!-- /.modal-dialog -->
+    <!--Edn modal remove order-->
+ <!--Modal List Available Service Office-->
+     <div class="modal fade slide-up disable-scroll edit-new-order" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content-wrapper">
+          <div class="modal-content table-block">
+              <div class="modal-header clearfix text-left">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="pg-close fs-14"></i>
+                  </button>
+                  <h5>Editar Orden</h5>
+              </div>
+                <div class="modal-body">
+                <div class="row">
+                  <div id="myFormWizard">
+        <!-- Nav tabs -->
+       
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+           <div class="row">
+             <div class="col-md-12">
+               <form role="form" name="editOrderForm" novalidate>
+                 <div pg-form-group class="form-group form-group-default">
+                   <label>Número de la Orden</label>
+                   <input name="editNumOrder" ng-model="editOrder.order_consec" class="form-control" required/>
+                 </div>
+                 <div  ng-show="editOrderForm.editNumOrder.$touched">
+                   <p ng-show="editOrderForm.editNumOrder.$error.required" class="text-danger">Dede de indicar el número de la nueva orden</p>
+                 </div>
+                 <!--created-->
+
+                  <div pg-form-group class="form-group form-group-default">
+                    <label>Fecha</label>
+                    <input name="fechaOrder" ng-model="editOrder.created" class="form-control" required/>
+                  </div>
+
+                  <div pg-form-group class="form-group form-group-default">
+                    <label>Estado de la Orden</label>
+                    <input name="orderUser" ng-model="editOrder.order_states_id" class="form-contro" required/ >
+                  </div>
+                  <div ng-show="editOrderForm.orderUser.$touched">
+                    <p ng-show="editOrderForm.orderUser.$error.required" class="text-danger">Se debe especificar el estado de la orden</p>
+                  </div>
+                        
+                        <button class="btn btn-info center-block" ng-click="updateNewOrder()"><i class="fa fa-save"></i>Guardar</button>
+
+               </form>
+             </div>
+           </div>
+          </div>
+       </div>
+      </div>
+  </div>
+    <!--Modal List Available Service Office-->
+
+
+
+
+
+
+        

@@ -1,0 +1,320 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>    
+        </li>
+        <li><a class="active" href="#">Consultorios</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Consultorios</h3>
+
+    <button class="btn btn-info" ng-click="showModalAddMedicalOffices()"><i class="fa fa-plus"></i> Nuevo</button>
+
+</div>
+    
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <!-- cargamos los datos de los consultorios -->
+    <table class="table" ng-init="pageResultsMedicalOffices()">
+    	<thead>
+    		<th>Codigo</th>
+    		<th>Nombre</th>
+   			<th>Descripción</th>
+    		<th></th>
+    	</thead>
+    	<tbody>
+    		<tr ng-repeat="medicalOffice in medicalOffices">
+    			<td>
+    				{{medicalOffice.code}}
+    			</td>
+    			
+    			<td>
+    				{{medicalOffice.name}}
+    			</td>
+				
+				<td>
+					{{medicalOffice.description}}
+				</td>
+				
+                <td>
+
+                    <!-- Botón para dirigir a perfil -->
+                    <button class="btn btn-info" ng-click="goToMedicalOfficesProfile(medicalOffice)"><i class="fa"></i> Perfil</button> 
+
+
+
+                    <button class="btn btn-info" ng-click="goToScheduleIntervals(medicalOffice)" >
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Periodos
+                    </button>
+
+                    <button type="button" class="btn btn-primary" ng-click="setState(1, medicalOffice)" ng-show = "medicalOffice.state == 0">
+                        <i class="fa fa-check"></i>&nbsp;Habilitar
+                    </button>
+                    
+                    <button type="button" class="btn btn-info" ng-click="setState(0,medicalOffice)" ng-show = "medicalOffice.state == 1">
+                        <i class="fa fa-remove"></i>&nbsp;Deshabilitar
+                    </button>
+
+                    <button class="btn btn-default" ng-click="showModalEditMedicalOffices(medicalOffice)" >
+                        <i class="fa fa-edit"></i>&nbsp;Editar
+                    </button>
+                
+                    <button class="btn btn-default" ng-click="showModalDeleteMedicalOffice(medicalOffice)">
+                        <i class="fa fa-remove"></i>&nbsp;Eliminar
+                    </button>
+
+                </td>
+    		</tr>
+    	</tbody>
+
+    </table>
+
+
+    
+    <div 
+        paging
+        page="currentPageMedicalOffices" 
+        page-size="pageSizeMedicalOffices" 
+        total="medicalOfficesTotal"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="pageResultsMedicalOffices(page)"
+    >
+    </div>    
+   
+
+
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll add-medical-office" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Nuevo Consultorio</h5>
+            </div>
+            <div class="modal-body">
+               
+                        <form class="" role="form" name="medicalOfficesForm"  novalidate>
+
+                            <!-- code -->
+                            <div pg-form-group class="form-group form-group-default">
+                         
+                                <label>Código:</label>   
+                                <input name="code" ng-model="newMedicalOffice.code" class="form-control"  placeholder="Código" required/>
+
+                            </div>
+
+                            <!-- Validating rol code -->
+                            <div ng-show="medicalOfficesForm.code.$touched">
+
+                                <!-- required -->
+                                <p ng-show="medicalOfficesForm.code.$error.required" class="text-danger">
+                                    Debe asignar un código para el nuevo consultorio
+                                </p>  
+
+                           
+                            </div>          
+
+
+
+
+                         	<!-- name -->
+                            <div pg-form-group class="form-group form-group-default">
+                         
+                                <label>Nombre:</label>   
+                                <input name="name" ng-model="newMedicalOffice.name" class="form-control"  placeholder="Nombre del nuevo consultorio" required/>
+
+                            </div>
+
+                            <!-- Validating rol name -->
+                            <div ng-show="medicalOfficesForm.name.$touched">
+
+                                <!-- required -->
+                                <p ng-show="medicalOfficesForm.name.$error.required" class="text-danger">
+                                    Debe asignar un nombre para el nuevo consultorio
+                                </p>  
+
+                           
+                            </div>    
+
+
+
+                            <!-- Description -->
+                            <div pg-form-group class="form-group form-group-default">
+                                 
+                                 <label>Descripción:</label>
+
+                                 <textarea name="description" ng-model="newMedicalOffice.description" class="form-control" placeholder="Descripción del nuevo consultorio" required  >
+                                 </textarea> 
+
+                            </div>
+
+                            <!-- Validating description -->
+                            <div ng-show="medicalOfficesForm.description.$touched">
+
+                                <!-- required -->
+                                <p ng-show="medicalOfficesForm.description.$error.required" class="text-danger">
+                                    Debe asignar una descripcion para el nuevo consultorio
+                                </p>  
+                            
+                            </div>      
+
+                            <button type="button" class="btn btn-info btn-block"  ng-disabled="medicalOfficesForm.$invalid"  ng-click="addMedicalOffice()">
+                                <i class="fa fa-save"></i> Guardar
+                            </button>
+
+                            
+                        </form>
+              
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll edit-medical-office" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Nuevo Consultorio</h5>
+            </div>
+            <div class="modal-body">
+               
+
+
+
+                        <form class="" role="form" name="editMedicalOfficesForm"  novalidate>
+
+                            <!-- code -->
+                            <div pg-form-group class="form-group form-group-default">
+                         
+                                <label>Código:</label>   
+                                <input name="code" ng-model="editMedicalOffice.code" class="form-control"  placeholder="Código" required/>
+
+                            </div>
+
+                            <!-- Validating rol code -->
+                            <div ng-show="editMedicalOfficesForm.code.$touched">
+
+                                <!-- required -->
+                                <p ng-show="editMedicalOfficesForm.code.$error.required" class="text-danger">
+                                    Debe asignar un código para el nuevo consultorio
+                                </p>  
+
+                           
+                            </div>          
+
+
+
+
+                         	<!-- name -->
+                            <div pg-form-group class="form-group form-group-default">
+                         
+                                <label>Nombre:</label>   
+                                <input name="name" ng-model="editMedicalOffice.name" class="form-control"  placeholder="Nombre del nuevo consultorio" required/>
+
+                            </div>
+
+                            <!-- Validating rol name -->
+                            <div ng-show="editMedicalOfficesForm.name.$touched">
+
+                                <!-- required -->
+                                <p ng-show="editMedicalOfficesForm.name.$error.required" class="text-danger">
+                                    Debe asignar un nombre para el nuevo consultorio
+                                </p>  
+
+                           
+                            </div>    
+
+
+
+                            <!-- Description -->
+                            <div pg-form-group class="form-group form-group-default">
+                                 
+                                 <label>Descripción:</label>
+
+                                 <textarea name="description" ng-model="editMedicalOffice.description" class="form-control" placeholder="Descripción del nuevo consultorio" required  >
+                                 </textarea> 
+
+                            </div>
+
+                            <!-- Validating description -->
+                            <div ng-show="editMedicalOfficesForm.description.$touched">
+
+                                <!-- required -->
+                                <p ng-show="editMedicalOfficesForm.description.$error.required" class="text-danger">
+                                    Debe asignar una descripcion para el nuevo consultorio
+                                </p>  
+                            
+                            </div>      
+
+                            <button type="button" class="btn btn-info btn-block"  ng-disabled="editMedicalOfficesForm.$invalid"  ng-click="doEditMedicalOffice()">
+                                <i class="fa fa-save"></i> Guardar
+                            </button>
+
+                            
+                        </form>
+              
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+
+<!-- Modal Delete-->
+<div class="modal fade slide-up disable-scroll delete-medical-offices" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-body">
+                   <h5> ¿Está seguro que desea eliminar este consultorio?</h5>
+                    <button type="button" class="btn btn-info btn-block" ng-click="dropMedicalOffice()">Si
+                    </button>
+                    <button type="button" class="btn btn-info btn-block" ng-click="hideModalDeleteMedicalOffices()">No
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+
+

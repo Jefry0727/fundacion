@@ -1,0 +1,579 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Registrar Proovedor</a>
+        </li>
+
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <form name="providerForm" role="form" novalidate>
+        <div class="row">
+           
+                <div class="form-group-attached">
+
+
+
+                        <!-- Row One -->
+
+                    <div class="row clearfix">
+
+                        <!-- Nit -->
+
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.nit.$invalid && !providerForm.nit.$pristine }">
+
+                                <label>Nit</label>
+
+                                 <input type="textarea" 
+                                name="nit"
+                                ng-model="provider.nit"
+                                placeholder="Nit del Proveedor"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="El NIT del prooveder es requerido" 
+                                data-trigger="manual" 
+                                validate-attached-form-element required/>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Nit -->
+
+                        <!-- Name -->
+
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.name.$invalid && !providerForm.name.$pristine }">
+
+                                <label>Nombre</label>
+
+                                 <input type="textarea" 
+                                name="name"
+                                ng-model="provider.name"
+                                placeholder="Nombre del Proveedor"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="El nombre del proovedor es requerido" 
+                                data-trigger="manual" 
+                                validate-attached-form-element required/>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End Name -->
+
+                         <!-- Address -->
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.address.$invalid && !providerForm.address.$pristine }">
+
+                                <label>Dirección</label>
+
+                                 <input type="textarea" 
+                                name="address"
+                                ng-model="provider.address"
+                                placeholder="Dirección del Proveedor"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="El nombre del producto es requerido" 
+                                data-trigger="manual" 
+                                validate-attached-form-element required/>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <!-- End Address -->
+
+                         <!-- Contact-->
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.phoneT.$invalid && !providerForm.phoneT.$pristine }">
+
+                                <label>Contacto</label>
+
+                                 <input type="textarea" 
+                                name="phoneT"
+                                ng-model="provider.contact"
+                                placeholder="Contacto del Proveedor"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="El contacto es requerido" 
+                                data-trigger="manual" 
+                                validate-attached-form-element>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <!-- End Contact -->
+
+
+                    </div>
+
+                    <!-- End row One -->
+
+                              <!-- Tow Row -->
+
+
+                       <div class="row clearfix">
+
+
+                        <!-- Phone -->
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.phone.$invalid && !providerForm.phone.$pristine }">
+
+                                <label>1º. Telefono</label>
+
+                                <input type="textarea" 
+                                name="phone"
+                                ng-model="provider.phone"
+                                placeholder="Telefono del Proveedor"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="El Telefono es requerido" 
+                                data-trigger="manual" 
+                                validate-attached-form-element required/>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <!-- End Phone -->
+
+                         <!-- Phone two-->
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+
+                                <label>2º. Telefono</label>
+
+                                 <input type="textarea" 
+                                name="phoneT"
+                                ng-model="provider.phone_two"
+                                placeholder="Telefono del Proveedor"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <!-- End Phone two-->
+
+                           <!-- Phone two-->
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.email.$invalid && !providerForm.email.$pristine }">
+
+                                <label>Email</label>
+
+                                 <input type="textarea" 
+                                name="email"
+                                ng-model="provider.email"
+                                placeholder="Email del Proveedor"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="El email es requerido" 
+                                data-trigger="manual" 
+                                validate-attached-form-element>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                      
+                        <!-- End Phone two-->
+
+                        <!-- State -->
+
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div class="form-group form-group-default required">
+                                    <label>Estado</label>
+                                    <select
+                                    ng-model="provider.state"
+                                    class ="form-control"
+                                    ng-options ="state.code as state.name for state in state"
+                                    >
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End State -->
+
+                         
+                           
+                       </div>
+
+
+                        <!-- End Tow Row -->
+
+
+                  <div class="row clearfix">
+                        <div class="col-sm-12">
+                            <button class="btn btn-info btn-block" ng-click="newProvider()" ng-disabled="providerForm.$invalid"><i class="fa fa-sign-in"></i> Registrar Entrada</button>
+                        </div>
+                    </div>
+
+
+    
+         
+                </div>
+           </div>
+    </form>                
+</div>
+
+<br>
+<br>
+
+<div class="container-fluid container-fixed-lg">
+
+
+        <table class="table" ng-init="getProviders()">
+            <thead>
+             
+                    <th>Nit</th>
+                    <th>Nombre</th>
+                    <th>Direccón</th>
+                    <th>Telefono</th>
+                    <th>Editar</th>
+                    <th>Estado</th>
+                   
+        
+            <tbody>
+
+                <tr ng-repeat="provider in providers">
+                    <td> {{provider.nit}} </td>
+                    <td> {{provider.name}} </td>
+                    <td> {{provider.address}} </td>
+                    <td> {{provider.phone}} </td>
+                    <td>
+                        <button class="btn btn-info" ng-click="showEditProvider(provider)"><fa class="fa fa-edit"></fa> Editar</button>
+                    </td>
+                    <td>
+
+                        <span ng-if="provider.state == 1">
+                            <button class="btn btn-info" ng-click="stateAct(provider)"><fa class="fa fa-check"></fa> Habilitado</button>
+                        </span>
+
+                        <span ng-if="provider.state != 1">
+
+                            <button class="btn btn-primary" ng-click="stateAct(provider)"><fa class="fa fa-times"></fa> Inhabilitadio</button>
+                            
+                        </span>
+                        
+                    </td>
+                </tr>
+                   
+            </tbody>
+            </thead>
+        </table>
+    
+     <div 
+        paging
+        page="currentPageNewProvider" 
+        page-size="pageSizeNewProvider" 
+        total="total"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="getProviders(page)"
+    >
+    </div> 
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll modal-edit-provider" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Editar <span class="semi-bold"></span></h5>
+            </div>
+            <div class="modal-body">
+               
+               <form name="editProviderForm" role="form" novalidate>
+        
+                    <div class="row">
+                        <div class="form-group-attached">
+
+                            <div class="row clearfix">
+
+                                <!-- Edit NIT Provider -->
+
+                                <div class="col-sm-3">
+                                    
+                                    <div class="form-group-attached">
+                                        <div pg-form-group-default class="form-group form-group-default required" ng-class="{ 'has-error' : editProviderForm.editNit.$invalid && !editProviderForm.editNit.$pristine }">
+
+                                        <label>NIT</label>
+
+                                        <input type="textarea" 
+                                        name="editNit"
+                                        ng-model="updateProvider.nit"
+                                        placeholder="NIT"
+                                        class="form-control"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="El Nit es requerido" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required/>
+                                    
+                                        </div>
+                                            
+                                    </div>
+
+                                </div>
+                                
+                     
+
+                                <!-- End edit NIT Provider -->
+
+                               <!-- Edit Name Provider -->
+
+                                <div class="col-sm-3">
+                                    
+                                   <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.editName.$invalid && !providerForm.editName.$pristine }">
+
+                                        <label>Nombre</label>
+
+                                         <input type="textarea" 
+                                        name="editName"
+                                        ng-model="updateProvider.name"
+                                        placeholder="Nombre del Proveedor"
+                                        class="form-control"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="El nombre del proovedor es requerido" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required/>
+                                            
+                                        </div>
+                                    </div>
+ 
+
+                                </div>
+
+                               <!-- End Edit Provider -->
+
+                               <!-- Edit Address Provider -->
+
+                               <div class="col-sm-3">
+
+                                    <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.editAddress.$invalid && !providerForm.editAddress.$pristine }">
+
+                                        <label>Dirección</label>
+
+                                         <input type="textarea" 
+                                        name="editAddress"
+                                        ng-model="updateProvider.address"
+                                        placeholder="Dirección del Proveedor"
+                                        class="form-control"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="El nombre del producto es requerido" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required/>
+                                            
+                                        </div>
+                                    </div>  
+
+                               </div>
+
+                               <!-- End Edit Address Provider -->
+
+                               <!-- Edit Contact -->
+
+                                <div class="col-sm-3">
+                                    <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.editContact.$invalid && !providerForm.editContact.$pristine }">
+
+                                        <label>Contacto</label>
+
+                                         <input type="textarea" 
+                                        name="editContact"
+                                        ng-model="updateProvider.contact"
+                                        placeholder="Contacto del Proveedor"
+                                        class="form-control"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="El contacto es requerido" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element>
+                                            
+                                        </div>
+                                    </div>
+                                </div>                           
+
+                                <!-- End Edit Contact -->
+
+                            </div>
+
+                            <!-- End One row -->
+
+        
+                           <div class="row clearfix">
+                            <!-- Second Row -->
+
+                            <!-- Edit Phone One -->
+
+                             <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.editPhone.$invalid && !providerForm.editPhone.$pristine }">
+
+                                <label>1º. Telefono</label>
+
+                                <input type="textarea" 
+                                name="editPhone"
+                                ng-model="updateProvider.phone"
+                                placeholder="Telefono del Proveedor"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="El Telefono es requerido" 
+                                data-trigger="manual" 
+                                validate-attached-form-element required/>
+                                    
+                                </div>
+                            </div>
+                        </div>
+ 
+
+                            <!-- End Edit Phone One -->
+
+                            <!-- Edit Phone two -->
+
+                          <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+
+                                <label>2º. Telefono</label>
+
+                                 <input type="textarea" 
+                                name="editPhoneT"
+                                ng-model="updateProvider.phone_two"
+                                placeholder="Telefono del Proveedor"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                            <!-- End Edit Phone two -->
+
+                            <!-- Edit Email -->
+
+                         <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : providerForm.editEmail.$invalid && !providerForm.editEmail.$pristine }">
+
+                                <label>Email</label>
+
+                                 <input type="textarea" 
+                                name="editEmail"
+                                ng-model="updateProvider.email"
+                                placeholder="Telefono del Proveedor"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top" 
+                                data-content="El email es requerido" 
+                                data-trigger="manual" 
+                                validate-attached-form-element>
+                                    
+                                </div>
+                            </div>
+                        </div>
+ 
+
+                            <!-- End Edit Email -->
+
+                         <!-- Estate -->
+
+                         <div class="col-sm-3">
+                             <div class="form-group-attached">
+                                 <div class="form-group form-group-default required">
+                                     <label>Estado</label>
+                                     <select
+                                     ng-model="updateProvider.state"
+                                     class="form-control"
+                                     ng-options="state.code as state.name for state in state"
+                                     ></select>
+                                 </div>
+                             </div>
+                         </div>
+
+                         <!-- End State -->
+                           </div>
+
+                            <!-- End Second Row -->
+
+                        </div>
+                            
+                        <!-- Edit BUtton -->
+
+                        
+                        <!--  End Edit button -->
+
+                    </div>  
+                    <!-- End row -->
+                    
+                    <button class="btn btn-info btn-block" ng-click="editProvider()"><fa class="fa fa-save"></fa> Editar</button>
+                    
+               </form>
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+

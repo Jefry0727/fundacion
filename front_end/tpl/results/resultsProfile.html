@@ -1,0 +1,423 @@
+<!-- <script>
+
+var mycars = new Array();
+mycars[0]='Herr';
+mycars[1]='Frau';
+
+$(document).ready( function() {
+    $(mycars).each( function(index, item) {
+        var option = $('<option value="'+item+'"></option>');
+        $('#anrede').append(option);
+    });
+});
+
+</script> -->
+
+
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Resultados </a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Perfil de Resultados</h3>
+<!-- 
+    <input name="anrede" list="anrede" />
+<datalist id="anrede"> -->
+    <!-- options are filled in the script -->
+<!-- </datalist> -->
+</div>
+
+<div class="container-fluid container-fixed-lg">
+
+<h2>{{message}}</h2>
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+    <form name="resultProfileForm" role="form" novalidate>
+        <div class="row">
+            
+            <div class="form-group-attached">
+
+                <div class="row clearfix">
+
+
+
+                                        <!-- Especialist -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group-default class="form-group form-group-default required">
+                                <label>Especialista</label>
+
+                                <select
+                                class="form-control"
+                                name="specialist"
+                                ng-change="FiltroStudies()"
+                                ng-model="resultProfileM.specialists_id"
+                                ng-options="item.id as (item.person.first_name+' '+item.person.last_name) for item in allSpecialist"
+                                >
+                                 <option value=""> -- Seleccione el Especialista -- </option>
+                                </select>
+                               
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Specialist -->
+
+                </div>
+                <!-- {{ resultProfileM.specialists_id }} -->
+                <!-- Secon Row Clearfix -->
+
+                <div class="row clearfix">
+
+                
+                                        
+                   <!-- Date Start-->
+
+                    <div class="col-sm-2">
+                            
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default" >
+
+                            <label>Fecha</label>
+
+                            {{date}}
+                                    
+                            </div>
+                           
+                        </div>
+
+                    </div>                  
+
+                    <!-- End Date Start -->
+
+
+                    <!-- Studies -->
+
+                    <div class="col-sm-6">
+                        <div class="form-group-attached">
+                            <div pg-form-group-default class="form-group form-group-default required">
+                            
+                            <label>Estudios</label> 
+
+                             <input
+                                class="form-control"
+                                ng-disabled = "resultProfileM.specialists_id === undefined"
+                                ng-change="filterResultProfiles()"
+                                list="input-studies"
+                                ng-model="none"
+                                >
+                            </input>
+
+                            <datalist id="input-studies">
+                                <select>
+                                    <option 
+                                    ng-repeat=" item in studiesSpecialist" 
+                                    ng-value="{{item.study.id}}" 
+                                    >{{item.study.name}}</option>
+                                </select>
+                            </datalist>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Studies -->
+
+                    <!-- Titles -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div class="form-group form-group-default">
+                                <label>Perfil</label>
+
+                               <select
+                                class="form-control"
+                                ng-disabled="resultProfileM.studies_id == undefined"
+                                ng-model="updateResultProfileM.id"
+                                ng-change="contentResultProfiles()"
+                                ng-options="resultProfileSpecialist.id as resultProfileSpecialist.title for resultProfileSpecialist in resultProfileSpecialist"
+                                >
+                                 <option value=""> -- Perfiles -- </option>
+
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- End Titles -->
+
+                </div>
+
+                <div class="row clearfix">
+                    <!-- Add Tittle -->
+
+                    <div class="col-sm-6">
+
+                                
+                        <button class="btn btn-info btn-block"
+                          ng-disabled="resultProfileM.studies_id == undefined"
+                         ng-click="showAddResultProfile()"><i class="fa fa-plus"></i> Agregar Nuevo Perfil</button>
+
+                    </div>
+
+                    <!-- End Add Tittle -->
+
+                     <!-- Add Tittle -->
+
+                    <div class="col-sm-6">
+                                
+                        <button class="btn btn-info btn-block" ng-disabled="resultProfileM.studies_id == undefined" ng-click="showDeleteResultProfile()"><i class="fa fa-trash-o "></i> Eliminar un Perfil</button>
+
+                    </div>
+
+                    <!-- End Add Tittle -->
+
+                </div>
+
+
+
+
+            </div>
+
+           
+           
+        </div>
+
+    </form>
+
+</div>
+
+
+<div class="container-fluid container-fixed-lg">
+<!-- Coment -->
+
+    <div class="form-group-attached">
+        <div class="row clearfix">
+
+            <div class="col-sm-12">
+                <h3> Informe </h3>
+
+                 <div class="summernote-wrapper">
+                    <div id="summernote" config="summernote_options"  summernote ng-model="updateResultProfileM.content">
+                    </div>
+                </div>
+    
+                <button class="btn btn-info btn-block" ng-click="actResultProfile()" ><i class="fa fa-save"></i> Guardar</button>
+
+            </div>
+        </div>
+    </div>
+
+<!-- End Coment -->
+
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll add-result-profile-title" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5><span class="semi-bold">Nuevo Perfil</span></h5>
+            </div>
+            <div class="modal-body">
+               
+               <div class="row">
+                   
+                   <div class="form-group-attached">
+                       <div class="row clearfix">
+                           
+                        <!-- Input New Title -->
+
+                            <div class="col-sm-12">
+
+                                <div class="form-group-attached">
+                                    <div class="form-group form-group-default ">
+                                    <label>Perfil Resultados</label>
+
+                                    <input type="text" 
+                                    name="title"
+                                    ng-model="resultProfileM.title"
+                                    placeholder="Título"
+                                    class="form-control"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="El título del resultado es requerido" 
+                                    data-trigger="manual">
+                                    
+                                </div>
+                            </div>
+                            <button class="btn btn-info btn-block" ng-disabled="" ng-click="saveResultProfile()"><i class="fa fa-save"></i> Guardar</button>
+                        </div>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+
+                           <!-- End Input New Title -->
+
+                       </div>
+                   </div>
+
+               </div>
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->  
+
+
+<!-- Modal Delete Result Profile-->
+<div class="modal fade slide-up disable-scroll delete-results-profiles" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg" style="width:50%;">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5><span class="semi-bold">Eliminar Perfil</span></h5>
+            </div>
+            <div class="modal-body">
+                
+                <form name="delResultProfileForm" role="form" novalidate>
+
+                <div class="row">
+            
+                    <div class="form-group-attached">
+
+                        <div class="row clearfix">
+                        <!-- List Profiles -->
+                         <div class="col-sm-2">
+                            <div class="form-group-attached">
+                                <div pg-form-group-default class="form-group form-group-default required">
+                                    
+                                    <label>Perfiles</label>
+
+                                    <select
+                                    class="form-control"
+                                    ng-disabled="resultProfileM.studies_id == undefined"
+                                    ng-model="updateResultProfileM.id"
+                                    ng-change="contentResultProfiles()"
+                                    ng-options="resultProfileSpecialist.id as resultProfileSpecialist.title for resultProfileSpecialist in resultProfileSpecialist"
+                                                >
+                                        <option value=""> -- Perfiles -- </option>
+
+                                    </select>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End List Profiles -->
+
+                        <!-- Specialist -->
+                        <div class="col-sm-2">
+                            <div class="form-group-attached">
+                                <div pg-form-group-default class="form-group form-group-default required">
+                                    <label>Especialista</label>
+
+                                    <select
+                                    class="form-control"
+                                    name="specialist"
+                                    readonly="true"
+                                    ng-change="FiltroStudies()"
+                                    ng-model="resultProfileM.specialists_id"
+                                    ng-options="item.id as (item.person.first_name+' '+item.person.last_name) for item in allSpecialist"
+                                    >
+                                    
+                                    </select>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                       
+                  
+                        <!-- End Specialist -->
+
+                        <!-- Study -->
+
+                       <div class="col-sm-8">
+
+                       <div class="form-group-attached">
+                           
+                           <div class="form-group form-group-default required">
+                                <label>Estudio</label> 
+
+                             <select
+                                class="form-control"
+                                readonly="true"
+                                ng-change="filterResultProfiles()"
+                                ng-model="resultProfileM.studies_id"
+                                ng-options="item.study.id as item.study.name for item in studiesSpecialist"
+                                >
+                                 <option value=""> -- Seleccione el Estudio -- </option>
+                                </select>
+                           </div>
+
+                       </div>
+                           
+                       </div>
+
+                        <!-- End Study -->
+
+                        </div>
+
+                        <div class="row clearfix">
+                           <!-- Coment -->
+
+
+                            <div class="form-group-attached">
+                                <div class="form-group form-group-default">
+                                    <label for="comment">Informe:</label>
+                                    <textarea 
+                                    class="form-control" 
+                                    rows="5" 
+                                    style="height:40%;" 
+                                    id="comment"
+                                    readonly="true" 
+                                    ng-model="updateResultProfileM.content"
+                                    >
+                                        
+                                    </textarea>
+                                </div>
+                            </div>
+
+                           <!-- End Coment -->
+
+                        </div>
+
+
+                    </div>
+
+                    <button class="btn btn-info btn-block" ng-click="delResultProfile()"><i class="fa fa-trash-o"></i> Eliminar</button>
+                </div>        
+                    
+
+                </form>
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->  
+

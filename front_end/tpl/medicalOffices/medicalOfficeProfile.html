@@ -1,0 +1,170 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>    
+        </li>
+        <li><a class="active" href="#">Perfil de consultorio {{medicalOfficeProfile.name}}</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Perfil de consultorio <b>{{medicalOfficeProfile.name}}</b></h3>
+
+    <h5>Descripci&oacute;n</h5>
+    <p>
+        {{medicalOfficeProfile.description}}
+    </p>    
+
+</div>
+    
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+
+
+
+
+                <!-- Select all the especialities --> 
+                <div class="col-md-5">
+                    <h4>Asignar Servicios</h4>
+                 
+                  <div class="row" >
+                    <label>Especialidades :</label>   
+                    <select class="form-control" 
+                    ng-options="item as item.specialization for item in Specializations track by item.id" 
+                    ng-model="selectedSpecialization"  
+                    ng-change="GetStudy()"
+                    placeholder="Seleccionar Especialidad " ></select> 
+                  </div>
+                  <br/>
+
+                  <div class="row">   
+                   <select class="form-control" 
+
+                   multiple="true" 
+                   ng-model="selectedStudies" 
+                   ng-options="item as  item.cup +'  -  '+ item.name  for item in Studies track by item.id"
+                   >                            
+                 </select>
+               </div>
+
+             </div> 
+
+             
+             <!-- END  Select all the especialities --> 
+
+             <!-- BUTTONS -->
+             <div class=" col-md-2">
+            <div class="row " style="height: 50px">
+             
+            </div>
+
+                <!-- asignar todos los estudios independiente de si no se han seleccionado -->
+                 <button type="button"  class="btn btn-default btn-small btn-block" ng-click="saveAllStudies()">
+                   <i class="glyphicon glyphicon-forward" ></i>
+                 </button> 
+
+                 <!-- Asignar un estudio -->
+                 <button type="button"  class="btn btn-default btn-block" ng-click="saveSelectedStudies()">
+                   <i class="glyphicon glyphicon-chevron-right"></i>
+                 </button> 
+        
+                <!-- Eliminar un estudio -->
+                <button type="button"  class="btn btn-default btn-block" ng-click="deleteAsigned()">
+                  <i class="glyphicon glyphicon-chevron-left"></i>
+                </button>
+                
+                <!-- Eliminar todos los estudios -->
+               <button type="button"  class="btn btn-default btn-block" ng-click="deleteAllAsigned()">
+                 <i class="glyphicon glyphicon-backward" ></i>
+               </button>  
+            
+           </div>
+
+           <!-- END BUTTONS -->
+
+
+           <!-- Select all the especialities --> 
+           <div class="col-md-5 ">
+            <div class=row>
+              <h4> Estudios Asignados </h4>
+            </div>  
+
+
+            <div  class="row">
+             <label>Especialidades Asignadas :</label>   
+             <select class="form-control" 
+             ng-options="item as item.specialization  for item in medicalOfficeSpecialization track by item.id" 
+             ng-model="selectedMedicalOfficeSpecialization"  
+             ng-change="GetStudyAsignament()">
+           </select>
+
+         </div> 
+         <br/>
+
+         <div class=row>
+          <select class="form-control"          
+          multiple="true" 
+          ng-model="selectedStudiesAsignated" 
+          ng-options="item as  item.study.cup +'  -  '+ item.study.name  for item in StudiesAsignated track by item.id">                            
+        </select> 
+      </div>   
+
+    </div>
+
+
+
+
+
+</div>
+
+<h3 class="text-center">
+  Restricciones de consultorio.
+</h3>
+
+<section class="container">
+  <form class="row form-group-attached">
+    
+  <!--Feha de inicio-->
+    <div class="col-md-12 form-group form-group-default">
+      <div class="input-group" >
+        <label>
+          Fecha y hora de inicio/Fin
+        </label>
+        <input type="text" name="dateRestrictionIni" class="form-control" ng-model="medicalOfficeRestriction"></input>
+        <span class="input-group-addon" style="padding:inherit" hidden="true">
+          <i class="fa fa-calendar" style="width: 2em;">
+          </i>
+        </span>
+      </div>
+    
+    </div>
+    <!--end Fecha de fin-->
+  
+
+
+    <div>
+      <button 
+        class="btn btn-info" 
+        style="width: 80%; margin-left: 10%;" 
+        ng-disabled="!medicalOfficeRestriction"
+        ng-click="addMedicalOfficeRestriction()"
+      >
+        ACEPTAR
+      </button>
+    </div>
+
+  </form>
+</section>
+
+
+
+
+
+
+
+
+

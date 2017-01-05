@@ -1,0 +1,181 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Resultados</a>
+        </li>
+        <li><a class="active" href="#">Resultados</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> {{InfoResultado}}
+     </h3>
+
+</div>
+
+ <div class="container-fluid container-fixed-lg" ng-app="app"  ng-show="true" >
+<!--  
+    <div class="row">
+      <form >
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Buscar" ng-model="searchFishOrder">
+          </div>      
+        </div>
+      </form>
+    </div> -->
+
+
+    <div class="row">
+      <!-- START PANEL -->
+      <div class="col-md-12" ng-show="showPeople">
+        <div class="form-group-attached">
+          <div class="row clearfix">
+            <div class="col-sm-4">
+              <div class="form-group-attached">
+                <div pg-form-group class="form-group form-group-default">
+                  <label>
+                   Numero Documento
+                  </label>
+                  <input style="color: #000000;" class="form-control" name="first_name" ng-model="people.identification" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group-attached">
+                <div pg-form-group class="form-group form-group-default">
+                  <label>
+                    Nombres
+                  </label>
+                  <input style="color: #000000;" class="form-control" name="middle_name" readonly="true" ng-model="people.names"/>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group-attached">
+                <div pg-form-group class="form-group form-group-default">
+                  <label>
+                    Apellidos
+                  </label>
+                  <input style="color: #000000;" class="form-control" name="last_name" ng-model="people.lastNames"  
+                  ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                </div>
+              </div>
+            </div>
+     
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="row">
+     <div class="form-group">
+      <div class="col-md-12 accordionList ">
+
+      <label class="col-xs-4"> ORDEN</label>
+     
+      <label class="col-xs-2"> OPCIONES</label>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="panel-group form-group" id="accordion" role="tablist" aria-multiselectable="true" >
+    <div class="panel panel-default"   ng-repeat="item in Results  | filter:searchFishOrder track by $index">
+
+      <div class="panel-heading" role="tab" id="headingOne">
+
+        <div class="panel-title">
+         <a class="collapsed"  
+          ng-class="{collapsed:!collapseThree}" 
+          ng-click="collapseThree=!collapseThree" 
+          aria-expanded="false"
+          aria-controls="collapseThree"> </a>
+       
+
+          <span class="col-xs-8" > {{ item.order_code }} </span>
+          
+         <!--  <span class="col-xs-2" ng-hide="true" style="display: none;">     
+            <button 
+            class="btn btn-info" 
+            ng-click="PrevisualizarOrder(item)" 
+            class="form-control" 
+            style="display: none;" >
+              <i class="fa fa-print"></i>&nbsp;Imprimir
+            </button>
+          </span> -->
+
+      </div>
+    </div>
+
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseThree" ng-class="{in:collapseThree}">
+
+      <div class="list grupo">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th> Codigo </th>
+              <th>Estudio </th>
+              <th>Fecha Estudio </th>
+              <th># Impresiones </th>
+              <th> Reclama </th>
+              <th>Opciones </th>
+        
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr ng-repeat="result in item.resultItems track by $index">
+             
+              <td> {{result.study_code}}</td>
+
+              <td>  {{result.study_name}}</td>
+
+              <td>  {{result.result_date}}</td> 
+              
+              <td> {{result.prints}}
+
+              <td> <input class="form-control" name="claim" ng-model="result.claim" ui-jq="popover" data-container="body" data-placement="top"/> </td>
+              
+              <td >
+                 <button 
+                  class="btn btn-success" 
+                  ng-click="Previsualizar(result,1)" 
+                  class="form-control"
+                  ng-show="result.lend_plates != 1"
+                  ><i class="fa fa-print"></i></button> 
+            
+                  <button 
+                   class="btn btn-info" 
+                   class="form-control" 
+                   ng-click="Previsualizar(result,3)"
+                   ng-show="result.lend_plates == 1">
+                     <i class="fa fa-print" tittle="Imprimir formato de prestamo de placas"></i>&nbsp;</button>
+              </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+</div>
+
+</div>
+

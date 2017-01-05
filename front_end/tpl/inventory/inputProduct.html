@@ -1,0 +1,230 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Ingreso de Productos</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Entrada Directa</h3>
+</div>
+
+
+<!-- FORMULARIO DE ENTRADA -->
+<form class="w3-white w3-padding-tiny" style="width: 80%; margin: auto; min-width: 650px;"  name="registro-producto"  >
+    
+    <!-- PRIMERA FILA -->
+    <div class="w3-row-padding" >
+        
+        <div class="w3-col l2 w3-border">
+            <label class="w3-text-upper w3-text-look w3-label" >fecha de ingreso:</label>
+            <input type="text" name="fecha_ingreso" class="w3-input w3-border-0" ng-value="Ingreso.inputDate"/>
+        </div>
+        <div class="w3-col l4 w3-border">
+            <label class="w3-text-upper w3-text-look w3-label" >producto:</label>
+            <select required class="w3-select w3-border-0"  ng-model="Ingreso.product" ng-options="producto as producto.name for producto in Ingreso.listaProductos " ng-change="Ingreso.obtenerCodigosInvima()"  >          
+                <option value="">--SELECCIONE--</option>
+            </select>
+        </div>
+        <div class="w3-col l2 w3-border">
+            <label class="w3-text-upper w3-text-look w3-label" >código:</label>
+            <input type="text"  name="cup" class="w3-input w3-border-0" readonly required title="Debe tener un código"/>
+        </div>
+        <div class="w3-col l4 w3-border" style="white-space: nowrap; overflow-x: hidden;">
+            <label class="w3-text-upper w3-text-look w3-label" >Destino del producto:</label>
+            <select required title="Debe seleccionar una bodega"  class="w3-select w3-border-0" ng-options="bodega.id as bodega.name for bodega in Ingreso.listaBodegas" ng-model="Ingreso.storageUbication"  >          
+                <option value="">--SELECCIONE--</option>
+            </select>
+        </div>
+
+    </div>
+    <!-- ./PRIMERA FILA -->
+
+
+    <!-- SEGUNDA FILA -->
+    <div class="w3-row-padding" >
+        
+        <div class="w3-col w3-border l2" style="white-space: nowrap; overflow-x: hidden;" >
+            <label class="w3-text-upper w3-text-look w3-label">factura de compra:</label>
+            <input type="text" class="w3-input w3-border-0" ng-model="Ingreso.bill_code"required />
+        </div>
+
+        <div class="w3-col w3-border l2" style="white-space: nowrap; overflow-x: hidden;" >
+            <label class="w3-text-upper w3-text-look w3-label">orden de compra:</label>
+            <input type="text" class="w3-input w3-border-0" ng-model="Ingreso.order_code"  />
+        </div>
+
+        <div class="w3-col  l2" >
+            <label class="w3-text-upper w3-text-look w3-label">Proveedor:</label>
+            <select class="w3-select w3-border-0" ng-options="proveedor as proveedor.name for proveedor in Ingreso.listaProveedores"  ng-model="Ingreso.provider" >
+                <option value="">--SELECCIONE--</option>
+            </select>
+        </div>
+
+        <div class="w3-col w3-border l2" style="white-space: nowrap; overflow-x: hidden;" >
+            <label class="w3-text-upper w3-text-look w3-label">marca del producto:</label>
+            <select class="w3-select w3-border-0" ng-model="Ingreso.mark" ng-options="marca.id as marca.name for marca in Ingreso.listaMarcas" required >
+                <option value="">--SELECCIONE--</option>
+            </select>
+        </div>
+
+        <div class="w3-col w3-border l2" >
+            <label class="w3-text-upper w3-text-look w3-label">registro invima:</label>
+            <input type="text" class="w3-input w3-border-0"  ng-value="Ingreso.invimaCode.code" />
+        </div>
+
+        <div class="w3-col w3-border l2" >
+            <label class="w3-text-upper w3-text-look w3-label">lote:</label>
+            <input type="text" class="w3-input w3-border-0" required ng-model="Ingreso.lot" />
+        </div>
+
+    </div>
+    <!-- ./SEGUNDA FILA -->
+
+    <!-- TERCERA FILA -->
+    <div class="w3-row-padding" >
+
+        <div class="w3-col w3-border l2" style="white-space: nowrap; overflow-x: hidden;">
+            <label class="w3-text-upper w3-text-look w3-label" >fecha de vencimiento:</label>
+            <input type="text" class="w3-input w3-border-0" name="fecha_vencimiento" ng-model="Ingreso.expiration_date"/>
+            
+        </div>
+
+        <div class="w3-col w3-border l3" >
+            <label class="w3-text-upper w3-text-look w3-label">temp. de ingreso:</label>
+            <input type="text" class="w3-input w3-border-0" placeholder="Grados celsius" ng-model="Ingreso.temperature" pattern="[0-9]+" />
+        </div>
+
+        <div class="w3-col w3-border l3" style="white-space: nowrap; overflow-x: hidden;" >
+            <label class="w3-text-upper w3-text-look w3-label">temp. de almacenamiento:</label>
+            <input type="text" class="w3-input w3-border-0" placeholder="Grados celsius" pattern="[0-9]+" ng-model="Ingreso.temp_store" />
+        </div>
+
+        <div class="w3-col w3-border l2" style="white-space: nowrap; overflow-x: hidden;" >
+            <label class="w3-text-upper w3-text-look w3-label">unidad de consumo:</label>
+            <select class="w3-select w3-border-0" ng-model="Ingreso.unit" ng-options="unidad.id as unidad.name for unidad in Ingreso.listaUnidades" required title="Debe seleccionar una unidad de consumo" >
+                <option value="">--SELECCIONE--</option>
+            </select>
+        </div>
+
+        <div class="w3-col w3-border l2" style="white-space: nowrap; overflow-x: hidden;" >
+            <label class="w3-text-upper w3-text-look w3-label">forma farmaceutica:</label>
+            <input type="text" class="w3-input w3-border-0" name="forma_farmaceutica"/>
+        </div>
+
+    </div>
+    <!-- ./TERCERA FILA -->
+
+    <!-- CUARTA FILA -->
+    <div class="w3-row-padding" >
+
+        <div class="w3-col w3-border l2" >
+            <label class="w3-text-upper w3-text-look w3-label">cantidad:</label>
+            <input type="text" class="w3-input w3-border-0"  ng-model="Ingreso.quant_input" pattern="[0-9]+" title="Debe ser un dato númerico entero"/>
+        </div>
+
+        <div class="w3-col w3-border l2" >
+            <label class="w3-text-upper w3-text-look w3-label">valor unitario:</label>
+            <input type="text" class="w3-input w3-border-0" ng-model="Ingreso.single_value" pattern="^\d+.?\d*" title="Debe ser un dato númerico"/>
+        </div>
+
+        <div class="w3-col w3-border l2" >
+            <label class="w3-text-upper w3-text-look w3-label">subtotal:</label>
+            <input type="text" class="w3-input w3-border-0" ng-model="Ingreso.subtotal_value"pattern="^\d+.?\d*" title="Debe ser un dato númerico" ng-value="Ingreso.subtotal_value=Ingreso.quant_input*Ingreso.single_value" readonly/>
+        </div>
+
+        <div class="w3-col w3-border l2" >
+            <label class="w3-text-upper w3-text-look w3-label">iva:</label>
+            <input type="text" class="w3-input w3-border-0" placeholder="IVA TOTAL" ng-model="Ingreso.iva" pattern="^\d+.?\d*%?" title="Debe ser un dato númerico" ng-blur="Ingreso.calculateIva()" name="iva" />
+        </div>
+
+        <div class="w3-col w3-border l2" >
+            <label class="w3-text-upper w3-text-look w3-label">descuento:</label>
+            <input type="text" class="w3-input w3-border-0" ng-model="Ingreso.discount" pattern="^\d+.?\d*" title="Debe ser un dato númerico" ng-change="Ingreso.calculateIva()" />
+        </div>
+
+        <div class="w3-col w3-border l2" >
+            <label class="w3-text-upper w3-text-look w3-label">total:</label>
+            <input type="text" class="w3-input w3-border-0" pattern="^\d+.?\d*" title="Debe ser un dato númerico" ng-value="Ingreso.value-Ingreso.discount" readonly name="total" />
+        </div>
+
+    </div>
+    <!-- ./CUARTA FILA -->
+
+    <!-- QUINTA FILA -->
+    <div class="w3-row-padding w3-center" >
+
+        <div class="w3-col w3-border l12 w3-left-align" >
+            <label class="w3-text-upper w3-text-look w3-label">observaciones:</label>
+            <textarea class="w3-input w3-border-0" style="height: 6em" name="observaciones" ng-model="Ingreso.observation"></textarea>
+        </div>
+
+
+        <button class="w3-blue w3-btn w3-text-uppper w3-round-small w3-margin w3-text-upper w3-small" ng-click="Ingreso.registrar()" >
+            <i class="fa fa-sign-in"></i> registrar entrada
+        </button>
+    </div>
+    <!-- ./QUINTA FILA -->
+    
+</form>
+<!-- FORMULARIO DE ENTRADA -->
+
+
+
+<div class="w3-container w3-margin-top w3-white" style="width: 80%; margin: auto">
+    <table class="w3-table" >
+       <thead class="w3-transparent">
+           <tr>
+               <th class="w3-text-upper w3-small">bodega</th>
+               <th class="w3-text-upper w3-small">producto</th>
+               <th class="w3-text-upper w3-small">ingresada</th>
+               <th class="w3-text-upper w3-small"> actual</th>
+           </tr>
+       </thead>
+       <tr ng-repeat=" producto in Ingreso.tablaProductos " class="w3-white w3-border-top w3-border-bottom">
+            <td class="w3-small">{{ producto.bodega   }}</td>
+            <td class="w3-small">{{ producto.producto }}</td>
+            <td class="w3-small">{{ producto.entradas }}</td>
+            <td class="w3-small">{{ producto.salidas  }}</td>
+       </tr>
+    </table>
+
+
+    <ul class="w3-pagination">
+        <li >
+            <a  class="w3-hover-blue w3-round-small" ng-click="Ingreso.page= Ingreso.page-1" >
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
+        </li>
+        
+        <li>
+            <a  class="w3-hover-blue w3-round-small" ng-click="Ingreso.page = Ingreso.page+1" >
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+
+<!-- MENSAJE DE GUARDADO CORRECTAMENTE -->
+<div class="modal fade slide-up disable-scroll" id="save-modal" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Estado del procedimiento <span class="semi-bold" name="person-name"></span></h5>
+            </div>
+            <div class="modal-body"  name="save-message">
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.MENSAJE DE GUARDADO CORRECTAMENTE -->

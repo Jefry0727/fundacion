@@ -1,0 +1,186 @@
+<h3>Cardiología Monitoreos</h3>
+<div class="row">
+
+	<div class="col-sm-12">
+		<div class="form-group-attached">
+        <div class="row clearfix">
+			
+			<!-- Consecutive -->
+
+			<div class="col-sm-2">
+				<div class="form-group-attached">
+					<div pg-form-group class="form-group form-group-default required">
+						<label>Consecutivo</label>
+						<input type="text"
+						placeholder=""
+						class="form-control"
+						ng-model="format.format_consec"
+						required />
+					</div>
+				</div>
+			</div>
+
+			<!-- End consecutive -->
+
+			<!-- Current -->
+
+			<div class="col-sm-2">
+				<div class="form-group-attached">
+					<div pg-form-group class="form-group form-group-default required">
+						<label>Fecha</label>
+
+						<div 
+	                     	class="input-group date" 
+	                        ui-options="{format:'yyyy-mm-dd'}">
+
+	                        <input class="form-control" 
+	                            name="birthdate" 
+	                            id='date'
+	                            placeholder="yyyy-mm-dd"
+	                            ng-model="date" 
+	                            required="" 
+	                            type="text" 
+	                            ui-jq="popover" 
+	                            data-container="body" 
+	                            data-placement="top" 
+	                            data-content="La fecha de ingreso es requerida" 
+	                            data-trigger="manual" 
+	                            validate-attached-form-element 
+	                            required 
+	                            readonly/>
+
+                        </div>
+					</div>
+				</div>
+			</div>
+
+			<!-- End current -->
+
+			<!-- Option Study -->
+
+			<div class="col-sm-2">
+				<div class="form-group-attached">
+					<div pg-form-group class="form-group form-group-default required">
+						<label>¿Estudio Rechazado?</label>
+
+						<select class="cs-select cs-skin-slide form-control"
+						ng-model="format.rejected_study" 
+						ng-options="optionStudyRejected.code as optionStudyRejected.name for optionStudyRejected in optionStudyRejected" 
+						ui-jq="popover" data-container="body" 
+						data-placement="top" 
+						data-content="Debe seleccionar un tipo de documento" 
+						data-trigger="manual" 
+						validate-attached-form-element 
+						required>
+						 <option value=""> - Seleccione una opción - </option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<!-- Option Study -->
+
+			<!-- Cause -->
+
+			<div class="col-sm-6">
+				<div class="form-group-attached">
+					<div pg-form-group class="form-group form-group-default required">
+						<label>Causa</label>
+						<textarea class="form-control"
+								 ng-model="format.rejected_study_cause" placeholder="descripción"
+								 ></textarea>
+					</div>
+				</div>
+			</div>
+
+			<!-- End cause -->
+
+        </div>
+
+		<!-- row three -->
+	<div class="row clearfix">
+
+		<!-- Expert attendant -->
+		<div class="col-sm-3">
+			<div class="form-group-attached requried">
+				<div pg-form-group class="form-group form-group-default required">
+					<label>Auxiliar responsable</label>
+					<input type="text"
+					class="form-control"
+					placeholder="Auxiliar responsable"
+					ng-model="format.responsable"
+					>
+				</div>
+			</div>
+		</div>
+		<!-- End Expert attedant -->
+
+		<!-- Medic radiologist -->
+		<div class="col-sm-4">
+			<div class="form-group-attached requried">
+				<div pg-form-group class="form-group form-group-default required">
+					<label>Médico Radiologo</label>
+					<select 
+                    class="cs-select cs-skin-slide form-control" 
+                    ng-model="format.specialists_id" 
+                    ng-options="item as (item.first_name+' '+item.last_name) for item in Specilist track by item.specialists_id" 
+                    data-container="body" 
+                    data-placement="top" 
+                    data-content="Debe seleccionar un especialista" 
+                    data-trigger="manual" 
+                    validate-attached-form-element
+                    required>
+                    <option value=""> -Seleccione un especialista- </option>
+                </select>
+				</div>
+			</div>
+		</div>
+		<!-- End Radiologist -->
+
+		<!-- Studies previous -->
+		<div class="col-sm-3">
+			<div class="form-group-attachded">
+				<div class="form-group form-group-default">
+					<label>¿Trae estudios anteriores?</label>
+					<select class="cs-select cs-skin-slide form-control"
+						ng-model="format.has_past_studies" 
+						ng-options="estudiosAnteriores.code as estudiosAnteriores.name for estudiosAnteriores in estudiosAnteriores" 
+						ui-jq="popover" data-container="body" 
+						data-placement="top" 
+						data-content="Debe seleccionar un tipo de documento" 
+						data-trigger="manual" 
+						validate-attached-form-element 
+						required>
+					<option value=""> - Seleccione una opción - </option>
+					</select>
+
+				</div>
+			</div>
+		</div>
+		<!-- End studies previous -->
+
+		<!-- Num plaque -->
+		<div class="col-sm-2">
+			<div class="form-group-attachded">
+				<div class="form-group form-group-default">
+					<label>Nº. placas</label>
+					<input type="text"
+					ng-disabled="yesNoOptions.id == 0"
+					class="form-control"
+					ng-model="format.plates_number"
+
+				</div>
+			</div>
+		</div>
+		<!-- End num plaque -->
+	</div>
+	<!-- end row three -->
+	<button type="button" class="btn btn-info btn-block" ng-click="saveControlFormat()" type="button">
+	    <i class="fa fa-save"></i> Guardar
+	</button>
+
+    </div> 
+
+	
+	</div>
+</div>

@@ -1,0 +1,62 @@
+<!-- HEADER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">ver horarios</a>
+        </li>
+    </ul>
+
+    <h3 class="page-title"> Ver horarios</h3>
+</div>
+<!-- ./HEADER -->
+
+
+<!-- FORMULARIO DE CONSULTA -->
+<div class="w3-container " >
+  <form class="w3-white w3-round-medium w3-padding-small " style="width: 85%; margin: auto; min-width: 65em;">
+   
+   <div class="w3-row" >
+     
+     <!-- sede -->
+     <div   class="w3-col l4 m3 s2" >
+        <label class="w3-text-upper w3-label w3-text-look" >Sede:</label><br/>
+        <select ng-model="Formulario.center" class="w3-select w3-input w3-border-0" ng-options="item.id as item.name for item in Formulario.centers">
+          <option value="" >--SELECCIONE--</option>
+        </select><br/>
+     </div>
+     <!-- ./sede -->
+     
+     <!-- consultorio -->
+     <div class="w3-col l4 m3 s2" >
+      <label class="w3-text-upper w3-label w3-text-look" >Consultorio:</label><br/>
+      <select ng-model="Formulario.medicalOffice" class="w3-select w3-input w3-border-0" ng-options="item.id as item.name for item in Formulario.medicalOffices" ng-change="Calendario.getEventos()">
+        <option value="" >--SELECCIONE--</option>
+      </select><br/>
+     </div>
+     <!-- ./consultorio -->
+
+     <!-- fecha -->
+     <div class="w3-col l4 m3 s2" >
+       <label class="w3-text-upper w3-label w3-text-look" >Fecha:</label><br/>
+       <input type="text" ng-model="Formulario.date"  class="w3-input w3-border-0" name="fecha" ng-change="Calendario.getEventos()"></input>
+     </div>
+     <!-- ./fecha -->
+  </div> 
+
+
+  <p class="w3-text-red w3-center" name="error-mesage" style="display: none"> El consultorio y la fecha deben ser seleccionados </p>
+
+  
+  
+  </form>
+<!-- ./FORMULARIO DE CONSULTA -->
+
+  <!-- ESPACIO PARA VISUALIZAR LA AGENDA -->
+  <div class="w3-container w3-margin-top" >
+      <blockquote id="scheduler" >
+      </blockquote>
+  </div>
+  <!-- ./ESPACIO PARA VISUALIZAR LA AGENDA -->
+</div>

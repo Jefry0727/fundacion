@@ -1,0 +1,1165 @@
+  <!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+  <ul class="breadcrumb">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li><a class="active" href="#">Perfil de Especialista</a>
+    </li>
+  </ul>
+
+</div>  
+
+
+  <!-- Container Data Professional Profile -->
+
+  <div class="container-fluid container-fixed-lg">
+        <!-- Open Modals Options -->
+
+        <div class="row">
+          
+              <div class="form-group-attached">
+                                    
+                  <div class="row clearfix">
+
+                  <!-- Image Firm -->
+
+                  <div class="col-md-2">
+                    
+                    <div class="form-group-attached">
+                        <div class="form-group form-group-default"  style="min-height: 7.5em;">
+                          <!-- Firma de especialista -->
+                          <img 
+                              ng-src="{{image_source}}"  
+                              ng-click="triggerClickUploadSign()"  
+                              style="border: 1px solid #ced0d2; cursor: pointer; width:170px; align:center !important;" 
+                              ng-show="image_source != undefined "
+                              style="max-width: 100px; max-height: 100px"
+                          />
+                          <div 
+                            style="background-color: #ced0d2; width: 16em; height: 7.5em; cursor: pointer;  
+                            position: absolute; top: 0px;" 
+                            ng-click="triggerClickUploadSign()" 
+                            ng-hide="image_source != undefined "
+                            >
+
+                            <img 
+                                src="assets/img/iconFirm.svg" 
+                                width="80px" 
+                                style="margin-left: 2px; margin-top: 2px; opacity: 0.3;" 
+                            />
+
+                          </div>  
+
+
+                          <input 
+                             style="display: none;" 
+                             id="uploadSignatureProfessional" 
+                             type="file" 
+                             file-model="fileSingature" 
+                             name="file"
+                             accept=".gif,.jpg,.jpeg,.png"
+                             onchange="angular.element(this).scope().setFile(this)"
+                          />
+
+                        
+                        </div>
+                    </div>
+
+                  </div>
+
+                  <!-- End Image Firm -->
+
+                  <!-- Name Specialist-->
+
+            <div class="col-md-2">
+                              
+              <div class="form-group-attached">
+
+                <div pg-form-group class="form-group form-group-default required" >
+
+                  <label>Idetificación</label>
+
+                  {{specialist.person.identification}}
+                  
+                                      
+                </div>
+                             
+              </div>
+
+            </div>                  
+
+            <!-- End Name Specialitst -->
+
+            <!-- Professinal Key -->
+
+            <div class="col-md-2">
+              
+              <div class="form-group-attached">
+                
+                <div pg-form-group class="form-group form-group-default required" >
+                  
+                  <label>Tarjeta Profesional</label>
+
+                  <label ng-show="specialist.professionar_card == null">No Registra</label>
+
+                  <label ng-show="specialist.professionar_card != null">{{specialist.professionar_card}}</label>
+
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- End Professinal Key -->
+
+            <!-- Address -->
+
+            <div class="col-md-4">
+                              
+              <div class="form-group-attached">
+
+                <div pg-form-group class="form-group form-group-default required" >
+
+                  <label>Dirección</label>
+
+                  {{specialist.person.address}}
+                                      
+                </div>
+                             
+              </div>
+
+            </div> 
+
+            <!-- End Address -->
+
+             <!-- Phone -->
+
+            <div class="col-md-2">
+                              
+              <div class="form-group-attached">
+
+                <div pg-form-group class="form-group form-group-default required" >
+
+                  <label>Telefono</label>
+
+                  {{specialist.person.phone}}
+                                      
+                </div>
+                             
+              </div>
+
+            </div> 
+
+            <!-- End Phone -->
+
+             <!-- Email -->
+
+            <div class="col-md-2">
+                              
+              <div class="form-group-attached">
+
+                <div pg-form-group class="form-group form-group-default required" >
+
+                  <label>Email</label>
+
+                  {{specialist.person.email}}
+                                      
+                </div>
+                             
+              </div>
+
+            </div> 
+
+            <!-- End Email -->
+
+             <!-- EFull Nameail -->
+
+            <div class="col-md-4">
+                              
+              <div class="form-group-attached">
+
+                <div pg-form-group class="form-group form-group-default required" >
+
+                  <label>Nombre Completo</label>
+
+                  {{specialist.person.first_name}} {{specialist.person.middle_name}} {{specialist.person.last_name}}
+                 {{specialist.person.last_name_two}} 
+                                      
+                </div>
+                             
+              </div>
+
+            </div> 
+
+            <!-- End Full Name -->
+
+             <!-- Gender -->
+
+         <div class="col-md-2">
+                            
+            <div class="form-group-attached">
+
+              <div pg-form-group class="form-group form-group-default required" >
+
+                <label>Genero</label>
+
+                <label ng-show="specialist.person.gender == 0">Masculino</label>
+
+                <label ng-show="specialist.person.gender == 1">Femenino</label>
+                                    
+              </div>
+                           
+            </div>
+
+          </div> 
+
+          <!-- Gender -->
+
+          <!-- Birthday -->
+
+          <div class="col-md-2">
+                            
+            <div class="form-group-attached">
+
+              <div pg-form-group class="form-group form-group-default required" >
+
+                <label>Fecha de Nacimiento</label>
+
+                {{specialist.person.birthdate}}
+                                    
+              </div>
+                           
+            </div>
+
+          </div> 
+
+          <!-- End Birthday -->
+
+          <div class="col-md-12">
+                            
+            <div class="form-group-attached" style="text-align:left !important;">
+
+              <button class="btn btn-info btn-block" ng-click="saveSpecialist()">
+                  <i class="fa fa-save"></i> Guardar 
+              </button>
+
+            </div>
+
+          </div>  
+        
+
+
+        </div>
+
+                  </div>
+              </div>    
+
+        </div>
+  
+    </div>
+ 
+
+  <!-- End Container Data Professional Profile -->
+
+<br>
+
+  
+     
+<div class="container-fluid container-fixed-lg">
+  <div class="btn-group btn-group-justified">
+
+    <a ng-click="showModalService()"  class="btn btn-info">Servicios</a>
+    <a ng-click="showModalAvailability()" class="btn btn-info">Disponibilidad</a>
+    <a ng-click="showModalAddException()" class="btn btn-info">Excepciones</a>
+
+  </div>
+</div>  
+
+
+   </div>
+
+  <!-- End Open Modals Options -->
+
+
+  <!-- Table All Exceptions -->
+
+  <div class="container-fluid container-fixed-lg">
+             
+    <div class="row">
+
+      <h2 class="text-center"><strong>Excepciones</strong></h2>
+      <br>
+
+      <table class="table">
+        <thead>
+         <th>Fecha de Inicio</th>
+         <th>Fecha de Fin</th>
+         <th>Descripción</th>
+         <th>Acciones</th>
+       </thead>
+       <tr ng-repeat="scheduleEspecialistRestriction in scheduleEspecialistRestrictions">
+        <td>
+          {{scheduleEspecialistRestriction.date_ini}}
+        </td>
+        <td>
+          {{scheduleEspecialistRestriction.date_end}}
+        </td>
+        <td>
+          {{scheduleEspecialistRestriction.description}}
+        </td>
+        <td>
+         <button class="btn btn-default" ng-click="showModalEditException(scheduleEspecialistRestriction)" ><i class="fa fa-edit"></i>&nbsp; Editar</button>
+         <button class="btn btn-default" ng-click="deleteScheduleEspecialistRestriction(scheduleEspecialistRestriction.Id)"><i class ="fa fa-remove">&nbsp;Eliminar</i></button>
+       </td>
+     </tr>
+   </table>
+   <div 
+   paging
+   page="currentPageMedicalOffices" 
+   page-size="pageSizeMedicalOffices" 
+   total="medicalOfficesTotal"
+   adjacent="true"
+   show-prev-next="true"
+   paging-action="pageResultsMedicalOffices(page)"
+   >
+ </div>    
+</div>    
+
+  </div>
+
+
+  <!-- End Table All Exceptions -->
+
+          
+
+
+<!--Modal de edicionexcepciones de especialistas-->
+<div class="modal fade slide-up disable-scroll edit-exception-specialist" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-header clearfix text-left">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-14"></i>
+          </button>
+          <h5><b>Editar Excepciones de Horario</b> </h5>
+        </div>
+        <div class="modal-body">
+          <form class="" role="form" name="editExceptionSpecialists" novalidate>
+              
+              <!--fila de fechas-->
+              <div class="row clearfix form-group-attached form-group-defaults">
+                  <!--fecha y hora de inicio-->   
+                 <div class="col-md-6 form-group-attached" >
+                   
+                    <div class="col-sm-6">
+                      <div class="" style="height:60px;">
+                       
+                          <label>
+                            Fecha de Inicio
+                          </label>
+
+
+                          <div class="input-group bootstrap-timepicker">
+                                <input class="form-control"  ng-model="editExceptionSpecialist.date_ini" name="iniDate" placeholder="Hora de Inicio" required />
+                                <span class="input-group-addon"><i class="pg-clock"></i></span>
+                          </div>
+                              
+                          <div ng-show="editExceptionSpecialists.iniHour.$touched">
+                            <p ng-model="editExceptionSpecialists.iniHour.$error.required" class="text-danger">
+                              Inserte una fecha
+                            </p>
+                          </div>
+
+                      </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                       
+                      <div class="" style="height:60px;">
+                         
+                        <label>
+                          Hora de Inicio
+                        </label>
+
+
+                        <div class="input-group bootstrap-timepicker">
+                          <input class="form-control"  ng-model="editExceptionSpecialist.hour_ini_exception" name="iniHourException" placeholder="Hora de Inicio" required />
+                          <span class="input-group-addon"><i class="pg-clock"></i></span>
+                        </div>
+                                
+                        <div ng-show="editExceptionSpecialists.iniHourException.$touched">
+                          <p ng-model="editExceptionSpecialists.iniHourException.$error.required" class="text-danger">
+                            Inserte una hora
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+
+                 </div>
+                 <!--*fecha y hora de inicio-->
+
+      
+
+
+                 <!--*fecha y hora de finalizacion-->
+                   <div class="col-md-6" >
+                   
+                    <div class="col-sm-6">
+                      <div class="" style="height:60px;">
+                       
+                          <label>
+                            Fecha de Final
+                          </label>
+
+
+                          <div class="input-group bootstrap-timepicker">
+                                <input class="form-control"  ng-model="editExceptionSpecialist.date_end" name="iniDate" placeholder="Hora de Inicio" required />
+                                <span class="input-group-addon"><i class="pg-clock"></i></span>
+                          </div>
+                              
+                          <div ng-show="editExceptionSpecialists.iniDate.$touched">
+                            <p ng-model="editExceptionSpecialists.iniDate.$error.required" class="text-danger">
+                              Inserte una final
+                            </p>
+                          </div>
+
+                      </div>
+                    </div>
+
+
+                    <div class="col-sm-6">
+                       
+                      <div class="" style="height:60px;">
+                         
+                        <label>
+                          Hora de Finalización
+                        </label>
+
+
+                        <div class="input-group bootstrap-timepicker">
+                          <input class="form-control"  ng-model="editExceptionSpecialist.hour_end_exception" name="endHourException" placeholder="Hora de Inicio" required />
+                          <span class="input-group-addon"><i class="pg-clock"></i></span>
+                        </div>
+                                
+                        <div ng-show="editExceptionSpecialists.endHourException.$touched">
+                          <p ng-model="editExceptionSpecialists.endHourException.$error.required" class="text-danger">
+                            Inserte una hora
+                          </p>
+                        </div>
+
+                      </div>
+                    </div>
+
+                 </div>
+
+              </div>
+              <!--*fecha inicio-->
+
+
+              <!--descripcion-->
+              <div style="margin-top: 0.4em">
+                <label>
+                  <b>Descripción:</b>
+                </label>
+                <div class="form-group form-group-default">
+                  <input type="text" name="description" ng-model="editExceptionSpecialist.description" class="form-control" placeholder="Descripcion de la Actividad" required />
+                </div>
+      
+              </div>
+              <!--*descripcion-->
+
+
+              <div class="row">
+                <button class="col-sm-12 btn btn-info" ng-disabled="edit-ExceptionSpecialist.$invalid" ng-click="editException()">
+                  ACEPTAR
+                </button>
+              </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Final de modal de edicion excepciones de especialistas-->
+
+<!--Exception Modal MedicalOffices-->
+
+<div class="modal fade slide-up disable-scroll add-new-exception" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-header clearfix text-left">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-14"></i>
+          </button>
+          <h5>Excepciones del Consultorio</h5>
+        </div>
+        <div class="modal-body">
+          <form class="" role="form" name="consultorioForm" novalidate>
+           <label>Fecha</label>
+           <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+            <input type="text" ng-model="newException.date" name="date" class="form-control" id='date' placeholder="Fecha" required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+          </div>
+          <div ng-show="consultorioForm.date.$touched">
+            <p ng-show="consultorioForm.date.$error.required" class="text-danger">Debe de asignar una fecha para las excepciones</p>
+          </div>
+
+          <label>Hora de Inicio</label>
+          <div class="input-group bootstrap-timepicker">
+            <input class="form-control"  id="timepicker" ng-model="newException.date_ini" name="selHour" placeholder="Hora de Inicio" required />
+            <span class="input-group-addon"><i class="pg-clock"></i></span>
+          </div>
+          <div ng-show="consultorioForm.selHour.$touched">
+           <p ng-model="consultorioForm.selHour.$error.required" class="text-danger">Inserte una hora</p>
+         </div>
+
+         <label>Hora de Fin</label>
+         <div class="input-group bootstrap-timepicker">
+          <input class="form-control"  id="timepickerend" ng-model="newException.date_end" name="endHour" placeholder="Hora de Fin" required />
+          <span class="input-group-addon"><i class="pg-clock"></i></span>
+        </div>
+        <div ng-show="consultorioForm.endHour.$touched">
+         <p ng-model="consultorioForm.endHour.$error.required" class="text-danger">Inserte una hora</p>
+       </div>
+
+       <label>Descripción</label>
+       <div class="form-group form-group-default">
+        <input type="text" name="description" ng-model="newException.description" class="form-control" placeholder="Descripcion de la Exception" required />
+      </div>
+
+      <button class="btn btn-info" ng-click="saveException()" ng-disabled="consultorioForm.$invalid"><span class="fa fa-plus"></span>&ensp;Agregar</button>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- End Exception MedicalOffices--> 
+
+
+
+
+<!-- Modal Disponibiliti Especialists -->
+
+
+
+<div class="modal fade slide-up disable-scroll add-disponibility" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-header clearfix text-left">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-14"></i>
+          </button>
+          <h5><b>Disponibilidad del Especialista</b> </h5>
+        </div>
+        <div class="modal-body">
+
+          <form class="" role="form" name="disponibilityDay" novalidate>
+
+           <div class="row">
+             
+             <div class="form-group-attached">
+               
+               <div class="row clearfix">
+                 
+                 <div class="col-md-6">
+                   
+                   <div class="form-group-attached">
+                     
+                     <div class="form-group-default" style="height:60px;">
+                       
+                          <label>
+                            Hora de Inicio
+                          </label>
+
+
+                          <div class="input-group bootstrap-timepicker">
+                                <input class="form-control"  ng-model="newAvailable.time_ini" name="iniHour" placeholder="Hora de Inicio" required />
+                                <span class="input-group-addon"><i class="pg-clock"></i></span>
+                          </div>
+                              
+                          <div ng-show="disponibilityDay.iniHour.$touched">
+                               <p ng-model="disponibilityDay.iniHour.$error.required" class="text-danger">Inserte una hora</p>
+                          </div>
+
+                     </div>
+
+                   </div>
+
+                 </div>
+                <!-- End time -->
+                 <div class="col-md-6">
+                   
+                   <div class="form-group-attached">
+                     
+                     <div class="form-group-default" style="height:60px;">
+                       
+                      <label>Hora de Fin</label>
+                        <div class="input-group bootstrap-timepicker">
+                          <input class="form-control" ng-model="newAvailable.time_end" name="endHour" placeholder="Hora de Fin" required />
+                          <span class="input-group-addon"><i class="pg-clock"></i></span>
+                        </div>
+                        <div ng-show="disponibilityDay.endHour.$touched">
+                          <p ng-model="disponibilityDay.endHour.$error.required" class="text-danger">Inserte una hora</p>
+                        </div> 
+
+                     </div>
+
+                   </div>
+
+                 </div>
+
+               </div>
+
+             </div>
+
+           </div>
+
+         <label><b>Actividad:</b></label>
+         <div class="form-group form-group-default">
+          <input type="text" name="description" ng-model="newAvailable.description" class="form-control" placeholder="Descripcion de la Actividad" required />
+        </div>
+        <div ng-show="disponibilityDay.description.$touched">
+          <p ng-show="disponibilityDay.description.$error.required" class="text-danger">Debe de especificar la descripcion</p>
+        </div>
+
+
+        <!-- seleccion de consultorios-->
+        <div class="row form-group form-group-default">
+          <article class="col-sm-12">
+            <label>Seleccione un consultorio</label>
+            <select class="form-control" ng-options="opcion.id as opcion.label for opcion in medicalOffices " ng-model="newAvailable.medical_offices_id" required></select>
+          </article>
+        </div>
+        <!---->
+
+        <!-- Tipo de servicio-->
+        <div class="row form-group form-group-default">
+
+          <div class="col-md-4">
+             <article class="radio radio-success">
+                <input type="radio" value="1" id="service-type-1" name="service-type" ng-model="newAvailable.schedule_specialist_types_id"></input>
+                <label for="service-type-1">Procedimiento</label>
+              </article>
+          </div>
+
+          <div class="col-md-4">
+             <article class="radio radio-success">
+                <input type="radio" value="2" id="service-type-2" name="service-type" ng-model="newAvailable.schedule_specialist_types_id"></input>
+                <label for="service-type-2">Consulta</label>
+              </article>
+          </div>
+          <div class="col-md-4">
+             <article class="radio radio-success">
+                <input type="radio" value="3" id="service-type-3" name="service-type" ng-model="newAvailable.schedule_specialist_types_id"></input>
+                <label for="service-type-3">Ambos</label>
+              </article>
+          </div>
+
+        </div>
+
+        <!--final tipo de servicio-->
+
+        <button class="btn btn-info" ng-click="saveAvailability()" ng-disabled="disponibilityDay.$invalid"><span class="fa fa-plus"></span>&ensp;Agregar</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+<!-- end Modal Especialist Disponibiliti -->
+
+
+<!--Modal de excepciones de especialistas-->
+<div class="modal fade slide-up disable-scroll add-exception-specialist" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-header clearfix text-left">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-14"></i>
+          </button>
+          <h5><b>Excepciones de Horario</b> </h5>
+        </div>
+        <div class="modal-body">
+          <form class="" role="form" name="addExceptionSpecialist" novalidate>
+              
+              <!--fila de fechas-->
+              <div class="row clearfix">
+                  <!--*fecha inicio-->   
+                 <div class="col-md-6">
+                   
+                   <div class="form-group-attached">
+                     
+                     <div class="form-group-default" style="height:60px;">
+                       
+                          <label>
+                            Fecha de Inicio
+                          </label>
+
+
+                          <div class="input-group bootstrap-timepicker">
+                                <input class="form-control"  ng-model="newException.date_ini" name="iniDate" placeholder="Hora de Inicio" required />
+                                <span class="input-group-addon"><i class="pg-clock"></i></span>
+                          </div>
+                              
+                          <div ng-show="addExceptionSpecialist.iniHour.$touched">
+                            <p ng-model="addExceptionSpecialist.iniHour.$error.required" class="text-danger">
+                              Inserte una fecha
+                            </p>
+                          </div>
+
+                     </div>
+
+                   </div>
+
+                 </div>
+                  <!--*fecha inicio-->
+                  <!--fecha fin-->
+                 <div class="col-md-6">
+                   
+                   <div class="form-group-attached">
+                     
+                     <div class="form-group-default" style="height:60px;">
+                       
+                      <label>Fecha de Fin</label>
+                        <div class="input-group bootstrap-timepicker">
+                          <input class="form-control" ng-model="newException.date_end" name="endDate" placeholder="Hora de Fin" required />
+                          <span class="input-group-addon"><i class="pg-clock"></i></span>
+                        </div>
+                        <div ng-show="addExceptionSpecialist.endHour.$touched">
+                          <p ng-model="addExceptionSpecialist.endHour.$error.required" class="text-danger">
+                            Inserte una fecha
+                          </p>
+                        </div> 
+
+                     </div>
+
+                   </div>
+
+                 </div>
+                 <!--*fecha fin-->
+
+               </div>
+               <!--*fila de fechas-->
+
+
+
+               <!--fila de Hora-->
+              <div class="row clearfix">
+                  <!--*hora inicio-->   
+                 <div class="col-md-6">
+                   
+                   <div class="form-group-attached">
+                     
+                     <div class="form-group-default" style="height:60px;">
+                       
+                          <label>
+                            Hora de Inicio
+                          </label>
+
+
+                          <div class="input-group bootstrap-timepicker">
+                                <input class="form-control"  ng-model="newException.hour_ini_exception" name="iniHourException" placeholder="Hora de Inicio" required />
+                                <span class="input-group-addon"><i class="pg-clock"></i></span>
+                          </div>
+                              
+                          <div ng-show="addExceptionSpecialist.iniHourException.$touched">
+                            <p ng-model="addExceptionSpecialist.iniHourException.$error.required" class="text-danger">
+                              Inserte una hora
+                            </p>
+                          </div>
+
+                     </div>
+
+                   </div>
+
+                 </div>
+                  <!--*hora inicio-->
+                  <!--hora fin-->
+                 <div class="col-md-6">
+                   
+                   <div class="form-group-attached">
+                     
+                     <div class="form-group-default" style="height:60px;">
+                       
+                      <label>Hora de Fin</label>
+                        <div class="input-group bootstrap-timepicker">
+                          <input class="form-control" ng-model="newException.hour_end_exception" name="endHourException" placeholder="Hora de Fin" required />
+                          <span class="input-group-addon"><i class="pg-clock"></i></span>
+                        </div>
+                        <div ng-show="addExceptionSpecialist.endHourException.$touched">
+                          <p ng-model="addExceptionSpecialist.endHourException.$error.required" class="text-danger">
+                            Inserte una hora
+                          </p>
+                        </div> 
+
+                     </div>
+
+                   </div>
+
+                 </div>
+                 <!--*hora fin-->
+
+               </div>
+               <!--*fila de Horas-->
+
+
+
+
+
+              <!--descripcion-->
+              <label>
+                <b>Descripcion:</b>
+              </label>
+              <div class="form-group form-group-default">
+                <input type="text" name="description" ng-model="newException.description" class="form-control" placeholder="Descripcion de la Actividad" required />
+              </div>
+              <div ng-show="addExceptionSpecialist.description.$touched">
+                <p ng-show="addExceptionSpecialist.description.$error.required" class="text-danger">
+                  Debe de especificar la descripcion
+                </p>
+              </div>
+              <!--*descripcion-->
+
+
+              <div class="row">
+                <button class="col-sm-12 btn btn-info" ng-disabled="addExceptionSpecialist.$invalid" ng-click="addNewException()">
+                  ACEPTAR
+                </button>
+              </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Final de modal de excepciones de especialistas-->
+
+</div>
+</div>
+<!-- <input type="text" ng-model="selectedStudies"  multiple="true" hidden/>
+<input type="text" ng-model="selectedStudiesAsignated"  multiple="true" hidden/>
+-->
+
+
+</div>
+
+
+<!-- Modal Services-->
+<div class="modal fade slide-up disable-scroll services-professional-profile" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg" style="width:70%">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5><span class="semi-bold"><b>Servicios</b></span></h5>
+            </div>
+            <div class="modal-body">
+
+            <div class="row">
+              <!-- Select all the especialities --> 
+              <div class="col-md-5">
+                <h4 class="text-center"><b>Asignar Servicios</b></h4>
+
+                <div class="row" >
+                  
+                  <div class="col-sm-6">
+                    
+                    <label>Centro De Costos:</label>
+
+                  <select
+                      class=" cs-select cs-skin-slide form-control" 
+                      ng-model="selectedCenter"  
+                      ng-options="item.id as item.name for item in Cost"
+                      ui-jq="popover" 
+                      ng-change="getSpecialization()"
+                      data-container="body" 
+                      data-placement="top" 
+                      data-content="Debe selecionar una sede" 
+                      data-trigger="manual" 
+                      validate-attached-form-element 
+                      required>
+                      <option value=""> -Seleccione una Especialización- </option>
+
+                    </select>
+
+                  </div>
+                
+                  
+                  <div class="col-sm-6">
+
+                    <label>Especialidades :</label>  
+
+                  <select class="form-control" 
+                  ng-options="item as item.specialization for item in Specializations track by item.id" 
+                  ng-model="selectedSpecialization"
+                  ng-disabled="selectedCenter == selected"  
+                  ng-change="GetStudy()"
+                  placeholder="Seleccionar Especialidad " >
+
+                  </select> 
+                  </div>
+
+                </div>
+
+
+                <br/>
+
+                <div class="row">   
+                 <select class="form-control" 
+
+                 multiple="true" 
+                 ng-model="selectedStudies" 
+                 ng-options="item as  item.cup +'  -  '+ item.name  for item in Studies track by item.id"
+                 style="margin-top:12px"
+                 >                            
+               </select>
+             </div>
+           </div> 
+
+           <!-- END  Select all the especialities --> 
+
+           <!-- BUTTONS -->
+           <div class=" col-md-2">
+            <div class="row " style="height:75px">
+
+            </div>
+            <button type="button"  class="btn btn-default btn-small btn-block" ng-click="saveAllStudies()">
+             <i class="glyphicon glyphicon-forward" ></i>
+           </button> 
+
+           <button type="button"  class="btn btn-default btn-block" ng-click="saveSelectedStudies()">
+             <i class="glyphicon glyphicon-chevron-right"></i>
+           </button> 
+
+
+           <button type="button"  class="btn btn-default btn-block" ng-click="deleteAsigned()">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+          </button>
+
+          <button type="button"  class="btn btn-default btn-block" ng-click="deleteAllAsigned()">
+           <i class="glyphicon glyphicon-backward" ></i>
+         </button>  
+
+       </div>
+
+       <!-- END BUTTONS -->
+
+
+       <!-- Select all the especialities --> 
+       <div class="col-md-5 ">
+        <div class=row>
+          <h4 class="text-center"> <b>Servicios Asignados</b> </h4>
+        </div>  
+
+
+        <div  class="row">
+         <label>Especialidades Asignadas :</label>   
+         <select class="form-control" 
+         ng-options="item as item.specialization  for item in Specializations_copy.respuesta track by item.id" 
+         ng-model="selectedSpecialization_copy"  
+         ng-change="GetStudy_asignament()">
+            <option>--Seleccione--</option>
+         </select>
+
+     </div> 
+     <br/>
+
+     <div class=row>
+      <select class="form-control"          
+      multiple="true" 
+      ng-model="selectedStudiesAsignated" 
+      ng-options="item as  item.study.cup +'  -  '+ item.study.name  for item in StudiesAsignated track by item.id"
+      style="margin-top:12px">                            
+    </select> 
+  </div>   
+
+</div>
+<br>
+<br>
+<div class="col-sm-12">
+  <div class="row">
+  <button class="btn btn-info btn-block" type="buttonn"><i class="fa fa-save"></i> Guardar</button>
+</div>
+</div>
+
+</div>
+                
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+
+
+
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+<!-- Modal Availability-->
+<div class="modal fade slide-up disable-scroll availability-professional-profile" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5> <span class="semi-bold"><b>Disponibilidad</b></span></h5>
+            </div>
+            <div class="modal-body">
+                
+                <div class="row">
+  
+     <form name="disponibility">
+
+        <div class="row">
+          
+          <div class="col-md-3">
+
+            <div class="btn-small  btn " >
+              <input type="checkbox" value="1" ng-model="checkboxDay.Lunes" ng-click="checkDay(1)" id="Lunes" >
+              <label for="Lunes">Lunes</label>
+              <button class="btn btn-xs" ng-click="config(1)"><i class="fa fa-pencil" ></i></button> 
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            
+          <div class="btn-small  btn " >
+
+            <input type="checkbox" value="2" ng-model="checkboxDay.Martes" ng-click="checkDay(2)" id="Martes">
+            <label for="Martes">Martes</label>
+            <button class="btn btn-xs" ng-click="config(2)"><i class="fa fa-pencil" ></i></button>
+
+          </div>
+
+        </div>
+
+          <div class="col-md-3">
+            
+            <div class="btn-small  btn " >
+              <input type="checkbox" value="3" ng-model="checkboxDay.Miercoles" ng-click="checkDay(3)" id="Miercoles">
+              <label for="Miercoles">Miercoles</label>
+              <button class="btn btn-xs" ng-click="config(3)"><i class="fa fa-pencil" ></i></button>
+            </div>
+
+          </div>
+
+          <div class="col-md-3">
+            
+            <div class="btn-small  btn " >
+              <input type="checkbox" value="4" ng-model="checkboxDay.Jueves" ng-click="checkDay(4)" id="Jueves">
+              <label for="Jueves">Jueves</label>
+              <button class="btn btn-xs" ng-click="config(4)"><i class="fa fa-pencil" ></i></button>
+            </div>
+
+          </div>
+
+          <br>
+          <br>
+
+
+          <div class="col-md-3">
+            
+             <div class="btn-small  btn " >
+              <input type="checkbox" value="5" ng-model="checkboxDay.Jueves" ng-click="checkDay(5)" id="Jueves">
+              <label for="Jueves">Viernes</label>
+              <button class="btn btn-xs" ng-click= ng-click="config(5)" ><i class="fa fa-pencil" ></i></button>
+            </div>
+
+          
+
+          </div>
+
+          <div class="col-md-3">
+            
+            <div class="btn-small  btn " >
+              <input type="checkbox" value="6" ng-model="checkboxDay.Sabado" ng-click="checkDay(6)" id="Sabado">
+              <label for="Sabado">Sabado</label>
+              <button class="btn btn-xs" ng-click="config(6)"><i class="fa fa-pencil" ></i></button>
+            </div>
+
+          </div>
+          <div class="col-md-3">
+            
+             <div class="btn-small  btn " >
+              <input type="checkbox" value="0" ng-model="checkboxDay.Domingo" ng-click="checkDay(0)" id="Domingo">
+              <label for="Domingo">Domingo</label>
+              <button class="btn btn-xs" ng-click="config(0)"><i class="fa fa-pencil" ></i></button>
+            </div>
+
+          </div>
+
+        </div>
+
+    </h4>
+  </div>
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll edit-professional-profile" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Heading <span class="semi-bold">here</span></h5>
+            </div>
+            <div class="modal-body">
+                Add Your Content here
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+  <!-- 
+    <div>
+      <figure><img src="http://nxworld.net/codepen/css-image-hover-effects/pic01.jpg" /></figure>
+      <span>Hover</span>
+    </div>
+    <div>
+      <figure style="background-color:#9b59b6;"><img src="http://nxworld.net/codepen/css-image-hover-effects/pic02.jpg" /></figure>
+      <span>Hover</span>
+    </div>
+    <div>
+      <figure style="background-color:#3498db;"><img src="http://nxworld.net/codepen/css-image-hover-effects/pic03.jpg" /></figure>
+      <span>Hover</span>
+    </div>
+  </div> -->
+

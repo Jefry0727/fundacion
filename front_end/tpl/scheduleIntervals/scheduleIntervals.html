@@ -1,0 +1,225 @@
+
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Administrar periodos del consultorio</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Administrar periodos del consultorio: <b>{{medicalOffice.code}} {{medicalOffice.name}}</b></h3>
+
+
+
+    <button class="btn btn-info" ng-click="showModalAdd()"><i class="fa fa-plus"></i> Nuevo</button>
+
+
+<!--
+    <div class="input-group date col-sm-8" ui-jq="datepicker" ui-options="{format:'yyyy/mm/dd'}">
+        <input type="text"  class="form-control"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+    </div>
+ -->
+ 
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <table class="table">
+        <thead>
+            <th>Fecha de Inicio</th>
+            <th>Fecha de Finalización</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="scheduleInterval in scheduleIntervals">
+                <td>
+                    {{scheduleInterval.date_ini}}
+                </td>
+                
+                <td>
+                    {{scheduleInterval.date_end}}
+                </td>
+                                
+                <td>
+
+
+                    <button class="btn btn-info" ng-click="goToSchedule(scheduleInterval)" >
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Agenda
+                    </button>
+
+                    <button class="btn btn-default" ng-click="showModalEdit(scheduleInterval)" >
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Editar
+                    </button>
+
+                    <button class="btn btn-default" ng-click="showModalDelete(scheduleInterval)" >
+                        <i class="fa fa-remove" aria-hidden="true"></i> eliminar
+                    </button>
+
+
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+    
+    <div 
+        paging
+        page="currentPageMedicalOffices" 
+        page-size="pageSizeMedicalOffices" 
+        total="medicalOfficesTotal"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="pageResultsMedicalOffices(page)"
+    >
+    </div>    
+
+
+</div>
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll add-schedule-interval" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Nuevo Periodo</h5>
+            </div>
+            <div class="modal-body">
+
+             
+               
+                    <form class="" role="form" name="newPeriodForm"  novalidate>
+                        
+                        <div class="input-prepend input-group">
+                                <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                               <input date-range-picker options="{format: 'YYYY-MM-DD'}" name="date_range" class="form-control date-picker" type="text" ng-model="dateRange.date" required=""  />
+                            </div> 
+                            
+
+                            <!-- Validating rol date_end -->
+                            <div ng-show="newPeriodForm.date_range.$touched">
+
+                                <!-- required -->
+                                <p ng-show="newPeriodForm.date_range.$error.required" class="text-danger">
+                                    Debe asignar una fecha de inicio y finalización para el nuevo periodo
+                                </p>  
+
+                           
+                            </div>  
+
+                            <br/>
+                
+                            <button type="button" class="btn btn-info btn-block"  ng-disabled="newPeriodForm.$invalid"  ng-click="add()">
+                                <i class="fa fa-save"></i> Guardar
+                            </button>
+                            
+                    </form>
+              
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll edit-schedule-interval" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Nuevo Consultorio</h5>
+            </div>
+            <div class="modal-body">
+               
+                       <form class="" role="form" name="editPeriodForm"  novalidate>
+
+
+
+                            <div class="input-prepend input-group">
+                                <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span>
+                               <input date-range-picker options="{format: 'YYYY-MM-DD'}" name="date_range_end" class="form-control date-picker" type="text" ng-model="dateRangeEdit.date" required=""  />
+                            </div> 
+                            
+
+
+                            <!-- Validating rol date_end -->
+                            <div ng-show="editPeriodForm.date_range_end.$touched">
+
+                                <!-- required -->
+                                <p ng-show="editPeriodForm.date_range_end.$error.required" class="text-danger">
+                                    Debe asignar una fecha inicial para el nuevo periodo
+                                </p>  
+
+                           
+                            </div>     
+
+                            <br/>     
+
+
+                            <button type="button" class="btn btn-info btn-block"  ng-disabled="editPeriodForm.$invalid"  ng-click="doEdit()">
+                                <i class="fa fa-save"></i> Guardar
+                            </button>
+
+                            
+                        </form>
+              
+              
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+
+<!-- Modal Delete-->
+<div class="modal fade slide-up disable-scroll delete-schedule-interval" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-body">
+                   <h5> ¿Está seguro que desea eliminar este consultorio?</h5>
+                    <button type="button" class="btn btn-info btn-block" ng-click="delete()">Si
+                    </button>
+                    <button type="button" class="btn btn-info btn-block" ng-click="hideModalDelete()">No
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+

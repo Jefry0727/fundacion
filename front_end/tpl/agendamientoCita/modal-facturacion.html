@@ -1,0 +1,831 @@
+<!-- Modal Confirm and Bill of Patiente -->
+
+    <div class="container-fluid container-fixed-lg">
+
+    <div class="modal fade slide-up disable-scroll bill-patient" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+          <div class="modal-dialog modal-lg" style="width:80%;">
+              <div class="modal-content-wrapper">
+                  <div class="modal-content table-block">
+                            <div class="modal-header clearfix text-left">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    <i class="pg-close fs-14"></i>
+                                  </button>
+                                  <h3>Facturación</h3>
+                            </div>
+        <div class="modal-body">
+
+            <div id="myFormWizard">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator">
+        <li class="active">
+            <a data-toggle="tab" href="app.attentionPatient.#tab1"><i class="fa fa-pencil-square-o fa-2x tab-icon"></i> <span>Opciones</span></a>
+        </li>
+        <li class="">
+            <a data-toggle="tab" href="app.attentionPatient.#tab2"><i class="fa fa-check-square-o fa-2x tab-icon"></i> <span>Facturar</span></a>
+        </li>
+<!--         <li class="">
+            <a data-toggle="tab" href="app.attentionPatient.#tab3"><i class="fa fa-check-square-o fa-2x tab-icon"></i> <span>Facturar</span></a>
+        </li> -->
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active slide" id="tab1">
+             <h3>Opciones de Facturación</h3>
+            <div class='row'>
+                    <div class="col-sm-6 col-sm-offset-3"></div>
+
+                        
+                        <form role="form" name="optionBillPatientForm" novalidate>
+                            
+                            <!-- <div class="col-md-6">
+                                 <button class="btn btn-info btn-block"><i class="fa fa-check"></i>&nbsp;Facturar ahora</button>
+                            </div> -->
+                        <ul class="pager wizard">
+                            <div class="col-sm-6">
+                                
+                                    <li class="next">
+                                        <button class="btn btn-info btn-block btn-animated" type="button"><i class="fa fa-check"></i>
+                                            <span>Facturar Ahora</span>
+                                        </button>
+                                    </li>
+                                 
+                            </div>
+
+                            <div class="col-md-6">
+
+                                 
+                                    <li class="">
+                                        <button class="btn btn-info btn-block" ng-click="hideInvoice()"><i class="fa fa-check"></i>&nbsp;Facturar despúes</button>
+                                        </button>
+                                    </li>
+                                
+                                
+                            </div>
+                                <br>
+                                <br>
+                            <div class="col-md-6 col-md-offset-3">
+                               <li class="">
+                                   <button class="btn btn-info btn-block" ng-click="hideInvoice()"><i class="fa fa-remove"></i>&nbsp;Cancelar</button> 
+                               </li>
+                            </div>   
+                        </ul>
+                        </form>
+                        
+                 </div>       
+        </div>
+        <div class="tab-pane slide" id="tab2">
+
+
+        <div class="row">
+            <div class="col-md-12">
+                
+                    <div class="form-group-attached">
+                    
+                        <div class="row clearfix">
+
+                            <div class="col-sm-4">
+                                <div class="form-group-attached">
+                                            
+                                    <div pg-form-group class="form-group form-group-default">
+                                         <label>Nombre o Razón Social del Comprador</label>
+                                         <input class="form-control" value="{{selectedClientObj.name}}" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div>
+
+                        </div>
+
+
+                        <div class="row clearfix">
+
+                           
+                                 <div class="col-sm-2">
+                                    
+                                    <div class="form-group-attached">
+                                        
+                                        <div pg-form-group class="form-group form-group-default">
+                                            <label>Num. Documento</label>
+                                             <input class="form-control" name="name" value="{{people.identification}}" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                        </div>
+
+                                    </div> 
+                                </div>
+
+                                <div class="col-sm-2">
+
+                                    <div class="form-group-attached">
+                                        
+                                        <div pg-form-group class="form-group form-group-default">
+                                            <label>Nombre Completo</label>
+                                             <input class="form-control" value="{{people.first_name}} {{people.middle_name}} {{people.last_name}} {{people.last_name_two}}" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                        </div>
+
+                                    </div> 
+                                </div>
+
+                                 <div class="col-sm-1">
+                                    
+                                    <div class="form-group-attached">
+                                        
+                                        <div pg-form-group class="form-group form-group-default">
+                                             <label>Edad</label>
+                                             <input class="form-control" ng-model="order.calculated_age" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                        </div>
+
+                                    </div> 
+
+                                </div>
+                            
+
+                                <div class="col-sm-1">
+
+                                    <div class="form-group-attached">
+                                        
+                                        <div pg-form-group class="form-group form-group-default">
+                                            <label>Sexo</label>
+                                             <input class="form-control" value="{{selectGender.name}}" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                        </div>
+
+                                    </div> 
+                                </div>
+                            
+                            <div class="col-sm-2">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Dirección</label>
+                                         <input class="form-control" name="name" value="{{people.address}}" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div> 
+
+                            <div class="col-sm-1">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Telefono</label>
+                                         <input class="form-control" name="name" value="{{people.phone}}" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div> 
+                            <div class="col-sm-1">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Ciudad</label>
+                                         <input class="form-control" name="name" value="{{selectedMunicipalitie.municipality}}" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div> 
+
+                             <div class="col-sm-2">
+
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Admisiones o Rip</label>
+                                         <input class="form-control" value="{{order.validator}}" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+                                </div> 
+                            </div> 
+
+
+                                    <!-- <div pg-form-group class="form-group form-group-default"> 
+                                    
+                                      <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                                        <input type="text" 
+                                        ng-model="selectedDateExpire" 
+                                        name="date"  
+                                        class="form-control" 
+                                        id='date'
+                                        style="margin-top: 16px;"
+                                        required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                      </div>
+                                    </div> -->
+            
+                        
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+
+        <!--  -->
+
+        
+
+
+            <div class="row">
+            
+            <br />
+            
+            <div class="col-md-7">
+                        
+                        <div class="panel panel-default" style="height: 320px;">
+                            <div class="panel-body">
+                               <table class="table bill_services">
+                                   <thead>
+                                   <th>Item</th>
+                                   <th>Ref</th>
+                                   <th>Descripción</th>
+                                   <th>Cantidad</th>
+                                   <th>Valor</th>
+                                   <th>Total</th>
+                                   </thead>
+                                   <tbody>
+                                    
+                                        <tr ng-repeat="service in services">
+                                            <td>
+                                               {{$index + 1}} 
+                                            </td>
+                                            <td>
+                                                {{service.cup}}
+                                            </td>
+                                            <td>
+                                                {{service.name}}
+                                            </td>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                {{service.cost}}                                         
+                                            </td>
+                                            <td>
+                                                {{service.cost}}                                         
+                                            </td>
+
+                                        </tr>
+                           
+
+                                   </tbody>
+                               </table> 
+
+                            </div>
+                        </div>
+
+                    </div> 
+
+                    <div class="col-xs-5">
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                               <table class="table">
+                                <thead>
+                                   <th>Descuento</th>
+                                   <th>Donaci&oacute;n</th>
+                                   <th>Subtotal</th>
+                                  
+                                   </thead>
+                                   <tbody>
+                                       <tr>
+                                           <td>0</td>
+                                           <td>0</td>
+                                           <td>{{subTotal}}</td>
+                                       </tr>
+                                    </tbody>
+                               </table>
+                            </div>
+                        </div>       
+                    </div>
+
+            </div>
+
+
+            <h5>Pagos, Abonos y Formas de Pago</h5>
+            
+            <div class="row">
+                        
+                <form name="typePaimentForm" role="form" novalidate>
+                        
+                <div class="col-md-12">
+
+                    <div class="form-group-attached">
+                         <div class="row clearfix">
+
+                            <div class="col-sm-2">
+
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                            <label>
+                                                Copago o particular 
+                                            </label>
+                                            <select 
+
+                                                class="cs-select cs-skin-slide form-control"
+                                                
+                                                ng-model="payment.bill_types_id"
+
+                                                ng-options="billType.id as billType.name for billType in billTypes"
+                                                
+                                                ui-jq="popover" data-container="body" 
+                                                
+                                                data-placement="top"
+                                                
+                                                data-content="Debe seleccionar una opción" 
+                                                
+                                                data-trigger="manual"
+                                                
+                                                validate-attached-form-element 
+
+                                                required
+                                           
+                                            />
+                                            
+                                            </select>
+                                    </div>
+                                </div> 
+                            </div> 
+
+
+                            <div class="col-sm-2">
+
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                            <label>
+                                            Forma de Pago
+                                            </label>
+                                            <select 
+                                                class="cs-select cs-skin-slide form-control"
+
+                                                
+                                                ng-model="payment.form_payments_id"
+                                                
+                                                ng-options="formType.id as formType.name for formType in formTypes " 
+                                                
+                                                ui-jq="popover"
+                                                
+                                                data-container="body"
+                                                
+                                                data-placement="top"
+                                                
+                                                data-content="" 
+                                                
+                                                data-trigger="manual"
+                                                
+                                                ng-change="changePaymentMethod()"
+
+                                            validate-attached-form-element required>
+                                            
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                            <div class="col-sm-2">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                        <label>
+                                            Nro. Tar. o Consig
+                                        </label>
+                                        <input 
+
+                                            ng-model="payment.credit_card_number"
+                                            class="form-control"
+                                            ng-disabled="payment.form_payments_id == 1"
+                                            name="typePay" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="Ingrese los valores" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element required/>
+                                    </div>
+                                </div> 
+                            </div>
+
+
+                            <div class="col-sm-2">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                        <label>
+                                            Valor a Cancelar
+                                        </label>
+                                        <input 
+
+                                            ng-model="cancelTotal"
+                                            class="form-control"  
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            placeholder="$0.00" 
+                                            data-placement="top" 
+                                            data-content="" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required 
+                                        />
+                                    </div>
+                                </div> 
+                            </div>
+
+
+                            <div class="col-sm-2">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                        
+                                        <label ng-show="payment.bill_types_id == 1">
+                                            Valor por Copago 
+                                        </label>
+
+                                        <label ng-show="payment.bill_types_id == 2">
+                                            Valor por factura
+                                        </label>
+
+                                        <input 
+                                            ng-model="payment.paid"
+                                            class="form-control"  
+                                            readonly="true" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            placeholder="$0.00" 
+                                            data-placement="top" 
+                                            data-content="" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required
+                                        />
+                                    </div>
+                                </div> 
+                            </div>
+
+                            <div class="col-sm-2">
+
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                            <label>
+                                                Saldo Neto para la Entidad
+                                            </label>
+                                            <input class="form-control" 
+                                            ng-model="order.total"
+                                            readonly="true" 
+                                            
+                                            ui-jq="popover"
+                                            data-container="body"
+                                            data-placement="top" 
+                                            data-content="" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element required/>
+                                            
+                                    </div>
+                                </div>
+                            </div> 
+
+                        </div>
+                    </div> 
+                </div>  
+
+
+
+                <div class="col-md-12">
+
+                    <div class="form-group-attached">
+                        <div class="row clearfix">
+
+                            <div class="col-sm-3">
+                             <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                            <label>
+                                                Total a Cancelar
+                                            </label>
+                                           <input 
+                                                readonly="true"
+                                                ng-model="cancelValue"
+                                                class="form-control" 
+                                                name="first_name" 
+                                                ui-jq="popover" 
+                                                data-container="body" 
+                                                data-placement="top" 
+                                                data-content="" 
+                                                data-trigger="manual" 
+                                                validate-attached-form-element 
+                                                required
+                                            />
+                                    </div>
+                                </div>
+                            </div>  
+
+                            <div class="col-sm-3">
+                             <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                            <label ng-show="payment.bill_types_id == 1">
+                                            Total Descuento 
+                                        </label>
+
+                                        <label ng-show="payment.bill_types_id == 2">Total Donación</label>
+                                           <input 
+                                                class = "form-control"  
+                                                ng-model = "tempDiscount"
+                                                ui-jq = "popover" 
+                                                data-container = "body" 
+                                                data-placement = "top" 
+                                                data-content = "" 
+                                                data-trigger = "manual" 
+                                                validate-attached-form-element 
+                                                required 
+                                            />
+                                    </div>
+                                </div>
+                            </div>  
+
+
+      
+
+                            <div class="col-sm-6">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>
+                                            Saldo Restante
+                                        </label>
+                                        <input class="form-control" ng-model="payment.debt"  ui-jq="popover" data-container="body" data-placement="top" data-content="" data-trigger="manual" validate-attached-form-element required/>
+                                    </div>
+                                </div> 
+                            </div>
+                            </div>
+                        </div>
+                    </div> 
+                               
+                </form>
+            </div>
+
+
+            <div class="row">
+                <br />
+                <div class="col sm-12">
+                        
+                    <div class="col-sm-4">
+                        <button class="btn btn-info btn-block">
+                            <i class="fa fa-check"></i>&nbsp;Confirmar
+                        </button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="btn btn-info btn-block" ng-click="prevBill()">
+                            <i class="fa fa-eye"></i>&nbsp;Ver Factura
+                        </button>
+                    </div>
+                    <div class="col-sm-4">
+                        <button class="btn btn-info btn-block" ng-click="saveBill()">
+                            <i class="fa fa-file-pdf-o"></i>&nbsp;Generar Factura
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+        
+        </div>
+        <!-- Fin Facturacion -->
+
+
+        <div class="tab-pane slide" id="tab3">
+            <h3>Resumen</h3>
+
+            <div class="row">
+                    
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                                    
+                            <div pg-form-group class="form-group form-group-default">
+                                 <label>Nombre o Razón Social del Comprador</label>
+                                 <input class="form-control" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                            </div>
+
+                        </div> 
+                    </div>
+                <div class="col-md-12">
+
+                     <h5>Fecha de Ingreso : {{selectedDate}}</h5>
+        
+                    <div class="form-group-attached">
+                        <div class="row clearfix">
+
+                           
+                         <div class="col-sm-2">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Num. Documento</label>
+                                         <input class="form-control" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div>
+
+                            <div class="col-sm-2">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Nombre Completo</label>
+                                         <input class="form-control" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div>
+
+                            <div class="col-sm-1">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Edad</label>
+                                         <input class="form-control" name="lastName" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div>
+
+                            <div class="col-sm-1">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Sexo</label>
+                                         <input class="form-control" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div>
+                            
+                            <div class="col-sm-2">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Dirección</label>
+                                         <input class="form-control" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div> 
+
+                            <div class="col-sm-1">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Telefono</label>
+                                         <input class="form-control" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div> 
+                            <div class="col-sm-1">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Ciudad</label>
+                                         <input class="form-control" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div> 
+
+                             <div class="col-sm-2">
+
+                                <div class="form-group-attached">
+                                    
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>Admisiones o Rip</label>
+                                         <input class="form-control" name="name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+
+                                </div> 
+                            </div> 
+
+                           
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        
+        <br>
+
+            <div class="row">
+             <div class="col-md-7">
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                               <table class="table">
+                                   <thead>
+                                   <th>Item</th>
+                                   <th>Cod. Referencia</th>
+                                   <th>Descripción</th>
+                                   <th>Cantidad</th>
+                                   <th>Valor Servicio</th>
+                                   <th>Valor Total</th>
+                                   </thead>
+                                   <tbody>
+                                       <tr>
+                                           <td>1</td>
+                                           <td>89893</td>
+                                           <td>Electrocardiografía Dinamica</td>
+                                           <td>1</td>
+                                           <td>165.000</td>
+                                           <td>165.000</td>
+                                       </tr>
+                                       <tr>
+                                           <td>2</td>
+                                           <td>89893</td>
+                                           <td>Electrocardiografía Dinamica</td>
+                                           <td>1</td>
+                                           <td>165.000</td>
+                                           <td>165.000</td>
+                                       </tr>
+                                       <tr>
+                                           <td>3</td>
+                                           <td>89893</td>
+                                           <td>Electrocardiografía Dinamica</td>
+                                           <td>1</td>
+                                           <td>165.000</td>
+                                           <td>165.000</td>
+                                       </tr>
+                                   </tbody>
+                               </table> 
+
+                            </div>
+                        </div>
+
+                    </div> 
+
+                    <div class="col-xs-5">
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                               <table class="table">
+                                <thead>
+                                   <th>Descuento</th>
+                                   <th>Dodación</th>
+                                   <th>Total a pagar</th>
+                                  
+                                   </thead>
+                                   <tbody>
+                                       <tr>
+                                           <td>0</td>
+                                           <td>0</td>
+                                           <td>495.000</td>
+                                       </tr>
+                                    </tbody>
+                               </table>
+                            </div>
+                        </div>       
+                    </div>
+
+            </div>
+            <h3>Acciones</h3>
+
+            <div class="row">
+                <div class="col sm-12">
+                    <div class="col-sm-4"><button class="btn btn-info btn-block"><i class="fa fa-check"></i>&nbsp;Confirmar</button></div>
+                    <div class="col-sm-4"><button class="btn btn-info btn-block"><i class="fa fa-eye"></i>&nbsp;Ver Factura</button></div>
+                    <div class="col-sm-4"><button class="btn btn-info btn-block"><i class="fa fa-file-pdf-o"></i>&nbsp;Generar Factura</button></div>
+
+                </div>
+            </div>
+
+        </div>
+        
+      <!--   <ul class="pager wizard">
+                <li class="next">
+                    <button class="btn btn-primary btn-cons btn-animated from-left fa fa-calendar" type="button">
+                        <span>Siguiente</span>
+                    </button>
+                </li>
+                <li class="next finish" style="display:none;">
+                    <button class="btn btn-primary btn-cons btn-animated from-left fa fa-calendar" type="button">
+                        <span>Final</span>
+                    </button>
+                </li>
+                <li class="previous first" style="display:none;">
+                    <button class="btn btn-white btn-cons btn-animated from-left fa fa-calendar" type="button">
+                        <span>Primero</span>
+                    </button>
+                </li>
+                <li class="previous">
+                    <button class="btn btn-white btn-cons " type="button">
+                        <span>Anterior</span>
+                    </button>
+                </li>
+            </ul> -->
+
+        
+    </div>
+</div>
+
+
+                            </div>
+                    </div>
+                </div>
+            </div> 
+        </div>           
+
+</div> 
+<!-- End Modal Confirm

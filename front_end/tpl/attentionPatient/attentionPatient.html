@@ -1,0 +1,303 @@
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Atención</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Atención Paciente</h3>
+
+</div>
+
+
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <div class="row">
+        <!-- START PANEL -->
+
+        <div class="col-md-8">
+         <h3> Paciente </h3>
+
+         <div class="form-group-attached">
+            <div class="row clearfix">
+                <div class="col-sm-3">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default">
+                            <label>
+                                Primer Nombre
+                            </label>
+                            <input class="form-control" name="first_name" style="color:#000000" ng-model="people.first_name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default">
+                            <label>
+                                Segundo Nombre
+                            </label>
+                            <input class="form-control" name="middle_name" style="color:#000000" readonly="true" ng-model="people.middle_name"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default">
+                            <label>
+                                Primer Apellido
+                            </label>
+                            <input class="form-control" name="last_name" style="color:#000000" ng-model="people.last_name"  
+                            ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default">
+                            <label>
+                                Segundo Apellido
+                            </label>
+                            <input class="form-control" name="last_name_two" style="color:#000000" ng-model="people.last_name_two" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-sm-3">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default">
+                            <label>
+                              Numero Documento 
+                          </label>
+                          <input type="text" name="documento" style="color:#000000" ng-model="people.identification" readonly="true" class="form-control" required/>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                            Tipo Documento 
+                        </label>
+                        <input type="text" name="documentoType" style="color:#000000" ng-model="people.document_type.type" readonly="true" class="form-control" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                            Genero
+                        </label>
+
+                        <input type="text" name="genero" style="color:#000000" readonly="true" class="form-control" value="Femenino" ng-show="people.gender == 1" />
+                        <input type="text" name="genero" style="color:#000000" readonly="true" class="form-control" value="Masculino" ng-show="people.gender == 0" />
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label> 
+                            Fecha Nacimiento:
+                        </label>
+                        <input  ui-options="{format:'yyyy-mm-dd'}" name="fecha" style="color:#000000" readonly="true" ng-model="people.birthdate" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-sm-4">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                            Edad
+                        </label>
+                        <input class="form-control" name="birthdate" style="color:#000000" ng-model="order.calculated_age" id='edad' readonly="true"  type="text"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                            Teléfono:
+                        </label>
+                        <input class="form-control" name="phone" style="color:#000000" ng-model="people.phone" type="text" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                            E-mail:
+                        </label>
+                        <input class="form-control" name="email" style="color:#000000" readonly="true"  ng-model="people.email"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+  <div class="row clearfix">
+         <div class="col-sm-12">
+        <div class="form-group-attached">
+            <div pg-form-group  class="form-group form-group-default ">
+                <label>
+                    Observaciones 
+                </label>
+                <input name="diagnostico" style="color:#000000" readonly="true" class="form-control" ng-model="order.observations" required/>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    </div>
+
+<!-- END PACIENT INFORMATION -->
+
+<div class="col-md-4">
+   <h3> Estudio </h3>
+
+   <div class="form-group-attached">
+    <div class="row clearfix">
+        <div class="col-sm-12">
+           <div class="form-group-attached">
+            <div pg-form-group class="form-group form-group-default">
+                <label>
+                    Estudio
+                </label>
+                <input class="form-control" name="address" style="color:#000000" ng-model="study.name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <!-- END STUDY BASIC INFORMATION --> 
+            <div class="col-sm-12">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                           Seleccionar Especialista.
+                       </label>
+                       <select  class="cs-select cs-skin-slide form-control" 
+                       ng-model="selectedSpecialist" 
+                       ng-options="item as item.person.first_name +' '+ item.person.middle_name +' '+ item.person.last_name +' '+ item.person.last_name_two for item in Specialists track by item.id" 
+                       ui-jq="popover" 
+                       data-container="body" 
+                       data-placement="top" 
+                       data-content="Debe seleccionar un Especialista" 
+                       data-trigger="manual" 
+                       validate-attached-form-element
+                       ng-change = "getAllResultsProfile()"
+                
+
+                       required>
+                       <option value=""> -Seleccione un especialista- </option>
+                   </select>
+               </div>
+           </div>
+       </div>
+
+
+        <div class="col-sm-12">
+        <div class="form-group-attached">
+            <div pg-form-group  class="form-group form-group-default ">
+                <label>
+                    Perfil de Resultado 
+                </label>
+                <select  class="cs-select cs-skin-slide form-control" 
+                ng-model="formatSelected" 
+                ng-options="item as item.title for item in resultsProfile " 
+                ui-jq="popover" 
+                data-container="body" 
+                data-placement="top" 
+                data-content=" seleccionar un formato de transcripciòn" 
+                data-trigger="manual" 
+                validate-attached-form-element
+                ng-change = "changeSelectedFormat()"
+                required>
+                <option value=""> -Seleccione un Formato- </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-12">
+        <div class="form-group-attached">
+            <div pg-form-group  class="form-group form-group-default ">
+                <label>
+                    Complemento 
+                </label>
+                <select  
+                class="cs-select cs-skin-slide form-control" 
+                ng-model="complement" 
+                ng-init="0"
+                required>
+                    <option value="0" ng-selected="selected" >No</option>
+                    <option value="1" >Si</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<div class="col-md-12">
+
+ <div class="form-group-attached">
+    <div class="row clearfix">
+
+        <div class="col-sm-12">
+         <h3> Informe </h3>
+
+         <div class="summernote-wrapper">
+            <div id="summernote" 
+            config="summernote_options" summernote ng-model="summernote">
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+<div class="col-md-12">
+
+ <br>
+<div class="form-group-attached">
+    <div class="row clearfix">
+    <button class="btn btn-primary form-control" data-toggle="tooltip" ng-disabled="selectedSpecialist == undefined || complement == null" ng-click="finishAttention(people,order,study)" title="GUARDAR" type="button" >
+    <i aria-hidden="true" class="btn-info"></i>Guardar</button>
+</div>
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+

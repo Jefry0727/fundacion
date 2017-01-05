@@ -1,0 +1,81 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Plain template</a>
+        </li>
+    </ul>
+    <button class="btn btn-info" ng-click="showSpecialist()"><i class="fa fa-plus"></i> Nuevo</button>
+    <br><br>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Lista De Especialistas</h3>
+
+        
+
+                       
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <table class="table">
+
+        <thead>
+            <th>Nombre Completo</th>
+            <th>Identificación</th>
+            <th>Email</th>
+            <th>TP </th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="specialist in specialists">
+           
+
+                <td>{{specialist.person.first_name}} {{specialist.person.last_name}}</td>
+            
+                <td>{{specialist.person.identification}}</td> 
+            
+                <td>{{specialist.person.email}}</td>   
+            
+                <td>{{specialist.professionar_card}}</td> 
+            
+                <td>
+                
+                    <!-- Botón para dirigir a perfil -->
+                    <button class="btn btn-info" ng-click="goToSpecialistProfile(specialist)"><i class="fa fa-user-md"></i> Perfil</button> 
+
+                    <button class="btn btn-default" ng-click="viewEditSpecialists(specialist)" ng-show="false" >
+                        <i class="fa fa-edit"></i> 
+                        Editar
+                    </button>
+                    
+                    <span ng-if="specialist.user.active == 0">
+                        <button class="btn btn-default" ng-click="activatedUser(specialist)"><i class="fa fa-check-square-o"
+                        ></i>  Activar</button>
+                    </span>
+                    
+                    <span ng-if="specialist.user.active != 0">
+                        <button class="btn btn-default" ng-click="desactivatedUser(specialist)"><i class="fa fa-remove"></i>  Desactivar</button>
+                    </span>
+
+
+                
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div 
+        paging
+        page="currentPageGetSpecialist" 
+        page-size="pageSizeGetSpecialist" 
+        total="total"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="getSpecialist(page)"
+    >
+    </div> 
+</div>

@@ -1,0 +1,1979 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Cuadre de Caja</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Cuadre de Caja: {{message}} </h3>
+                     
+</div>
+
+<div class="container-fluid container-fixed-lg ">
+
+  <form name="" role="form" novalidate>
+      
+      <div class="row">
+          
+       <div class="col-md-10">
+           
+            <div class="form-group-attached">
+            
+            <div class="row clearfix">
+                
+                <!-- Date -->
+
+                <div class="col-sm-2">
+                    
+                    <div class="form-group-attached">
+    
+                        <div class="form-group form-group-default ">
+                            
+                            <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                            <label>fecha</label>
+                                <input type="text" 
+                                name="date"
+                                ng-change="[cashFacturacion(date), copymentDebitCard(date), copyCheckSum(date),
+                                copyBondSum(date), copyComsigmmentSum(date), allpaymentsCopyment(date),
+                                cashManualBills(date), cardsManualBills(date), checkManualBills(date),
+                                checkManualBonds(date), consignmentManualBills(date), allManualBills(date),
+                                totalCash(date), totalCards(date), totalChecks(date), totalBonds(date), 
+                                totalConsigments(date), totalPayment(date)
+                                ]"
+                                ng-model="queryModel.date"
+                                placeholder="Fecha"  
+                                class="form-control"
+                                id='date' required
+                                style="margin-top:-4px;" 
+                                />
+                                <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- End Date -->
+
+
+                 <!-- Base CashBox -->
+
+                <div class="col-sm-2">
+                    
+                    <div class="form-group-attached">
+    
+                        <div class="form-group form-group-default ">
+                            
+                             <label>base de caja:</label>
+                                            
+                            <input 
+                            type="text"
+                            ng-model="baseCash.total"
+                            placeholder="$0.00"
+                            class="form-control"
+                            ui-jq="popover" 
+                            data-container="body" 
+                            data-placement="top"  
+                            data-trigger="manual" 
+                            validate-attached-form-element required />
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- End DatBase CashBox -->
+
+                <!-- Receipt Filter -->
+
+                <span ng-show="persmission == 1 || persmission == 10 ">
+                    <div class="col-sm-2">
+                    
+                    <div class="form-group-attached">
+    
+                        <div class="form-group form-group-default ">
+                            
+                             <label>Usuarios:</label>
+                                            
+                             <select class=" cs-select cs-skin-slide form-control" 
+                                name="userR" 
+                                ui-jq="popover" data-container="body" 
+                                data-placement="top" 
+                                data-content="Debe seleccionar un usuario" 
+                                data-trigger="manual" 
+                                validate-attached-form-element 
+                                ng-model="user.id"
+                                ng-options="users.id as users.person.first_name for users in users"
+                                ng-change="[generate(user), cashFacturacion(date), copymentDebitCard(date), copyCheckSum(date),
+                                copyBondSum(date), copyComsigmmentSum(date), allpaymentsCopyment(date),
+                                cashManualBills(date), cardsManualBills(date), checkManualBills(date),
+                                checkManualBonds(date), consignmentManualBills(date), allManualBills(date),
+                                totalCash(date), totalCards(date), totalChecks(date), totalBonds(date), 
+                                totalConsigments(date), totalPayment(date)
+                                ]"
+                                >
+                                <option value=""> -Seleccione el usuario- </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                </span>
+            <br>
+         
+                
+             <!--    <div class="col-sm-2">
+                    <button class="btn btn-info" ng-click="generate(people.person)">Ayuda</button>
+                </div> -->
+
+
+                <!-- End Receipt Filter -->
+
+            </div>
+
+
+        </div>
+
+       </div>
+
+       <!-- <div class="col-md-2">
+           
+           <button class="btn btn-info" ng-disabled="true"><i class="fa fa-plus"></i> Resgitrar Egreso</button>
+
+       </div> -->
+
+      </div>
+
+  </form>
+    
+</div>
+
+<div class="container-fluid container-fixed-lg ">
+<hr>
+</div>
+
+<div class="container-fluid container-fixed-lg">
+
+    <div class="row">
+        
+       <div class="col-md-6">
+           
+            <form name="cashBoxForm" role="form" novalidate>
+
+
+            <div class="form-group-attached">
+                
+                <div class="row clearfix">
+                    
+                    <!-- Copyment -->
+
+
+                    <!-- Cash -->
+
+                    <h4><b>Copago:</b></h4>
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Efectivo</label>
+
+                                <input 
+                                type="text"
+                                ng-model="cashFact.Total "
+                                readonly="true"
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Cash -->
+                    
+                    <!-- Card and Credit Card -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Tarjetas</label>
+                                <input 
+                                type="text"
+ 
+                                readonly="true"
+                                style="color: #000000"
+                                ng-model="totalsCardsCopyments.total "
+                                ng-change="copymentDebitCard(totalsCardsCopyments.total)"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- End Card and Credit Card -->
+
+                   <!-- Check -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                             <label>Cheque</label>
+
+                             <input 
+                                type="text"
+
+                                ng-model="payCheck.Total "
+                                readonly="true"
+                                style="color: #000000"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                   <!-- End Check -->
+
+                    <!-- Bond -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Bono</label>
+
+                                <input 
+                                type="text"
+
+                                ng-model="payBond.Total "
+                                readonly="true"
+                                style="color: #000000"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Bond -->
+                    
+                    <!-- Consignment -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Cosignación</label>
+
+                                <input 
+                                type="text"
+
+                                ng-model="payConsignment.Total "
+                                readonly="true"
+                                style="color: #000000"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Consignment -->
+
+                   <!-- Copayment Subtotal Sales -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                             <label>Subtotal ventas por Copago</label>
+
+                             <input 
+                                type="text"
+
+                                ng-model="copymentsTotal.total "
+                                readonly="true"
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                   <!-- End Copayment Subtotal Sales -->
+
+
+                    <!-- End Copyment -->
+
+                    <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+                    <br>
+                    <h4><b>Factura de Papel:</b></h4>
+                        
+
+                     <!-- Paper Bill -->
+
+                    <!-- Cash -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Efectivo</label>
+
+                                <input 
+                                type="text"
+
+                                value="{{copymentsBillCash.Total}}"
+                                readonly="true"
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Cash -->
+                    
+                    <!-- Card and Credit Card -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Tarjetas</label>
+
+                                <input 
+                                type="text"
+
+                                ng-model="totalCardsBill.total "
+                                ng-change="cardsManualBills(totalCardsBill.total)"
+                                readonly="true"
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- End Card and Credit Card -->
+
+                   <!-- Check -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                             <label>Cheque</label>
+
+                             <input 
+                                type="text"
+
+                                ng-model="copymentsBillCheck.Total "
+                                readonly="true"
+                                style="color: #000000"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                   <!-- End Check -->
+
+                    <!-- Bond -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Bono</label>
+
+                                <input 
+                                type="text"
+
+                                ng-model="copymentsBillBond.Total "
+                                readonly="true"
+                                style="color: #000000"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Bond -->
+                    
+                    <!-- Consignment -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Cosignación</label>
+
+                                <input 
+                                type="text"
+
+                                ng-model="copymentsBillConsignment.Total "
+                                readonly="true"
+                                style="color: #000000"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Consignment -->
+
+                   <!-- Copayment Subtotal Sales -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                             <label>Subtotal ventas por Factura</label>
+
+                             <input 
+                                type="text"
+
+                                ng-model="totalSaleBills.total " 
+                                readonly="true"
+                                style="color: #000000"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                   <!-- End Copayment Subtotal Sales -->
+
+
+                    <!-- End Copyment -->
+
+                 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+                    <br>
+                <h4 hidden="true"><b>Devoluciones:</b></h4 >
+                        
+
+                     <!-- Paper Bill -->
+
+                    <!-- Cash -->
+
+                    <div class="col-md-4" hidden="true">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Efectivo</label>
+
+                                <input 
+                                type="text"
+
+                                readonly="true"
+                                ng-model="saleNotes.totalCash "
+                                style="color: #000000"  
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Cash -->
+                    
+                    <!-- Card and Credit Card -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Tarjetas</label>
+
+                                <input 
+                                type="text"
+
+                                ng-model ="saleNotes.totalCards"
+                                readonly="true"
+                                style="color: #000000"  
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- End Card and Credit Card -->
+
+                   <!-- Check -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                             <label>Cheque</label>
+
+                             <input 
+                                type="text"
+
+                                readonly="true"
+                                ng-model="saleNotes.totalChecks"
+                                style="color: #000000"  
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                   <!-- End Check -->
+
+                    <!-- Bond -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Bono</label>
+
+                                <input 
+                                type="text"
+
+                                readonly="true" 
+                                ng-model="saleNotes.totalBonds"
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Bond -->
+                    
+                    <!-- Consignment -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Cosignación</label>
+
+                                <input 
+                                type="text"
+
+                                readonly="true"
+                                ng-model="saleNotes.totalConsigments"
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Consignment -->
+
+                   <!-- Copayment Subtotal Sales -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                             <label>Subtotal devoluciones</label>
+
+                             <input 
+                                type="text"
+
+                                readonly="true" 
+                                ng-model = "saleNotes.totalPayment"
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                   <!-- End Copayment Subtotal Sales -->
+
+
+                    <!-- End Copyment -->
+
+ <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+                    <br>
+                    <h4><b>Totales:</b></h4>
+                        
+
+                     <!-- Paper Bill -->
+
+                    <!-- Cash -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Total de Efectivo</label>
+
+                                <input 
+                                type="text"
+
+                                value="{{cash.total}}"
+                                readonly="true"
+                                style="color: #000000"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Cash -->
+                    
+                    <!-- Card and Credit Card -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Total por Tarjetas</label>
+
+                                <input 
+                                type="text"
+                                ng-model="cardsAllTotal.total"
+                                readonly="true"
+                                style="color: #000000"
+                                ng-change="totalCards(cardsAllTotal.total)"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- End Card and Credit Card -->
+
+                   <!-- Check -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                             <label>Total por cheques</label>
+
+                             <input 
+                                type="text"
+                                ng-model="checks.total"
+                                readonly="true"
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                   <!-- End Check -->
+
+                    <!-- Bond -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Total por Bono</label>
+
+                                <input 
+                                type="text"
+
+                                ng-model="bonds.total"
+                                readonly="true"
+                                style="color: #000000"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+                                
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Bond -->
+                    
+                    <!-- Consignment -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                                <label>Total por Cosignacines</label>
+
+                                <input 
+                                type="text"
+
+                                ng-model="consignment.total"
+                                readonly="true"
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Consignment -->
+
+                   <!-- Copayment Subtotal Sales -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                
+                             <label>Total de ingresos</label>
+
+                             <input 
+                                type="text"
+
+                                ng-model="totalDay.total"
+                                readonly="true"
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                   <!-- End Copayment Subtotal Sales -->
+
+
+                    <!-- End Copyment -->
+
+
+                </div>
+
+
+            </div>
+        
+
+
+            </form>
+
+       </div>
+
+       <!-- End Col One -->
+
+       <!-- Start Col Two -->
+
+
+       <div class="col-md-6">   
+    
+        <form name="comparationsPaymentForm" role="name" novalidate>
+            
+            <div class="form-group-attached">
+                
+                <div class="row clearfix">
+                    
+                    <!-- Count Money -->
+
+                    <!-- Money -->
+
+                    <h4><b>Billetes:</b></h4>
+                    <!-- Num Ticket 100.000 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$100.000</label>
+                                 
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="ticketmodel.v1"
+                                ng-change="sumTotal(ticketModel)"
+                                placeholder="$0.00"
+                                placeholder="cantidad"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Num Ticket 100.000 -->
+
+                    <!-- Total Num Ticket -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="updateTicketModel.c1 "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total Num Ticket -->
+
+                    <!-- Num Ticket 50.000 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$50.000</label>
+
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="ticketModel.v2"
+                                ng-change="sumTotal(ticketModel) "
+                                placeholder="cantidad"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Num Ticket 50.000 -->
+
+                    <!-- Total Num Ticket -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="updateTicketModel.c2 "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total Num Ticket -->
+                    <!-- Num Ticket 100.000 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$20.000</label>
+                                 
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="ticketModel.v3"
+                                ng-change="sumTotal(ticketModel)"
+                                placeholder="cantidad"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Num Ticket 100.000 -->
+
+                    <!-- Total Num Ticket -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="updateTicketModel.c3 "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total Num Ticket -->
+
+                    <!-- Num Ticket 10.000 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$10.000</label>
+
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="ticketModel.v4"
+                                ng-change="sumTotal(ticketModel)"
+                                placeholder="cantidad"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Num Ticket 10.000 -->
+
+                    <!-- Total Num Ticket -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="updateTicketModel.c4 "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total Num Ticket -->
+
+                    <!-- Num Ticket 5.000 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$ 5.000</label>
+                                 
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="ticketModel.v5"
+                                ng-change="sumTotal(ticketModel) "
+                                placeholder="cantidad"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Num Ticket 5.000 -->
+
+                    <!-- Total Num Ticket -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="updateTicketModel.c5 "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total Num Ticket -->
+
+                    <!-- Num Ticket 2.000 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$ 2.000</label>
+
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="ticketModel.v6"
+                                ng-change="sumTotal(ticketModel)"
+                                placeholder="cantidad"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Num Ticket 2.000 -->
+
+                    <!-- Total Num Ticket -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="updateTicketModel.c6 "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total Num Ticket --><!-- Num Ticket 1.000 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$ 1.000</label>
+                                 
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="ticketModel.v7"
+                                ng-change="sumTotal(ticketModel)"
+                                placeholder="cantidad"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Num Ticket 1.000 -->
+
+                    <!-- Total Num Ticket -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default ">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="updateTicketModel.c7 "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Total in Tickets -->
+
+                    <div class="col-md-6">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default ">
+                                <label>Total de Efectivo en Billetes</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="totalTickets.total  "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- End total in Tickets -->
+
+                    <!-- End Total Num Ticket -->
+                    <br>
+                    <h4 style="margin-top: 5px;"><b>Monedas:</b></h4>
+
+                    <!-- Count Coins 1.000 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$ 1.000</label>
+
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="coinsModel.m1"
+                                ng-change="sumTotal(coinsModel)"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Count Coins 1.000 -->
+
+                    <!-- Total  -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+                                                
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="updateCoinsModel.m1  "
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />                
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total -->
+
+                    <!-- Count Coins 500 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$ 500:</label>
+
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="coinsModel.m2"
+                                ng-change="sumTotal(coinsModel)"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                    <!-- Count Coins 500 -->
+
+                    <!-- Total -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="updateCoinsModel.m2 "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total -->
+
+                     <!-- Count Coins 200 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$ 200</label>
+
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="coinsModel.m3"
+                                ng-change="sumTotal(coinsModel)"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                    <!-- Count Coins 200 -->
+
+                    <!-- Total -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                 ng-model="updateCoinsModel.m3 "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total -->
+                     <!-- Count Coins 100 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$ 100</label>
+
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="coinsModel.m4"
+                                ng-change="sumTotal(coinsModel)"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                    <!-- Count Coins 100 -->
+
+                    <!-- Total -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="updateCoinsModel.m4 "
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total -->
+                     <!-- Count Coins 50 -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>$ 50</label>
+
+                                <input 
+                                type="text"
+
+                                min="0"
+                                ng-model="coinsModel.m5"
+                                ng-change="sumTotal(coinsModel)"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                    <!-- Count Coins 50 -->
+
+                    <!-- Total -->
+
+                    <div class="col-md-3">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Valor</label>
+
+                                <input 
+                                type="text"
+
+                                readonly= "true"
+                                  style="color: #000000" 
+                                ng-model="updateCoinsModel.m5 "
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total --> 
+
+                    <!-- Total de Cahs in Coins -->
+
+                     <div class="col-md-6">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Total de efectivo en monedas</label>
+
+                                <input 
+                                type="text"
+
+                                ng-model="totalCoins.total"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total Cash in Coins -->
+
+                    <!-- End Count Coins -->
+
+                    <!-- Total Cash in Box -->
+                     
+                     <br>                       
+                    <h4><b>Dinero Total:</b></h4>
+
+                    <!-- Total Cash -->
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>Total efectivo</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                ng-model="updateTotal.total "
+                                style="color: #000000" 
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total Cash -->
+
+                    <!--  Total Consignment  -->
+
+                        
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>total a consignar</label>
+
+                                <input 
+                                type="text"
+
+                                readonly= "true"
+                                placeholder="$0.00"
+                                style="color: #000000" 
+                                ng-model="cash.total "
+                                ng-change="sumTotal(cash)"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Total Consignment -->
+
+                    <!-- Diference -->
+
+
+                    <div class="col-md-4">
+                        
+                        <div class="form-group-attached">
+                            
+                            <div class="form-group form-group-default">
+                                <label>diferencia</label>
+
+                                <input 
+                                type="text"
+                                readonly= "true"
+
+                                style="color: #000000" 
+                                ng-model="diference.total  "
+                                ng-change="sumTotal(diference)"
+                                placeholder="$0.00"
+                                class="form-control"
+                                ui-jq="popover" 
+                                data-container="body" 
+                                data-placement="top"  
+                                data-trigger="manual" 
+                                validate-attached-form-element />
+                             
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- End Diference -->
+
+                    <!-- Generate Report -->
+
+                    <!-- End Generate Report -->
+
+                    <div class="col-md-12"> 
+                
+                        <button style="margin-top:20px;" ng-click="reportPayment(totalsCardsCopyments, totalCardsBill, cardsAllTotal, baseCash)" class="btn btn-info btn-block"><i class="fa fa-file-text-o"></i> Generar Reporte</button>
+        
+                    </div>
+                        
+                    <!-- End total Cash in box -->
+        
+                </div>
+
+            </div>
+
+        </form>
+
+       </div>
+
+
+       <!-- End Col Two -->
+
+    </div>
+
+

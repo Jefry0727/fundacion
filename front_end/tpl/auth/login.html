@@ -1,0 +1,216 @@
+
+<!-- START PAGE-CONTAINER -->
+
+<div class="login-wrapper ">
+    
+    <!-- START Login Background Pic Wrapper-->
+    
+    <div class="bg-pic">
+        
+        <!-- START Background Pic-->
+        
+        <img src="assets/img/sam_login_background.jpg" alt="" class="lazy">
+        
+        <!-- END Background Pic-->
+        
+        <!-- START Background Caption-->
+        
+        <!-- <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
+            
+            <h2 class="semi-bold text-white">
+          Pages make it easy to enjoy what matters the most in the life
+          </h2>
+            
+            <p class="small">
+                images Displayed are solely for representation purposes only, All work copyright of respective owner, otherwise © 2013-2014 REVOX.
+            
+            </p>
+        
+        </div> -->
+        
+        <!-- END Background Caption-->
+    
+    </div>
+    
+    <!-- END Login Background Pic Wrapper-->
+    
+    <!-- START Login Right Container-->
+    
+    <div class="login-container bg-white">
+        
+        <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
+            
+            <img src="assets/img/353x53Fundacion.png" class="img-rounded" alt="logo" data-src="assets/img/353x53Fundacion.png" data-src-retina="assets/img/353x53Fundacion.png">
+            
+            <p class="p-t-35"><b>Iniciar Sesión</b>
+            </p>
+            
+            <!-- START Login Form -->
+            
+            <form name="login" class="p-t-15" novalidate>
+                
+                <!-- START Form Control-->
+                
+                <!-- has-error -->
+                <div pg-form-group class="form-group form-group-default " ng-class="{ 'has-error' : login.username.$touched && login.username.$error.required }">
+                    
+                    <label>Nombre de usuario</label>
+                    
+                    <div class="controls">
+                        
+                        <input type="text" name="username" placeholder="Nombre de usuario" class="form-control" ng-model="loginData.username" required>
+                    
+                    </div>
+                
+                </div>
+                
+                <!-- Validating user name -->
+                <div ng-show="login.username.$touched">
+
+                    <!-- required -->
+                    <p ng-show="login.username.$error.required" class="error">
+                        Debe ingresar un nombre de usuario
+                    </p>
+
+                </div>     
+                
+                <!-- END Form Control-->
+                    
+                <!-- START Form Control-->
+                
+                <div pg-form-group class="form-group form-group-default" ng-class="{ 'has-error' : login.password.$touched && login.password.$error.required }">
+                    
+                    <label>Password</label>
+                    
+                    <div class="controls">
+                        
+                        <input type="password" class="form-control" name="password" placeholder="Contraseña" ng-model="loginData.password" required>
+                    
+                    </div>
+                
+                </div>
+                
+
+
+                <!-- Validating password -->
+                <div ng-show="login.password.$touched">
+
+                    <!-- required -->
+                    <p ng-show="login.password.$error.required" class="error">
+                        Debe ingresar una contraseña
+                    </p>
+
+                </div> 
+                
+                <!-- START Form Control-->
+                
+<!--                 <div class="row">
+                    
+                    <div class="col-md-6 no-padding">
+                        
+                        <div class="checkbox ">
+                            
+                            <input type="checkbox" value="1" id="checkbox1">
+                            
+                            <label for="checkbox1">Keep Me Signed in
+                            </label>
+                        
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="col-md-6 text-right">
+                        
+                        <a href="" class="text-info small">Help? Contact Support
+                        </a>
+                    
+                    </div>
+                
+                </div> -->
+                
+                <label ng-show="errorLogin != undefined" class="text-danger">{{errorLogin}}</label>
+                <!-- END Form Control-->
+                <button type="submit" class="btn btn-info btn-block" ng-click="doLogin()" ng-disabled="login.$invalid">
+                    Iniciar Sesión
+                </button>
+
+            
+            </form>
+            
+            
+            <!--END Login Form-->
+            
+            <!-- <div class="pull-bottom sm-pull-bottom">
+                
+                <div class="m-b-30 p-r-80 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix">
+                    
+                    <div class="col-sm-3 col-md-2 no-padding">
+                        
+                        <img alt="" class="m-t-5" data-src="assets/img/demo/pages_icon.png" ui-jq="unveil" data-src-retina="assets/img/demo/pages_icon_2x.png" height="60" src="assets/img/demo/pages_icon.png" width="60">
+                    
+                    </div>
+                    
+                    <div class="col-sm-9 no-padding m-t-10">
+                        
+                        <p>
+                        <small>
+                Create a pages account. If you have a facebook account, log into it for this process. Sign in with 
+                <a href="" class="text-info">Facebook
+                </a> or 
+                <a href="" class="text-info">Google
+                </a>
+                </small>
+                        
+                        </p>
+                    
+                    </div>
+                
+                </div>
+            
+            </div> -->
+        
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    
+
+            <footer class="text-center">
+
+                <a href="http://www.gatolocostudios.com" style="color:black">All rights reserved &copy; GL Studios S.A.S 2016</a>
+            </footer>
+
+    
+    </div>
+    
+    <!-- END Login Right Container-->
+
+
+</div>
+
+<!-- END PAGE CONTAINER -->

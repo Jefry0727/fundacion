@@ -1,0 +1,623 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+  <ul class="breadcrumb">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li><a href="#">Lista de Ordenes</a>
+    </li>
+  </ul>
+  <!-- END BREADCRUMB -->
+  <h3 class="page-title">Facturacion del dia</h3>
+
+</div>
+
+
+<!-- <div class="container" ng-app="sortApp" ng-controller="mainController"> -->
+<div class="row">
+  <div class="container-fluid container-fixed-lg">
+
+    <form name="confirmForm" role="form" novalidate>
+      <div class="form-group-attached">
+        <div class="row clearfix">
+
+          <div class="col-md-2">
+            <div pg-form-group class="form-group form-group-default required" > 
+              <label>Fecha a consultar </label>
+
+
+              <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                <input type="text" 
+                ng-model="selectedDate" 
+                name="date"  
+                placeholder="Fecha Inicio" 
+                class="form-control" 
+                ng-change="loadValues()" 
+                id='date' 
+                required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+            
+          </div>
+          <div class="col-md-2" >
+            <div pg-form-group class="form-group form-group-default required" > 
+              <label>Fecha a Final </label>
+
+              <div id="dtEnd" class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+
+                <input
+
+                type="text" 
+                ng-model="selectedDateEnd" 
+                name="dateEnd"  
+                placeholder="Fecha Fin Rango " 
+                class="form-control"
+                ng-change="loadValues()" 
+                id='dateEnd' 
+                required/>
+
+                <span class="input-group-addon" ng-hide="!showOrders"><i class="fa fa-calendar"></i></span>
+                <div style="height:30px" ng-hide="showOrders" ></div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="col-md-2">
+            <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : confirmForm.selectedDepatment.$invalid && !confirmForm.selectedDepatment.$pristine }">
+              <label>Sede</label>
+              <select
+              class=" cs-select cs-skin-slide form-control" 
+              ng-change="loadValues()" 
+              ng-model="selectedCenter"  
+              ng-options="sede.id as sede.name for sede in centers" 
+              ui-jq="popover" 
+              data-container="body" 
+              data-placement="top" 
+              data-content="Debe selecionar una sede" 
+              data-trigger="manual" 
+              validate-attached-form-element 
+              style="margin-top:5px" required>
+              <option value=""> -Seleccione la Sede- </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- CONSULTA DE FACTURAS -->
+        <div class="col-md-6" >        
+
+          <div class="form-group form-group-default">
+            <label>Consulta Facturas </label>
+
+            <div class="radio radio-info">
+
+              <div class="col-md-3">
+                <input type="radio"  name="radio1" id="radioPendFact" ng-model="optionSelected" value="1">
+                <label for="radioPendFact">Facturas Ordenes </label>
+              </div>
+              <div class="col-md-3" hidden="true" >
+                <input type="radio"  name="radio1" id="radioFact" ng-model="optionSelected" value="2"  >
+                <label for="radioFact">Factura Productos</label>
+              </div>
+              <div class="col-md-3" >
+                <input type="radio"  name="radio1" id="factura-entidad" ng-model="optionSelected" value="3"  >
+                <label for="factura-entidad">Factura Entidad</label>
+              </div>
+
+              <div class="col-md-3" >
+                <input type="radio"  name="radio1" id="factura-particular" ng-model="optionSelected" value="4"  >
+                <label for="factura-particular">Factura Particular</label>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <!-- ./CONSULTA DE FACTURAS -->
+
+        <!-- USUARIO -->
+        <div class="col-md-2" >
+          <div pg-form-group class="input-group  form-group form-group-default">  
+            <label >usuario </label>
+              <input type="text" name="usuario" class="form-control" ng-model=" Informe.username.name " ng-change="Informe.buscarUsuario()" list="input-users" >
+              
+              <datalist id="input-users">
+                <select>
+                  <option 
+                  ng-repeat="usuario in Informe.listaUsuarios"
+                  value="{{ $index }}" 
+                  >
+                    {{ usuario.name }}
+                  </option>
+                  </select>
+              </datalist>
+              
+          </div>
+        </div>
+        <!-- ./USUARIO -->
+        <div class="col-md-2" ng-hide="true">
+          <button  ng-click="Informe.imprimirPDF()" class="btn btn-info" >Ver pdf</button>
+        </div>  
+
+
+      </div>
+    </div>
+  </form>
+</div>
+
+</div>
+
+<br>
+
+<div class="row">
+
+  <div class="container-fluid container-fixed-lg" ng-app="app">
+
+    <form >
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-search"></i></div>
+          <input type="text" class="form-control" placeholder="Buscar" ng-model="searchFish">
+        </div>      
+      </div>
+    </form>
+    
+    <table class="table" >
+
+      <thead>
+        <tr>
+          <th>#Orden</th>
+          <th>#Factura </th>   
+          <th>#Documento </th>
+          <th>Nombres</th>
+          <th>Tarifa </th>
+          <th>Entidad</th>
+          <th>Particular</th>
+          <th>Desc / Dona</th>
+          <th>Fecha</th>
+          <th>Usuario</th>
+          <th>Detalles </th>
+
+
+
+        </tr>
+      </thead>
+      <!--       {{itemsBills}} -->
+
+      <tbody>
+        <tr ng-repeat="items in itemsBills  | filter:searchFish track by $index"  
+        ng-class="{true:'null_bills'}[items.canceled > 0]">
+        
+        <td > {{ items.order_code}}</td>
+
+        <td> {{ items.bill_code }}</td>
+
+        <td> {{ items.people.identification }}</td>
+
+        <td> {{ items.people.first_name}} 
+         {{ items.people.middle_name}} 
+         {{ items.people.last_name}} 
+         {{ items.people.last_name_two}}</td>
+         <td> {{items.rate}} </td>
+         <td>{{ items.credit | currency: '$':0 }} </td>
+         <td>{{ items.debit  | currency: '$':0 }} </td>
+         <td>{{ items.donation | currency: '$':0}}</td>
+         <td>{{ items.fecha}} </td>
+         <td>{{ items.user}} </td>
+
+         <td>
+
+          <div class="btn-group">
+
+            <button  ng-hide="true" class="btn btn-info" 
+            ng-click="VerFactura(items)" 
+            class="form-control" 
+            <i class="fa fa-remove"></i>&nbsp;Ver</button> 
+
+            <button  class="btn btn-info" 
+            ng-click="showModalDropConfirmation(items)" 
+            class="form-control" 
+            ng-show="items.canceled == 0 && items.shwoNote == true && isEnabled" >
+            <i class="fa fa-remove"></i>&nbsp;Anular</button>
+
+            <button  class="btn btn-info" 
+            ng-click="ShowModalNota(items)" 
+            class="form-control"
+            ng-show="items.canceled == 0 && items.shwoNote == false && isEnabled">
+            <i class="fa fa-remove"></i>&nbsp;Nota De Venta</button>
+
+            <button  class="btn btn-info" 
+            ng-click="showModalDropConfirmation(items)" 
+            class="form-control" 
+            ng-show="items.canceled > 0">
+            <i class="fa fa-remove"></i>&nbsp;Detalles </button>
+          </div>
+
+        </td>
+
+      </tr>
+
+
+  
+        <tr >
+
+          <td  ng-hide=" totalEntidad == undefined"><b>TOTAL:</b></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><b>{{ totalEntidad    | currency: '$':0 }}</b></td>
+          <td><b>{{ totalParticular | currency: '$':0 }}</b></td>
+          <td><b>{{ totalDescuento  | currency: '$':0 }}</b></td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>
+  
+
+    </tbody>
+
+  </table>
+
+
+
+</div>
+
+</div>
+
+
+  
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll add-confirmation" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-header clearfix text-left">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-14"></i>
+          </button>
+          <h5>Confirmar</h5>
+        </div>
+        <div class="modal-body">
+
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>
+<!-- /.modal-dialog -->
+
+<!-- Modal Delete-->
+<div class="modal fade slide-up disable-scroll delete-confirmation" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h4 ng-show="editReazon"> Señor usuario <i>{{userData.first_name}} {{userData.last_name}}</i>, esta seguro de Anular la siguiente Factura? </h4>
+              <h4 ng-show="!editReazon">Detalle Anulacion De Factura? </h4>
+
+              <label>Orden : <b><i>{{cancelBills.order_code}}</i></b></label>
+              <br/>
+              <label>Factura : <b><i>{{cancelBills.bill_code}}</i></b></label>
+              <br>   
+              <label  ui-options="{format:'yyyy-mm-dd'}" 
+              ng-show="!editReazon">Fecha Anulacion : <b><i>{{cancelReasons.created}}</i></b></label></div>
+
+            </div>
+
+            <form role="form" name="detailsForm" autocomplete="off" novalidate>
+              <div class="row">
+                <div class="col-xs-12">
+
+                  <div pg-form-group 
+                  class="form-group form-group-default required" 
+                  ng-class="{ 'has-error' : detailsForm.observations.$invalid && !detailsForm.observations.$pristine }" >
+
+                  <label>
+                   Observaciones
+                 </label>
+
+                 <textarea 
+                 class="form-control" 
+                 name="observations" 
+                 ng-model="cancelReasons.reazons" 
+                 ng-disabled = "!editReazon"
+                 ui-jq="popover" 
+                 data-container="body" 
+                 data-placement="top" 
+                 style ="color:#000000;"
+                 validate-attached-form-element 
+                 required>
+               </textarea>
+             </div>
+             <br/>
+           </div>
+         </div>
+         <div class="row">
+
+          <div class="col-xs-6" name="confirm-bill-delete">
+            <button 
+            type="button" 
+            class="btn btn-info btn-block " 
+            ng-click="cancelBilling()" 
+            ng-disabled="detailsForm.$invalid" 
+            >  
+            <i class="fa fa-check"></i>&nbsp;Si
+          </button>
+        </div>
+
+        <div class="col-xs-6" name="button-hide-delete-order">
+         <button type="button" class="btn btn-info btn-block " ng-click="hideModalDropConfirmation()" >
+          <i class="fa fa-remove"></i>&nbsp;CERRAR
+        </button>
+
+      </div>
+
+
+    </div>
+
+
+  </form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+
+
+
+<!-- Modal notas creditos  -->
+
+<div class="modal fade  delete-Notes" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <!-- style="width:80%;" -->
+  <div class="modal-dialog modal-lg" style="width:!important 80%; height:80%">
+    <div class="modal-content-wrapper">
+      <div class="modal-content table-block">
+        <div class="modal-header clearfix text-left">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-12"></i>
+          </button>
+        </div>
+
+        <!-- style="max-height: 600px; overflow-y: auto;" -->
+        <div class="modal-body"  >
+
+          <div class="panel panel-default">
+
+            <div class="panel-heading">  
+              <h4 style="float: right;"> Nota de Venta # {{saleNoteRezons.id}} </h4> 
+              <h4 ng-show="editReazon">NOTA DE VENTA FACTURA : {{billDetails.bills_numbers}}</h3> 
+                <h4 ng-show="!editReazon">DETALLE NOTA DE VENTA  FACTURA : {{billDetails.bills_numbers}}</h3>  
+
+                </div>
+                <div class="col-xs-12">
+                  <h6 ng-show="editReazon"> Señor usuario <b><i>{{userData.first_name}} {{userData.last_name}}</i></b>, esta seguro de Realizar una Nota de Venta a  la siguiente Factura? </h6>
+                  <h4 ng-show="!editReazon">Detalle Nota De Venta ? </h4>
+                </div>
+                <!-- info cliente -->
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <label>Cliente :</label>
+                      <label>{{billDetails.details.client_name}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>Nit o C.C :</label>
+                      <label>{{billDetails.details.client_nit}}</label>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Tarifa :</label>
+                      <label>{{billDetails.details.rate_name}}</label>
+                    </div>
+                  </div>
+
+                  <!-- Info Paciente -->
+                  <div class="row">
+
+                    <div class="col-md-5">
+                      <label>Paciente:</label>
+                      <label>{{billDetails.details.people_full_name}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>Nit 0 C.C :</label>
+                      <label>{{billDetails.details.people_identification}}</label>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Telefono :</label>
+                      <label>{{billDetails.details.people_address}}</label>
+                    </div>
+                  </div>
+                   <!-- Info Paciente -->
+                  <div class="row">
+
+                    <div class="col-md-5">
+                      <label>Direccion:</label>
+                      <label>{{billDetails.details.people_address}}</label>
+                    </div>
+                    <div class="col-md-3">
+                      <label>Ciudad:</label>
+                      <label>{{billDetails.details.people_city}}</label>
+                    </div>
+                    <div class="col-md-4">
+                      <label>Telefono :</label>
+                      <label>{{billDetails.details.people_phone}}</label>
+                    </div>
+                  </div>
+
+                <!-- Info adicional Bills -->
+                <div class="row">
+                  <div class="col-md-5">
+                    <label>Orden :</label>
+                    <label>{{billDetails.details.order_consec}}</label>
+                  </div>
+                  <div class="col-md-3">
+                    <label>Fecha :</label>
+                    <label >{{billDetails.details.bill_created}}</label>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label>Fecha Vencimiento :</label>
+                    <label >{{billDetails.details.bill_expiration}}</label>
+                  </div>
+                </div>
+
+</div>
+
+                <div class="row">
+
+                 <div class="col-md-12">
+
+                   <div class="panel panel-default">
+
+                    <div class="panel-body">
+
+                     <table class="table">
+                       <thead>
+                         <th> Item    </th>
+                         <th> Ref     </th>
+                         <th> Desc    </th>
+                         <th> Cantidad</th>
+                         <th> Valor   </th>
+                         <th> Total   </th>
+
+                       </thead>
+                       <tbody>
+                        <tr ng-repeat="service in billDetails.items track by $index" >
+
+                          <td> {{$index + 1}} </td>
+                          <td> {{service.ref}} </td>   
+                          <td> {{service.desc}} </td>
+                          <td> {{service.cant}} </td>
+                          <td> {{service.valor | currency: '$':0}} </td>
+                          <td> {{service.cost | currency: '$':0}} </td>
+                        </tr>
+                      </tbody>
+                    </table> 
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+
+            <div class="col-md-12">
+
+                   <div class="panel panel-default">
+
+                    <div class="panel-body">
+
+                     <table class="table">
+                       <thead>
+                         <th> Factura    </th>
+                         <th> Descuento  </th>
+                         <th> Donacion   </th>
+                         <th> Copago     </th>
+                         <th> Total      </th>
+
+                       </thead>
+                       <tbody>
+                        <tr ng-repeat="items in billDetails.payments track by $index" >
+                        {{items}}
+                          <td> {{items.bill_number}} </td>
+                          <td> {{items.discount | currency: '$':0}} </td>
+                          <td> {{items.donation | currency: '$':0}} </td>
+                          <td> {{items.copayment | currency: '$':0}} </td>
+                          <td> {{items.total | currency: '$':0}}    </td>
+                        </tr>
+                      </tbody>
+                    </table> 
+                  </div>
+                </div>
+              </div>
+
+             <!--  <div class="col-md-3">
+                <label> TOTAL BRUTO</label> <br/>
+                <label>{{billDetails.orders_subtotal}}</label>
+              </div>
+              <div class="col-md-3">
+                <label> DESCUENTOS</label> <br/>
+                <label>{{billDetails.orders_discount}}</label>
+              </div>
+              <div class="col-md-3">
+                <label> DONACIONES</label> <br/>
+                <label>{{billDetails.orders_donation}}</label>
+              </div>
+              <div class="col-md-3">
+                <label> TOTAL </label> <br/>
+                <label>{{billDetails.orders_subtotal -  billDetails.orders_discount - billDetails.orders_donation}}</label> -->
+              </div>
+            </div>
+            <form role="form" name="saleNoteDetails" autocomplete="off" novalidate>
+              <div class="row">
+
+               <div class="col-xs-12">
+                <div pg-form-group 
+                class="form-group form-group-default required" 
+                ng-class="{ 'has-error' : saleNoteDetails.observations.$invalid && !saleNoteDetails.observations.$pristine }" >
+
+                <label>
+                 Observaciones
+               </label>
+
+               <textarea 
+               class="form-control" 
+               name="observations" 
+               ng-model="saleNoteRezons.observations" 
+               ng-disabled = "!editReazon"
+               ui-jq="popover" 
+               data-container="body" 
+               data-placement="top" 
+               style ="color:#000000;"
+               validate-attached-form-element 
+               required>
+             </textarea>
+           </div>
+           <br/>
+         </div>
+
+       </div>
+
+       <div class="row">
+
+        <div class="col-xs-6" name="confirm-bill-sale-note">
+          <button 
+          type="button" 
+          class="btn btn-info btn-block " 
+          ng-click="saveSaleNote()" 
+          >  
+          <i class="fa fa-check"></i>&nbsp;Si
+        </button>
+      </div>
+
+      <div class="col-xs-6" name="button-hide-sale-note">
+       <button type="button" class="btn btn-info btn-block " ng-click="hideModalNotsConfirmation()" >
+        <i class="fa fa-remove"></i>&nbsp;CERRAR
+      </button>
+
+    </div>
+
+
+  </div>
+
+</form>
+</div>
+
+<!-- end panel body -->
+
+
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</div>

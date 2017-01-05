@@ -1,0 +1,445 @@
+<link href="assets/css/main.css" rel="stylesheet" type="text/css">
+ 
+<!-- START PAGE COVER -->
+  <div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Roles</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Roles</h3>
+
+    <!-- <button class="btn btn-info" ng-click="showModalAddRole()"><i class="fa fa-plus"></i> Nuevo</button> -->
+
+</div>
+    <div class="container-fluid container-fixed-lg">
+        <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                     ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                      -->
+        <!-- CONTENT GOES HERE-->
+
+        <!--Bootstrap Wizar-->
+
+    <!--End Wizard-->
+
+    <!--Button to Open Modal-->
+
+    <button class="btn btn-info center-block" ng-click="showModalAviableOfficeService()"><i class="fa fa-plus"></i>&ensp; Service Office</button>
+
+    <!--Modal List Available Service Office-->
+     <div class="modal fade slide-up disable-scroll list-available-office-service" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+      <div class="modal-dialog modal-lg" style="width:80%;">
+          <div class="modal-content-wrapper">
+          <div class="modal-content table-block">
+              <div class="modal-header clearfix text-left">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="pg-close fs-14"></i>
+                  </button>
+                  <h5>Agendar Cita</h5>
+              </div>
+                <div class="modal-body">
+                <div class="row">
+                  <div id="myFormWizard">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator">
+            <li class="active">
+                <a data-toggle="tab" href="app.modal.#tab1"><i class="fa fa-home fa-2x tab-icon"></i> <span>Consultorios</span></a>
+            </li>
+            <li class="">
+                <a data-toggle="tab" href="app.modal.#tab2"><i class="fa fa-calendar fa-2x tab-icon"></i> <span>Fecha</span></a>
+            </li>
+            <li class="">
+                <a data-toggle="tab" href="app.modal.#tab3"><i class="fa fa-book fa-2x tab-icon"></i> <span>Agendar Cita</span></a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+
+            <div class="tab-pane active slide" id="tab1">
+                <h3>Lista de Consultorios</h3>
+            <!--Panel one-->
+                <div class='row'>
+                    <div class="col-sm-12"></div>
+
+                        
+                        <form role="form" name="ListServiceOfficeForm" novalidate>
+                               <div class="col-sm-3">
+                                      <button class="btn btn-info"><i class="fa fa-check"></i>&ensp;Consultorio 1</button>
+                              </div>
+
+                              <div class="col-sm-3">
+                                      <button class="btn btn-info"><i class="fa fa-check"></i>&ensp;Consultorio 1</button>
+                              </div>
+                                      
+                              <div class="col-sm-3">
+                                      <button class="btn btn-info"><i class="fa fa-check"></i>&ensp;Consultorio 1</button>
+
+                              </div> 
+
+                               <div class="col-sm-3">
+                                      <button class="btn btn-info"><i class="fa fa-check"></i>&ensp;Consultorio 1</button>
+
+                              </div>        
+                                      
+                                  
+
+                        </form>
+                        
+                 </div>       
+            </div>
+            <!--End Panel-->
+
+            <div class="tab-pane slide" id="tab2">
+                <h3>Fechas</h3>
+            </div>
+              <div class="tab-pane slide" id="tab3">
+                  <h3>Agendamiento</h3>
+              </div>
+            <br>
+            <br> 
+            <ul class="pager wizard">
+                <li class="next">
+                    <button class="btn btn-primary btn-block btn-animated from-left fa fa-calendar" type="button">
+                        <span>Siguiente</span>
+                    </button>
+                </li>
+                <li class="next finish" style="display:none;">
+                    <button class="btn btn-primary btn-block btn-animated from-left fa fa-calendar" type="button">
+                        <span>Final</span>
+                    </button>
+                </li>
+                <li class="previous first" style="display:none;">
+                    <button class="btn btn-white btn-block btn-animated from-left fa fa-calendar" type="button">
+                        <span>Primero</span>
+                    </button>
+                </li>
+                <li class="previous">
+                    <button class="btn btn-white btn-cons " type="button">
+                        <span>Anterior</span>
+                    </button>
+                </li>
+            </ul>
+        <br>
+            
+        </div>
+    </div>
+                </div>
+                      
+              
+                </div>
+          </div>
+       </div>
+      </div>
+  </div>
+    <!--Modal List Available Service Office-->
+<br>
+<br>
+
+    <button 
+        class="btn btn-info center-block" 
+        ng-click="showModalAviableOfficeService2()" >
+        <i class="fa fa-plus"></i>
+        &ensp; Service Office
+    </button>
+
+<!--Modal List Available Service Office-->
+  <div class="modal fade fill-in list-available-office-service2" id="modalFillIn" tabindex="-1" role="dialog" aria-labelledby="modalFillInLabel" aria-hidden="true">
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+    <i class="pg-close"></i>
+</button>
+
+
+
+
+<div class="modal-dialog" style="width: 100%;" >
+    <div class="modal-content">
+        <div class="modal-header">
+        <div class="modal-body">
+
+        <!-- Menu -->
+        <section id="recent-works">
+        
+        <div class="container">
+            <div class="center wow fadeInDown"></div>
+        
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-4 col-md-3" >
+                    
+                    <div class="recent-work-wrap">
+                        
+                        <img class="img-responsive" src="assets/img/portfolio/recent/Recurso 1.svg" alt="">
+                        
+
+                        <div class="overlay">
+                            
+                            <div class="recent-work-inner">
+                                
+                                <h3>
+                                    <b>AGENDA</b>
+                                </h3>
+                                
+                                <!-- configruacion de los links de menu -->
+
+                                <!-- 
+                                    repetidor donde se mostraran los links del arreglo menuPermissions 
+                                    ng-repeat="permission in menuPermissions.agenda" 
+
+                                    condicion si se debe o no mostrar el permiso  
+                                    ng-show="permission.roleHasChildPermission"     
+                                -->
+
+                                <a  
+                                    class="preview" 
+                                    ng-click="goToState(permission.action)" 
+                                    rel="prettyPhoto" 
+                                    ng-repeat="permission in menuPermissions.agenda" 
+                                    ng-show="permission.roleHasChildPermission"
+                                >
+                              
+                                <i class="fa" ng-class="permission.icon"></i> 
+                                    {{permission.name}}
+                                </a>
+                            </div> 
+                        
+                        </div>
+                    
+                    </div>
+                </div>   
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/recent/Recurso 14.svg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><b>ATENCION CONSULTORIO</b></h3>
+
+                                <!--  -->
+                                 <a     
+                                    class="preview" 
+                                    ng-click="goToState(permission.action)" 
+                                    rel="prettyPhoto" 
+                                    ng-repeat="permission in menuPermissions.consulta" 
+                                    ng-show="permission.roleHasChildPermission"
+                                >
+                              
+                                <i class="fa" ng-class="permission.icon"></i> 
+                                    {{permission.name}}
+                                </a>
+
+
+                            </div> 
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/recent/Recurso 3.svg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><b>FACTURACION</b></h3>
+
+                                <a 
+                                    class="preview" 
+                                    ng-click="goToState(permission.action)" 
+                                    rel="prettyPhoto" 
+                                    ng-repeat="permission in menuPermissions.facturacion" 
+                                    ng-show="permission.roleHasChildPermission"
+                                >
+                              
+                                <i class="fa" ng-class="permission.icon"></i> 
+                                    {{permission.name}}
+                                </a>
+
+   
+                            </div> 
+                        </div>
+                    </div>
+                </div>   
+                <!-- <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/recent/Recurso 1.svg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><b>TRANSCRIPCIONES</b></h3>
+                                <a class="preview" href="" rel="prettyPhoto"><i class="fa fa-file"></i> Transcripción </a>
+                                 <a class="preview" href="" rel="prettyPhoto"><i class="fa fa-check-square-o"></i> Perfiul Resultado </a>
+                            </div> 
+                        </div>
+                    </div>
+                </div>   --> 
+            </div><!--/.row-->
+            <div class="row" style="width: 77%;">
+              <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/recent/Recurso 4.svg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><b>INVENTARIOS</b></h3>
+                                
+                                <div class="row">
+                                  <div class="col-sm-12">
+
+
+                                    <a 
+                                        class="preview" 
+                                        ng-click="goToState(permission.action)" 
+                                        rel="prettyPhoto" 
+                                        ng-repeat="permission in menuPermissions.inventarios" 
+                                        ng-show="permission.roleHasChildPermission"
+                                    >
+                                  
+                                    <i class="fa" ng-class="permission.icon"></i> 
+                                        {{permission.name}}
+                                    </a>
+
+
+                                    </div>
+                                </div>
+
+                            </div> 
+                        </div>
+                    </div>
+                </div>   
+                
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/recent/Recurso 5.svg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><b>CONFIGURACION</b></h3>
+
+<!-- 
+                                 <a class="preview" href="" rel="prettyPhoto">
+                                 <i class="fa fa-sign-in">
+                                 </i> Ingreso de Productos
+                                 </a>
+                                
+                                <a class="preview" href="" rel="prettyPhoto">
+                                <i class="fa fa-sign-out">
+                                </i> Salidad de Productos
+                                </a>
+                                
+                                <a class="preview" href="" rel="prettyPhoto">
+                                <i class="fa fa-exchange">
+                                </i> Transferencia de Productos
+                                </a>
+                                
+                                <a class="preview" href="" rel="prettyPhoto">
+                                <i class="fa fa-plus">
+                                </i> Nuevo Producto
+                                </a>
+                                <a class="preview" href="" rel="prettyPhoto">
+                                <i class="fa fa-truck">
+                                </i> Nuevo Proveedor
+                                </a> -->
+
+
+                                <a 
+                                    class="preview" 
+                                    ng-click="goToState(permission.action)" 
+                                    rel="prettyPhoto" 
+                                    ng-repeat="permission in menuPermissions.configuracion" 
+                                    ng-show="permission.roleHasChildPermission"
+                                >
+                              
+                                <i class="fa" ng-class="permission.icon"></i> 
+                                    {{permission.name}}
+                                </a>
+
+
+
+                            </div> 
+                        </div>
+                    </div>
+                </div>   
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/recent/Recurso 6.svg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><b>TRANSCRIPCION</b></h3>
+
+
+                                <!-- <a class="preview" href="" rel="prettyPhoto"><i class="fa fa-users"></i> Roles</a><br>
+                                <a class="preview" href="" rel="prettyPhoto"><i class="fa fa-users"></i> Usuarios</a><br>
+                                <a class="preview" href="" rel="prettyPhoto"><i class="fa fa-users"></i> Pacientes</a><br>
+                                <a class="preview" href="" rel="prettyPhoto"><i class="fa fa-users"></i> Especialistas</a><br>
+                                <a class="preview" href="" rel="prettyPhoto"><i class="fa fa-list-ol"></i> Lista de Usuarios</a><br>
+                                <a class="preview" href="" rel="prettyPhoto"><i class="fa fa-user"></i> Clientes</a><br>
+                                <a class="preview" href="" rel="prettyPhoto"><i class="fa fa-user-md"></i> Especilista Externo</a>
+                                <br>
+                            -->
+
+
+                                <a 
+                                    class="preview" 
+                                    ng-click="goToState(permission.action)" 
+                                    rel="prettyPhoto" 
+                                    ng-repeat="permission in menuPermissions.transcripciones" 
+                                    ng-show="permission.roleHasChildPermission"
+                                >
+                              
+                                <i class="fa" ng-class="permission.icon"></i> 
+                                    {{permission.name}}
+                                </a>
+                            
+
+                            
+
+                             </div> 
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="col-xs-12 col-sm-4 col-md-3">
+                    <div class="recent-work-wrap">
+                        <img class="img-responsive" src="assets/img/portfolio/recent/Recurso 7.svg" alt="">
+                        <div class="overlay">
+                            <div class="recent-work-inner">
+                                <h3><b>RESULTADOS</b></h3>
+
+
+                                <a 
+                                    class="preview" 
+                                    ng-click="goToState(permission.action)" 
+                                    rel="prettyPhoto" 
+                                    ng-repeat="permission in menuPermissions.resultados" 
+                                    ng-show="permission.roleHasChildPermission"
+                                >
+                              
+                                <i class="fa" ng-class="permission.icon"></i> 
+                                    {{permission.name}}
+                                </a>
+                            
+
+                            </div> 
+                        </div>
+                    </div>
+                </div>   
+            </div>
+        </div><!--/.container-->
+    </section><!--/#recent-works-->
+
+
+        <!-- End Menu -->
+          
+         
+        </div>
+        </div>
+    </div>
+    <!-- /.modal-content -->
+</div>
+<!-- /.modal-dialog -->
+</div>
+    <!--Modal List Available Service Office-->
+
+    </div>
+
+     
+           

@@ -1,0 +1,2211 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Clientes</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> CLIENTES</h3>
+    
+     <button class="btn btn-info" ng-click="showModalAdd()"><i class="fa fa-plus"></i> Nuevo</button>
+
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <table class="table ">
+        <thead>
+            <th>Nit</th>
+            <th>Nombre</th>
+            <th> Responsable </th>
+            <th>Detalles</th>
+            <th> Editar </th>
+            <th>Habilitar / Deshabilitar </th>
+            
+        </thead>
+         <tbody>
+            <tr ng-repeat="client in Clients">
+                <td> {{client.nit}} </td>
+                <td> {{client.name}} </td>
+                <td> {{client.responsible}} </td>
+               <!--  <td> {{client.state}} </td> -->
+
+                <td> <button class="btn btn-info" ng-click="modalInfoClient(client)"><i class="fa fa-info"></i> Detalle</button></td>
+                <td>
+                    <button class="btn btn-info" ng-click="showModalEdit(client)" ><i class="fa fa-edit"></i> Editar</button>            
+                </td>
+                <td>
+                    <span ng-if="client.state == 0">
+                       <button class="btn btn-primary" ng-click="disableClient(client)" ><i class="fa fa-edit"></i>  Habilitar</button>
+                    </span>
+                    <span ng-if="client.state != 0">
+                        <button class="btn btn-info" ng-click="disableClient(client)" ><i class="fa fa-edit"></i> Deshabilitar </button>
+                    </span>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div 
+        paging
+        page="currentPageGetClients" 
+        page-size="pageSizeGetClients" 
+        total="clientsTotal"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="getClients(page)"
+    >
+    </div> 
+
+</div>
+
+<!-- Modal Create Client -->
+<div class="modal fade slide-up disable-scroll add-client" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content-wrapper modal-lg">
+        <div class="modal-content modal-lg" style="width:1200px;">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h2>Nuevo Cliente: </h2>
+            </div>
+            <div class="modal-body">
+           
+              <!-- Principal Wizard Form -->
+
+                  <div id="myFormWizard">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator">
+                        <li class="active">
+                            <a data-toggle="tab" href="app.clients.#tab1"><i class="fa fa-user-plus tab-icon"></i> <span>Clientes</span></a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active slide" id="tab1">
+                            
+                         <form class="" role="form" name="clientForm"  novalidate>
+
+                          <div class="row">
+                            <!-- nit -->
+
+                            <div class="col-md-12">
+                              <label><strong>Cliente:</strong></label>
+                                 <div class="form-group-attached">
+                                   <div class="row clearfix">
+                                      
+                                      <div class="col-md-4">
+
+                                    <div class="form-group-attached">
+                                          
+                                      <div pg-form-group class="form-group form-group-default required">
+                                        
+                                        <div>
+                                          <label>Nit:</label>   
+                                          <input name="nit" 
+                                          ng-model="newClient.nit" 
+                                          class="form-control"  
+                                          placeholder="Nit del cliente" 
+                                          data-content="Este campo es requerido" 
+                                          data-trigger="manual" 
+                                          validate-attached-form-element required/>
+                                        </div>
+                                        <!-- <div ng-show="clientForm.nit.$touched " class="row"> -->
+                                                  <!-- required -->
+                                            <!-- <span ng-show="clientForm.nit.$error.required" class="text-danger">
+                                                Debe asignar un Rut al Cliente
+                                            </span> 
+                                        </div>
+ -->
+                                      </div>
+
+                                    </div>
+
+                                 </div>
+
+                              <!-- End Nit -->
+
+                              <!-- Name -->
+
+                                <div class="col-md-4">
+                                  
+                                 <div class="form-group-attached">
+                                   
+                                    <div pg-form-group class="form-group form-group-default required">
+                                   
+                                      <label>Nombre:</label>   
+                                      <input name="name"
+                                      ng-model="newClient.name" 
+                                      class="form-control" 
+                                      placeholder="Nombre  cliente" 
+                                      data-content="Este campo es requerido" 
+                                      data-trigger="manual" 
+                                      validate-attached-form-element required/>
+                                        
+                                     
+                                  </div>
+
+                                 </div>
+
+                                </div>
+
+                              <!-- End name -->
+
+                              <!-- Razon Social -->
+
+                              <div class="col-md-4">
+                                <div class="form-group-attached">
+                                  <div pg-form-group class="form-group form-group-default required">
+                                
+                                    <label>Razon social:</label>   
+                                    <input name="social_reazon"
+                                    ng-model="newClient.social_reazon" 
+                                    class="form-control"  
+                                    placeholder="Razon social" 
+                                    data-content="Este campo es requerido" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element required/>
+
+                                </div>
+                                </div>
+                              </div>
+
+                              <!-- End razon social -->
+
+                              <!--Codigo CIIU -->
+
+                              <div class="col-md-4">
+                                <div class="form-group-attached">
+                                  <div pg-form-group class="form-group form-group-default required">
+                                
+                                    <label>Código ciiu:</label>   
+                                    <input name="ciiu_code"
+                                    ng-model="newClient.ciiu" 
+                                    class="form-control"  
+                                    placeholder="código ciiu " 
+                             
+                                    data-trigger="manual" 
+                                    validate-attached-form-element />
+
+                                </div>
+                                </div>
+                              </div>
+
+                              <!-- End Codigo CIIU -->
+
+
+                              <!-- Codigo ARS -->
+
+                              <div class="col-md-4">
+                                
+                                 <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                    
+                                     <div>
+                                      <label>Codigo ARS:</label>   
+                                      <input name="ars_code" 
+                                      ng-model="newClient.ars_code" 
+                                      class="form-control" 
+                                      placeholder="Codigo ARS" 
+                                      data-content="Este campo es requerido" 
+                                      data-trigger="manual" 
+                                      validate-attached-form-element required/>
+                                    </div>   
+
+                                  </div>
+                                 </div>
+
+                              </div>
+
+                              <!-- End CODIGO ARS -->
+
+                              <!-- Direccion -->
+
+                              <div class="col-md-4">
+                                
+                                  <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                    
+                                    <div>
+                                      <label>Direcciòn:</label>   
+                                      <input
+                                      name="address" 
+                                      ng-model="newClient.address" 
+                                      class="form-control"  
+                                      placeholder="Direcciòn cliente" 
+                                      data-content="Este campo es requerido" 
+                                      data-trigger="manual" 
+                                      validate-attached-form-element required/>
+                                    </div>   
+
+                                  </div>
+                                  </div>
+
+                              </div>
+
+                              <!-- End Direccion -->
+
+                              <!-- Responsable -->
+
+                              <div class="col-md-4">
+                                
+                                  <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                    <label>Responsable:</label>   
+                                    <input 
+                                    name="responsible" 
+                                    ng-model="newClient.responsible" 
+                                    class="form-control"  
+                                    placeholder="Responsable" 
+                                    data-content="Este campo es requerido" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element required/>
+                                  </div>
+                                  </div>
+
+                              </div>
+
+                              <!-- End Responsable -->
+
+                              <!-- phone -->
+
+                              <div class="col-md-4">
+                                <div class="form-group-attached">
+                                  <div pg-form-group class="form-group form-group-default required">
+                                    <label>Telefono:</label>   
+                                    <input 
+                                    name="phone" 
+                                    ng-model="newClient.phone" 
+                                    class="form-control"  
+                                    placeholder="Telefono cliente" 
+                                    data-content="Este campo es requerido" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element required/>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- end phone-->
+
+                              <!-- phone 2 -->
+
+                              <div class="col-md-4">
+                                <div class="form-group-attached">
+                                  <div pg-form-group class="form-group form-group-default">
+                                    <label>Telefono 2:</label>   
+                                    <input name="phone2" ng-model="newClient.phone2" class="form-control"  placeholder="Telefono cliente" required/>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- End phone 2 -->
+
+                              <!-- Email -->
+
+                              <div class="col-md-4">
+                                <div class="form-group-attached">
+                                  <div pg-form-group class="form-group form-group-default required">
+                                    <label>Email:</label>   
+                                    <input type="email" name="email" ng-model="newClient.email" class="form-control"  placeholder="Email cliente" />
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- End Email -->
+
+                              <!-- Estado -->
+
+                              <div class="col-md-4">
+                                <div class="form-group-attached">
+                                  <div pg-form-group class="form-group form-group-default required">
+                                    <label>Estado:</label>   
+                                     <select 
+                                     class="form-control"
+                                     ng-model="newClient.state"
+                                     ng-options="state.code as state.name for state in state"
+                                     ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- End Estado -->
+
+                              <!-- Depto -->
+
+                              <div class="col-md-4">
+                                <div class="form-group-attached">
+                                  <div pg-form-group class="form-group form-group-default required">
+                                    <label>Departamento :</label>   
+                                    <select class="form-control" 
+                                            ng-options="item as item.name for item in Departments track by item.id" 
+                                            ng-model="selectedDepatment"  
+                                            ng-change="getMunicipalities()" ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- End Depto -->
+
+                              <!-- Mpio -->
+
+                              <div class="col-md-4">
+                                <div class="form-group-attached">
+                                  <div pg-form-group class="form-group form-group-default required">
+                                     <label>Municipio :</label>   
+                                     <select class="form-control" 
+                                             ng-options="item as item.municipality for item in Municipalities track by item.id" 
+                                             ng-model="selectedMunicipalitie"  ></select>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!-- End Mpio -->
+
+                              <!-- TERCERO -->
+                              <div class="col-md-4">
+                                <div class="form-group-attached">
+                                  <div pg-form-group class="form-group form-group-default required">
+
+                                    <label>Tercero: </label>
+                                  
+                                    <select 
+                                    class=" form-control cs-select cs-skin-slide" 
+                                    data-init-plugin="cs-select" 
+                                    ng-model="newClient.types_client_id" 
+                                    name="third"
+                                    ng-required="required"
+                                    validate-attached-form-element
+                                    required>
+                                      <option value="" ng-selected="selected" >--seleccione--</option>
+                                      <option value="1">NO</option>
+                                      <option value="2">SI</option>
+                                    </select>
+                                 
+                                  </div>
+                                </div>
+                              </div>
+                              <!--FIN TERCERO-->
+
+                                    
+                                  </div> 
+                                </div>
+                                <hr size="30">
+                              </div>
+
+  
+                            
+                         <div class="row">
+                           
+                           <!-- New Contacts -->
+
+                           <div class="col-sm-7">
+                             
+                             <label><strong>Contactos:</strong></label>
+
+                                 <div class="form-group-attached">
+                                   <div class="row clearfix">
+                                    
+                                    <!-- Name contact  -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Nombre</label>
+                                          <input type="text" class="form-control" placeholder="nombre" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End name contact -->
+
+                                    <!-- Phone contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Telefono</label>
+                                          <input type="text" class="form-control" placeholder="telefono" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End phone contact -->
+
+                                    <!-- Email Contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Email</label>
+                                          <input type="text" class="form-control" placeholder="email" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End email contact -->
+
+                                    <!-- Type contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default">
+                                          <label>Tipo</label>
+                                          <input type="text"
+                                          name="type"
+                                          value="Contratación"
+                                          class="form-control" >
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End type contatc -->
+
+
+                                         <!-- Name contact  -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Nombre</label>
+                                          <input type="text" class="form-control" placeholder="nombre" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End name contact -->
+
+                                    <!-- Phone contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Telefono</label>
+                                          <input type="text" class="form-control" placeholder="telefono" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End phone contact -->
+
+                                    <!-- Email Contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Email</label>
+                                          <input type="text" class="form-control" placeholder="email" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End email contact -->
+
+                                    <!-- Type contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default">
+                                          <label>Tipo</label>
+                                          <input type="text"
+                                          name="type"
+                                          value="Tesorero"
+                                          class="form-control" 
+                                          >
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End type contatc --> <!-- Name contact  -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Nombre</label>
+                                          <input type="text" class="form-control" placeholder="nombre" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End name contact -->
+
+                                    <!-- Phone contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Telefono</label>
+                                          <input type="text" class="form-control" placeholder="telefono" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End phone contact -->
+
+                                    <!-- Email Contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Email</label>
+                                          <input type="text" class="form-control" placeholder="email" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End email contact -->
+
+                                    <!-- Type contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default">
+                                          <label>Tipo</label>
+                                         <input type="text"
+                                          name="type"
+                                          value="Cartera"
+                                          class="form-control" 
+                                              >
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End type contatc --> <!-- Name contact  -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Nombre</label>
+                                          <input type="text" class="form-control" placeholder="nombre" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End name contact -->
+
+                                    <!-- Phone contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Telefono</label>
+                                          <input type="text" class="form-control" placeholder="telefono" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End phone contact -->
+
+                                    <!-- Email Contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default required">
+                                          <label>Email</label>
+                                          <input type="text" class="form-control" placeholder="email" required/>
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End email contact -->
+
+                                    <!-- Type contact -->
+
+                                    <div class="col-md-3">
+                                      <div class="form-group-attached">
+                                        <div pg-form-group class="form-group form-group-default">
+                                          <label>Tipo</label>
+                                          <input type="text"
+                                          name="type"
+                                          value="Glosa"
+                                          class="form-control"
+    
+                                          >
+                                        </div>
+                                      </div>
+                                    </div>
+
+                                    <!-- End type contatc -->
+
+                                    
+                                  </div> 
+                                </div>
+
+                           </div>
+
+
+                           <!-- End New Contacts -->
+
+
+                           <div class="col-sm-5">
+
+                           <label><strong>Negociación:</strong></label>
+                             
+                            <div class="form-group-attached">
+                                  <div class="row clearfix">
+
+                                    <!-- date inicio -->
+
+                                <div class="col-sm-12">
+                                  <div class="form-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                      <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                                        <input type="text" 
+                                        ng-model="selectedDate" 
+                                        name="date"  
+                                        class="form-control" 
+                                        id='date'
+                                        style="margin-top: 16px;" 
+                                        required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+
+                              <!-- date inicio End -->
+
+                               <!-- date fin -->
+
+                                <div class="col-sm-12">
+                                  <div class="form-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                      <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                                        <input type="text" 
+                                        ng-model="clientsBusinesM.date_end" 
+                                        name="date"
+                                        placeholder="Fecha fin"  
+                                        class="form-control" 
+                                        id='date'
+                                        style="margin-top: 16px;" 
+                                        required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              <!-- date end fin -->
+
+
+                              <!-- Capital -->
+
+                                <div class="col-sm-5">
+                                  <div class="form-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                      <label>Capital</label>
+                                      <input type="numeric" name="" 
+                                      class="form-control bfh-number"
+                                      placeholder="$0.00" 
+                                      ng-model="clientsBusinesM.capital" 
+                                      required/>
+                                    </div>
+                                  </div>
+                                </div>
+
+                               <!-- End Capital -->
+
+                               <!-- Type Business -->
+
+                                <div class="col-sm-3">
+
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                            <label>
+                                            tipo
+                                            </label>
+                                            <select class="cs-select cs-skin-slide form-control"
+                                            name="formPay"
+                                            ng-model="clientsBusinesM.type"
+                                            ng-options="type.code as type.name for type in type" 
+                                            ui-jq="popover"
+                                            data-container="body"
+                                            data-placement="top"
+                                            data-content="" 
+                                            data-trigger="manual"
+                                            validate-attached-form-element required>
+                                            <option value=""> - Selec - </option>
+                                            </select>
+
+                                           
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                               <!-- End type Business -->
+
+                               <!-- plazos establecidoe -->
+                                   <div class="col-sm-4">
+
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                            <label>
+                                            lim. de pago
+                                            </label>
+                                            <select class="cs-select cs-skin-slide form-control"
+                                            name="formPay"
+                                            ng-model="clientsBusinesM.business_terms_id"
+                                            ng-options="term.code as term.name for term in term" 
+                                            ui-jq="popover"
+                                            data-container="body"
+                                            data-placement="top"
+                                            data-content="BusinessTerm.id as BusinessTerm.term for BusinessTerm in BusinessTerms" 
+                                            data-trigger="manual"
+                                            validate-attached-form-element required>
+                                            <option value=""> - Selec - </option>
+                                            </select>
+
+
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                               <!-- end plazos establecido -->
+
+                               <!-- Observaciones -->
+
+                               <div class="col-sm-12">
+                                  <div class="form-group ">
+
+                                  <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : clientForm.observation.$invalid && !clientForm.observation.$pristine }">
+
+
+                                      <label>
+                                          Observaciones
+                                      </label>
+
+                                       <textarea 
+                                       class="form-control" 
+                                       name="observation" 
+                                       ng-model="clientsBusinesM.observation" 
+                                       ui-jq="popover" 
+                                       data-container="body" 
+                                       data-placement="top" 
+                                       validate-attached-form-element
+                                       required/>
+                                      </textarea>
+                                  
+                                  </div>
+                               </div>
+                              </div>
+                               <!-- End observaciones -->
+
+
+                                  </div>
+                            </div>
+                           </div>
+
+                           <!-- End Business -->
+                              
+                         </div>
+                         
+                          </div>
+                          <div class="row">
+                           
+                          <br/>     
+                              <button type="button" class="btn btn-info btn-block"  ng-disabled="clientForm.$invalid || newClient.types_client_id == '' || newClient.types_client_id == null"  ng-click="addClients()">
+                              <i class="fa fa-save"></i> Guardar
+                              </button>
+
+                           </div>
+
+                        </div>
+                      <!--   <ul class="pager wizard">
+                            <li class="next">
+                                <button class="btn btn-primary btn-cons btn-animated from-left fa fa-truck pull-right" type="button">
+                                    <span>Next</span>
+                                </button>
+                            </li>
+                            <li class="next finish" style="display:none;">
+                                <button class="btn btn-primary btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+                                    <span>Finish</span>
+                                </button>
+                            </li>
+                            <li class="previous first" style="display:none;">
+                                <button class="btn btn-white btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+                                    <span>First</span>
+                                </button>
+                            </li>
+                            <li class="previous">
+                                <button class="btn btn-white btn-cons pull-right" type="button">
+                                    <span>Previous</span>
+                                </button>
+                            </li>
+                        </ul> -->
+
+                    </div>
+                  </div>
+
+              <!-- End Wizard Form -->
+
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.End Modal Create Client  -->
+
+
+<!-- Modal Edit Client -->
+<div class="modal fade slide-up disable-scroll edit-client" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h2>Editar Cliente </h2>
+            </div>
+              <div class="modal-body">
+                
+                 <!-- Principal Wizard Form -->
+
+                  <div id="myFormWizard">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator">
+                        <li class="active">
+                            <a data-toggle="tab" href="app.clients.#tab3"><i class="fa fa-user-plus tab-icon"></i> <span>Clientes</span></a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active slide" id="tab3">
+                          
+                          <form class="" role="form" name="clientForm_update"  novalidate>
+
+                              <div class="row">
+
+                                 <div class="form-group-attached">
+                                    <div class="row clearfix"> 
+
+                                          <!-- Nit -->
+
+                                      <div class="col-md-4">
+                                        <div class="form-attached">
+                                          <div pg-form-group class="form-group form-group-default required">
+                                            <label>Nit:</label>   
+                                                <input name="nit_edit" ng-model="updateClient.nit" class="form-control"  placeholder="Nit del cliente" required/>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <!-- End Nit -->
+
+                                         <!-- Nombre -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                 <label>Nombre:</label>   
+                                    <input name="name_edit" ng-model="updateClient.name" class="form-control"  placeholder="Nombre  cliente" required/>
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- End nombre -->
+
+                        <!-- Razon social -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                <label>Razon social:</label>   
+                                    <input 
+                                    name="social_reazon_edit" 
+                                    ng-model="updateClient.social_reazon"
+                                    value="" 
+                                    class="form-control"  
+                                    placeholder="Razon social  cliente" 
+                                    required/>
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- end Razon -->
+
+                        <!-- Codigo ARS -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                 <label>Codigo ARS:</label>   
+                                    <input name="ars_code_edit" ng-model="updateClient.ars_code" class="form-control"  placeholder="Codigo ARS" require/>
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- End Codigo-->
+
+                        <!-- Direccion -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                 <label>Direcciòn:</label>   
+                                    <input name="address_edit" ng-model="updateClient.address" class="form-control"  placeholder="Direcciòn cliente" required/>
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- End Direccion -->
+
+                        <!-- Responsable -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                <label>Responsable:</label>   
+                                    <input name="responsible_edit" ng-model="updateClient.responsible" class="form-control"  placeholder="Persona Responsable" required/>
+                            </div>
+                          </div>
+                        </div>  
+
+                        <!-- End Responsable -->
+
+                        <!-- phone -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                <label>Telefono:</label>   
+                                    <input name="phone_edit" ng-model="updateClient.phone" class="form-control"  placeholder="Telefono cliente" required/>
+                              </div>
+                            </div>
+                          </div>                   
+
+                        <!-- End Phone -->
+
+                        <!-- phone 2 -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                 <label>Telefono 2:</label>   
+                                    <input name="phone2_edit" ng-model="updateClient.phone2" class="form-control"  placeholder="Telefono cliente" required/>
+                              </div>
+                            </div>
+                          </div>
+                                    
+                        <!-- End phon2 -->
+
+                        <!-- Email -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                 <label>Email:</label>   
+                                    <input name="email_edit" ng-model="updateClient.email" class="form-control"  placeholder="Email cliente" required/>
+                              </div>
+                            </div>
+                          </div>
+                         
+                        <!-- end Email -->
+
+                        <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                              <label>Estado</label>
+                                <!--  <input name="state_edit" ng-model="updateClient.state" class="form-control"  placeholder="Estado cliente" hidden="false" /> -->
+                                <select
+                                class ="form-control"
+                                ng-model = "updateClient.state"
+                                ng-options = "state.code as state.name for state in state"
+                                ></select>
+                              </div>
+                            </div>
+                          </div>
+                      
+                        <!-- Estado -->
+
+                        <!-- End Estado -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                <label>Departamento :</label>   
+                                    <select class="form-control" 
+                                            ng-options="item as item.name for item in Departments track by item.id" 
+                                            ng-model="selectedDepatment"  
+                                            ng-change="getMunicipalities()" ></select>
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- Dept -->
+
+                        <!-- End Dept -->
+
+                        <!-- Mpio -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                <label>Municipio :</label>   
+                                     <select class="form-control" 
+                                             ng-options="item as item.municipality for item in Municipalities track by item.id" 
+                                             ng-model="selectedMunicipalitie"  ></select>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        <!-- End Mpio -->
+
+                        <br>
+                          
+                          <hr size="30">
+                       
+
+
+                                    </div>  
+                                </div>
+                              </div>
+
+                               <!-- Row Edit Contatcs  -->
+
+                               <div class="row">
+
+                                  <div class="col-md-7">
+                                    
+                                    <div class="form-group-attached">
+                                    <div class="row clearfix"> 
+                                    
+                                    <!-- Edit Contact types contact -->
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Nombre</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.name}}" 
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>                                        
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Telefono</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.phone}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.email}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Descripción</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.type}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                    <!-- end Contact types contact -->
+
+                                    <!-- Edit Contact types contact -->
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Nombre</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.name}}" 
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>                                        
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Telefono</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.phone}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.email}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Descripción</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.type}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                    <!-- end Contact types contact -->
+
+                                    <!-- Edit Contact types contact -->
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Nombre</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.name}}" 
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>                                        
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Telefono</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.phone}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.email}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Descripción</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.type}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                    <!-- end Contact types contact -->
+
+                                    <!-- Edit Contact types contact -->
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Nombre</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.name}}" 
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>                                        
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Telefono</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.phone}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.email}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Descripción</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.type}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                    <!-- end Contact types contact -->
+
+
+
+                                    </div>
+                                 </div>
+
+                                  </div>
+
+                                  <div class="col-md-5">
+                                    
+                                    <div class="form-group-attached">
+                                      <div class="row clearfix"> 
+
+                                      <!-- date inicio -->
+
+                                <div class="col-sm-12">
+                                  <div class="form-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                      <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                                        <input type="text" 
+                                        ng-model="updateClientsBusiness.created" 
+                                        name="date"  
+                                        class="form-control" 
+                                        id='date'
+                                        style="margin-top: 16px;" 
+                                        required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+
+                              <!-- date inicio End -->
+
+                              <!-- date fin -->
+
+                                <div class="col-sm-12">
+                                  <div class="form-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                      <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                                        <input type="text" 
+                                        ng-model="updateClientsBusiness.date_end" 
+                                        name="date"
+                                        placeholder=""  
+                                        class="form-control" 
+                                        id='date'
+                                        style="margin-top: 16px;" 
+                                        required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              <!-- date end fin -->
+                                
+                               <!-- Capital -->
+
+                                <div class="col-sm-5">
+                                  <div class="form-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                      <label>Capital</label>
+                                      <input type="numeric" 
+                                      name="" 
+                                      class="form-control bfh-number"
+                                      placeholder="" 
+                                      ng-model="updateClientsBusiness.capital" 
+                                      required/>
+                                    </div>
+                                  </div>
+                                </div>
+
+                               <!-- End Capital -->
+
+                               <!-- Type Business -->
+
+                                <div class="col-sm-3">
+
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                            <label>
+                                            tipo
+                                            </label>
+                                            <select class="cs-select cs-skin-slide form-control"
+                                            name="formPay"
+                                            ng-model="updateClientsBusiness.type"
+                                            ng-options="type.code as type.name for type in type" 
+                                            ui-jq="popover"
+                                            data-container="body"
+                                            data-placement="top"
+                                            data-content="" 
+                                            data-trigger="manual"
+                                            validate-attached-form-element required>
+                                            
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                               <!-- End type Business -->
+
+                               <!-- plazos establecidoe -->
+                                   <div class="col-sm-4">
+
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                            <label>
+                                            lim. de pago
+                                            </label>
+                                            <select class="cs-select cs-skin-slide form-control"
+                                            name="formPay"
+                                            ng-model="updateClientsBusiness.business_terms_id"
+                                            ng-options="term.code as term.name for term in term" 
+                                            ui-jq="popover"
+                                            data-container="body"
+                                            data-placement="top"
+                                            data-content="term.id as term.term for term in term" 
+                                            data-trigger="manual"
+                                            validate-attached-form-element required>
+                                            </select>
+
+
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                               <!-- end plazos establecido -->
+
+                               <!-- Observaciones -->
+
+                                <div class="col-sm-12">
+                                    <div class="form-group ">
+
+                                    <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : clientForm.observations.$invalid && !clientForm.observations.$pristine }">
+
+
+                                        <label>
+                                            Observaciones
+                                        </label>
+
+                                         <textarea 
+                                         class="form-control" 
+                                         name="observations" 
+                                         ng-model="updateClientsBusiness.observation" 
+                                         ui-jq="popover" 
+                                         data-container="body" 
+                                         data-placement="top" 
+                                         validate-attached-form-element 
+                                         required/>
+                                        </textarea>
+                                    
+                                    </div>
+                                 </div>
+                                </div>
+
+                               <!-- End Observaciones -->
+
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                 
+                              </div>      
+
+                               <!-- End Roe Edit Client two -->
+
+                                <!-- Button update Client  -->
+
+                        <div class="col-sm-12">
+                          
+                          <button class="btn btn-info btn-block" ng-click="updateClients()" ng-disabled="clientBusinessForm.$invalid"><i class="fa fa-save"></i>&nbsp;Guardar</button>
+
+                        </div>
+
+                        <!-- End Button update Client -->
+                            </form>    
+                        
+                        
+                        </div>
+                        
+                      <!--   <ul class="pager wizard">
+                            <li class="next">
+                                <button class="btn btn-primary btn-cons btn-animated from-left fa fa-truck pull-right" type="button">
+                                    <span>Next</span>
+                                </button>
+                            </li>
+                            <li class="next finish" style="display:none;">
+                                <button class="btn btn-primary btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+                                    <span>Finish</span>
+                                </button>
+                            </li>
+                            <li class="previous first" style="display:none;">
+                                <button class="btn btn-white btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+                                    <span>First</span>
+                                </button>
+                            </li>
+                            <li class="previous">
+                                <button class="btn btn-white btn-cons pull-right" type="button">
+                                    <span>Previous</span>
+                                </button>
+                            </li>
+                        </ul> -->
+
+                    </div>
+                  </div>
+
+              <!-- End Wizard Form -->
+
+              </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.End Edit Client  -->
+
+
+<!-- <input type="text" name="edad" ng-model="edad"> -->
+
+<!-- Pagination -->
+  <div 
+        paging
+        page="currentPageClients" 
+        page-size="pageSizeClients" 
+        total="ClientsTotal"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="getClients(page)"
+    >
+    </div>   
+
+
+    <!-- end pagination -->
+
+    <!-- Modal Info Client -->
+<div class="modal fade slide-up disable-scroll info-client-contact" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+               
+            </div>
+            <div class="modal-body">
+                <div class="panel">
+                  <div class="panel-heading"><h3>Información General:</h3></div>
+                  <div class="body">
+
+                   <!-- Principal Wizard Form -->
+
+                  <div id="myFormWizard">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs nav-tabs-linetriangle nav-tabs-separator">
+                        <li class="active">
+                            <a data-toggle="tab" href="app.clients.#tab3"><i class="fa fa-user-plus tab-icon"></i> <span>Clientes</span></a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active slide" id="tab3">
+                          
+                          <form class="" role="form" name="clientForm_update"  novalidate>
+
+                              <div class="row">
+
+                                 <div class="form-group-attached">
+                                    <div class="row clearfix"> 
+
+                                          <!-- Nit -->
+
+                                      <div class="col-md-4">
+                                        <div class="form-attached">
+                                          <div pg-form-group class="form-group form-group-default required">
+                                            <label>Nit:</label>   
+                                                <label for="">{{infoClienContact.nit}}</label>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      <!-- End Nit -->
+
+                                         <!-- Nombre -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                 <label>Nombre:</label>   
+                                   <label>{{infoClienContact.name}}</label>
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- End nombre -->
+
+                        <!-- Razon social -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                <label>Razon social:</label>   
+                                   <label>{{infoClienContact.social_reazon}}</label>
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- end Razon -->
+
+                        <!-- Codigo ARS -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                 <label>Codigo ARS:</label>   
+                                   <label>{{infoClienContact.ars_code}}</label>
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- End Codigo-->
+
+                        <!-- Direccion -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                 <label>Direcciòn:</label>   
+                                    <label>{{infoClienContact.address}}</label>
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- End Direccion -->
+
+                        <!-- Responsable -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                <label>Responsable:</label>   
+                                    <label>{{infoClienContact.responsible}}</label>
+                            </div>
+                          </div>
+                        </div>  
+
+                        <!-- End Responsable -->
+
+                        <!-- phone -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                <label>Telefono:</label>   
+                                   <label>{{infoClienContact.phone}}</label>
+                              </div>
+                            </div>
+                          </div>                   
+
+                        <!-- End Phone -->
+
+                        <!-- phone 2 -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                 <label>Telefono 2:</label>   
+                                  <label>{{infoClienContact.phone2}}</label>
+                              </div>
+                            </div>
+                          </div>
+                                    
+                        <!-- End phon2 -->
+
+                        <!-- Email -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                 <label>Email:</label>   
+                                    <label>{{infoClienContact.email}}</label>
+                              </div>
+                            </div>
+                          </div>
+                         
+                        <!-- end Email -->
+
+                        <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                              <label>Estado</label>
+                                <!--  <input name="state_edit" ng-model="updateClient.state" class="form-control"  placeholder="Estado cliente" hidden="false" /> -->
+                              <label ng-show="infoClienContact.state == 1"> Habilitado</label>
+                              <label ng-show="infoClienContact.state == 0"> Inhabilitado</label>
+                              </div>
+                            </div>
+                          </div>
+                      
+                        <!-- Estado -->
+
+                        <!-- End Estado -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                <label>Departamento :</label>   
+                                    <select class="form-control" 
+                                            ng-options="item as item.name for item in Departments track by item.id" 
+                                            ng-model="selectedDepatment"  
+                                            ng-change="getMunicipalities()" ></select>
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- Dept -->
+
+                        <!-- End Dept -->
+
+                        <!-- Mpio -->
+
+                          <div class="col-md-4">
+                            <div class="form-attached">
+                              <div pg-form-group class="form-group form-group-default required">
+                                <label>Municipio :</label>   
+                                     <select class="form-control" 
+                                             ng-options="item as item.municipality for item in Municipalities track by item.id" 
+                                             ng-model="selectedMunicipalitie"  ></select>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        <!-- End Mpio -->
+
+                        <br>
+                          
+                          <hr size="30">
+                       
+
+
+                                    </div>  
+                                </div>
+                              </div>
+
+                               <!-- Row Edit Contatcs  -->
+
+                               <div class="row">
+
+                                  <div class="col-md-7">
+                                    
+                                    <div class="form-group-attached">
+                                    <div class="row clearfix"> 
+                                    
+                                    <!-- Edit Contact types contact -->
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Nombre</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.name}}" 
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>                                        
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Telefono</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.phone}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.email}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Descripción</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.type}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                    <!-- end Contact types contact -->
+
+                                    <!-- Edit Contact types contact -->
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Nombre</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.name}}" 
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>                                        
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Telefono</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.phone}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.email}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Descripción</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.type}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                    <!-- end Contact types contact -->
+
+                                    <!-- Edit Contact types contact -->
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Nombre</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.name}}" 
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>                                        
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Telefono</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.phone}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.email}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Descripción</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.type}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                    <!-- end Contact types contact -->
+
+                                    <!-- Edit Contact types contact -->
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Nombre</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.name}}" 
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>                                        
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Telefono</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.phone}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Email</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.email}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                        <div class="form-group-attached">
+                                          <div pg-form-group-default class="form-group form-group-default">
+                                            <label>Descripción</label>
+                                            <input type="text"
+                                            class="form-control"
+                                            id=""
+                                            name=""
+                                            value="{{clientContactTy.type}}"
+                                            >
+                                          </div>
+                                        </div>
+                                      </div>
+
+
+                                    <!-- end Contact types contact -->
+
+
+
+                                    </div>
+                                 </div>
+
+                                  </div>
+
+                                  <div class="col-md-5">
+                                    
+                                    <div class="form-group-attached">
+                                      <div class="row clearfix"> 
+
+                                      <!-- date inicio -->
+
+                                <div class="col-sm-12">
+                                  <div class="form-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                      <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                                        <input type="text" 
+                                        ng-model="updateClientsBusiness.created" 
+                                        name="date"  
+                                        class="form-control" 
+                                        id='date'
+                                        style="margin-top: 16px;" 
+                                        required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                      </div>
+
+                                    </div>
+                                  </div>
+                                </div>
+
+                              <!-- date inicio End -->
+
+                              <!-- date fin -->
+
+                                <div class="col-sm-12">
+                                  <div class="form-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                      <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                                        <input type="text" 
+                                        ng-model="updateClientsBusiness.date_end" 
+                                        name="date"
+                                        placeholder=""  
+                                        class="form-control" 
+                                        id='date'
+                                        style="margin-top: 16px;" 
+                                        required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              <!-- date end fin -->
+                                
+                               <!-- Capital -->
+
+                                <div class="col-sm-5">
+                                  <div class="form-attached">
+                                    <div pg-form-group class="form-group form-group-default required">
+                                      <label>Capital</label>
+                                      <input type="numeric" 
+                                      name="" 
+                                      class="form-control bfh-number" 
+                                      ng-model="updateClientsBusiness.capital" 
+                                      required/>
+                                    </div>
+                                  </div>
+                                </div>
+
+                               <!-- End Capital -->
+
+                               <!-- Type Business -->
+
+                                <div class="col-sm-3">
+
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                            <label>
+                                            tipo
+                                            </label>
+                                            <select class="cs-select cs-skin-slide form-control"
+                                            name="formPay"
+                                            ng-model="updateClientsBusiness.type"
+                                            ng-options="type.code as type.name for type in type" 
+                                            ui-jq="popover"
+                                            data-container="body"
+                                            data-placement="top"
+                                            data-content="" 
+                                            data-trigger="manual"
+                                            validate-attached-form-element required>
+                                            
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                               <!-- End type Business -->
+
+                               <!-- plazos establecidoe -->
+                                   <div class="col-sm-4">
+
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                            <label>
+                                            lim. de pago
+                                            </label>
+                                            <select class="cs-select cs-skin-slide form-control"
+                                            name="formPay"
+                                            ng-model="updateClientsBusiness.business_terms_id"
+                                            ng-options="term.code as term.name for term in term" 
+                                            ui-jq="popover"
+                                            data-container="body"
+                                            data-placement="top"
+                                            data-content="term.id as term.term for term in term" 
+                                            data-trigger="manual"
+                                            validate-attached-form-element required>
+                                            </select>
+
+
+                                    </div>
+                                </div>
+                            </div>  
+
+
+                               <!-- end plazos establecido -->
+
+                               <!-- Observaciones -->
+
+                                <div class="col-sm-12">
+                                    <div class="form-group ">
+
+                                    <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : clientForm.observations.$invalid && !clientForm.observations.$pristine }">
+
+
+                                        <label>
+                                            Observaciones
+                                        </label>
+
+                                         <textarea 
+                                         class="form-control" 
+                                         name="observations" 
+                                         ng-model="updateClientsBusiness.observation" 
+                                         ui-jq="popover" 
+                                         data-container="body" 
+                                         data-placement="top" 
+                                         validate-attached-form-element 
+                                         required/>
+                                        </textarea>
+                                    
+                                    </div>
+                                 </div>
+                                </div>
+
+                               <!-- End Observaciones -->
+
+                                      </div>
+                                    </div>
+
+                                  </div>
+                                 
+                              </div>      
+
+                               <!-- End Roe Edit Client two -->
+
+                                <!-- Button update Client  -->
+
+                        <div class="col-sm-12">
+                          
+                          <button class="btn btn-info btn-block" ng-click="hidelModalInfoClient()" ng-disabled="clientBusinessForm.$invalid"><i class="fa fa-sign-out"></i>&nbsp;Salir</button>
+
+                        </div>
+
+                        <!-- End Button update Client -->
+                            </form>    
+                        
+                        
+                        </div>
+                        
+                      <!--   <ul class="pager wizard">
+                            <li class="next">
+                                <button class="btn btn-primary btn-cons btn-animated from-left fa fa-truck pull-right" type="button">
+                                    <span>Next</span>
+                                </button>
+                            </li>
+                            <li class="next finish" style="display:none;">
+                                <button class="btn btn-primary btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+                                    <span>Finish</span>
+                                </button>
+                            </li>
+                            <li class="previous first" style="display:none;">
+                                <button class="btn btn-white btn-cons btn-animated from-left fa fa-cog pull-right" type="button">
+                                    <span>First</span>
+                                </button>
+                            </li>
+                            <li class="previous">
+                                <button class="btn btn-white btn-cons pull-right" type="button">
+                                    <span>Previous</span>
+                                </button>
+                            </li>
+                        </ul> -->
+
+                    </div>
+                  </div>
+                    
+                  </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+
+
+    

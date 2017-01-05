@@ -1,0 +1,124 @@
+<title> Agenda Citas</title>
+<!-- cabecera de pagina --> 
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">
+                Home
+            </a>
+        </li>
+        <li>
+            <a class="active" href="#">
+                Consulta por paciente
+            </a>
+        </li>
+        
+    </ul>
+</div>
+<!-- ./ Final Cabecera de página -->
+
+<!-- FORMULARIO PARTE SUPERIOR -->
+ <div class="container-fluid container-fixed-lg">
+     <p>
+		<h3 class="text-center"> Consulta por Paciente </h3>
+	</p>
+    <div class="w3-white w3-border-grey  w3-round  w3-row w3-padding-small w3-round-medium" style="margin: auto; width: 80%">
+        
+        
+        <div class="w3-col l1 w3-container" style="width:30%; margin-left: 35%">
+            
+            <label class="w3-label w3-center w3-text-upper">Cédula: </label><br/>
+            
+            <input type="text" placeholder="Cédula de Ciudadanía" class="w3-border-bottom w3-border-light-grey  w3-border-0" ng-model="identification" ng-init="identification=''"/>
+        </div>
+        <div>
+            <button class="w3-text-upper w3-btn w3-blue w3-round-small" style="margin-top: 0.6em;" data-ng-click="Patient.getPeople()">
+                Consultar
+            </button>
+        </div>
+
+        <!-- SEGUNDA FILA -->
+        <div class="w3-row-padding l12 w3-margin">
+            <!-- NOMBRE -->
+            <div class="w3-col l4" >
+                <label class="w3-label w3-text-upper">Nombre: </label><br/>
+                <input type="text" class="w3-input w3-border-bottom w3-border-light-grey w3-border-0" value="{{ persona.first_name+' '+persona.middle_name+' '+persona.last_name+' '+persona.last_name_two }}" readonly/>
+            </div>
+            <!-- ./NOMBRE  -->
+
+            <!-- TELEFONO -->
+            <div class="w3-col l4">
+                <label class="w3-label w3-text-upper">Teléfonos: </label>
+                <input type="text" class="w3-input w3-border-0 w3-border-bottom w3-border-light-grey" value="{{ persona.phone }}" readonly />
+            </div>
+            <!-- ./TELEFONO -->
+
+            <!-- DIRECCION -->
+            <div class="w3-col l4">
+                <label class="w3-label w3-text-upper">Dirección: </label>
+                <input type="text" class="w3-input w3-border-0 w3-border-bottom w3-border-light-grey"  value="{{ persona.address }}" readonly />
+            </div>
+            <!-- ./DIRECCION -->
+
+        </div>
+        <!-- ./SEGUNDA  FILA -->
+        
+    </div>
+    <!-- ./FORMULARIO PARTE SUPERIOR -->
+    
+    <div class="w3-margin w3-row" ng-hide="!persona.first_name">
+          <label class="w3-label w3-col l12" >Buscar: </label><br/>
+          <div class="w3-row w3-white w3-padding-medium">
+                <input type="text" class="w3-input w3-boder-0  w3-col l11" ng-model="filterTable"/>
+                <i class="material-icons w3-col l1">&#xE8B6;</i>
+          </div>
+    </div>
+    <!-- TABLA DE RESULTADOS -->
+    <div class="w3-padding-medium w3-transparent w3-margin-top">
+        <table class="w3-table ">
+
+            <tr class="">
+                <th class="w3-text-upper">Orden</th>
+                <th class="w3-text-upper">estudio</th>
+                <th class="w3-text-upper">estado</th>
+                <th class="w3-text-upper" >fecha</th>
+                <th class="w3-text-upper" > consultiorio </th>
+                <th class="w3-text-upper">Ver Orden</th>
+            </tr>
+
+            <tr data-ng-repeat="item in appointments | filter: filterTable" class="w3-white">
+                <td>{{ item._matchingData.Orders.order_consec }}</td>
+                <td>{{ item.study.name }}</td>
+                <td>{{ item._matchingData.AppointmentStates.state }}</td>
+                <td>{{ item._matchingData.AppointmentDates.date_time_ini }}</td>
+                <td>{{ item.medical_office.name }}</td>
+                <td>
+                    <button ng-click="Patient.showOrder( item._matchingData.Orders.id )" class="w3-text-upper w3-btn w3-blue w3-round-medium">Ver orden</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!-- ./TABLA DE RESULTADOS -->
+    
+    <!-- PAGINACIÓN -->
+    <div>
+        <ul class="w3-pagination">
+            <li>
+                <button class="w3-border-0 w3-transparent w3-hover-opacity" ng-click="Patient.offset= Patient.offset - 1">
+                    <i class="material-icons w3-xxlarge">&#xE5CB;</i>
+                </button>
+            </li>
+            <li>
+               <button class="w3-border-0 w3-transparent w3-hover-opacity" ng-click="Patient.offset= Patient.offset + 1">
+                    <i class="material-icons w3-xxlarge">&#xE5CC;</i>
+               </button>
+            </li>
+            <li>
+                <button class="w3-transparent w3-border-0">
+                    <i class="w3-xlarge" style="float: right; font-style: normal">{{ Patient.offset }}</i>
+                </button>
+            </li>
+        </ul>
+    </div>
+    <!-- ./PAGINACION -->
+</div>

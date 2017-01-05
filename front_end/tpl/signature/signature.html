@@ -1,0 +1,131 @@
+
+<style type="text/css">
+    #signatureparent {
+        color:darkblue;
+        background-color:darkgrey;
+        /*max-width:600px;*/
+        padding:20px;
+    }
+    
+    /*This is the div within which the signature canvas is fitted*/
+    #signature {
+        border: 2px dotted black;
+        background-color:lightgrey;
+    }
+
+    /* Drawing the 'gripper' for touch-enabled devices */ 
+    html.touch #content {
+        float:left;
+        width:92%;
+    }
+    html.touch #scrollgrabber {
+        float:right;
+        width:4%;
+        margin-right:2%;
+        background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAAFCAAAAACh79lDAAAAAXNSR0IArs4c6QAAABJJREFUCB1jmMmQxjCT4T/DfwAPLgOXlrt3IwAAAABJRU5ErkJggg==)
+    }
+    html.borderradius #scrollgrabber {
+        border-radius: 1em;
+    }
+
+</style>
+
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>    
+        </li>
+        <li><a class="active" href="#">Firma Digital</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Firma Digital</h3>
+
+</div>
+
+
+ 
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+
+<!-- 
+   <div id="content" >
+        <div id="signatureparent">
+        
+            <div id="signature"></div>
+
+        </div>
+
+    </div>
+ -->
+<!--     <div id="scrollgrabber"></div>
+ -->
+
+<!--     <button type="button" class="btn btn-info" ng-click="resetSignature()">
+        <i class="fa fa-eraser" aria-hidden="true"></i>Limpiar
+    </button>
+    
+    <button type="button" class="btn btn-info" ng-click="saveSignature()">
+        <i class="fa fa-save" aria-hidden="true"></i> Guardar Firma
+    </button>        
+ -->
+</div>
+
+
+<!-- Modal Sign-->
+<div class="modal fade slide-up disable-scroll open-sign" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <br>
+                    <div class="container-fluid container-fixed-lg">
+                    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                    ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                    -->
+                    <!-- CONTENT GOES HERE-->
+                        <div id="content" >
+
+                            <div id="signatureparent">
+
+                                <div id="signature"></div>
+
+                            </div>
+
+                        </div>
+                        <br>
+                        <!--     <div id="scrollgrabber"></div>
+                        -->
+                        <button type="button" class="btn btn-info" ng-click="resetSignature()">
+                        <i class="fa fa-eraser" aria-hidden="true"></i>Limpiar
+                        </button>
+
+                        <button type="button" class="btn btn-info" ng-click="
+                        ()">
+                        <i class="fa fa-save" aria-hidden="true"></i> Guardar Firma
+                        </button>        
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+
+
+
+
+
+
+
+

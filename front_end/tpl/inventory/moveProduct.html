@@ -1,0 +1,539 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Traslado de Productos</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+   <div class="row">
+       <div class="col-sm-6">
+            <h3 class="page-title"><strong>Traslado de Productos</strong></h3>
+
+       </div>
+
+       <div class="col-md-6">
+           <button class="btn btn-info pull-right" ng-click="showInformationInventory()"><i class="fa fa-question-circle"></i></button>
+       </div>
+   </div>
+ 
+    
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll information-inventory" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="panel-body">
+                    <p><strong>1.</strong>Seleccione la Bodega e ingrese el nombre del producto que desea consultar.</p> 
+                    <p><strong>2.</strong>Si está disponible, seleccione el lote asociado al producto.</p>
+                    <p><strong>3.</strong>Ingresar la cantidad que desea retirar del producto.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+
+    <form name="exitProductForm" role="form" novalidat>
+
+       <div class="row">
+           
+                <div class="form-group-attached">
+                    <div class="row clearfix">
+
+                        <!-- User receive -->
+
+                        <div class="col-sm-3">
+                             <div class="form-group-attached">
+                                 <div pg-form-group class="form-group form-group-default required" >
+                                    <label>Usuario que recibe</label>
+                                    <select class=" cs-select cs-skin-slide form-control" 
+                                        name="userR" 
+                                        ui-jq="popover" data-container="body" 
+                                        data-placement="top" 
+                                        data-content="Debe seleccionar un usuario" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element 
+                                        ng-model="selectedUser" 
+                                        ng-options="users.id as users.first_name+' '+users.last_name for users in users"
+                                        required>
+                                        <option value=""> -Seleccione el usuario- </option>
+                                    </select>
+                                 </div>
+                             </div>
+                         </div>
+
+                        <!-- End user receive -->
+
+                        <!-- start exit storage -->
+                         <div class="col-sm-3">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" >
+                            <label></label>
+                              <label>Bodega de Salida</label>
+                                    <select class=" cs-select cs-skin-slide form-control" 
+                                    name="exitStorage" 
+                                    ui-jq="popover" data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Debe seleccionar una bodega de salida" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element 
+                                    ng-model="selectedExitStorage" 
+                                    ng-options="storages.id as storages.name for storages in exitStorages"
+                                    ng-change="getAvailableToMove()"
+                                    required>
+                                    <option value=""> -Seleccione la bodega- </option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- END exit storage -->
+
+                        <!-- Order code -->
+
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" >
+                                    <label>Código de Transferencia</label>
+
+                                     <input type="text" 
+                                    name="codeOrder"
+                                    placeholder="Código de Transferencia"
+                                    class="form-control"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="El código es requerido" 
+                                    data-trigger="manual"
+                                    ng-model ="outputs.request_code" 
+                                    validate-attached-form-element required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- End code Order -->
+
+                         <!-- Exit date-->
+
+                          <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default required" >
+
+                                    <label>
+                                        Fecha de ingreso:
+                                    </label>
+                                    <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="birthdate" 
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            ng-model="date" 
+                                            required="" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                         <!-- End Exit date -->
+                    </div>
+                 </div>
+        </div>                
+
+    </form>
+    
+</div>
+
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+
+    <form name="exitProductForm" role="form" novalidat>
+
+       <div class="row">
+           
+            <div class="form-group-attached">
+                <div class="row clearfix">
+                    <h3>Consulta de productos:</h3>
+
+                     <hr/ size="30;"> 
+
+                   <!-- exit cellar -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" >
+                            <label></label>
+                              <label>Bodega de Destino</label>
+                                    <select class=" cs-select cs-skin-slide form-control" 
+                                    name="cellartExit" 
+                                    ui-jq="popover" data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Debe seleccionar una bodega de salida" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element 
+                                    ng-model="selectedInputStorage" 
+                                    ng-options="storages.id as storages.name for storages in inputStorage"
+                                    ng-change="getAllProducts()"
+                                    required>
+                                    <option value=""> -Seleccione la bodega- </option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- End exit cellar -->
+
+                   <!-- product name -->
+<!-- 
+   ng-change = "getInputProduct()" -->
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" >
+                            <label></label>
+                              <label>Nombre del producto</label>
+                                    <select class=" cs-select cs-skin-slide form-control" 
+                                    name="nameProduct" 
+                                    ui-jq="popover" data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Debe seleccionar un Producto" 
+                                    data-trigger="manual" 
+                                    ng-model="selectedProduct" 
+                                    ng-change = "getInputProduct()"
+                                    ng-disabled="selectedInputStorage == selected"
+                                    ng-options="item as item.name_product for item in products track by item.id"
+                              
+                                    validate-attached-form-element 
+                                    required>
+                                    <option value=""> -Seleccione el nombre- </option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- End product name -->
+
+                   <!-- associated code -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" >
+                            <label>Código asociado</label>
+                           <input type="text" 
+                                    name="codeAsscociated"
+                                    placeholder="Código del pedido"
+                                    class="form-control"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="El código asociado es requerido" 
+                                    data-trigger="manual" 
+                                    ng-model = "productCode"
+                                    validate-attached-form-element required/>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- End associated code -->
+                      
+                        
+                </div>
+
+            </div>
+            <div class="form-group-attached">
+                <div class="row clearfix">
+                
+                   <!-- register lote -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" >
+                            <label></label>
+                              <label>Lote registrado</label>
+                                   <input type="text" 
+                                    name="loteRegister" 
+                                    placeholder="Lote del producto"
+                                    class="form-control"
+                                    ng-model = "productDetails.lot"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-trigger="manual" 
+                                    validate-attached-form-element required/>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- En register lote -->
+
+                   <!-- Expirate date -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" >
+                            <label></label>
+                              <label>Fecha de vencimiento</label>
+                                 <div 
+                                    class="input-group date" 
+                                    ui-jq="datepicker" 
+                                    ui-options="{format:'yyyy-mm-dd'}">
+
+                                        <input class="form-control" 
+                                            name="birthdate" 
+                                            id='date'
+                                            placeholder="yyyy-mm-dd"
+                                            readonly="true" 
+                                            type="text" 
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="La fecha de ingreso es requerida" 
+                                            data-trigger="manual" 
+                                            ng-model = "productDetails.expiration_date"
+                                            validate-attached-form-element 
+                                            required />
+
+                                        <span class="input-group-addon" hidden="true" style="padding:inherit">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </span>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- End Expirate date -->
+
+                   <!-- product brand -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required" >
+                            <label>Marca del producto</label>
+                           <input type="text" 
+                                    name="productBrand"
+                                    placeholder="Código del pedido"
+                                    class="form-control"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Fecha de vencimiento" 
+                                    data-trigger="manual" 
+                                    ng-model = "productDetails.marks_id" 
+                                    validate-attached-form-element required/>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- End product brand -->
+                      
+                      
+                </div>
+
+            </div>
+            <div class="form-group-attached">
+                <div class="row clearfix">
+                   
+
+                   <!-- asign units -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required">
+                            <label></label>
+                              <label>Unidades asiganadas</label>
+                                 <input type="text" 
+                                    name="asignUnits"
+                                    placeholder="Código del pedido"
+                                    class="form-control"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Cantidad de unidades asignadas" 
+                                    data-trigger="manual"
+                                    ng-model = "productDetails.units_id"  
+                                    validate-attached-form-element required/>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- End exit cellar -->
+
+                   <!-- product name -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required">
+                            <label>Cantidad Disponible</label>
+                           <input type="text" 
+                                    name="asingCant"
+                                    placeholder="0"
+                                    class="form-control"
+                                    ui-jq="popover" 
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    data-content="Cantidad de unidades disponibles" 
+                                    data-trigger="manual"
+                                    ng-model = "inputProduct.remaining" 
+                                    validate-attached-form-element required/>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- End product name -->
+
+                   <!-- associated code -->
+
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default required">
+                            <label>Cantidad a retirar</label>
+                           <input type="text" 
+                                    name="cantRemove"
+                                    placeholder="0"
+                                    class="form-control"
+                                    ui-jq="popover" 
+                                    ng-model = "quoteExit"
+                                    data-container="body" 
+                                    data-placement="top" 
+                                    ng-change = "discountAvailable()"
+                                    data-content="Cantidad de unidades a reterar" 
+                                    data-trigger="manual"
+                                    ng-disabled="remaining == 0"
+                                    validate-attached-form-element
+                                    required/>
+                            </div>
+                        </div>
+                    </div>
+
+                   <!-- End associated code -->
+                      
+                </div>
+
+                <!-- button -->
+
+                <button class="btn btn-info btn-block" ng-click="addItem()" ng-disabled="exitProductForm.$invalid"><i class="fa fa-sign-in"></i> Ingresar Salida</button>
+
+                <!-- end button -->
+
+            </div>
+        </div>
+    </form>
+</div>  
+
+<br>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+
+    <h3>Registro de salidas:</h3> 
+    <hr/ size="30;">            
+    <table class="table">
+        <thead>
+            <th>#</th>
+            <th>Cod.</th>
+            <th>Producto</th>
+            <th>Cant. Salida</th>
+            <th>Unidades</th>
+            <th>Lote</th>
+            <th>Marca</th>
+            <th>Bodega</th>
+            <th>Opciones</th>
+        </thead>
+        <tr ng-repeat="item in items" class="item-checked">
+            <td>{{item.id}}</td>
+            <td>{{item.code}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.salida}}</td>
+            <td>{{item.unidades}}</td>
+            <td>{{item.lote}}</td>
+            <td>{{item.marca}}</td>
+            <td>{{item.bodega}}</td>
+            <td>
+            <div class="btn-group">
+                <button type="button" class="btn btn-info btn-block"  type="button" ng-click="removeItem($index,item)">
+                    <i class="fa fa-remove"></i> Cancelar
+                </button>
+            </div> 
+            </td>
+        </tr>
+    </table>
+    
+</div>  
+
+<div class="container-fluid container-fixed-lg">
+
+    <h3>Observaciones:</h3> 
+    <hr/ size="30;">
+   <form name="generateExitForm" role="form" novalidate>
+        <textarea class="form-control"
+    rows="5"
+    name="observationProduct"
+    placeholder="Observaciones"
+    class="form-control"
+    ui-jq="popover" 
+    data-container="body" 
+    data-placement="top" 
+    data-content="La cantidad del producto ingresado es requerida" 
+    data-trigger="manual" 
+    ng-model ="outputs.observation"
+    validate-attached-form-element 
+    required/>
+    </textarea>
+
+
+   </form> 
+<br>
+   <div class="row">
+      
+          <div class="col-sm-5 col-sm-offset-1">
+               <button class="btn btn-info btn-block"><i class="fa fa-eye"></i> Previzualizar</button>
+          </div>
+
+           <div class="col-sm-5">
+               <button class="btn btn-info btn-block" ng-click="addTransfers()" ng-disabled="generateExitForm.$invalid"><i class="fa fa-sign-in" ></i> Registrar salida del producto</button>
+          </div>
+       
+   </div>    
+
+</div>     
+
+
+

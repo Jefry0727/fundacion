@@ -1,0 +1,1228 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Usuarios</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Usuarios</h3>
+
+    <button class="btn btn-info" ng-click="showNewUser()"><i class="fa fa-plus"></i> Nuevo</button>
+
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+             -->
+             <!-- CONTENT GOES HERE-->
+             <table class="table">
+                <thead>
+                   <th>Nombre</th>
+                   <th>Identificación</th>
+                   <th>E-mail</th>
+                   <th>Usuario</th>
+                   <th>Rol</th>
+                   <th>Opciones</th>
+                   <th>Estado</th>
+                   <th ng-show="rol == 1">Restablecer</th>
+               </thead>
+               <tbody>
+                <tr ng-repeat="user in allUsers">
+                   <td>{{user.person.first_name}} {{user.person.middle_name}}  {{user.person.last_name}}  {{user.person.last_name_two}}</td>
+                   <td>{{user.person.identification}}</td>
+                   <td>{{user.person.email}}</td>
+                   <td>{{user.username}}</td>
+                   <td>{{user.role.name}}</td>
+                   <td>
+                    <button class="btn btn-info" ng-click="showEdituser(user, user.person)"  ><i class="fa fa-edit"></i> Editar</button>
+
+                </td>
+
+                <td>
+                   <span ng-if="user.active == 0"><button class="btn btn-info" ng-click="changeStateUser(user)"><i class="fa fa-check"></i> Activo</button></span>
+                   <span ng-if="user.active == 1"><button class="btn btn-primary" ng-click="changeStateUser(user)"><i class="fa fa-remove"></i> Inactivo</button></span>
+               </td>
+               <td ng-show="rol == 1">
+                <span><button class="btn btn-info" ng-click="showModalRestorePassword(user)"><i class="fa fa-remove"></i> Reestablecer</button></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div 
+paging
+page="currentPageGetUser" 
+page-size="pageSizeGetUser" 
+total="total"
+adjacent="true"
+show-prev-next="true"
+paging-action="getListUsers(page)"
+>
+</div> 
+</div>
+
+<!-- Modal New User -->
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll new-user" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="pg-close fs-14"></i>
+                  </button>
+                  <h5><span class="semi-bold">Nuevo Usuario:</span></h5>
+              </div>
+              <div class="modal-body">
+
+                <form name="newUserForm" role="form" novalidate>
+
+                    <div class="row">
+
+                        <div class="form-group-attached">
+
+                            <div class="row clearfix">
+
+                                <!-- Name -->
+
+                                <div class="col-sm-4">
+
+                                    <div class="form-group-attached">
+
+                                        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.name.$invalid && !newUserForm.name.$pristine }">
+
+                                            <label>Primer Nombre</label>
+                                            <input 
+                                            type="text"
+                                            name="name"
+                                            ng-model="newPeople.first_name"
+                                            placeholder="Nombre Completo"
+                                            class="form-control"
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="El nombre del Usuario es requerido" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element required/>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- End Name -->
+                                <!-- Name -->
+
+                                <div class="col-sm-4">
+
+                                    <div class="form-group-attached">
+
+                                        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.name2.$invalid && !newUserForm.name2.$pristine }">
+
+                                            <label>Segundo Nombre</label>
+                                            <input 
+                                            type="text"
+                                            name="name2"
+                                            ng-model="newPeople.middle_name"
+                                            placeholder="Nombre Completo"
+                                            class="form-control"
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="El nombre del Usuario es requerido" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element required/>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- End Name -->
+
+                                <!-- last name -->
+
+                                <div class="col-sm-4">
+
+                                    <div class="form-group-attached">
+
+                                        <div class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.lastName.$invalid && !newUserForm.lastName.$pristine }">
+
+                                            <label>Primer Apellido</label>
+
+                                            <input 
+                                            type="text"
+                                            name="lastName"
+                                            ng-model="newPeople.last_name"
+                                            placeholder="Primer Apellido"
+                                            class="form-control"
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="El nombre del Usuario es requerido" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element required/>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- End Last Name -->
+
+                                <!-- Last Name Two -->
+
+                                <div class="col-sm-4">
+
+                                    <div class="form-group-attached">
+
+                                        <div class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.lastNameTwo.$invalid && !newUserForm.lastNameTwo.$pristine }">
+
+                                            <label>Segundo Apellido</label>
+                                            <input 
+                                            type="text"
+                                            name="lastNameTwo"
+                                            ng-model="newPeople.last_name_two"
+                                            placeholder="Segundo Apellido"
+                                            class="form-control"
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="El segundo apellido es requerido" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element required/>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- End Last Name Two -->
+
+                                <!-- Type Document -->
+
+                                <div class="col-sm-4">
+
+                                    <div class="form-group-attached">
+
+                                        <div class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.typeId.$invalid && !newUserForm.typeId.$pristine }">
+                                            <label>Tipo de Documento</label>
+
+                                            <select
+                                            class=" cs-select cs-skin-slide form-control" 
+                                            name="typeId"
+                                            ng-model="newPeople.document_types_id"
+                                            data-content="El tipo de documento es requerido" 
+                                            ng-options="item.id as item.type for item in listDocumentTypes" 
+                                            >
+                                            <option value=""> -- Tipo de Documento -- </option>
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- End Type Document -->
+
+                            <!-- Nit -->
+
+                            <div class="col-sm-4">
+
+                                <div class="form-group-attached">
+
+                                    <div class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.nit.$invalid && !newUserForm.nit.$pristine }">
+                                        <label>Identificación</label>
+                                        <input 
+                                        type="text"
+                                        name="nit"
+                                        ng-model="newPeople.identification"
+                                        placeholder="Identificación"
+                                        class="form-control"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="La Identificación es requerida" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required/>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- End Nit -->
+
+                            <!-- Birthday -->
+
+                            <div class="col-sm-4">
+
+                             <div class="form-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.date.$invalid && !newUserForm.date.$pristine }">
+                                  <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                                    <input type="text" 
+                                    name="date"
+                                    ng-model="newPeople.birthdate"
+                                    placeholder="Fecha de Nacimiento"  
+                                    class="form-control"
+                                    data-content="La fecha de nacimiento es requerida" 
+                                    id='date'
+                                    style="margin-top: 16px;" 
+                                    required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- End Birthday -->
+
+                    <!-- Gender -->
+
+                    <div class="col-sm-4">
+
+                        <div class="form-group-attached">
+
+                            <div pg-form-group class="form-group form-group-default" >
+
+                                <label>Género</label>
+
+                                <select class="cs-select cs-skin-slide form-control"
+                                name=""
+                                ng-model="newPeople.gender"
+                                ng-options="gender.code as gender.name for gender in typeGender"
+                                data-container="body"
+                                data-placement="top"
+                                data-content="" 
+                                data-trigger="manual"
+                                validate-attached-form-element required>
+                                <option value=""> -- Seleccione Género -- </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- End Gender -->
+
+
+                <!-- Departaments  -->
+                <div class="col-sm-4">
+                    <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.selectedDepatment.$invalid && !newUserForm.selectedDepatment.$pristine }">
+                            <label>
+                                Departamento :
+                            </label>
+                            <select class=" cs-select cs-skin-slide form-control" 
+                            ng-change="getMunicipalities()" 
+                            ng-model="selectedDepatment" 
+                            ng-options="item as item.name for item in Departments track by item.id" 
+                            ui-jq="popover" data-container="body" 
+                            data-placement="top"
+                            data-trigger="manual" 
+                            validate-attached-form-element 
+                            required>
+                            <option value=""> -- Departamento -- </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!-- end departaments -->
+            <!-- Municipalities -->
+            <div class="col-sm-4">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default required">
+                        <label>
+                            Municipio :
+                        </label>
+                        <select class=" cs-select cs-skin-slide form-control" 
+                        ng-model="selectedMunicipalitie" 
+                        ng-options="item as item.municipality for item in Municipalities track by item.id" 
+                        ng-change="changeSelectedMunicipality()">
+                        <option value=""> -- Municipios --</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <!-- municipalities end -->
+        <!-- Address -->
+
+        <div class="col-sm-4">
+
+            <div class="form-group-attached">
+
+                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.direcc.$invalid && !newUserForm.direcc.$pristine }">
+
+                    <label>Dirección</label>
+                    <input 
+                    type="text"
+                    name="direcc"
+                    ng-model="newPeople.address"
+                    placeholder="Dirección"
+                    class="form-control"
+                    ui-jq="popover" 
+                    data-container="body" 
+                    data-placement="top" 
+                    data-content="La dirección es requerida" 
+                    data-trigger="manual" 
+                    validate-attached-form-element required/>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- End Address -->
+
+        <!-- Phone -->
+
+        <div class="col-sm-4">
+
+            <div class="form-group-attached">
+
+                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.phoneM.$invalid && !newUserForm.phoneM.$pristine }">
+
+                    <label>Telefono</label>
+
+                    <input 
+                    type="text"
+                    name="phoneM"
+                    ng-model="newPeople.phone"
+                    placeholder="Telefono"
+                    class="form-control"
+                    ui-jq="popover" 
+                    data-container="body" 
+                    data-placement="top" 
+                    data-content="El número Telefonico es requerido" 
+                    data-trigger="manual" 
+                    validate-attached-form-element required/>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- End Phone -->
+
+        <!-- Email -->
+
+        <div class="col-sm-3">
+
+            <div class="form-group-atatched">
+
+                <div class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.email.$invalid && !newUserForm.email.$pristine }" >
+
+                    <label>Email</label>
+
+                    <input 
+                    type="text"
+                    name="email"
+                    ng-model="newPeople.email"
+                    placeholder="example@example.com"
+                    class="form-control"
+                    ui-jq="popover" 
+                    data-container="body" 
+                    data-placement="top" 
+                    data-content="El nombre del Usuario es requerido" 
+                    data-trigger="manual" 
+                    validate-attached-form-element required/>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- End Email -->
+
+        <!-- User -->
+
+        <div class="col-sm-3">
+
+            <div class="form-group-atatched">
+
+                <div class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.user.$invalid && !newUserForm.user.$pristine }">
+
+                    <label>Nombre de Usuario</label>
+
+                    <input 
+                    type="text"
+                    name="user"
+                    placeholder="Nombre de Usuario"
+                    ng-model="newUser.username"
+                    class="form-control"
+                    ui-jq="popover" 
+                    data-container="body" 
+                    data-placement="top" 
+                    data-content="El usuario es requerido" 
+                    data-trigger="manual" 
+                    validate-attached-form-element required/>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- End User -->
+
+        <!-- Role -->
+
+        <div class="col-sm-3">
+
+            <div class="form-group-atatched">
+
+                <div class="form-group form-group-default required" ng-class="{ 'has-error' : newUserForm.rol.$invalid && !newUserForm.rol.$pristine }">
+
+                    <label>Rol</label>
+                    <select 
+                    name="rol"
+                    class="form-control"
+                    ng-model="newUser.roles_id"
+                    ng-options="listAllRoles.id as listAllRoles.name for listAllRoles in listAllRoles" 
+                    >
+                    <option value=""> -- Roles -- </option>
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- End Role -->
+
+    <!-- User State -->
+
+    <div class="col-sm-3">
+
+        <div class="form-group-attached">
+
+            <div pg-form-group class="form-group form-group-default required">
+                <label>Estado</label>
+                <select
+                class=" cs-select cs-skin-slide form-control" 
+                ng-model="newUser.active"
+                ng-init="newUser.active = stateUser[0].code"   
+                ng-options="state.code as state.name for state in stateUser"
+                ui-jq="popover"
+                data-container="body" 
+                data-placement="top" 
+                data-content="" 
+                data-trigger="manual" 
+                validate-attached-form-element required>
+            </select>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- User State -->
+
+<div class="col-sm-12">
+
+    <button class="btn btn-info btn-block" ng-click="addPeople()" ng-disabled = "newUserForm.$invalid"><i class="fa fa-save"></i> Guardar</button>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+</div>
+</div>
+<!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+
+<!-- End Modal New User -->
+
+
+<!-- Modal Edit User -->
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll edit-user" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="pg-close fs-14"></i>
+                  </button>
+                  <h5><span class="semi-bold">Editar Usuario:</span></h5>
+              </div>
+              <div class="modal-body">
+
+                <form name="editUserForm" role="form" novalidate>
+
+                    <div class="row">
+
+                        <div class="form-group-attached">
+
+                            <div class="row clearfix">
+
+                                <!-- Name -->
+
+                                <div class="col-sm-4">
+
+                                    <div class="form-group-attached">
+
+                                        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.name.$invalid && !editUserForm.name.$pristine }">
+
+                                            <label>Nombre Completo</label>
+                                            <input 
+                                            type="text"
+                                            name="name"
+                                            ng-model="EditNewPeople.first_name"
+                                            placeholder="Nombre Completo"
+                                            class="form-control"
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="El nombre del Usuario es requerido" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element required/>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- End Name -->
+
+                                <!-- last name -->
+
+                                <div class="col-sm-4">
+
+                                    <div class="form-group-attached">
+
+                                        <div class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.lastName.$invalid && !editUserForm.lastName.$pristine }">
+
+                                            <label>Primer Apellido</label>
+
+                                            <input 
+                                            type="text"
+                                            name="lastName"
+                                            ng-model="EditNewPeople.last_name"
+                                            placeholder="Primer Apellido"
+                                            class="form-control"
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="El nombre del Usuario es requerido" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element required/>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- End Last Name -->
+
+                                <!-- Last Name Two -->
+
+                                <div class="col-sm-4">
+
+                                    <div class="form-group-attached">
+
+                                        <div class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.lastNameTwo.$invalid && !editUserForm.lastNameTwo.$pristine }">
+
+                                            <label>Segundo Apellido</label>
+                                            <input 
+                                            type="text"
+                                            name="lastNameTwo"
+                                            ng-model="EditNewPeople.last_name_two"
+                                            placeholder="Segundo Apellido"
+                                            class="form-control"
+                                            ui-jq="popover" 
+                                            data-container="body" 
+                                            data-placement="top" 
+                                            data-content="El segundo apellido es requerido" 
+                                            data-trigger="manual" 
+                                            validate-attached-form-element required/>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- End Last Name Two -->
+
+                                <!-- Type Document -->
+
+                                <div class="col-sm-4">
+
+                                    <div class="form-group-attached">
+
+                                        <div class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.typeId.$invalid && !editUserForm.typeId.$pristine }">
+                                            <label>Tipo de Documento</label>
+
+                                            <select
+                                            class=" cs-select cs-skin-slide form-control" 
+                                            name="typeId"
+                                            ng-model="EditNewPeople.document_types_id"
+                                            data-content="El tipo de documento es requerido" 
+                                            ng-options="item.id as item.type for item in listDocumentTypes" 
+                                            >
+                                            <option value=""> -- Tipo de Documento -- </option>
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- End Type Document -->
+
+                            <!-- Nit -->
+
+                            <div class="col-sm-4">
+
+                                <div class="form-group-attached">
+
+                                    <div class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.nit.$invalid && !editUserForm.nit.$pristine }">
+                                        <label>Identificación</label>
+                                        <input 
+                                        type="text"
+                                        name="nit"
+                                        ng-model="EditNewPeople.identification"
+                                        placeholder="Identificación"
+                                        class="form-control"
+                                        ui-jq="popover" 
+                                        data-container="body" 
+                                        data-placement="top" 
+                                        data-content="La Identificación es requerida" 
+                                        data-trigger="manual" 
+                                        validate-attached-form-element required/>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <!-- End Nit -->
+
+                            <!-- Birthday -->
+
+                            <div class="col-sm-4">
+
+                             <div class="form-attached">
+                                <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.date.$invalid && !editUserForm.date.$pristine }">
+                                  <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                                    <label>fecha</label>
+                                    <input type="text" 
+                                    name="date"
+                                    ng-model="EditNewPeople.birthdate"
+                                    placeholder="Fecha de Nacimiento"  
+                                    class="form-control"
+                                    data-content="La fecha de nacimiento es requerida" 
+                                    id='date'
+                                    style="margin-top: -4px;" 
+                                    required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- End Birthday -->
+
+                    <!-- Gender -->
+
+                    <div class="col-sm-4">
+
+                        <div class="form-group-attached">
+
+                            <div pg-form-group class="form-group form-group-default required">
+
+                                <label>Género</label>
+
+                                <select class="cs-select cs-skin-slide form-control"
+
+                                ng-model="EditNewPeople.gender"
+                                ng-options="gender.code as gender.name for gender in typeGender" 
+                                ui-jq="popover"
+                                data-container="body"
+                                data-placement="top"
+                                data-content="" 
+                                data-trigger="manual"
+                                validate-attached-form-element required>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- End Gender -->
+
+                <!-- Address -->
+
+                <div class="col-sm-4">
+
+                    <div class="form-group-attached">
+
+                        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.direcc.$invalid && !editUserForm.direcc.$pristine }">
+
+                            <label>Dirección</label>
+                            <input 
+                            type="text"
+                            name="direcc"
+                            ng-model="EditNewPeople.address"
+                            placeholder="Dirección"
+                            class="form-control"
+                            ui-jq="popover" 
+                            data-container="body" 
+                            data-placement="top" 
+                            data-content="La dirección es requerida" 
+                            data-trigger="manual" 
+                            validate-attached-form-element required/>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- End Address -->
+
+                <!-- Phone -->
+
+                <div class="col-sm-4">
+
+                    <div class="form-group-attached">
+
+                        <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.phoneM.$invalid && !editUserForm.phoneM.$pristine }">
+
+                            <label>Telefono</label>
+
+                            <input 
+                            type="text"
+                            name="phoneM"
+                            ng-model="EditNewPeople.phone"
+                            placeholder="Telefono"
+                            class="form-control"
+                            ui-jq="popover" 
+                            data-container="body" 
+                            data-placement="top" 
+                            data-content="El número Telefonico es requerido" 
+                            data-trigger="manual" 
+                            validate-attached-form-element required/>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- End Phone -->
+
+                <!-- Email -->
+
+                <div class="col-sm-3">
+
+                    <div class="form-group-atatched">
+
+                        <div class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.email.$invalid && !editUserForm.email.$pristine }" >
+
+                            <label>Email</label>
+
+                            <input 
+                            type="text"
+                            name="email"
+                            ng-model="EditNewPeople.email"
+                            placeholder="Email"
+                            class="form-control"
+                            ui-jq="popover" 
+                            data-container="body" 
+                            data-placement="top" 
+                            data-content="El nombre del Usuario es requerido" 
+                            data-trigger="manual" 
+                            validate-attached-form-element required/>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- End Email -->
+
+                <!-- User -->
+
+                <div class="col-sm-3">
+
+                    <div class="form-group-atatched">
+
+                        <div class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.user.$invalid && !editUserForm.user.$pristine }">
+
+                            <label>Nombre de Usuario</label>
+
+                            <input 
+                            type="text"
+                            name="user"
+                            ng-model="editNewUser.username"
+                            placeholder="Nombre de Usuario"
+                            class="form-control"
+                            ui-jq="popover" 
+                            data-container="body" 
+                            data-placement="top" 
+                            data-content="El usuario es requerido" 
+                            data-trigger="manual" 
+                            validate-attached-form-element required/>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- End User -->
+
+                <!-- Role -->
+
+                <div class="col-sm-3">
+
+                    <div class="form-group-atatched">
+
+                        <div class="form-group form-group-default required" ng-class="{ 'has-error' : editUserForm.rol.$invalid && !editUserForm.rol.$pristine }">
+
+                            <label>Rol</label>
+                            <select 
+                            name="rol"
+                            class="form-control"
+                            ng-model="editNewUser.roles_id"
+                            ng-options="listAllRoles.id as listAllRoles.name for listAllRoles in listAllRoles" 
+                            >
+                            <option value=""> -- Roles -- </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- End Role -->
+
+            <!-- User State -->
+
+            <div class="col-sm-3">
+
+                <div class="form-group-attached">
+
+                    <div pg-form-group class="form-group form-group-default required">
+                        <label>Estado</label>
+                        <select
+                        class=" cs-select cs-skin-slide form-control" 
+                        ng-model="editNewUser.active"  
+                        ng-options="state.code as state.name for state in stateUser"
+                        ui-jq="popover"
+                        data-container="body" 
+                        data-placement="top" 
+                        data-content="" 
+                        data-trigger="manual" 
+                        validate-attached-form-element required>
+                    </select>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- User State -->
+
+        <div class="col-sm-12">
+
+            <button class="btn btn-info btn-block" ng-click="editUser()"><i class="fa fa-save"></i> Guardar</button>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+</div>
+</div>
+<!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+<!-- End Modal Edit User  -->
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll add-role" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="pg-close fs-14"></i>
+                  </button>
+                  <h5>Nuevo Rol</h5>
+              </div>
+              <div class="modal-body">
+
+                <form class="" role="form" name="rolesForm"  novalidate>
+
+                    <!-- name -->
+                    <div pg-form-group class="form-group form-group-default">
+
+                        <label>Nombre:</label>   
+                        <input name="name" ng-model="newRole.name" class="form-control"  placeholder="Nombre del nuevo rol" required/>
+
+                    </div>
+
+                    <!-- Validating rol name -->
+                    <div ng-show="rolesForm.name.$touched">
+
+                        <!-- required -->
+                        <p ng-show="rolesForm.name.$error.required" class="text-danger">
+                            Debe asignar un nombre para el nuevo rol
+                        </p>  
+
+                        <!-- unique -->
+                        <p class="text-danger">
+                         {{unique}}
+                     </p>  
+
+                 </div>          
+
+                 <!-- Description -->
+                 <div pg-form-group class="form-group form-group-default">
+
+                   <label>Descripción</label>
+
+                   <textarea name="description" ng-model="newRole.description" class="form-control" placeholder="Descripcion del nuevo rol" required  >
+                   </textarea> 
+
+               </div>
+
+               <!-- Validating description -->
+               <div ng-show="rolesForm.description.$touched">
+
+                <!-- required -->
+                <p ng-show="rolesForm.description.$error.required" class="text-danger">
+                    Debe asignar una descripcion para el nuevo rol
+                </p>  
+
+            </div>      
+
+            <button type="button" class="btn btn-info btn-block"  ng-disabled="rolesForm.$invalid"  ng-click="addRole()">
+                <i class="fa fa-save"></i> Guardar
+            </button>
+
+
+        </form>
+
+
+    </div>
+</div>
+</div>
+<!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+
+<!-- Modal Edit-->
+<div class="modal fade slide-up disable-scroll edit-role" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="pg-close fs-14"></i>
+                  </button>
+                  <h5>Nuevo Rol</h5>
+              </div>
+              <div class="modal-body">
+
+                <form class="" role="form" name="upadateRolesForm"  novalidate>
+
+                    <!-- name -->
+                    <div pg-form-group class="form-group form-group-default">
+
+                        <label>Nombre:</label>   
+                        <input name="name" ng-model="updateRole.name" class="form-control"  placeholder="Editar nuevo rol" required/>
+
+                    </div>
+
+                    <!-- Validating rol name -->
+                    <div ng-show="upadateRolesForm.name.$touched">
+
+                        <!-- required -->
+                        <p ng-show="upadateRolesForm.name.$error.required" class="text-danger">
+                            Debe asignar un nombre para el nuevo rol
+                        </p>  
+
+                        <p class="text-danger">
+                         {{unique}}
+                     </p>  
+
+                 </div>          
+
+                 <!-- Description -->
+                 <div pg-form-group class="form-group form-group-default">
+
+                   <label>Descripción</label>
+
+                   <textarea name="description" ng-model="updateRole.description" class="form-control" placeholder="Editar Descripcion del nuevo rol" required  >
+                   </textarea> 
+
+               </div>
+
+               <!-- Validating description -->
+               <div ng-show="upadateRolesForm.description.$touched">
+
+                <!-- required -->
+                <p ng-show="upadateRolesForm.description.$error.required" class="text-danger">
+                    Debe asignar una descripcion para el nuevo rol
+                </p>  
+
+            </div>      
+
+            <button type="button" class="btn btn-info btn-block"  ng-disabled="upadateRolesForm.$invalid"  ng-click="editRole()">
+                <i class="fa fa-save"></i> Editar
+            </button>
+
+        </form>
+    </div>
+</div>
+</div>
+<!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+
+<!-- Modal Reestablecer Contraseña-->
+<div class="modal fade slide-up disable-scroll delete-role" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-body">
+                 <h5> ¿ Esta seguro que desea eliminar este Rol ?</h5>
+                 <button type="button" class="btn btn-info btn-block" ng-click="deleteRole()">Si
+                 </button>
+                 <button type="button" class="btn btn-info btn-block" ng-click="hideModalDeleteRole()">No
+                 </button>
+             </div>
+         </div>
+     </div>
+     <!-- /.modal-content -->
+ </div>
+</div>
+<!-- /.Modal Reestablecer Contraseña -->
+
+
+
+
+
+<!-- Modal Delete-->
+<div class="modal fade slide-up disable-scroll restore-password" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        <i class="pg-close fs-14"></i>
+                    </button>
+                    <h5>Restablecer Contaseña</h5>
+                </div>
+                <div class="modal-body">
+                 <form name="restorePasswordForm" class="row">
+                    <div class="form-group col-sm-12">
+                        <label>
+                         Escriba la nueva contraseña:
+                     </label>
+                     <input type="password" class="form-control" ng-model="restorePassword.password_new" name="password_new" required></input>
+                     <span 
+                     class="text-danger text-center" 
+                     ng-show="restorePasswordForm.password_new.$touched && restorePasswordForm.password_new.$invalid" 
+                     >
+                     Debe escribir una contraseña
+                 </span>
+
+             </div>
+
+             <div class="form-group col-sm-12">
+                <label>
+                 Repita la nueva contraseña:
+             </label>
+             <input type="password" ng-model="restorePassword.password_repeat" class="form-control" name="password_repeat" required/>
+             <span 
+             class="text-danger text-center" 
+             ng-show="restorePasswordForm.password_repeat.$touched && restorePasswordForm.password_repeat.$invalid" 
+             >
+             Debe escribir de nuevo la contraseña
+         </span>
+         <span 
+         class="text-danger text-center" 
+         ng-show="restorePassword.password_repeat != restorePassword.password_new && restorePasswordForm.password_repeat.$touched" 
+         >
+         <br/> Las contraseñas deben coincidir
+     </span>
+ </div>
+
+
+ <div class="col-sm-12">
+    <button class="btn btn-info" type="button" ng-click="restorePasswordUser()" ng-disabled="restorePasswordForm.password_new.$invalid || restorePasswordForm.password_repeat.$invalid || restorePassword.password_repeat != restorePassword.password_new">
+        ACEPTAR
+    </button>
+</div>
+<p class="text-center" id="restore-password-success" style="display: none;">
+    <span class="text-success">Se ha restablecido la contraseña del usuario</span>
+</p>
+</form>
+</div>
+</div>
+</div>
+<!-- /.modal-content -->
+</div>
+</div>
+<!-- /.modal-dialog -->
+
+

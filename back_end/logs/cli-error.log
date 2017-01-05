@@ -1,0 +1,2127 @@
+2016-07-01 10:18:20 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion.result_consultatios' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'result_consulta...', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('result_consulta...', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('result_consulta...')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'result_consulta...', 'ResultConsultat...')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('ResultConsultat...')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('ResultConsultat...')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-07-05 16:35:44 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion.form_paydments' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'form_paydments', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('form_paydments', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('form_paydments')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'form_paydments', 'FormPaydments')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('FormPaydments')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('FormPaydments')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-07-08 08:56:02 Error: [Cake\Console\Exception\MissingShellException] Shell class for "Model" could not be found.
+Exception Attributes: array (
+  'class' => 'Model',
+)
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(214): Cake\Console\ShellDispatcher->findShell('model')
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#4 {main}
+
+
+2016-07-08 08:57:30 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion_v2.rate_clients' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'rate_clients', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('rate_clients', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('rate_clients')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'rate_clients', 'RateClients')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('RateClients')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('RateClients')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-07-12 15:33:49 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion_v2.bilss' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'bilss', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('bilss', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('bilss')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'bilss', 'Bilss')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('Bilss')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('Bilss')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-07-14 14:57:27 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion_v2.cardiology_ergometry' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'cardiology_ergo...', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('cardiology_ergo...', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('cardiology_ergo...')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'cardiology_ergo...', 'CardiologyErgom...')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('CardiologyErgom...')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('CardiologyErgom...')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-07-18 08:11:01 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion_v2.appointments_supplies' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'appointments_su...', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('appointments_su...', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('appointments_su...')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'appointments_su...', 'AppointmentsSup...')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('AppointmentsSup...')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('AppointmentsSup...')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-07-18 08:11:43 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion_v2.appointments_supplies' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'appointments_su...', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('appointments_su...', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('appointments_su...')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'appointments_su...', 'AppointmentsSup...')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('AppointmentsSup...')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('AppointmentsSup...')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-07-18 08:14:15 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion_v2.appointments_supplies' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'appointments_su...', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('appointments_su...', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('appointments_su...')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'appointments_su...', 'AppointmentsSup...')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('AppointmentsSup...')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('AppointmentsSup...')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-07-19 14:24:03 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion_v2.hel' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'hel', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('hel', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('hel')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'hel', 'Hel')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('Hel')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('hel')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-10-18 12:25:41 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion_v3.b_irads' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'b_irads', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('b_irads', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('b_irads')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'b_irads', 'BIrads')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('BIrads')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('BIrads')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-10-25 15:39:30 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion_v3.v' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'v', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('v', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('v')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'v', 'V')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('V')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('v')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-11-11 10:11:53 Error: [PDOException] SQLSTATE[HY000] [2002] No such file or directory
+Stack Trace:
+#0 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Driver/PDODriverTrait.php(48): PDO->__construct('mysql:host=loca...', 'root', '', Array)
+#1 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Driver/Mysql.php(90): Cake\Database\Driver\Mysql->_connect('mysql:host=loca...', Array)
+#2 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/BaseSchema.php(45): Cake\Database\Driver\Mysql->connect()
+#3 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Dialect/MysqlDialectTrait.php(63): Cake\Database\Schema\BaseSchema->__construct(Object(Cake\Database\Driver\Mysql))
+#4 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(52): Cake\Database\Driver\Mysql->schemaDialect()
+#5 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(43): Cake\Database\Schema\Collection->__construct(Object(Cake\Database\Connection))
+#6 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Connection.php(317): Cake\Database\Schema\CachedCollection->__construct(Object(Cake\Database\Connection), true)
+#7 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(920): Cake\Database\Connection->schemaCollection()
+#8 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(875): Bake\Shell\Task\ModelTask->_getAllTables()
+#9 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(889): Bake\Shell\Task\ModelTask->listAll()
+#10 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(90): Bake\Shell\Task\ModelTask->listUnskipped()
+#11 [internal function]: Bake\Shell\Task\ModelTask->main()
+#12 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#13 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#14 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#15 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#16 /Volumes/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#17 /Volumes/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#18 {main}
+
+
+2016-11-16 16:48:19 Error: [Cake\Database\Exception] SQLSTATE[42S02]: Base table or view not found: 1146 Table 'sam_fundacion_v6.business_unit' doesn't exist
+Stack Trace:
+#0 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/Collection.php(96): Cake\Database\Schema\Collection->_reflect('Column', 'business_unit', Array, Object(Cake\Database\Schema\Table))
+#1 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Database/Schema/CachedCollection.php(64): Cake\Database\Schema\Collection->describe('business_unit', Array)
+#2 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(430): Cake\Database\Schema\CachedCollection->describe('business_unit')
+#3 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/ORM/Table.php(506): Cake\ORM\Table->schema()
+#4 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(206): Cake\ORM\Table->primaryKey()
+#5 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(124): Bake\Shell\Task\ModelTask->getAssociations(Object(Cake\ORM\Table))
+#6 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(109): Bake\Shell\Task\ModelTask->getTableContext(Object(Cake\ORM\Table), 'business_unit', 'BusinessUnit')
+#7 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/Shell/Task/ModelTask.php(96): Bake\Shell\Task\ModelTask->bake('BusinessUnit')
+#8 [internal function]: Bake\Shell\Task\ModelTask->main('BusinessUnit')
+#9 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(456): call_user_func_array(Array, Array)
+#10 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/Shell.php(450): Cake\Console\Shell->runCommand(Array, false)
+#11 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(217): Cake\Console\Shell->runCommand(Array, true, Array)
+#12 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(181): Cake\Console\ShellDispatcher->_dispatch(Array)
+#13 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/cakephp/src/Console/ShellDispatcher.php(127): Cake\Console\ShellDispatcher->dispatch(Array)
+#14 /applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/bin/cake.php(33): Cake\Console\ShellDispatcher::run(Array)
+#15 {main}
+
+
+2016-12-01 11:00:33 Warning: Warning (2): mkdir(): Permission denied in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 100]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+mkdir - [internal], line ??
+Bake\View\BakeView::__construct() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 100
+Bake\Shell\Task\BakeTemplateTask::getView() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 65
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 86
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:33 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:33 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:33 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:33 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:33 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:33 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:39 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-entity-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:39 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-entity-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:39 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-entity-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:39 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:39 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:39 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:40 Warning: Warning (2): mkdir(): Permission denied in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 100]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+mkdir - [internal], line ??
+Bake\View\BakeView::__construct() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 100
+Bake\Shell\Task\BakeTemplateTask::getView() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 65
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 86
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:40 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-fixture-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:40 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-fixture-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:40 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-fixture-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:40 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:40 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:40 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:41 Warning: Warning (2): mkdir(): Permission denied in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 100]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+mkdir - [internal], line ??
+Bake\View\BakeView::__construct() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 100
+Bake\Shell\Task\BakeTemplateTask::getView() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 65
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 86
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:41 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-test-case-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:41 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-test-case-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:41 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-test-case-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:41 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:41 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:41 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:55 Warning: Warning (2): mkdir(): Permission denied in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 100]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+mkdir - [internal], line ??
+Bake\View\BakeView::__construct() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 100
+Bake\Shell\Task\BakeTemplateTask::getView() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 65
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 86
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:55 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:55 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:55 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:55 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:55 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:55 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:58 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-entity-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:58 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-entity-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:58 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-entity-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:58 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:58 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:58 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:59 Warning: Warning (2): mkdir(): Permission denied in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 100]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+mkdir - [internal], line ??
+Bake\View\BakeView::__construct() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 100
+Bake\Shell\Task\BakeTemplateTask::getView() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 65
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 86
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:59 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-fixture-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:59 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-fixture-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:59 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-fixture-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:59 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:59 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:00:59 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:01:00 Warning: Warning (2): mkdir(): Permission denied in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 100]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+mkdir - [internal], line ??
+Bake\View\BakeView::__construct() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 100
+Bake\Shell\Task\BakeTemplateTask::getView() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 65
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 86
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:01:00 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-test-case-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:01:00 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-test-case-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:01:00 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-test-case-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:01:00 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:01:00 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:01:00 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:04 Warning: Warning (2): mkdir(): Permission denied in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 100]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+mkdir - [internal], line ??
+Bake\View\BakeView::__construct() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 100
+Bake\Shell\Task\BakeTemplateTask::getView() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 65
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 86
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:04 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:04 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:04 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:04 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:04 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:04 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:23 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-entity-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:23 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-entity-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:23 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-entity-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:23 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:23 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:23 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeEntity() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 795
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 111
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): mkdir(): Permission denied in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 100]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+mkdir - [internal], line ??
+Bake\View\BakeView::__construct() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 100
+Bake\Shell\Task\BakeTemplateTask::getView() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 65
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 86
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-fixture-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-fixture-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-fixture-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\FixtureTask::generateFixtureFile() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 227
+Bake\Shell\Task\FixtureTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/FixtureTask.php, line 196
+Bake\Shell\Task\ModelTask::bakeFixture() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1021
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 112
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): mkdir(): Permission denied in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 100]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+mkdir - [internal], line ??
+Bake\View\BakeView::__construct() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 100
+Bake\Shell\Task\BakeTemplateTask::getView() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 65
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 86
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-test-case-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-test-case-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-tests-test-case-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 11:03:24 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\TestTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/TestTask.php, line 269
+Bake\Shell\Task\ModelTask::bakeTest() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 1037
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 113
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 14:50:51 Warning: Warning (2): mkdir(): Permission denied in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 100]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+mkdir - [internal], line ??
+Bake\View\BakeView::__construct() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 100
+Bake\Shell\Task\BakeTemplateTask::getView() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 65
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 86
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 14:50:51 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 14:50:51 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 14:50:51 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Model-table-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 136
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 14:50:51 Warning: Warning (2): file_put_contents(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 193]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+file_put_contents - [internal], line ??
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 193
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 14:50:51 Warning: Warning (2): include(/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php): failed to open stream: No such file or directory in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+
+2016-12-01 14:50:52 Warning: Warning (2): include(): Failed opening '/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/tmp/bake/Bake-Layout-default-ctp.php' for inclusion (include_path='.:/Applications/XAMPP/xamppfiles/lib/php') in [/applications/xampp/xamppfiles/htdocs/sam_fundacion/back_end/vendor/cakephp/bake/src/View/BakeView.php, line 199]
+Trace:
+Cake\Error\BaseErrorHandler::handleError() - CORE/src/Error/BaseErrorHandler.php, line 146
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Bake\View\BakeView::_evaluate() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 199
+Cake\View\View::_render() - CORE/src/View/View.php, line 952
+Cake\View\View::renderLayout() - CORE/src/View/View.php, line 633
+Bake\View\BakeView::render() - ROOT/vendor/cakephp/bake/src/View/BakeView.php, line 144
+Bake\Shell\Task\BakeTemplateTask::generate() - ROOT/vendor/cakephp/bake/src/Shell/Task/BakeTemplateTask.php, line 89
+Bake\Shell\Task\ModelTask::bakeTable() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 844
+Bake\Shell\Task\ModelTask::bake() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 110
+Bake\Shell\Task\ModelTask::main() - ROOT/vendor/cakephp/bake/src/Shell/Task/ModelTask.php, line 96
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 456
+Cake\Console\Shell::runCommand() - CORE/src/Console/Shell.php, line 450
+Cake\Console\ShellDispatcher::_dispatch() - CORE/src/Console/ShellDispatcher.php, line 217
+Cake\Console\ShellDispatcher::dispatch() - CORE/src/Console/ShellDispatcher.php, line 181
+Cake\Console\ShellDispatcher::run() - CORE/src/Console/ShellDispatcher.php, line 127
+[main] - ROOT/bin/cake.php, line 33
+
+
+

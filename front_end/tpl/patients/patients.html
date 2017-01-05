@@ -1,0 +1,507 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+        	<a class="active" href="#">Agregar Paciente</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> Nuevo Paciente</h3>
+</div>
+
+<div class='row'>
+<div class="col-sm-3"></div>
+	<div class="col-sm-6">
+		<form class="" role="form" name="patientsForm"  novalidate>
+
+			<div pg-form-group class="form-group form-group-default">
+				<label>Buscar:</label>
+				<input name="search"  type='number' ng-model="searchPeople.identification" class="form-control" ng-change="searchPatients()" placeholder="Ingrese la identificación" required/>
+			</div>
+
+			 <!-- firstName -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Primer Nombre:</label>   
+		        <input name="first_name" ng-model="newPeople.first_name" class="form-control"  placeholder="Primer nombre del nuevo paciente" required/>
+
+		    </div>
+
+		     <!-- Validating patient firstName -->
+                <div ng-show="patientsForm.first_name.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.first_name.$error.required" class="text-danger">
+                        Debe asignar un nombre para el nuevo usuario.
+                    </p>  
+
+                </div>   
+
+		    <!-- secondName -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Segundo Nombre:</label>   
+		        <input name="middle_name" ng-model="newPeople.middle_name" class="form-control"  placeholder="Segundo nombre del paciente" required/>
+
+		    </div>
+
+
+		    <!-- Validating patient firstName -->
+                <div ng-show="patientsForm.middle_name.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.middle_name.$error.required" class="text-danger">
+                        Debe asignar un segundo nombre para el nuevo usuario.
+                    </p>  
+
+                </div>   
+
+		    <!-- firstLastName -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Primer Apellido:</label>   
+		        <input name="last_name" ng-model="newPeople.last_name" class="form-control"  placeholder="Primer apellido del paciente" required/>
+
+		    </div>
+
+
+		    <!-- Validating patient firstName -->
+                <div ng-show="patientsForm.last_name.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.last_name.$error.required" class="text-danger">
+                        Debe asignar un primer apellido para el nuevo usuario.
+                    </p>  
+
+                </div>  
+
+		    <!-- secondLastName -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Segundo Apellido:</label>   
+		        <input name="last_name_two" ng-model="newPeople.last_name_two" class="form-control"  placeholder="Segundo apellido del paciente" required/>
+
+		    </div>
+
+		     <!-- Validating patient firstName -->
+                <div ng-show="patientsForm.last_name_two.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.last_name_two.$error.required" class="text-danger">
+                        Debe asignar un segundo apellido para el nuevo usuario.
+                    </p>  
+
+                </div>  
+
+		    <!-- documentType -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Tipo Documento:</label>   
+		        <br>
+			   	<select class="cs-select cs-skin-slide" ng-model="newPeople.document_types_id" name = 'document_types_id' ng-options="documentTypes.id as documentTypes.type for documentTypes in documentTypes">
+			    </select><br>
+
+		    </div>
+
+		     <!-- Validating patient firstName -->
+                <div ng-show="patientsForm.document_types_id.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.document_types_id.$error.required" class="text-danger">
+                        Debe asignar un tipo de documento para el nuevo usuario.
+                    </p>  
+
+                </div>  
+
+		    <!-- identification -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Identificación:</label>   
+		        <input name="identification" ng-model="newPeople.identification" type='number' class="form-control"  placeholder="Identificación del nuevo paciente" required/>
+
+		    </div>
+
+		    <!-- Validating patient identification -->
+                <div ng-show="patientsForm.identification.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.identification.$error.required" class="text-danger">
+                        Debe asignar un tipo de identificación para el nuevo usuario.
+                    </p> 
+
+
+                     <!-- unique -->
+						<p class="text-danger">
+						   {{uniqueIdentification}}
+						</p>  
+
+                </div> 
+
+		    <!-- birthday -->
+		    <div pg-form-group class="form-group form-group-default">
+					<label>Fecha Nacimiento:</label>
+						<div class="input-group date col-sm-8" ui-jq="datepicker" ui-options="{format:'yyyy/mm/dd'}">
+						<input name="birthdate" ng-model="newPeople.birthdate" type='text' class="form-control"  placeholder="Cumpleaños del paciente" required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+					</div>
+				</div>
+
+		    <!-- Validating patient birthdate -->
+                <div ng-show="patientsForm.birthdate.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.birthdate.$error.required" class="text-danger">
+                        Debe asignar una fecha de nacimiento.
+                    </p>  
+
+                </div> 
+
+		    <!-- genre -->
+		    <div pg-form-group class="form-group form-group-default">
+		        <label>Genero:</label>   
+		        <select class="cs-select cs-skin-slide" ng-model="newPeople.gender" ng-options="gender.code as gender.name for gender in gender"></select>
+		    </div>
+
+		    <!-- address -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Dirección:</label>   
+		        <input name="address" ng-model="newPeople.address" class="form-control"  placeholder="Dirección del paciente" required/>
+
+		    </div>
+
+
+		    <!-- Validating patient address -->
+                <div ng-show="patientsForm.address.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.address.$error.required" class="text-danger">
+                        Debe asignar una dirección para el nuevo usuario.
+                    </p>  
+
+                </div> 
+
+
+		    <!-- phone -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Teléfono:</label>   
+		        <input name="phone" ng-model="newPeople.phone" class="form-control"  type='number' placeholder="Telefono del paciente" required/>
+
+		    </div>
+
+		      <!-- Validating patient phone -->
+                <div ng-show="patientsForm.phone.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.phone.$error.required" class="text-danger">
+                        Debe asignar un teléfono para el nuevo usuario.
+                    </p>  
+
+                </div> 
+
+		    <!-- email -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>E-mail:</label>   
+		        <input name="email" ng-model="newPeople.email" class="form-control"  placeholder="E-mail del paciente" required/>
+
+		    </div>
+
+		      <!-- Validating patient email -->
+                <div ng-show="patientsForm.email.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.email.$error.required" class="text-danger">
+                        Debe asignar un E-Mail para el nuevo usuario.
+                    </p> 
+
+                <!-- unique -->
+				<p class="text-danger">
+				   {{uniqueEmail}}
+				</p> 
+
+                </div> 
+ 			
+
+
+		    <!-- user -->
+		    <div pg-form-group class="form-group form-group-default">
+		 
+		        <label>Usuario:</label>   
+		        <input name="username" ng-model="newUser.username" class="form-control"  placeholder="Usuario del paciente" required/>
+		    </div>
+
+
+
+		    <!-- Validating patient user -->
+                <div ng-show="patientsForm.username.$touched">
+
+                    <!-- required -->
+                    <p ng-show="patientsForm.username.$error.required" class="text-danger">
+                        Debe asignar un nombre usuario.
+                    </p>  
+
+                </div> 
+
+		    <!-- role -->
+		    <!-- <div pg-form-group class="form-group form-group-default">
+		        <label>Roles:</label>   
+			    <select class="cs-select cs-skin-slide" ng-model="newUser.roles_id" name = 'roles_id' ng-options="role.id as role.name for role in roles">
+			    </select>
+			    <br>
+		    </div> -->
+ 
+		    <button type="button" class="btn btn-info btn-block"  ng-disabled="patientsForm.$invalid"  ng-click="addPeople()">
+		        <i class="fa fa-save"></i> Guardar
+		    </button>
+		    <br><br>
+		                            
+		</form>
+	</div>
+	<div class="col-sm-3"></div>
+</div>
+
+
+            <table style="padding: 2px; width: 95%" border="0">
+
+            	  <tr style="font-size: 70%">
+                    <td style="text-align: left;"></td>
+                    <td style="text-align: center;">
+                    	<img src="../front_end/assets/img/logo_londono.png">
+                    </td>
+                    <td style="text-align: left;">
+                    <strong>FACTURA DE VENTA</strong>
+                    <table style="padding: 2px; width: 95%" border="1">
+                    		<tr style="font-size: 70%">
+                    			<td style="text-align: left;">
+                    			No. 01 457070
+                    		 	</td>
+                			</tr>
+                    </table>
+                    </td>
+                </tr>
+                <tr style="font-size: 70%">
+                    <td style="text-align: left;">
+                        <img src="../front_end/assets/img/iso9001.png" height="150px" width="150px">
+                        <img src="../front_end/assets/img/iqnet.png" height="150px" width="150px"></td>
+                    <td style="text-align: center;">
+                    <strong>PERSONA JURIDICA 0158 DE JUNIO 6 DE 1991</strong>
+                    <strong>NIT. 800.135.582-7</strong>
+                    <strong>ARMENIA-QUINDIO</strong>
+                    </td>
+                    <td>
+	                    <table style="padding: 2px; width: 95%" border="1">
+                    		<tr style="font-size: 70%">
+                    			<td style="text-align: left;">
+                    				<strong>FECHA</strong>
+                    		 	</td>
+                			</tr>
+                			<tr style="font-size: 70%">
+                				<td style="text-align: left;">
+                    				FECHA FACTURA:
+                    		 	</td>
+                    		 	<td style="text-align: left;">
+                    				06/09/2015
+                    		 	</td>
+                			</tr>
+                			<tr style="font-size: 70%">
+                				<td style="text-align: left;">
+                    				FECHA NACIMIENTO:
+                    		 	</td>
+                    		 	<td style="text-align: left;">
+                    				06/09/2015
+                    		 	</td>
+                			</tr>
+	                    </table>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <table style="padding: 2px; width: 95%" border="0">
+	            <tr style="font-size: 70%">
+		            <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black; border-left: 1px solid black;">
+		            hola
+		            </td>
+	            </tr>
+            </table>
+            <br>
+            <table style="padding: 2px; width: 95%" border="0">
+	            <tr style="font-size: 70%">
+		            <td style="text-align: left;">
+		            	<table style="padding: 2px; width: 95%" border="1">
+                    		<tr style="font-size: 70%">
+                    			<td style="text-align: left;">
+                    				<strong>AFILIADO</strong>
+                    		 	</td>
+                    		 	<td style="text-align: left;">
+                    				<strong>CEDULA NO.</strong>
+                    		 	</td>
+
+                			</tr>
+                			<tr style="font-size: 70%">
+                				<td style="text-align: left;">
+                    				BENEFICIARIO:
+                    		 	</td>
+                    		 	<td style="text-align: left;">
+                    				<strong>CEDULA NO.</strong>
+                    		 	</td>
+                			</tr>
+                			<tr style="font-size: 70%">
+                				<td style="text-align: left;">
+                    				FECHA NACIMIENTO:
+                    		 	</td>
+                    		 	<td style="text-align: left;">
+                    				TELEFONO
+                    		 	</td>
+                			</tr>
+                			<tr style="font-size: 70%">
+                				<td style="text-align: left;">
+                    				DIRECCIÒN:
+                    		 	</td>
+                    		 	<td
+                    		 	</td>
+                			</tr>
+                			<tr style="font-size: 70%">
+                				<td style="text-align: left;"><br></td>
+                    		 	<td style="text-align: left;"></td>
+                			</tr>
+                				<tr style="font-size: 70%">
+                				<td style="text-align: left;">CENTRO DE COSTO</td>
+                    		 	<td style="text-align: left;">ADMISIONES O RIP</td>
+                			</tr>
+	                    </table>
+		            </td>
+		            <td>
+		            	<table style="padding: 2px; width: 95%" border="1">
+                    		<tr style="font-size: 70%">
+                    			<td style="text-align: left;">
+                    				<strong>CARNE O PLAN</strong>
+                    		 	</td>
+                			</tr>
+                			<tr style="font-size: 70%">
+                				<td style="text-align: left;">
+                    				SEXO:
+                    		 	</td>
+                    		 	<td style="text-align: left;">
+                    				EDAD:
+                    		 	</td>
+                			</tr>
+                			<tr style="font-size: 70%">
+                				<td style="text-align: left;">
+                    				CIUDAD:
+                    		 	</td>
+                    		 	<td style="text-align: left;">
+                    				
+                    		 	</td>
+                			</tr>
+                			<tr style="font-size: 70%">
+                				<td style="text-align: left;">
+                    				<br>
+                    		 	</td>
+                    		 	<td style="text-align: left;">
+                    				<br>
+                    		 	</td>
+                			</tr>
+                			<tr style="font-size: 70%">
+                				<td style="text-align: left;">
+                    				Subsidiado
+                    		 	</td>
+                    		 	<td style="text-align: left;">
+                    				
+                    		 	</td>
+                			</tr>
+	                    </table>
+		            </td>
+	            </tr>
+            </table>
+            <br>
+            <table style="padding: 2px; width: 95%">
+
+                <tr style="font-size: 70%">
+                   
+                    <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black; border-left: 1px solid black;">
+                        <br><strong>Item</strong>
+                    </td>
+                    
+                    <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <br><strong>Ref</strong>
+                    </td>
+                    
+                    <td style="width: 35%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <br><strong>Descripción</strong>
+                    </td>
+                    
+                    <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <br><strong>Cantidad</strong>
+                    </td>
+
+                    <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <br><strong>Valor</strong>
+                    </td>                
+
+                    <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <br><strong>Total</strong>
+                    </td>                
+                </tr>
+            </table>
+            <table style="padding: 2px; width: 95%">
+            	<tr style="font-size: 70%">
+	               	<td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+	               		Doscientos ochenta y nueve mil quinientos veinticinco pesos MCTE.
+	                </td>
+		        </tr>
+            </table>
+             <table style="padding: 2px; width: 95%">
+            	<tr style="font-size: 70%">
+	               	<td style="width: 10%">
+	               		EXENTOS DE RET.FUENTE
+	                </td>
+		        </tr>
+            </table>
+             <table style="padding: 2px; width: 95%">
+            	<tr style="font-size: 70%">
+	               	<td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+	               		CREDITO DE 90 DIAS
+	                </td>
+		        </tr>
+            </table>
+             <table style="padding: 2px; width: 95%">
+            	<tr style="font-size: 70%">
+	               	<td style="width: 10%">
+	               		EN CASO DE MORA SE CAUSARAN INTERESES COMERCIALES SIN PERJUICIO DE LAS ACCIONES LEGALES DEL ACREEDOR SE HACE CONSTAR QUE LA FIRMA DE UNA PERSONA DISTINTA  DEL COMPRADOR IMPLICA QUE DICHA ESTE AUTORIZADA EXPRESAMENTE POR EL COMPRADOR PARA FIRMAR, CONFESAR LA CEDULA Y OBLIGAR AL COMPRADOR. FAVOR PAGAR INMEDIATAMENTE CHEQUE CRUZADO A PARTIR BENEFICIARIO.
+	                </td>
+		        </tr>
+            </table>
+            <table style="padding: 2px; width: 95%" border="0">
+	            <tr style="font-size: 70%">
+		            <td style="text-align: left;">
+		            	<table style="padding: 2px; width: 95%; background-color: #56ade0;" border="1">
+                    		<tr style="font-size: 70%">
+                    			<td style="text-align: left;">
+                    				<strong>ELABORADO POR:</strong>
+                    				<br><br>
+                    				<br><br>
+                    				<br>
+                    		 	</td>
+                			</tr>
+	                    </table>
+		            </td>
+		            <td>
+		            	<table style="padding: 2px; width: 95%; background-color: #56ade0" border="1">
+                    		<tr style="font-size: 70%">
+                    			<td style="text-align: left;">
+                    				<strong>RECIBI SATISFACTORIAMENTE LA ENTREGA REAL Y MATERIAL DE LOS SERVICIOS Y MERCANCIAS DE QUE TRATA</strong>
+                    				<strong>ESTA FACTURA Y ACEPTO EL VALOR ESTIPULADO DE LA MISMA</strong>
+                    				<br><br>______________________________________
+                    				<br><br><strong>FIRMA SELLO Y C.C</strong>
+                    		 	</td>
+                			</tr>
+	                    </table>
+		            </td>
+	            </tr>
+            </table>
+
+	

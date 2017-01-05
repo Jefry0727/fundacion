@@ -1,0 +1,53 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a class="active" href="#">Plain template</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <button class="btn btn-info" ng-click="showPeople()"><i class="fa fa-plus"></i> Nuevo</button>
+    <br><br>
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+    <table class="table">
+
+        <thead>
+            <th>Nombre de Usuario</th>
+            <th>Rol</th>
+        </thead>
+
+        <tbody>
+            <tr ng-repeat="user in users">
+                <td>{{user.username}}</td>
+                <td>{{user.role.name}}</td>
+                <td>
+                    <button class="btn btn-default" ng-click="viewEditUser(user)" ><i class="fa fa-edit"></i> Editar</button>
+                    <span ng-if="user.activated == 0">
+                        <button class="btn btn-default" ng-click="activatedUser(user)"><i class="fa fa-check-square-o"></i> Activar</button>
+                    </span>
+                    <span ng-if="user.activated != 0">
+                        <button class="btn btn-default" ng-click="desactivatedUser(user)"><i class="fa fa-remove"></i> Desactivar</button>
+                    </span>
+                </td>    
+            </tr>
+        </tbody>
+    </table>
+     <div hidden="true" 
+        paging
+        page="currentPageGetUser" 
+        page-size="pageSizeGetUser" 
+        total="total"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="getUsers(page)"
+    >
+    </div> 
+</div>

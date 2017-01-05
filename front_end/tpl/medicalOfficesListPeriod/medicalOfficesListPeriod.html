@@ -1,0 +1,70 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Administrar periodos por consultorio</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Administrar periodos por consultorio</h3>
+
+
+
+
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <table class="table">
+        <thead>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="medicalOffice in medicalOffices">
+                <td>
+                    {{medicalOffice.code}}
+                </td>
+                
+                <td>
+                    {{medicalOffice.name}}
+                </td>
+                
+                <td>
+                    {{medicalOffice.description}}
+                </td>
+                
+                <td>
+                    <button class="btn btn-info" ng-click="goToScheduleIntervals(medicalOffice)" >
+                        <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Periodos
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+    
+    <div 
+        paging
+        page="currentPageMedicalOffices" 
+        page-size="pageSizeMedicalOffices" 
+        total="medicalOfficesTotal"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="pageResultsMedicalOffices(page)"
+    >
+    </div>    
+
+
+</div>
+
+

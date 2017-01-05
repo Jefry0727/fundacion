@@ -1,0 +1,545 @@
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Transcripciones</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+     <h3 class="page-title"> Transcripciones </h3>
+
+     
+       
+       <button 
+        class="btn btn-info pull-right" 
+        data-toggle="tooltip" 
+        ng-click="back()" 
+        title="Atrás" 
+        type="button" >
+        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+
+      </button>
+    
+
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+             -->
+             <!-- CONTENT GOES HERE-->
+
+             <div class="row">
+                <!-- START PANEL -->
+                <div class="col-md-8">
+                    <h3> Paciente </h3>
+
+                    <div class="form-group-attached">
+                        <div class="row clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>
+                                            Primer Nombre
+                                        </label>
+                                        <input style=" color: #000000;" class="form-control" name="first_name" ng-model="people.first_name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>
+                                            Segundo Nombre
+                                        </label>
+                                        <input style=" color: #000000;" class="form-control" name="middle_name" readonly="true" ng-model="people.middle_name"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>
+                                            Primer Apellido
+                                        </label>
+                                        <input style=" color: #000000;" class="form-control" name="last_name" ng-model="people.last_name"  
+                                        ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>
+                                            Segundo Apellido
+                                        </label>
+                                        <input style=" color: #000000;" class="form-control" name="last_name_two" ng-model="people.last_name_two" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-3">
+                                <div class="form-group-attached">
+                                    <div pg-form-group class="form-group form-group-default">
+                                        <label>
+                                          Numero Documento 
+                                      </label>
+                                      <input style=" color: #000000;" type="text" name="documento" ng-model="people.identification" readonly="true" class="form-control" required/>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        Tipo Documento 
+                                    </label>
+                                    <input style=" color: #000000;" type="text" name="documentoType" ng-model="typeDoc" readonly="true" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        Genero
+                                    </label>
+                                     
+                                    <input style=" color: #000000;" type="text" name="gender" ng-model="sex" readonly="true" class="form-control" />
+                                    
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label> 
+                                        Fecha Nacimiento:
+                                    </label>
+                                    <input style=" color: #000000;"  ui-options="{format:'yyyy-mm-dd'}" name="fecha" readonly="true" ng-model="people.birthdate" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        Edad
+                                    </label>
+                                    <input style=" color: #000000;" class="form-control" name="birthdate" ng-model="order.calculated_age" id='edad' readonly="true"  type="text"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        Teléfono:
+                                    </label>
+                                    <input style=" color: #000000;" class="form-control" name="phone" ng-model="people.phone" type="text" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        E-mail:
+                                    </label>
+                                    <input style=" color: #000000;" class="form-control" name="email" readonly="true"  ng-model="people.email"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <!-- END PACIENT INFORMATION -->
+            <div class="col-md-4">
+               <h3> Estudio </h3>
+
+               <div class="form-group-attached">
+                <div class="row clearfix">
+                    <div class="col-sm-12">
+                       <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default">
+                            <label>
+                                Estudio
+                            </label>
+                            <input style=" color: #000000;" class="form-control" name="address" ng-model="appointment.study.name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group-attached">
+                        <div pg-form-group class="form-group form-group-default">
+                            <label>
+                                Fecha Realizacion
+                            </label>
+                            <input style=" color: #000000;" ui-options="{format:'yyyy-mm-dd'}" name="regimen" readonly="true"  ng-model="attention.date_time_ini"class="form-control" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group-attached">
+                        <div pg-form-group  class="form-group form-group-default ">
+                            <label>
+                               Consultorio
+                           </label>
+                           <input style=" color: #000000;" name="diagnostico" readonly="true" class="form-control" ng-model="appointment.medical_office.description" required/>
+                       </div>
+                   </div>
+               </div>
+               <div class="col-sm-12" hidden="true">
+                <div class="form-group-attached">
+                    <div pg-form-group  class="form-group form-group-default ">
+                        <label>
+                           Realizado por.
+                       </label>
+                       <input style=" color: #000000;" name="diagnostico" readonly="true" class="form-control" required/>
+                   </div>
+               </div>
+           </div>
+           <div class="col-sm-12">
+            <div class="form-group-attached">
+                <div pg-form-group  class="form-group form-group-default ">
+                    <label>
+                        Observaciones 
+                    </label>
+                    <input name="diagnostico" readonly="true" class="form-control" required/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="col-md-8">
+
+ <div class="form-group-attached">
+    <div class="row clearfix">
+
+        <div class="col-sm-12">
+         <h3> Informe </h3>
+
+         <div class="summernote-wrapper">
+            <div id="summernote" 
+            config="summernote_options" summernote ng-model="summernote" >
+            
+        </div>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="col-md-4">
+    <h3> Plantillas de Revision </h3>
+    <div class="form-group-attached">
+        <div class="row clearfix">
+            <div class="col-sm-12">
+                <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                           Seleccionar Especialista.
+                       </label>
+                       <select  class="cs-select cs-skin-slide form-control" 
+                       ng-model="specialistSelected" 
+                       ng-options="item as item.person.first_name +' '+ item.person.middle_name +' '+ item.person.last_name +' '+ item.person.last_name_two for item in Specialists track by item.id" 
+                       ui-jq="popover" 
+                       data-container="body" 
+                       data-placement="top" 
+                       data-content="Debe seleccionar un Especialista" 
+                       data-trigger="manual" 
+                       validate-attached-form-element
+                       ng-change = "[changeSelectedSpecialist(item), firmSpecilist(specialistSelected)]"
+                       id="specialist-to-selected"
+                        ng-disabled = "action == 3"
+                       required>
+                       <option value=""> -Seleccione un especialista- </option>
+                   </select>
+               </div>
+           </div>
+       </div>
+
+       <!--mensaje de error-->
+       <p class="text-danger text-center" name="error-specialist" style="display:none">
+        <span>Debe seleccionar un especialista</span>
+        </p>
+       <!---->
+       <div class="col-sm-12">
+        <div class="form-group-attached">
+            <div pg-form-group class="form-group form-group-default">
+                <label>
+                    Seleccionar Formatos Transcripcion
+
+                </label>
+                <select  class="cs-select cs-skin-slide form-control" 
+                ng-model="formatSelected" 
+                ng-options="resultsProfileSlect as resultsProfileSlect.title  for resultsProfileSlect in resultsProfileSlect" 
+                ui-jq="popover" 
+                data-container="body" 
+                data-placement="top" 
+                data-content="Debe seleccionar un formato de transcripción" ng-disabled = "action == 3"
+                data-trigger="manual"
+                ng-change="loadSelectProfile(specialistSelected)";
+                validate-attached-form-element
+                required
+                >
+                <option value=""> -Seleccione un Formato- </option>
+            </select>
+            
+        </div>
+    </div>
+</div>
+
+    <!--Complemento-->
+    <div class="col-sm-12">
+        <div class="form-group-attached">
+            <div pg-form-group class="form-group form-group-default">
+                <label>
+                    Complemento
+
+                </label>
+                <select  
+                class="cs-select cs-skin-slide form-control" 
+                ng-model="complement" 
+                ui-jq="popover" 
+                ng-init="0"
+                validate-attached-form-element
+                required
+                ng-disabled = "action == 3"
+                ng-change = "modifyComplement()"
+                >
+                  <option ng-selected="true">Selecione una opción</option>
+                  <option value="0">No</option>
+                  <option value="1">Si</option>
+
+                </select>
+            
+            </div>
+        </div>
+    </div>
+
+    <!--final complemento-->
+
+
+
+</div>
+</div>
+</div>
+
+
+
+<div class="col-md-4" ng-show="isMomogram" >
+<!-- INFORMACION BIRADS EN MAMOGRAFIAS -->
+<form name="confirmForm" role="form" ng-show="isMomogram" >
+  <div class="form-group-attached">
+    <div class="row clearfix">
+
+     <div class="col-md-12">         
+      <div class="form-group form-group-default">
+        <h3>BI-RADS Mamografias</h3>
+
+        <div class="radio radio-info">
+            <div class="col-sm-3">
+
+                <div class="radio radio-default" >
+                <input type="radio"  name="birad0" id="birad0" ng-model="biradSelected" value="1" >
+                   <label for="birad0">BI-RADS 0</label>
+               </div>
+               <div class="radio radio-default">
+               <input type="radio"   name="birad1" id="birad1" ng-model="biradSelected" value ="2" >
+                   <label for="birad1">BI-RADS 1</label>
+               </div>
+           </div>
+           <div class="col-sm-3">
+               <div class="radio radio-default">
+               <input type="radio"  name="birad2" id="birad2" ng-model="biradSelected" value="3"  >
+                  <label for="birad2">BI-RADS 2</label>
+              </div>
+              <div class="radio radio-default">
+              <input type="radio"  name="birad3" id="birad3" ng-model="biradSelected" value="4"  >
+                  <label for="birad3">BI-RADS 3</label>
+              </div>
+          </div>
+          <div class="col-sm-3">
+              <div class="radio radio-default">
+              <input type="radio"  name="birad4" id="birad4" ng-model="biradSelected" value="5"  >
+                  <label for="birad4">BI-RADS 4</label>
+              </div>
+              <div class="radio radio-default">
+              <input type="radio"  name="birad5" id="birad5" ng-model="biradSelected" value="6"  >
+                  <label for="birad5">BI-RADS 5</label>
+              </div>
+          </div>
+          <div class="col-sm-3">
+              <div class="radio radio-default">
+              <input type="radio"  name="birad6" id="birad6" ng-model="biradSelected" value="7"  >
+                  <label for="birad6">BI-RADS 6</label>
+              </div>
+          </div>
+
+      </div>
+  </div>
+</div>
+
+</div>
+
+</div>
+
+</form>
+<!-- {{biradSelected}}
+ -->
+
+
+<!-- FIN BIRADS --> 
+</div>
+
+<div class="col-md-4">
+
+ <br>
+
+<button class="btn btn-info btn-block" ng-click="preResultProfile(specialistSelected, true)"><i class="fa fa-file-pdf-o"></i> Previzualizar</button>
+
+<br>
+
+<div class="form-group-attached">
+    <div class="row clearfix">
+      <button 
+        class="btn btn-primary form-control" 
+        data-toggle="tooltip" 
+        ng-click="showImpressionResult(save())" 
+        title="GUARDAR" 
+        type="button" 
+        ng-show="action == 1" 
+        ng-disabled="specialistSelected == '' || specialistSelected == null || complement == '' || complement == undefined || summernote == '' || summernote == null "
+      >
+        <i aria-hidden="true" class="btn-info"></i>Guardar
+      </button>
+         <!--  ng-disabled="result.complement == 1" -->
+        <button 
+          ng-disabled="result.complement == 1" 
+          class="btn btn-primary form-control" 
+          data-toggle="tooltip" 
+          ng-click="showConfirmSave()" 
+          title="EDITAR" 
+          type="button" 
+          ng-show="action == 2 || action == 3 || action == 4 || action == 5">
+          <i aria-hidden="true" class="btn-info" ></i>Guardar
+        </button>
+  
+  </div>
+</div>
+</div>
+
+</div>
+
+
+</div>
+</div>
+<!-- <span ng-show="">
+  <img ng-src="assets/img/icon_usuario.svg" ng-if="$scope.pictute == null" ng-model="$scope.pictute" alt="">
+</span> -->
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll impression-ok" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5><span class="semi-bold">¿{{role}},  desea imprimir el resultado? </span></h5>
+            </div>
+            <div class="modal-body">
+               
+               <div class="row">
+                 
+                 <div class="col-md-6">
+                   
+                   <button class="btn btn-info btn-block" ng-click="goTranscriptions()"><i class="fa fa-check"></i> SI</button>
+
+                 </div>
+
+                 <div class="col-md-6">
+                    
+                  <button class="btn btn-info btn-block" ng-click="hideImpressionResult()"><i class="fa fa-remove"></i> NO</button>
+
+                 </div>
+
+               </div>
+              
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+<!-- Modal Para confirmar un nuevo registro-->
+<div class="modal fade slide-up disable-scroll confirm-save-ok" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5><span class="semi-bold">¿{{role}},  {{message}} </span></h5>
+            </div>
+            <div class="modal-body">
+               
+               <div class="row">
+                 
+                 <div class="col-md-6">
+                   
+                   <button class="btn btn-info btn-block" ng-click="showImpressionResult(true, save())"><i class="fa fa-check"></i> SI</button>
+
+                 </div>
+
+                 <div class="col-md-6">
+                    
+                  <button class="btn btn-info btn-block" ng-click="hideConfirmSave()"><i class="fa fa-remove"></i> NO</button>
+
+                 </div>
+
+               </div>
+              
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+<hr>
+
+ <div class="row" hidden="">
+               {{fileUrl}}
+                 <!-- <iframe src={{fileUrl}} embedded="false"
+                  style="width:99%; height:480px;" frameborder="0"></iframe> -->
+
+                  <!-- <iframe src="http://docs.google.com/gview?url="+{{fileUrl}}+"&embedded=true" style="width:500px; height:375px;" frameborder="0"></iframe> -->
+
+                  <embed src={{fileUrl}} width="auto" height="auto" type="application/pdf" >
+               </div> 
+

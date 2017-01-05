@@ -1,0 +1,63 @@
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Atención</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Atención Paciente</h3>
+
+</div>
+
+<div class="container-fluid container-fixed-lg ">
+<table class="table">
+	
+	<thead>
+		<th>Estado</th>
+		<th>Nombre</th>
+		<th>Role</th>
+		<th>Fecha Creación</th>
+		<td>Opción</td>
+
+	</thead>
+
+	<tbody>
+		<tr ng-repeat="item in all">
+
+		<td>{{item.active}}</td>
+		<td>{{item.username}}</td>
+		<td>{{item.roles_id}}</td>
+		<td>{{item.created}}</td>
+		<td>  <button class="btn btn-info" ng-click="showModalPrueba()"> Prueba </button> </td>
+			
+		</tr>
+	</tbody>
+
+</table>
+
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll modalPrueba" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5 class="text-center"> <span class="semi-bold">Lo sentimos {{myUser}}, no se encuentran resultados</span></h5>
+            </div>
+            <div class="modal-body">
+                <button class="btn btn-info center-block" ng-click="hideModalPrueba()"> <i class="fa fa-check"></i> Aceptar</button>
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->

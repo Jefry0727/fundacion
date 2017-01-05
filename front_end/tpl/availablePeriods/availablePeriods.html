@@ -1,0 +1,73 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">consultorios disponibles</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title"> CONSULTORIOS DISPONIBLES</h3>
+   
+
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+    <table class="table">
+        <thead>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Fecha Inicio</th>
+            <th>Fecha Fin</th>
+            <th> Acciòn </th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="medicalOffice in medicalOffices">
+                <td>
+                    {{medicalOffice.code}}
+                </td>
+                
+                <td>
+                    {{medicalOffice.name}}
+                </td>
+                
+                <td>
+                    {{medicalOffice.description}}
+                </td>
+                
+                <td >
+                   {{medicalOffice.schedule_interval[0].date_ini}} 
+                </td>
+
+                <td>
+                    {{medicalOffice.schedule_interval[0].date_end}} 
+                </td>
+                <td>
+                      <button class="btn btn-default"> XXXXXX </button>
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+
+
+    <div 
+        paging
+        page="currentPageMedicalOffices" 
+        page-size="pageSizeMedicalOffices" 
+        total="medicalOfficesTotal"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="pageAvailablePeriods(page)"
+    >
+    
+    </div>    
+
+
+</div>

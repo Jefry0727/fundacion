@@ -1,0 +1,114 @@
+<!-- START PAGE COVER -->
+  <div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Historial de Facturación</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Facturas Registradas</h3>
+
+  </div>
+
+  <div class="container-fluid container-fixed-lg">
+        <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                     ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                      -->
+        <!-- CONTENT GOES HERE-->
+       
+   <form name="attentionForm" role="form" novalidate>
+
+          
+          <div class="row">
+
+            <div class="col-sm-4">
+              <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                <input type="text" 
+                ng-model="selectedDate" 
+                name="date"  
+                placeholder="Fecha Inicio" 
+                class="form-control" 
+                ng-change="loadValues()" 
+                id='date' 
+                required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                <input type="text" 
+                ng-model="selectedDateEnd" 
+                name="date"  
+                placeholder="" 
+                class="form-control" 
+                id='date' 
+                required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+                     <div class="form-group">
+                          <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                            <input type="text" class="form-control" placeholder="Buscar" ng-model="searchFish">
+                          </div>      
+                        </div>  
+
+               </div>
+          </div>
+
+            <div class="row">
+                  
+  
+                 <div class="col-sm-12">
+                     
+                      <table class="table table">
+    
+                        <thead>
+                          <tr>
+                           <th>Factura</th>
+                           <th>Razón Social</th>
+                           <th>Fecha</th>
+                           <th>Total</th>
+                           <th>T. Factura</th>
+                           <th>Usuario</th>
+                           <th>Visualizar</th>
+                           <th>Anular</th>
+                          </tr>
+                        </thead>
+                        
+                        <tbody>
+                          <tr ng-repeat="roll in sushi | orderBy:sortType:sortReverse | filter:searchFish" style="margin-top:5px">
+                            <td>{{ roll.name }}</td>
+                            <td>{{ roll.fish }}</td>
+                            <td>{{roll.date}}</td>
+                            <td>{{roll.total}}</td>
+                            <td>{{roll.tFac}}</td>
+                            <td>{{roll.user}}</td>
+                            <td><button class="btn btn-info" class="form-control"><i class="fa fa-eye"></i></button></td>
+                            <td><button class="btn btn-info" class="form-control"><i class="fa fa-ban"></i></button></td>
+                            
+                          </tr>
+                        </tbody>
+                        
+                      </table>
+
+                     <!--  <div 
+                      paging
+                      page="currentPageAttentionStudies" 
+                      page-size="pageSizeAttentionStudies" 
+                      total="attentionStudiesTotal"
+                      adjacent="true"
+                      show-prev-next="true"
+                      paging-action="pageAttentionStudies(page)"
+                  >
+                  </div> -->
+
+                 </div>   
+
+                </div> 
+            </div>
+        </form>
+   </div>     

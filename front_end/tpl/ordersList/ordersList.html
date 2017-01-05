@@ -1,0 +1,423 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+  <ul class="breadcrumb">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li><a href="#">Lista de Ordenes</a>
+    </li>
+  </ul>
+  <!-- END BREADCRUMB -->
+  <h3 class="page-title">Lista de Ordenes</h3>
+
+</div>
+
+
+<!-- <div class="container" ng-app="sortApp" ng-controller="mainController"> -->
+<div class="row">
+  <div class="container-fluid container-fixed-lg">
+
+    <form name="confirmForm" role="form" novalidate>
+      <div class="form-group-attached">
+        <div class="row clearfix">
+
+          <div class="col-md-2">
+            <div pg-form-group class="form-group form-group-default required" > 
+              <label>Fecha a consultar </label>
+
+
+              <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                <input type="text" 
+                ng-model="selectedDate" 
+                name="date"  
+                placeholder="Fecha Inicio" 
+                class="form-control" 
+                ng-change="loadValues()" 
+                id='date' 
+                required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+            
+          </div>
+          <div class="col-md-2" >
+            <div pg-form-group class="form-group form-group-default required" > 
+              <label>Fecha a Final </label>
+
+              <div id="dtEnd" class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+
+                <input
+                type="text" 
+                ng-model="selectedDateEnd" 
+                name="dateEnd"  
+                placeholder="Fecha Fin Rango " 
+                class="form-control"
+                ng-change="loadValues()" 
+                id='dateEnd' 
+                required/>
+
+                <span class="input-group-addon" ><i class="fa fa-calendar"></i></span>
+                <div style="height:30px" ng-hide="showOrders" ></div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="col-md-4">
+            <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : confirmForm.selectedDepatment.$invalid && !confirmForm.selectedDepatment.$pristine }">
+              <label>Sede</label>
+              <select
+              class=" cs-select cs-skin-slide form-control" 
+              ng-change="loadValues()" 
+              ng-model="selectedCenter"  
+              ng-options="sede.id as sede.name for sede in centers" 
+              ui-jq="popover" 
+              data-container="body" 
+              data-placement="top" 
+              data-content="Debe selecionar una sede" 
+              data-trigger="manual" 
+              validate-attached-form-element 
+              style="margin-top:5px" required>
+              <option value=""> -Seleccione la Sede- </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+
+          <div pg-form-group class="form-group form-group-default">
+           <label>Especializacion</label>
+           <select
+           class=" cs-select cs-skin-slide form-control" 
+           ng-change="loadValues()" 
+           ng-model="selectedSpeciality"
+           ng-options="item.id as item.name for item in Specializations"
+           ui-jq="popover" 
+           data-container="body" 
+           data-placement="top" 
+           data-trigger="manual" 
+           validate-attached-form-element 
+           style="margin-top:5px" >
+           <option value=""> -Seleccione una Especialización- </option>
+         </select>
+       </div>
+
+     </div>
+</div>
+           <div class="row clearfix">
+
+     <div class="col-md-6">         
+      <div class="form-group form-group-default">
+        <label>Consultar Citas </label>
+
+        <div class="radio radio-info">
+
+          <div class="col-md-4">
+           <input type="radio"  name="radio1" id="radioNoConfirm" ng-model="optionSelected" value="1" >
+           <label for="radioNoConfirm">Sin Confirmar</label>
+         </div>
+         <div class="col-md-4">
+           <input type="radio"   name="radio1" id="radioConfirm" ng-model="optionSelected" value ="2" >
+           <label for="radioConfirm">Confirmadas</label>
+         </div>
+         <div class="col-md-4">
+          <input type="radio"  name="radio1" id="radioAtte" ng-model="optionSelected" value="3"  >
+          <label for="radioAtte">Atendidos</label>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6" >         
+    <div class="form-group form-group-default">
+      <label>Consultar Ordenes </label>
+
+      <div class="radio radio-info">
+
+
+        <div class="col-md-4">
+          <input type="radio"  name="radio1" id="radioPendFact" ng-model="optionSelected" value="4"  >
+          <label for="radioPendFact">Sin Factura</label>
+        </div>
+          <div class="col-md-4">
+          <input type="radio"  name="radio1" id="radioFact" ng-model="optionSelected" value="5"  >
+          <label for="radioFact">Con Factura</label>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+</div>
+</div>
+</form>
+</div>
+
+</div>
+
+<br>
+<!-- Star table -->
+<div class="row"   ng-hide="showOrders" >
+
+  <div class="container-fluid container-fixed-lg" ng-app="app">
+
+    <form >
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-search"></i></div>
+          <input type="text" class="form-control" placeholder="Buscar" ng-model="searchFish">
+        </div>      
+      </div>
+    </form>
+
+    <table class="table" >
+
+      <thead>
+        <tr>
+          <th># Orden </th>
+          <th>Identificaciòn</th>   
+          <th>Nombre Completo</th>      
+          <th>Servicio</th>
+          <th>Hora Inicio</th>
+          <th>Consultorio</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="appointment in appointments  | filter:searchFish track by $index">
+          <td>{{appointment.id_order.order_consec}} </td>
+          
+          <td> {{ appointment.people_document }}</td>
+
+          <td> {{ appointment.people_name }}</td>
+
+          <td> {{ appointment.service_name }}</td>
+
+          <td> {{ appointment.service_hour }}</td>
+
+          <td>{{ appointment.medical_office }}</td>
+
+          
+          <td> 
+           <button class="btn btn-info small" ng-click="Confirmation(appointment.id_order)" class="form-control" ng-show="optionSelected == 1"><i class="fa fa-check"></i>&nbsp;Ver Orden</button>
+           <button class="btn btn-info" ng-click="Confirmation(appointment.id_order)" class="form-control" ng-show="optionSelected == 2 || optionSelected == 3"><i class="fa fa-check"></i>&nbsp;Ver Orden</button>
+
+
+         <!--   <button class="btn btn-info" ng-click="showEditListOrder()" class="form-control" ng-show="optionSelected == 1"><i class="fa fa-edit"></i>&nbsp;Editar</button> -->
+
+           <button  class="btn btn-info" 
+           ng-click="showModalDropConfirmation(appointment)" 
+           class="form-control" 
+           ng-show="optionSelected == 1">
+           <i class="fa fa-remove"></i>&nbsp;Cancelar</button>
+         </td>
+       </tr>
+     </tbody>
+
+   </table>
+
+
+ </div>
+
+</div>
+
+
+<!-- Star table -->
+
+
+  <div class="container-fluid container-fixed-lg" ng-app="app"  ng-show="showOrders" >
+
+    <div class="row">
+      <form >
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control" placeholder="Buscar Orden" ng-model="searchFishOrder">
+          </div>      
+        </div>
+      </form>
+    </div>
+    
+    <div class="row">
+     <div class="form-group">
+      <div class="col-md-12 accordionList ">
+
+      <label class="col-xs-2"> ORDEN</label>
+      <label class="col-xs-2"> DOCUMENTO</label>
+      <label class="col-xs-4"> NOMBRE </label>
+      <label class="col-xs-2"> SUBTOTAL</label>
+      <label class="col-xs-2"> TOTAL</label>
+
+    </div>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="panel-group form-group" id="accordion" role="tablist" aria-multiselectable="true" >
+    <div class="panel panel-default"   ng-repeat="order in orders  | filter:searchFishOrder track by $index">
+
+      <div class="panel-heading" role="tab" id="headingOne">
+
+        <div class="panel-title">
+          <span class="col-xs-2" > {{ order.order_consec}} </span>
+          <span class="col-xs-2" > {{ order.people_document}} </span> 
+          <span class="col-xs-4" > {{  order.people_name }}  </span>
+          <span class="col-xs-2" > {{  order.subtotal | currency: '$':0}}  </span>
+          <span class="col-xs-1" style="z-index: absolute !important;" > {{  order.total | currency: '$':0}}</span>
+
+            <a class="collapsed" 
+          ng-class="{collapsed:!collapseThree}" 
+          ng-click="collapseThree=!collapseThree" 
+          aria-expanded="false"
+          aria-controls="collapseThree">  </a>
+      
+
+      </div>
+    </div>
+
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseThree" ng-class="{in:collapseThree}">
+
+      <div class="list grupo">
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th> # </th>
+              <th>CUP</th>   
+              <th>Estudio </th>
+              <th>Fecha Estudio </th>
+              <th>Estado </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr ng-repeat="appointment in order.appointments track by $index">
+             
+              <td> {{appointment.id}}</td>
+
+              <td> {{appointment.study_cup}}</td>
+
+              <td> {{appointment.study_name}}</td> 
+
+              <td> {{appointment.date_attent}} </td>
+              <td> {{appointment.state}} </td>
+
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll add-confirmation" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-header clearfix text-left">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-14"></i>
+          </button>
+          <h5>Confirmar</h5>
+        </div>
+        <div class="modal-body">
+
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>
+<!-- /.modal-dialog -->
+
+<!-- Modal Delete-->
+<div class="modal fade slide-up disable-scroll delete-confirmation" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h4> Señor usuario <i>{{userData.first_name}} {{userData.last_name}}</i>, esta seguro de cancelar la siguiente cita? </h4>
+              <label>Paciente : <b><i>{{cancelAppointment.people_name}}</i></b></label>
+              <br/>
+              <label>Servicio : <b><i>{{cancelAppointment.service_name}}</i></b></label>
+            </div>
+          </div>
+
+          <form role="form" name="detailsForm" autocomplete="off" novalidate>
+            <div class="row">
+              <div class="col-xs-12">
+
+
+
+                <div pg-form-group 
+                class="form-group form-group-default required" 
+                ng-class="{ 'has-error' : detailsForm.observations.$invalid && !detailsForm.observations.$pristine }" >
+
+                <label>
+                 Observaciones
+               </label>
+
+               <textarea 
+               class="form-control" 
+               name="observations" 
+               ng-model="cancelResons.content" 
+               ui-jq="popover" 
+               data-container="body" 
+               data-placement="top" 
+               validate-attached-form-element 
+               required>
+             </textarea>
+           </div>
+           <br/>
+         </div>
+       </div>
+       <div class="row">
+
+        <div class="col-xs-6">
+
+          <button type="button" class="btn btn-info btn-block " ng-click="cancelAppointments()" ng-disabled="detailsForm.$invalid" ><i class="fa fa-check"></i>&nbsp;Si</button>
+
+            <!--   <button type="button" class="btn btn-info btn-block" ng-click="addCancelReason()" >Si </button>
+          -->  
+        </div>
+
+        <div class="col-xs-6">
+         <button type="button" class="btn btn-info btn-block " ng-click="hideModalDropConfirmation()"><i class="fa fa-remove"></i>&nbsp;No
+         </button>
+
+       </div>
+
+
+     </div>
+
+
+   </form>
+ </div>
+</div>
+</div>
+</div>
+</div>
+<!-- /.modal-dialog -->
+

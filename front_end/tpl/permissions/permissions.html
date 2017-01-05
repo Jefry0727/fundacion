@@ -1,0 +1,49 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Permisos</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Permisos del rol <b>{{role.name}}</b></h3>
+
+
+</div>
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+                  -->
+    <!-- CONTENT GOES HERE-->
+
+
+    <!-- itetation of all permissions -->
+    <div class="col-md-3" ng-repeat="permission in completePermissions">
+            
+    <h3>
+        <b>{{permission.permission.name}}</b>
+    </h3>
+
+    <!-- itetation of all child permissions -->
+    <div class="checkbox check-success" ng-repeat="childPermission in permission.childPermissions">
+        
+        <input 
+            type="checkbox" 
+            value="1" 
+            id="checkbox_{{childPermission.permission_identifier}}" 
+            ng-checked="{{childPermission.roleHasChildPermission}}" 
+            ng-model="childPermission.roleHasChildPermission" 
+            ng-change="updatePermissionRole(childPermission)" 
+        />
+
+        <label for="checkbox_{{childPermission.permission_identifier}}">{{childPermission.name}}</label>
+    
+    </div>
+
+    </div>
+
+
+</div>
+

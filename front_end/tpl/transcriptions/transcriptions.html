@@ -1,0 +1,531 @@
+<!-- START PAGE COVER -->
+<div class="container-fluid container-fixed-lg ">
+  <ul class="breadcrumb">
+    <li>
+      <a href="#">Home</a>
+    </li>
+    <li><a href="#">Transcripciones</a>
+    </li>
+  </ul>
+  <!-- END BREADCRUMB -->
+  <h3 class="page-title">TRANSCRIPCIONES</h3>
+
+</div>
+
+
+<!-- <div class="container" ng-app="sortApp" ng-controller="mainController"> -->
+<div class="row">
+  <div class="container-fluid container-fixed-lg">
+
+    <form name="confirmForm" role="form" novalidate>
+      <div class="form-group-attached">
+        <div class="row clearfix">
+
+          <div class="col-md-3">
+            <div pg-form-group class="form-group form-group-default required" > 
+              <label>Fecha  Inicio </label>
+              <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                <input type="text" 
+                ng-model="selectedDate" 
+                name="date"  
+                placeholder="Fecha Inicio" 
+                class="form-control" 
+                ng-change="loadValues()" 
+                id='date' 
+                required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-3" >
+            <div pg-form-group class="form-group form-group-default required" > 
+              <label>Fecha  Final </label>
+
+              <div id="dtEnd" class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+
+                <input
+
+                type="text" 
+                ng-model="selectedDateEnd" 
+                name="dateEnd"  
+                placeholder="Fecha Final" 
+                class="form-control"
+                ng-change="loadValues()" 
+                id='dateEnd' 
+                required/>
+
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="col-md-3">
+            <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : confirmForm.selectedDepatment.$invalid && !confirmForm.selectedDepatment.$pristine }">
+              <label>Sede</label>
+              <select
+              class=" cs-select cs-skin-slide form-control" 
+              ng-model="selectedCenter"  
+              ng-change="loadValues()" 
+              ng-options="sede.id as sede.name for sede in centers" 
+              ui-jq="popover" 
+              data-container="body" 
+              data-placement="top" 
+              data-content="Debe selecionar una sede" 
+              data-trigger="manual" 
+              validate-attached-form-element 
+              style="margin-top:5px" required>
+              <option value=""> -Seleccione la Sede- </option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+
+          <div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : confirmForm.selectedDepatment.$invalid && !confirmForm.selectedDepatment.$pristine }">
+           <label>Centro de Costos</label>
+           <select
+           class=" cs-select cs-skin-slide form-control" 
+           ng-model="selectSpecializations"
+           ng-options="medical.id as medical.name for medical in allCostCenters"
+           ui-jq="popover" 
+           ng-change="loadValues()"
+           data-container="body" 
+           data-placement="top" 
+           data-content="Debe selecionar una sede" 
+           data-trigger="manual" 
+           ng-disabled="selectedCenter == undefined" 
+           validate-attached-form-element 
+           style="margin-top:5px" required>
+           <option value=""> -Seleccione- </option>
+         </select>
+       </div>
+
+     </div>
+   </div>
+   <div class="row clearfix">
+
+     <div class="col-md-12">         
+      <div class="form-group form-group-default">
+        <label>Estado de la transcripcion </label>
+
+        <div class="radio radio-primary">
+
+        <div class="col-md-2">
+           <input type="radio"  name="radio1" id="radioNoConfirm" ng-model="optionSelected" value="1" >
+           <label for="radioNoConfirm">Pendientes</label>
+         </div>
+         <div class="col-md-2">
+           <input type="radio"   name="radio1" id="radioConfirm" ng-model="optionSelected" value ="2" >
+           <label for="radioConfirm">Transcritas</label>
+         </div>
+
+         <div class="col-md-2">
+           <input type="radio"   name="radio1" id="radioAutorizada" ng-model="optionSelected" value ="3" >
+           <label for="radioAutorizada">Autorizadas</label>
+         </div>
+
+         <div class="col-md-2">
+           <input type="radio"   name="radio1" id="radioDeny" ng-model="optionSelected" value ="4" >
+           <label for="radioDeny">Rechazadas</label>
+         </div>
+
+         <div class="col-md-2">
+           <input type="radio"   name="radio1" id="radioComplement" ng-model="optionSelected" value ="5" >
+           <label for="radioComplement">Pendientes complemento</label>
+         </div>
+
+         <div class="col-md-2">
+           <input type="radio"   name="radio1" id="radioLendPlate" ng-model="optionSelected" value ="6" >
+           <label for="radioLendPlate">Placas prestadas</label>
+         </div>
+       </div>
+     </div>
+   </div>
+
+ </div>
+</div>
+</form>
+</div>
+
+</div>
+
+<br>
+<!-- Star table -->
+
+
+<div class="container-fluid container-fixed-lg" ng-app="app" >
+
+  <div class="row">
+
+
+    <form >
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-search"></i></div>
+          <input type="text" class="form-control" placeholder="Buscar Orden" ng-model="searchFishOrder">
+        </div>      
+      </div>
+    </form>
+
+
+
+  </div>
+  <div class="row">
+   <div class="form-group">
+    <div class="col-md-12" 
+    style="text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Montserrat';
+    font-size: 13px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(230, 230, 230, 0.7);
+    color: rgba(44, 44, 44, 0.35);
+    ">
+
+    <label class="col-xs-2"> ORDEN</label>
+    <label class="col-xs-2"> DOCUMENTO</label>
+    <label class="col-xs-6"> NOMBRE </label>
+    <label class="col-xs-2"> RESULTADOS</label>
+    <!-- <label class="col-xs-1"> SUBTOTAL</label> -->
+    <!-- <label class="col-xs-2"> TOTAL</label> -->
+
+  </div>
+
+</div>
+</div>
+
+
+<div class="row">
+  <div class="panel-group form-group" id="accordion" role="tablist" aria-multiselectable="true" >
+    <!--  -->
+    <div class="panel panel-default"   ng-repeat="order in orders |filter:searchFishOrder">
+
+      <div class="panel-heading" role="tab" id="headingOne">
+
+        <div class="panel-title">
+          <a class="collapsed" 
+          ng-class="{collapsed:!collapseThree}" 
+          ng-click="collapseThree=!collapseThree" 
+          aria-expanded="false"
+          aria-controls="collapseThree">
+        </a>
+        <span class="col-xs-2" > {{ order.order_consec}} </span>
+        <span class="col-xs-2" > {{ order.people_document}} </span> 
+        <span class="col-xs-6" > {{ order.people_name }}  </span>
+        <span class="col-xs-2" > {{ order.count}}</span>
+        <!--  <span class="col-xs-1" > {{ order.subtotal }}  </span> -->
+        <!-- <span class="col-xs-2" > {{ order.total }}</span> -->
+
+
+
+      </div>
+    </div>
+
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="collapseThree" ng-class="{in:collapseThree}">
+
+      <div class="list grupo">
+
+        <table class="table">
+          <thead>
+            <tr>
+
+              <th>CUP</th>   
+              <th>Estudio </th>
+              <th>Fecha Atencion </th>
+              <th> Opciones </th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr ng-repeat="appointment in order.appointments ">
+
+
+              <td> {{appointment.study_cup}}</td>
+
+              <td> {{appointment.study_name}}</td> 
+
+              <td> {{appointment.date_attent}} </td>
+
+              <td> 
+
+               <div class="btn-group">
+
+                <button 
+                class="btn btn-info" 
+                data-toggle="tooltip" 
+                title="Transcribir" 
+                type="button" 
+                ng-click="verDatos(order.order,appointment.appointment)" 
+                ng-hidden="appointment.lend_plates == 1"
+                ng-disabled = "optionSelected == 6"
+                >
+                <i aria-hidden="true" class="fa fa-pencil"></i>
+                Transcripcion
+              </button>
+
+              <button 
+              ng-disabled = "optionSelected == 6"
+              class="btn btn-info" data-toggle="tooltip" title="Generar Sticker" type="button" ng-click="PrintSticker(order.order,appointment.appointment)">
+              <i aria-hidden="true" class="fa fa-file-archive-o"  >
+              </i>
+            </button>
+            <button 
+            ng-hide= "true"
+            class="btn btn-info" data-toggle="tooltip" title="Adjuntar Documento" type="button">
+            <i aria-hidden="true" class="fa fa-paperclip" >
+            </i>
+          </button>
+
+
+
+
+          <!--Boton para registrar la devolución de placas-->
+          <button 
+          class="btn btn-info" 
+          data-toggle="modal" 
+          title="Devolución de placas" 
+          type="button" 
+          ng-click="showModalReturnPlate(order.order,appointment.appointment)" 
+          ng-if="optionSelected == 6">
+          <i aria-hidden="true" class="fa fa-pencil-square-o">
+          </i>
+          Devolución de Placa
+        </button>
+        <!---->
+
+      </div>
+    </td>
+
+
+
+  </tr>
+
+</tbody>
+
+</table>
+
+</div>
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- /.modal-content Devolución de placas-->
+<div class="modal fade slide-up disable-scroll refund-plates" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-header clearfix text-left">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-14"></i>
+          </button>
+          <h5>Devolución de Placas</h5>
+        </div>
+        <div class="modal-body">
+          <form name="confirmForm" role="form" novalidate>
+            <div class="row">
+
+              <div class="form-group-attached">
+
+                <div class="row clearfix"> 
+                  <div class="col-sm-12">
+                    <label class="text-center">
+                      <h4>¿Desea confirmar la devolución de la Placa?</h4>
+                    </label>
+                  </div>                    
+                </div>
+
+                <div class="row clearfix">
+                  <div class="col-sm-6">
+                    <button class="btn btn-info btn-block" ng-click="returnPlate()">
+                      ACEPTAR    
+                    </button>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <button class="btn btn-info btn-block" onclick="$('.refund-plates').modal('hide')">
+                      CANCELAR
+                    </button>
+                  </div>  
+                </div>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>
+
+
+<!-- /.modal-dialog -->
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll edit-confirmation" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-header clearfix text-left">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-14"></i>
+          </button>
+          <h5>Editar</h5>
+        </div>
+        <div class="modal-body">
+
+
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>
+<!-- /.modal-dialog -->
+
+
+<!-- Modal Delete-->
+<div class="modal fade slide-up disable-scroll lend-plates" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog ">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-xs-12">
+              <h4> Señor usuario <i>{{person.first_name}} {{person.last_name}}</i>, Ingrese el Registro de prestamo de placas? </h4>
+            <!--   <label>Paciente : <b><i>{{cancelAppointment.people_name}}</i></b></label>
+              <br/>
+              <label>Servicio : <b><i>{{cancelAppointment.service_name}}</i></b></label> -->
+            </div>
+          </div>
+
+          <form role="form" name="detailsForm" autocomplete="off" novalidate>
+            <div class="row">
+
+              <div class="col-xs-12">
+                <div pg-form-group 
+                class="form-group form-group-default required" 
+                ng-class="{ 'has-error' : detailsForm.delivered.$invalid && !detailsForm.delivered.$pristine }" >
+
+                <label>
+                 Nombre de quien reclama
+               </label>
+
+               <input type="text" name="delivered" ng-model="lend.delivered"  class="form-control"> 
+             </div>
+           </div>
+
+
+           <div class="col-xs-12">
+             <div pg-form-group 
+             class="form-group form-group-default required" 
+             ng-class="{ 'has-error' : detailsForm.document.$invalid && !detailsForm.document.$pristine }" >
+
+             <label>
+               Documento Identidad
+             </label>
+
+             <input type="text" name="document" ng-model="lend.document"  class="form-control"> 
+           </div>
+         </div>
+         
+         <div class="col-xs-12">
+           <div pg-form-group 
+           class="form-group form-group-default required" 
+           ng-class="{ 'has-error' : detailsForm.direction.$invalid && !detailsForm.direction.$pristine }" >
+
+           <label>
+            Direccion
+          </label>
+          <input type="text" name="direction" ng-model="lend.direction"  class="form-control"> 
+        </div>
+      </div>
+
+
+      <div class="col-xs-12">
+        <div pg-form-group 
+        class="form-group form-group-default required" 
+        ng-class="{ 'has-error' : detailsForm.phone.$invalid && !detailsForm.phone.$pristine }" >
+
+        <label>
+          Telefono
+        </label>
+
+        <input type="text" name="phone" ng-model="lend.phone"  class="form-control"> 
+      </div>
+
+    </div>
+    <div class="col-xs-12">
+      <div pg-form-group 
+      class="form-group form-group-default required" 
+      ng-class="{ 'has-error' : detailsForm.observations.$invalid && !detailsForm.observations.$pristine }" >
+
+      <label>
+       Observaciones
+     </label>
+
+     <textarea 
+     class="form-control" 
+     name="observations" 
+     ng-model="lend.observations" 
+     ui-jq="popover" 
+     data-container="body" 
+     data-placement="top" 
+     validate-attached-form-element 
+     required>
+   </textarea>
+ </div>
+</div>
+<br/>
+</div>
+</div>
+<div class="row">
+
+  <div class="col-xs-6">
+
+    <button type="button" class="btn btn-info btn-block " ng-click="LendAppointment()" ng-disabled="detailsForm.$invalid" ><i class="fa fa-check"></i>&nbsp;Si</button>
+
+            <!--   <button type="button" class="btn btn-info btn-block" ng-click="addCancelReason()" >Si </button>
+          -->  
+        </div>
+
+        <div class="col-xs-6">
+         <button type="button" class="btn btn-info btn-block " ng-click="hideModalDropConfirmation()"><i class="fa fa-remove"></i>&nbsp;No
+         </button>
+
+       </div>
+
+       <br>
+     </div>
+
+
+   </form>
+ </div>
+</div>
+</div>
+</div>
+</div>
+<!-- /.modal-dialog -->

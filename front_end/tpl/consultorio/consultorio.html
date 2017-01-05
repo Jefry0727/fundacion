@@ -1,0 +1,513 @@
+<div class="container-fluid container-fixed-lg ">
+<h3 class="text-center"> <strong>Agregar Consultorio</strong> </h3>
+  <div class="container">
+  	<div class="form">
+  		<div class="row">
+  			<div class="col-md-6">
+  			<label for="">Codígo*</label>
+  				<input type="text" placeholder= "codígo" class="form-control">		
+  			</div>
+  			<div class="col-md-6">
+  			<label for="">Nombre*</label>
+  				<input type="text" placeholder= "nombre" class="form-control">
+  			</div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="comment">Descripción:</label>
+            <textarea class="form-control" placeholder="Descripción" rows="5" id="comment"></textarea>
+  </div>
+        </div>
+  		</div><br>
+  	 	<br>
+      <br>
+
+         <!-- <div class="row">
+           	 <h2 class="text-center"><strong>Especialidades</strong></h2>
+              <div class="col-sm-6">
+                <h2>Servicios</h2>
+                <div id="treeview-checkable" class=""></div>
+              </div>
+              <div class="col-sm-6">
+                <h2>Servicios Seleccionados</h2>
+                <div id="checkable-output"></div>
+              </div>
+        </div>
+          -->
+        <!-- Form 2 para el arbol tree -->
+
+       <!--  <div class="row">
+    <div class="col-xs-5">
+        <select name="from[]" id="multi_d" class="form-control" size="26" multiple="multiple">
+            <option value="1">C++</option>
+            <option value="2">C#</option>
+            <option value="3">Haskell</option>
+            <option value="4">Java</option>
+            <option value="5">JavaScript</option>
+            <option value="6">Lisp</option>
+            <option value="7">Lua</option>
+            <option value="8">MATLAB</option>
+            <option value="9">NewLISP</option>
+            <option value="10">PHP</option>
+            <option value="11">Perl</option>
+            <option value="12">SQL</option>
+            <option value="13">Unix shell</option>
+        </select>
+    </div>
+    
+    <div class="col-xs-2">
+        <button type="button" id="multi_d_rightAll" class="btn btn-default btn-block" style="margin-top: 20px;"><i class="glyphicon glyphicon-forward"></i></button>
+        <button type="button" id="multi_d_rightSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+        <button type="button" id="multi_d_leftSelected" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        <button type="button" id="multi_d_leftAll" class="btn btn-default btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+        
+        <hr style="margin: 40px 0 60px;" />
+        
+        <button type="button" id="multi_d_rightAll_2" class="btn btn-default btn-block"><i class="glyphicon glyphicon-forward"></i></button>
+        <button type="button" id="multi_d_rightSelected_2" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+        <button type="button" id="multi_d_leftSelected_2" class="btn btn-default btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        <button type="button" id="multi_d_leftAll_2" class="btn btn-default btn-block"><i class="glyphicon glyphicon-backward"></i></button>
+    </div>
+    
+    <div class="col-xs-5">
+        <b>Known languages</b>
+        <select name="to[]" id="multi_d_to" class="form-control" size="8" multiple="multiple"></select>
+        
+        <br/><hr/><br/>
+        
+        <b>I want to learn</b>
+        <select name="to_2[]" id="multi_d_to_2" class="form-control" size="8" multiple="multiple"></select>
+    </div>
+</div><br> -->
+<!-- End Form 2 para el arbol tree -->
+
+<button class="btn btn-info center-block">Guardar</button>
+<!-- -->
+<div class="container">
+  <h2 class="text-center"><strong>Excepciones</strong></h2>
+  <button class="btn btn-info center-block" ng-click="showModalAddException()"><span class="fa fa-plus"></span>&ensp;Agregar Excepción </button>
+<br>
+<br>
+  
+  <!--Exception Modal MedicalOffices-->
+
+  <div class="modal fade slide-up disable-scroll add-new-exception" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+      <div class="modal-dialog ">
+          <div class="modal-content-wrapper">
+          <div class="modal-content">
+              <div class="modal-header clearfix text-left">
+                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    <i class="pg-close fs-14"></i>
+                  </button>
+                  <h5>Excepciones del Consultorio</h5>
+              </div>
+                <div class="modal-body">
+                <form class="" role="form" name="consultorioForm" novalidate>
+                 <label>Fecha</label>
+                  <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                      <input type="text" ng-model="newException.date" name="date" class="form-control" id='date' placeholder="Fecha" required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                  </div>
+                  <div ng-show="consultorioForm.date.$touched">
+                    <p ng-show="consultorioForm.date.$error.required" class="text-danger">Debe de asignar una fecha para las excepciones</p>
+                  </div>
+                   
+                    <label>Hora de Inicio</label>
+                    <div class="input-group bootstrap-timepicker">
+                    <input class="form-control"  id="timepicker" ng-model="newException.date_ini" name="selHour" placeholder="Hora de Inicio" required />
+                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                   </div>
+                   <div ng-show="consultorioForm.selHour.$touched">
+                     <p ng-model="consultorioForm.selHour.$error.required" class="text-danger">Inserte una hora</p>
+                   </div>
+
+                   <label>Hora de Fin</label>
+                    <div class="input-group bootstrap-timepicker">
+                    <input class="form-control"  id="timepickerend" ng-model="newException.date_end" name="endHour" placeholder="Hora de Fin" required />
+                    <span class="input-group-addon"><i class="pg-clock"></i></span>
+                   </div>
+                   <div ng-show="consultorioForm.endHour.$touched">
+                     <p ng-model="consultorioForm.endHour.$error.required" class="text-danger">Inserte una hora</p>
+                   </div>
+                    
+                      <label>Descripción</label>
+                      <div class="form-group form-group-default">
+                      <input type="text" name="description" ng-model="newException.description" class="form-control" placeholder="Descripcion de la Exception" required />
+                    </div>
+                    <div ng-show="consultorioForm.description.$touched">
+                      <p ng-show="consultorioForm.description.$error.required" class="text-danger">Debe de especificar la descripcion</p>
+                    </div>
+
+                    <button class="btn btn-info" ng-click="saveException()" ng-disabled="consultorioForm.$invalid"><span class="fa fa-plus"></span>&ensp;Agregar</button>
+                </form>
+                </div>
+          </div>
+       </div>
+      </div>
+  </div>
+ <!-- End Exception MedicalOffices--> 
+ <!-- -->
+ <br>
+     </div>  
+
+
+   </div>
+ </div>
+
+
+
+ <table class="table">
+  <thead>
+ <th>Fecha de Inicio</th>
+ <th>Fecha de Fin</th>
+ <th>Descriccipn</th>
+ <th>Acciones</th>
+</thead>
+<tr ng-repeat="scheduleEspecialistRestriction in scheduleEspecialistRestrictions">
+    <td>
+      {{scheduleEspecialistRestriction.date_ini}}
+    </td>
+    <td>
+      {{scheduleEspecialistRestriction.date_end}}
+    </td>
+    <td>
+      {{scheduleEspecialistRestriction.description}}
+    </td>
+    <td>
+       <button class="btn btn-default" ng-click="" ><i class="fa fa-edit"></i>&nbsp; Editar</button>
+       <button class="btn btn-default" ng-click=""><i class ="fa fa-remove">&nbsp;Eliminar</i></button>
+    </td>
+  </tr>
+</table>
+
+<div paging
+        page="currentPageMedicalOffices" 
+        page-size="pageSizeMedicalOffices" 
+        total="medicalOfficesTotal"
+        adjacent="true"
+        show-prev-next="true"
+        paging-action="pageResultsMedicalOffices(page)"
+    >
+</div>    
+
+<!--Modal Edit SchuleEspecialistRestrictions-->
+<div class="modal fade slide-up disable-scroll edit-new-exception'" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+          <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5>Editar Excepciones</h5>
+            </div>
+            <div class="modal-body">
+             <form  name="schuelExceptionForm" novalidate="">
+                <label>Fecha</label>
+                  <div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+                    <input type="text" ng-model="editException.date" name="date" class="form-control" id='date' placeholder="Fecha" required/><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                  </div>
+                  <div ng-show="schuelExceptionForm.date.$touched">
+                    <p ng-show="schuelExceptionForm.date.$error.required" class="tex-danger"></p>
+                  </div>
+
+                  <button type="button" class="btn btn-info btn-block"  ng-disabled="schuelExceptionForm.$invalid"  ng-click="editException()">
+                                <i class="fa fa-save"></i> Guardar
+                  </button>
+             </form>
+         
+            </div>
+        </div>
+      </div>
+    </div>        
+</div>
+<!--End Modal Edit SchuleEspecialistRestrictions-->
+
+<!-- Delete Exception -->
+
+<!--End  Delete Exception -->
+
+ </div>
+
+ <!-- Facturar -->
+<div class="container-fluid container-fixed-lg ">
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <img src="pages/img/logo_londono.png" height="100px" width="700px">
+    </div>
+    <div class="col-md-2">
+      <div class="panel">
+        <div class="panel-heading pull-right"><strong>Factura de venta</strong><br>
+        <label value="Nº"></label>
+        <div class="panel-body">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  
+ <!-- End facturar -->
+
+ <br>
+ <br>
+
+<div class="container-fluid container-fixed-lg ">
+
+
+
+  <!-- // Informacion del ecabezado y footer
+        $tcpdf->xheadertext = ' -->
+
+            <table style="padding: 2px; width: 95%" border="0">
+
+                  <tr style="font-size: 70%">
+                    <td ></td>
+                    <td style="text-align: center;">
+                    
+                        <img src="pages/img/logo_londono.png" height="100px" width="700px">
+                    
+                    </td>
+                    <td>
+                    <strong>FACTURA DE VENTA</strong><br>
+                    <table style="padding: 2px; width: 95%" border="1">
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                
+                                No. 01 457070
+                                </td>
+                            </tr>
+                    </table>
+                    </td>
+
+                </tr>
+                <tr style="font-size: 70%">
+
+                    <td style="padding: 2px; width: 45%" style="text-align: left;">
+                    
+                        <img src="pages/img/iso9001.png" height="50px" width="50px">
+                    
+                        <img src="pages/img/iqnet.png" height="50px" width="50px">
+
+                    </td>
+                    
+                    <td style="text-align: center;">
+                    <strong>PERSONA JURIDICA 0158 DE JUNIO 6 DE 1991</strong>
+                    <strong>NIT. 800.135.582-7</strong>
+                    <strong>ARMENIA-QUINDIO</strong>
+                    </td>
+                    <td>
+                        <table style="padding: 2px " border="1">
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                    <strong>FECHA</strong>
+                                </td>
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                    FECHA FACTURA:
+                                </td>
+                                <td style="text-align: left;">
+                                    06/09/2015
+                                </td>
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                    FECHA NACIMIENTO:
+                                </td>
+                                <td style="text-align: left;">
+                                    06/09/2015
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table> 
+            <table style="padding: 2px; width: 95%" border="0">
+                <tr style="font-size: 70%">
+                    <td style="text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black; border-left: 1px solid black;">
+                            hola
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <table style="padding: 2px; width: 95%" border="0">
+                <tr style="font-size: 70%">
+                    <td style="text-align: left">
+                        <table border="1">
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left">
+                                    <strong>AFILIADO</strong>
+                                </td>
+                                <td style="text-align: left">
+                                    <strong>CEDULA NO.</strong>
+                                </td>
+
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left">
+                                    BENEFICIARIO:
+                                </td>
+                                <td style="text-align: left">
+                                    <strong>CEDULA NO.</strong>
+                                </td>
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left">
+                                    FECHA NACIMIENTO:
+                                </td>
+                                <td style="text-align: left">
+                                    TELEFONO
+                                </td>
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left">
+                                    DIRECCIÒN:
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left"><br></td>
+                                <td style="text-align: left"></td>
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left">CENTRO DE COSTO</td>
+                                <td style="text-align: left">ADMISIONES O RIP</td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table style="padding: 2px; width: 95%" border="1">
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                   CARNE O PLAN
+                                </td>
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                    SEXO:
+                                </td>
+                                <td style="text-align: left;">
+                                    EDAD:
+                                </td>
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                    CIUDAD:
+                                </td>
+                                <td style="text-align: left;">
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                    <br>
+                                </td>
+                                <td style="text-align: left;">
+                                    <br>
+                                </td>
+                            </tr>
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                    Subsidiado
+                                </td>
+                                <td style="text-align: left;">
+                                    <br>
+                                </td>
+                            </tr>
+                            
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <table style="padding: 2px; width: 95%">
+
+                <tr style="font-size: 70%">
+                   
+                    <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black; border-left: 1px solid black;">
+                        <br><strong>Item</strong>
+                    </td>
+                    
+                    <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <br><strong>Ref</strong>
+                    </td>
+                    
+                    <td style="width: 35%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <br><strong>Descripción</strong>
+                    </td>
+                    
+                    <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <br><strong>Cantidad</strong>
+                    </td>
+
+                    <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <br><strong>Valor</strong>
+                    </td>                
+
+                    <td style="width: 10%; text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        <br><strong>Total</strong>
+                    </td>                
+                </tr>
+            </table>
+            <table style="padding: 2px; width: 95%">
+                <tr style="font-size: 70%">
+                    <td  style="text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        Doscientos ochenta y nueve mil quinientos veinticinco pesos MCTE.
+                    </td>
+                </tr>
+            </table>
+             <!-- ';   -->
+        
+        
+       <!--  // $tcpdf->variable = $opcion; // Set de la variable de validación de previsualización 
+        $tcpdf->xfootertext = ' -->
+        <table style="padding: 2px; width: 95%">
+                <tr style="font-size: 70%">
+                    <td>
+                        EXENTOS DE RET.FUENTE
+                    </td>
+                </tr>
+            </table>
+             <table style="padding: 2px; width: 95%">
+                <tr style="font-size: 70%">
+                    <td style=" text-align: center; background-color: #56ade0; border-top: 1px solid black;border-right: 1px solid black; border-bottom: 1px solid black;">
+                        CREDITO DE 90 DIAS
+                    </td>
+                </tr>
+            </table>    
+             <table style="padding: 2px; width: 95%">
+                <tr style="font-size: 70%">
+                    <td>
+                        EN CASO DE MORA SE CAUSARAN INTERESES COMERCIALES SIN PERJUICIO DE LAS ACCIONES LEGALES DEL ACREEDOR SE HACE CONSTAR QUE LA FIRMA DE UNA PERSONA DISTINTA  DEL COMPRADOR IMPLICA QUE DICHA ESTE AUTORIZADA EXPRESAMENTE POR EL COMPRADOR PARA FIRMAR, CONFESAR LA CEDULA Y OBLIGAR AL COMPRADOR. FAVOR PAGAR INMEDIATAMENTE CHEQUE CRUZADO A PARTIR BENEFICIARIO.
+                    </td>
+                </tr>
+            </table>
+            <table style="padding: 2px; width: 95%" border="0">
+                <tr style="font-size: 70%">
+                    <td style="text-align: left;">
+                        <table style="padding: 2px; width: 95%; background-color: #56ade0;" border="1">
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                    <strong>ELABORADO POR:</strong>
+                                    <br><br>
+                                    <br><br>
+                                    <br>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table style="padding: 2px; width: 95%; background-color: #56ade0" border="1">
+                            <tr style="font-size: 70%">
+                                <td style="text-align: left;">
+                                    <strong>RECIBI SATISFACTORIAMENTE LA ENTREGA REAL Y MATERIAL DE LOS SERVICIOS Y MERCANCIAS DE QUE TRATA</strong>
+                                    <strong>ESTA FACTURA Y ACEPTO EL VALOR ESTIPULADO DE LA MISMA</strong>
+                                    <br><br>______________________________________
+                                    <br><br><strong>FIRMA SELLO Y C.C</strong>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table><!-- '; -->
+</div>

@@ -1,0 +1,241 @@
+<title> Agenda Citas</title>
+<!-- START PAGE COVER --> 
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">
+                Home
+            </a>
+        </li>
+        <li>
+            <a class="active" href="#">
+                Autorización de ordenes
+            </a>
+        </li>
+        
+    </ul>
+
+
+</div>
+<div class="container-fluid container-fixed-lg ">
+	<p>
+		<h3 class="text-center"> Autorización de Ordenes </h3>
+	</p>
+
+	<section>
+		<div class="row ng-scope">
+		  <div class="container-fluid container-fixed-lg">
+
+		    <form name="confirmForm" role="form" novalidate="" class="ng-pristine ng-invalid ng-invalid-required">
+		      <div class="form-group-attached">
+		        <div class="row clearfix">
+
+		          <div class="col-md-2">
+		            <div pg-form-group="" class="form-group form-group-default required"> 
+		              <label>Fecha a consultar </label>
+
+
+		              <div class="input-group date" >
+		                <input ng-model="dateIni" name="dateIni" placeholder="Fecha Inicio" class="form-control ng-pristine ng-untouched ng-valid ng-valid-required" ng-change="loadValues()" id="date" required="" type="text"><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		              </div>
+		            </div>
+		            
+		          </div>
+		          <div class="col-md-2">
+		            <div pg-form-group="" class="form-group form-group-default required"> 
+		              <label>Fecha a Final </label>
+
+		              <div  class="input-group date" >
+
+		                <input ng-model="dateEnd" name="dateEnd" placeholder="Fecha Fin Rango " class="form-control ng-pristine ng-untouched ng-valid ng-valid-required" ng-change="loadValues()" id="dateEnd" required="" type="text">
+
+		                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+		                
+		              </div>
+
+		            </div>
+		          </div>
+
+
+		          <div class="col-md-2">
+		            <div pg-form-group="" class="form-group form-group-default required" ng-class="{ 'has-error' : confirmForm.selectedDepatment.$invalid &amp;&amp; !confirmForm.selectedDepatment.$pristine }">
+		              <label>Sede</label>
+		              
+		              <select 
+		              class="cs-select cs-skin-slide form-control ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-change="viewChange()" 
+		              ng-model="center" 
+		              ng-options="sede.id as sede.name for sede in centers" 
+		              ui-jq="popover" 
+		              data-container="body" 
+		              data-placement="top" 
+		              data-content="Debe selecionar una sede" 
+		              data-trigger="manual" 
+		              validate-attached-form-element="" 
+		              style="margin-top:5px" 
+		              required="" 
+		              data-original-title="" 
+		              title="">
+		              	
+		              	<option value=""> 
+		              		-Seleccione la Sede- 
+		              	</option>
+		            
+		              
+		              </select>
+		          </div>
+		        </div>
+
+		        <div class="col-md-6">        
+
+		          <div class="form-group form-group-default">
+		            <label>Consulta Ordenes </label>
+
+		            <div class="radio radio-info">
+
+
+		              <div class="col-md-4">
+		                <input name="radio1" id="radioPendFact" ng-model="optionSelected" value="0" class="ng-pristine ng-untouched ng-valid" type="radio" ng-click="getOrders()">
+		                <label for="radioPendFact">Autorizado </label>
+		              </div>
+		              <div class="col-md-4">
+		                <input name="radio1" id="radioFact" ng-model="optionSelected" value="1" class="ng-pristine ng-untouched ng-valid" type="radio" ng-click="getOrders()">
+		                <label for="radioFact">Pendiente</label>
+		              </div>
+
+		              <div class="col-md-4">
+		                <input name="radio1" id="radioFact2" ng-model="optionSelected" value="2" class="ng-pristine ng-untouched ng-valid" type="radio" ng-click="getOrders()">
+		                <label for="radioFact2">Rechazado</label>
+		              </div>
+
+
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		  </form>
+		</div>
+
+		</div>
+
+
+
+		<div style="display: flex;">
+			<button class="btn btn-info" style="margin: auto; top: 1em" ng-click="getOrders()">CONSULTAR</button>
+		</div>
+
+		<p class="text-center text-danger" style="display: none; margin-top: 1em" id="error">El ó los campos <i>{{campos}}</i> son necesarios.</p>
+
+	</section>
+
+
+	<div>
+
+		<div class="form-group form-group-default" style="margin-top: 1.5em" >
+	        <label>Filtrar:</label>
+	         <input type="text" class="form-control" ng-model="filtro" />
+        </div>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>
+						Nº de orden
+					</th>
+
+					<th>
+						Nº de documento
+					</th>
+
+					<th>
+						Paciente
+					</th>
+
+					<th>
+						Plan tarifario
+					</th>
+			
+					<th>
+						Opciones
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="orden in ordenes | filter:filtro">
+					<td>
+						{{orden.order_consec}}
+					</td>
+					<td>
+						{{orden.identification}}
+					</td>
+					<td>
+						{{orden.fullname}}
+					</td>
+					<td>
+						{{orden.name}}
+					</td>
+
+					<td>
+						<button class="btn btn-info" target="_blank" ng-click="showOrder(orden)">
+							Ver Orden
+						</button>
+						<button class="btn btn-info"  ng-click="showModalChangeState(orden)">
+							Cambiar estado
+						</button>
+					</td>
+				</tr>
+			</tbody>
+
+
+		</table>
+	</div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade slide-up disable-scroll change-state-order" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+          
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5 class="text-center"><b>Cambiar estado. </b></h5>
+            </div>
+          
+            <div class="modal-body">
+          
+            	<div class="form-group form-group-default">
+	                <label>Estado</label>
+	                <select class="cs-select cs-skin-slide form-control" ng-model="order_authorization.state">
+	                	<option value="" >--seleccione--</option>
+	                	<option value="1">Autorizar</option>
+	                	<option value="0">Rechazar</option>
+	                </select>
+            	</div>
+
+            	<div class="form-group form-group-default" >
+            		<label>Observación</label>
+            		<textarea class="form-control" style="min-height: 10vh" ng-model="order_authorization.observations"></textarea>
+            	</div>
+            	
+            	<div>
+            		<button 
+            		class="btn btn-info" 
+            		style="margin-left: 13vw;" 
+            		ng-click="saveState()"
+            		ng-disabled="!order_authorization.state || !order_authorization.observations" >
+            			ACEPTAR
+            		</button>
+            	</div>
+                
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->

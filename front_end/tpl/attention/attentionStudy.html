@@ -1,0 +1,465 @@
+<div class="container-fluid container-fixed-lg ">
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li><a class="active" href="#">Atención</a>
+        </li>
+    </ul>
+    <!-- END BREADCRUMB -->
+    <h3 class="page-title">Atención Paciente</h3>
+
+</div>
+
+
+<div class="container-fluid container-fixed-lg">
+    <!-- YOU CAN REMOVE .container-fixed-lg TO DISABLE THE FEATURE WHERE THE CONTENT
+                 ALIGNS TO THE CENTER WITHOUT STRECTHING UNGLY ON 1800PX(1080P & 4/5K MONITORS) UP WORDS SCREEN
+             -->
+             <!-- CONTENT GOES HERE-->
+
+
+             <div class="row">
+                <!-- START PANEL -->
+
+                <div class="col-md-8">
+                 <h3> Paciente </h3>
+
+
+
+                 <div class="form-group-attached">
+                    <div class="row clearfix">
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        Primer Nombre
+                                    </label>
+                                    <input class="form-control" name="first_name" ng-model="people.first_name" ui-jq="popover" data-container="body" data-placement="top" readonly="true"   style ="color:#000000;"required/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        Segundo Nombre
+                                    </label>
+                                    <input class="form-control" name="middle_name" readonly="true" ng-model="people.middle_name"  style ="color:#000000;"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        Primer Apellido
+                                    </label>
+                                    <input class="form-control" name="last_name" ng-model="people.last_name"  
+                                    ui-jq="popover" data-container="body" data-placement="top" readonly="true"  style ="color:#000000;" required/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                        Segundo Apellido
+                                    </label>
+                                    <input class="form-control" name="last_name_two" ng-model="people.last_name_two" ui-jq="popover" data-container="body" data-placement="top" readonly="true"  style ="color:#000000;" required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-sm-3">
+                            <div class="form-group-attached">
+                                <div pg-form-group class="form-group form-group-default">
+                                    <label>
+                                      Numero Documento 
+                                  </label>
+                                  <input type="text" name="documento" ng-model="people.identification" readonly="true" class="form-control"   style ="color:#000000;" required/>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default">
+                                <label>
+                                    Tipo Documento 
+                                </label>
+                                <input type="text" name="documentoType" ng-model="people.document_type.type" readonly="true" class="form-control"   style ="color:#000000;" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default">
+                                <label>
+                                    Genero
+                                </label>
+
+                                <input type="text" name="genero" readonly="true" class="form-control" value="Femenino" ng-show="people.gender == 1"  style ="color:#000000;"  />
+                                <input type="text" name="genero" readonly="true" class="form-control" value="Masculino" ng-show="people.gender == 0"  style ="color:#000000;" />
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default">
+                                <label> 
+                                    Fecha Nacimiento:
+                                </label>
+                                <input  ui-options="{format:'YYYY-MM-DD'}" name="fecha" readonly="true" ng-model="people.birthdate" class="form-control"  style ="color:#000000;" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row clearfix">
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default">
+                                <label>
+                                    Edad
+                                </label>
+                                <input class="form-control" name="birthdate" ng-model="order.calculated_age" id='edad' readonly="true"   style ="color:#000000;" type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default">
+                                <label>
+                                    Teléfono:
+                                </label>
+                                <input class="form-control" name="phone" ng-model="people.phone" type="text" ui-jq="popover" data-container="body" data-placement="top" readonly="true"  style ="color:#000000;" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group-attached">
+                            <div pg-form-group class="form-group form-group-default">
+                                <label>
+                                    E-mail:
+                                </label>
+                                <input class="form-control" name="email" readonly="true"  ng-model="people.email"  style ="color:#000000;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- END PACIENT INFORMATION -->
+
+        <div class="col-md-4">
+           <h3> Estudio </h3>
+
+           <div class="form-group-attached">
+            <div class="row clearfix">
+                <div class="col-sm-12">
+                   <div class="form-group-attached">
+                    <div pg-form-group class="form-group form-group-default">
+                        <label>
+                            Estudio
+                        </label>
+                        <input class="form-control" name="address" ng-model="study.name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" style ="color:#000000;" required/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="form-group-attached">
+                    <div pg-form-group  class="form-group form-group-default ">
+                        <label>
+                            Observaciones 
+                        </label>
+                        <input name="diagnostico" readonly="true" class="form-control" ng-model="order.observations"   style ="color:#000000;" required/>
+                    </div>
+                </div>
+            </div>
+            <!-- END STUDY BASIC INFORMATION --> 
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+
+<!-- START STUDIES PRODUCTS INFORMATION --> 
+
+
+<div class="row" id="ProductsDates">
+
+    <div class="container-fluid container-fixed-lg" ng-app="app" ng-show="showTableProducts">
+
+        <h3>
+            Suministros:
+        </h3>  
+        <table class="table" >
+
+          <thead>
+            <tr>
+              <th class="col-md-2">  codigo  </th>
+
+              <th class="col-md-8">  nombre </th>
+
+              <th class="col-md-2">  cantidad  </th>
+
+              <!--   <th>  costo </th>-->
+          </tr>
+      </thead>
+
+      <tbody>
+
+        <tr ng-repeat="supply in studySupplies" style="margin-top:5px">
+
+          <td class="col-md-2">{{supply.products_study.service.cup}}</td>
+
+          <td class="col-md-8">{{supply.products_study.service.name}}</td>
+
+          <td class="col-md-2">
+
+            <input class="form-control" 
+            ng-model ="supply.quantity"
+            value="{{supply.quantity}}" 
+            ui-jq="popover" 
+            data-container="body" 
+            data-placement="top" 
+            ng-change="changeCant(supply)"
+            readonly="false" 
+            >
+
+        </td>
+
+        <!-- <td> {{supply.cost}}</td> -->
+    </tr>
+</tbody>
+
+</table>
+
+
+</div>
+
+</div>
+
+<!-- START PLANILLAS DE ATENCION -->
+<div class="row">
+
+    <div class="col-md-12">     
+        <!-- plantilla complementaria -->
+        <div data-ng-include= "template"></div>
+        
+    </div>
+
+</div>
+
+<p style="width: 80%; display: none; margin-left: 10%;" class="text-danger text-center" id="error_message" >
+    {{error_message}} 
+    <br/>
+    verifique que los campos necesarios esten diligenciados.     
+</p>
+
+<br>
+
+<div class="row" >
+
+    <div class="col-md-12">
+        <button type="button" 
+        class="btn btn-info btn-block" 
+        ng-click="addAttention()"
+        ng-show="showEndAttention" 
+        >
+        <i class="fa fa-save"></i> Finalizar Atenciòn
+    </button>
+    
+</div>
+
+
+
+
+</div>
+
+<!-- END STUDIES PRODUCTS INFORMATION --> 
+</div>
+
+
+
+
+
+
+
+<!-- Modal placas prestadas-->
+<div class="modal fade slide-up disable-scroll confirm-save-ok" data-backdrop="static" data-keyboard="false" data-backdrop="static" data-keyboard="false" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      <i class="pg-close fs-14"></i>
+                  </button> -->
+                  <h5><span class="semi-bold">¿{{nameRole}}, {{message}} </span></h5>
+              </div>
+              <div class="modal-body">
+
+               <div class="row">
+
+                 <div class="col-md-6">
+
+                   <button class="btn btn-info btn-block" ng-click="showModalLendPlate()"><i class="fa fa-check"></i> SI</button>
+
+               </div>
+
+               <div class="col-md-6">
+
+                  <button class="btn btn-info btn-block" ng-click="hideConfirmSave(1);"><i class="fa fa-remove"></i> NO</button>
+
+              </div>
+
+          </div>
+
+
+      </div>
+  </div>
+</div>
+<!-- /.modal-content -->
+</div>
+</div>
+
+
+
+
+
+<!-- /.modal-dialog -->
+
+
+<div class="modal fade slide-up disable-scroll add-confirmation" data-backdrop="static" data-keyboard="false" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content-wrapper">
+      <div class="modal-content">
+        <div class="modal-header clearfix text-left">
+         <!--  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            <i class="pg-close fs-14"></i>
+        </button> -->
+        <h5> <span class="semi-bold">Prestamo de Placas</span></h5>
+    </div>
+    <div class="modal-body">
+
+        <form name="confirmForm" role="form" novalidate>
+            <div class="row">
+
+                <div class="form-group-attached">
+
+                  <div class="row clearfix"> 
+
+                   <!-- Name -->
+
+                   <div class="col-md-4">
+                    <div class="form-attached">
+                      <div pg-form-group class="form-group form-group-default required">
+                        <label>Nombre</label>
+                        <input type="name" class="form-control ng-valid-required" ng-model="lend.delivered" required=""></input>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- End Name -->
+
+            <!-- Document -->
+
+            <div class="col-md-4">
+              <div class="form-attached">
+                <div pg-form-group class="form-group form-group-default required">
+                  <label>Documento de identidad</label>
+                  <input type="text" class="form-control ng-valid-required" ng-model="lend.document" required=""></input>
+              </div>
+          </div>
+      </div>
+
+      <!-- End Document -->
+
+      <!-- Adress -->
+
+      <div class="col-md-4">
+          <div class="form-attached">
+            <div pg-form-group class="form-group form-group-default required">
+              <label>Dirección</label>
+              <input type="text" class="form-control ng-valid-required" required="" ng-model="lend.direction" ></input>
+          </div>
+      </div>
+  </div>
+
+  <!-- End Adress -->
+
+  <!-- Phone -->
+
+  <div class="col-sm-4">
+
+      <div class="form-group-attched">
+        <div pg-form-group class="form-group form-group-default required">
+
+          <label>Teléfono</label>
+          <input type="tel" class="form-control ng-valid-required" required="" ng-model="lend.phone"></input>
+
+      </div>
+  </div>
+
+</div>
+
+<!-- End Phone -->
+
+<!-- Obervation -->
+
+<div class="col-sm-8">
+
+   <div class="form-group-attched">
+       <div pg-form-group class="form-group form-group-default required">
+
+
+        <label>Observación</label>
+        <textarea type="tel" class="form-control ng-valid-required" required="" ng-model="lend.observations"></textarea>
+
+    </div>
+</div>
+
+</div>
+
+<!-- End Observation -->
+</div>
+
+<!-- Button pla -->
+
+<div class="row clearfix">
+    <div class="col-sm-6">
+
+        <button class="btn btn-info btn-block" ng-click="updateLendPLate()" ng-disabled="confirmForm.$invalid" >ACEPTAR</button>
+    </div> 
+    <div class="col-sm-6">
+
+        <button class="btn btn-info btn-block" ng-click="hideModalLendPlate()"  >Cancelar</button>
+    </div>        
+</div>
+<!-- End Button pla -->
+</div>
+</div>
+</div>
+</form>
+
+</div>
+
+</div>     
+
+</div>
+
+</div>
+
+</div>
+
+
+

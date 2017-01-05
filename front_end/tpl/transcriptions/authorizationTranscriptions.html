@@ -1,0 +1,490 @@
+<div class="container-fluid container-fixed-lg ">
+	<ul class="breadcrumb">
+		<li>
+			<a href="#">Home</a>
+		</li>
+		<li><a class="active" href="#">Autorizar Transcripciones</a>
+		</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<h3 class="page-title">Autorizar Transcripciones </h3>
+
+</div>
+<!-- Select para consutar por especialista los resultados -->
+
+<div class="row" id="especialistas">
+	
+	<div class="container-fluid container-fixed-lg">
+		
+		<form name="confirmForm" role="form" novalidate>
+			
+			<div class="form-group-attached">
+				
+				<div class="row clearfix">
+					
+					<div class="col-md-3" >
+						<div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : confirmForm.selectedDepatment.$invalid && !confirmForm.selectedDepatment.$pristine }">
+							<label>
+								Seleccionar Especialista.
+							</label>
+							<select  
+							class="cs-select cs-skin-slide form-control" 
+							ng-model="specialistSelected" 
+							ng-options="item.id as item.person.first_name +' '+ item.person.middle_name +' '+ item.person.last_name +' '+ item.person.last_name_two for item in Specialists" 
+							ui-jq="popover" 
+							data-container="body" 
+							data-placement="top" 
+							data-content="Debe seleccionar un Especialista" 
+							data-trigger="manual" 
+							validate-attached-form-element
+							ng-change = "loadValues()"
+							id="specialist-to-selected"
+							style="margin-top:5px" 
+							required>
+							<!--<i aria-hidden="true" class="btn-info" ></i>-->
+							<option value=""> -Seleccione un especialista- </option>
+						</select>
+					</div>
+					
+				</div>
+
+			</div>
+
+		</div>
+
+	</form>
+
+</div>
+
+</div>
+<!-- Fin del Select para consutar por especialista los resultados -->
+<!-- Panel de consulta -->
+<div class="row">
+	<div class="container-fluid container-fixed-lg">
+		<form name="confirmForm" role="form" novalidate>
+			<div class="form-group-attached">
+				<div class="row clearfix">
+					<div class="col-md-2">
+						<div pg-form-group class="form-group form-group-default required" > 
+							<label>Fecha a consultar </label>
+							<div class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+								<input type="text" 
+								ng-model="selectedDate" 
+								name="date"  
+								placeholder="Fecha Inicio" 
+								class="form-control" 
+								ng-change="loadValues()" 
+								id='date' 
+								required/>
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div pg-form-group class="form-group form-group-default required" > 
+							<label>Fecha a Final </label>
+
+							<div id="dtEnd" class="input-group date" ui-jq="datepicker" ui-options="{format:'yyyy-mm-dd'}">
+								<input
+								type="text" 
+								ng-model="selectedDateEnd" 
+								name="dateEnd"  
+								placeholder="Fecha Fin Rango " 
+								class="form-control"
+								ng-change="loadValues()" 
+								id='dateEnd' 
+								required/>
+								<span class="input-group-addon" ng-hide="!showOrders"><i class="fa fa-calendar"></i></span>
+								<div style="height:30px" ng-hide="showOrders" ></div>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div pg-form-group class="form-group form-group-default required" ng-class="{ 'has-error' : confirmForm.selectedDepatment.$invalid && !confirmForm.selectedDepatment.$pristine }">
+							<label>Sede</label>
+							<select
+							class=" cs-select cs-skin-slide form-control" 
+							ng-change="loadValues()" 
+							ng-model="selectedCenter"  
+							ng-options="sede.id as sede.name for sede in centers" 
+							ui-jq="popover" 
+							data-container="body" 
+							data-placement="top" 
+							data-content="Debe selecionar una sede" 
+							data-trigger="manual" 
+							validate-attached-form-element 
+							style="margin-top:5px" required>
+							<option value=""> -Seleccione la Sede- </option>
+						</select>
+					</div>
+				</div>
+				<div class="col-md-6"><div class="form-group form-group-default">
+					<label>Consulta Facturas </label>
+					<div class="radio radio-info">
+						<div class="col-md-4">
+							<input type="radio"  name="radio1" id="radioPenAutho" ng-model="optionSelected" value="1"  >
+							<label for="radioPenAutho">Pendientes</label>
+						</div>
+						<div class="col-md-4">
+							<input type="radio"  name="radio1" id="radioAutho" ng-model="optionSelected" value="2"  >
+							<label for="radioAutho">Autorizadas</label>
+						</div>
+						<div class="col-md-4">
+							<input type="radio"  name="radio1" id="radioRecAutho" ng-model="optionSelected" value="3"  >
+							<label for="radioRecAutho">Rechazados</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+</div>
+
+
+
+<!-- final del Panel de consulta -->
+
+
+
+
+
+<!-- Tabla que muestra información según consulta -->
+<div class="row">
+	<div class="container-fluid container-fixed-lg">
+		
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Orden</th>
+
+					<th>Documento</th>
+
+					<th>Nombre</th>
+
+					<th>Estudio</th>
+
+					<th>Fecha Atención</th>
+
+					<th>Opciones</th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="items in itemsTranscription  | filter:searchFish track by $index" ng-class="{true:'null_bills'}[items.canceled > 0]">
+					<td>{{items.order}}</td>
+
+					<td>{{items.identification}}</td>
+
+					<td>{{items.name}}</td>
+
+					<td style="width: 40%">{{items.study}}</td>
+
+					<td>{{items.date}}</td>
+					<td style="width: 15%"> 
+
+						<button class="btn btn-info small" ng-click="showModalEditTranscripcion(items)" title="Ver Transcripción"
+						class="form-control" id ="button-comfirm" ng-show="optionSelected == optionsAux"><i class="fa fa-eye" aria-hidden="true"></i></button>
+
+						<button class="btn btn-info" ng-click="showModalEditTranscripcion(items)" title="Ver Transcripción" class="form-control" ng-show="optionSelected == 2 || optionSelected == 3"><i class="fa fa-eye" aria-hidden="true"></i></button>
+
+
+						<!--   <button class="btn btn-info" ng-click="showEditListOrder()" class="form-control" ng-show="optionSelected == 1"><i class="fa fa-edit"></i>&nbsp;Editar</button> -->
+
+						<button  class="btn btn-info" 
+						ng-click="showModalEditTranscripcion(items,1)" 
+						class="form-control" 
+						title="Autorizar"
+						ng-show="optionSelected == optionAux" id="confirm">
+						<i class="fa fa-check"></i>&nbsp;</button>
+
+						<button  class="btn btn-info" 
+						ng-click="showModalEditTranscripcion(items,2)" 
+						class="form-control" title="Rechazar"
+						ng-show="optionSelected == optionAux" id="deny">
+						<i class="fa fa-remove"></i>&nbsp;</button>
+					</td>
+				</tr>
+			</tbody>
+
+		</table>
+		<!-- Fin de Tabla que muestra información según consulta -->
+
+		<!-- PAGINACIÓN -->
+		<div>
+			<ul class="w3-pagination">
+				<li>
+					<button class="w3-border-0 w3-transparent w3-hover-opacity" ng-click="Results.offset= Results.offset - 1">
+						<i class="fa fa-angle-left w3-xlarge" aria-hidden="true"></i>
+					</button>
+				</li>
+				<li>
+					<button class="w3-border-0 w3-transparent w3-hover-opacity" ng-click="Results.offset= Results.offset + 1">
+						<i class="fa fa-angle-right w3-xlarge" aria-hidden="true"></i>
+					</button>
+				</li>
+				<li>
+					<button class="w3-transparent w3-border-0" hidden="">
+						<i class="w3-xlarge" style="float: right; font-style: normal">{{ Results.offset }}</i>
+					</button>
+				</li>
+			</ul>
+		</div>
+		<!-- ./PAGINACION -->
+	</div>
+
+
+
+
+</div>
+
+<!-- /.modal-content -->
+<div class="modal fade stick-up disable-scroll edit-transcription" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+	<div class="modal-dialog modal-lg" style="width:60%;">
+		<div class="modal-content-wrapper">
+			<div class="modal-content">
+				<div class="modal-body">
+
+					<div class="row">
+
+
+						<!-- START PANEL -->
+						<div class="col-md-12">
+							<h3> Paciente </h3>
+
+							<div class="form-group-attached">
+								<div class="row clearfix">
+									<div class="col-sm-3">
+										<div class="form-group-attached">
+											<div pg-form-group class="form-group form-group-default">
+												<label>
+													Primer Nombre
+												</label>
+												<input style=" color: #000000;" class="form-control" name="first_name" ng-model="transcriptionsModal.first_name" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+											</div>
+										</div>
+									</div>
+
+									<div class="col-sm-3">
+										<div class="form-group-attached">
+											<div pg-form-group class="form-group form-group-default">
+												<label>
+													Segundo Nombre
+												</label>
+												<input style=" color: #000000;" class="form-control" name="middle_name" readonly="true" ng-model="transcriptionsModal.middle_name"/>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group-attached">
+											<div pg-form-group class="form-group form-group-default">
+												<label>
+													Primer Apellido
+												</label>
+												<input style=" color: #000000;" class="form-control" name="last_name" ng-model="transcriptionsModal.last_name"  
+												ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group-attached">
+											<div pg-form-group class="form-group form-group-default">
+												<label>
+													Segundo Apellido
+												</label>
+												<input style=" color: #000000;" class="form-control" name="last_name_two" ng-model="transcriptionsModal.last_name_two" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-sm-3">
+										<div class="form-group-attached">
+											<div pg-form-group class="form-group form-group-default">
+												<label>
+													Numero Documento 
+												</label>
+												<input style=" color: #000000;" type="text" name="documento" ng-model="transcriptionsModal.identification" readonly="true" class="form-control" required/>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group-attached">
+											<div pg-form-group class="form-group form-group-default">
+												<label>
+													Tipo Documento 
+												</label>
+												<input style=" color: #000000;" type="text" name="documentoType" ng-model="transcriptionsModal.typeDoc" readonly="true" class="form-control" />
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group-attached">
+											<div pg-form-group class="form-group form-group-default">
+												<label>
+													Genero
+												</label>
+
+												<input style=" color: #000000;" type="text" name="gender" ng-model="transcriptionsModal.gender" readonly="true" class="form-control" />
+
+
+
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-3">
+										<div class="form-group-attached">
+											<div pg-form-group class="form-group form-group-default">
+												<label> 
+													Fecha Nacimiento:
+												</label>
+												<input style=" color: #000000;"  ui-options="{format:'yyyy-mm-dd'}" name="fecha" readonly="true" ng-model="transcriptionsModal.birthdate" class="form-control" required>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row clearfix">
+									<div class="col-sm-6">
+										<div class="form-group-attached">
+											<div pg-form-group class="form-group form-group-default">
+												<label>
+													Estudio
+												</label>
+												<input style=" color: #000000;" class="form-control" name="address" ng-model="transcriptionsModal.study" ui-jq="popover" data-container="body" data-placement="top" readonly="true" required/>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group-attached">
+											<div pg-form-group class="form-group form-group-default">
+												<label>
+													Fecha Realizacion
+												</label>
+												<input style=" color: #000000;" ui-options="{format:'yyyy-mm-dd'}" name="regimen" readonly="true"  ng-model="transcriptionsModal.date"class="form-control" required/>
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-sm-12">
+										<div class="form-group-attached">
+											<div pg-form-group  class="form-group form-group-default ">
+												<label>
+													Observaciones 
+												</label>
+												<input name="diagnostico" readonly="true" ng-model ="transcriptionsModal.observartions" class="form-control" required/>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div><!--Datos paciente-->
+
+
+
+
+						</div>
+						<div class="col-md-12">
+
+							<div class="form-group-attached">
+								<div class="row clearfix">
+
+									<div class="col-sm-12">
+										<h3> Informe </h3>
+
+										<div class="summernote-wrapper">
+											<div id="summernote" 
+											config="summernote_options" summernote ng-model="summernote" >
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+
+					<div class="col-md-12 ">
+
+						<button class="btn btn-info "  ng-click="showConfirmSave()" id="editar-confirmar"><i class="fa fa-check"></i> Editar y Confirmar</button>
+
+
+
+						<button class="btn btn-info "  ng-click="showConfirmSave()" id="buttonDeny"><i class="fa fa-remove"></i> Rechazar</button>
+					
+					
+
+						<button class="btn btn-info "  ng-click="hideEditTranscripcion()"><i class="fa fa-remove"></i> Cerrar</button>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+</div>	<!-- End Modal -->
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade slide-up disable-scroll save-authorization-success" id="modalSlideSucces" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+	<div class="modal-dialog" style="width:32%;">
+		<div class="modal-content-wrapper">
+			<div class="modal-content">
+				<div class="modal-header clearfix text-left">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						<i class="pg-close fs-14"></i>
+					</button>
+					<h4> Se ha realizado la Autorización del Resultado Exitosamente </h4>
+				</div>
+				<div class="modal-body">
+				</div>
+			</div>
+		</div>
+		<!-- /.modal-content -->
+	</div>
+</div>
+<!-- /.modal-dialog -->
+
+
+<!-- Modal Para confirmar autorización o rechazo de transcripciones-->
+<div class="modal fade slide-up disable-scroll confirm-save-ok" id="modalSlideUp" tabindex="-1" role="dialog" aria-labelledby="modalSlideUpLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="modal-content-wrapper">
+        <div class="modal-content">
+            <div class="modal-header clearfix text-left">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                  <i class="pg-close fs-14"></i>
+                </button>
+                <h5><span class="semi-bold">¿{{role}},  {{message}} </span></h5>
+            </div>
+            <div class="modal-body">
+               
+               <div class="row">
+                 
+                 <div class="col-md-6">
+                   
+                   <button class="btn btn-info btn-block" ng-click="authorization(transcriptionsModal)"><i class="fa fa-check"></i> SI</button>
+
+                 </div>
+
+                 <div class="col-md-6">
+                    
+                  <button class="btn btn-info btn-block" ng-click="hideConfirmSave()"><i class="fa fa-remove"></i> NO</button>
+
+                 </div>
+
+               </div>
+              
+
+            </div>
+        </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+</div>
+<!-- /.modal-dialog -->
+
