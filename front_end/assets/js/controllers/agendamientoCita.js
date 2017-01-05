@@ -7226,8 +7226,6 @@ $scope.showSaveOrder = function(){
 
             },function(error){});
 
-             
-
            }else{
 
             var aus = $scope.generateAnyBill(billInfo,2);
