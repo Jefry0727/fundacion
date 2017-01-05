@@ -7230,6 +7230,7 @@ $scope.showSaveOrder = function(){
 
             var aus = $scope.generateAnyBill(billInfo,2);
             l('aus uno mas');
+            
             l(aus);
            return aus;
 
