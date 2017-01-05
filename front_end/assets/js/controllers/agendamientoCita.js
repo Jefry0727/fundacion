@@ -7002,7 +7002,7 @@ $scope.showSaveOrder = function(){
             BillsService.generateBill($billInfo, function (res) {
 
               l('ultima');
-              
+
               window.location.href = urls.BASE_API + '/Bills/downloadPrev/' + $billInfo.order.order_consec + '/' + res.message;
               var aus = true;
               
@@ -7226,6 +7226,8 @@ $scope.showSaveOrder = function(){
 
             },function(error){});
 
+             
+
            }else{
 
             var aus = $scope.generateAnyBill(billInfo,2);
@@ -7234,6 +7236,9 @@ $scope.showSaveOrder = function(){
            return aus;
 
           }
+
+
+          return true;
 
 
         }
